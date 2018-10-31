@@ -15,7 +15,6 @@ const baseLanguage = new BaseLanguage(APP.appkey, APP.appid);
 /**
  * 自然语言处理-基本类 API 测试文件
  */
-
 describe('baseLanguage', () => {
   // 基本文本分析 分词
   it('wordseg', () => {

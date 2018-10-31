@@ -8,12 +8,10 @@ const {
 
 const PS = require('./client/ProxyServices');
 
-/**
- * 机器翻译API服务类
- */
 module.exports = class Translate {
   /**
    * 机器翻译API构造函数
+   *
    * @prop {String} app_key 应用key
    * @prop {String} app_id  应用id
    * @function texttrans(Object) 文本翻译（AI Lab）
@@ -33,7 +31,7 @@ module.exports = class Translate {
   /**
    * 文本翻译（AI Lab）
    * @description 文本翻译接口提供自动翻译能力，可以帮您快速完成一段文本的翻译，支持中、英、德、法、日、韩、西、粤语种。
-   * 具体参数查看：https://ai.qq.com/doc/nlptrans.shtml
+   * @see https://ai.qq.com/doc/nlptrans.shtml
    * @prop {String} text  UTF-8编码，非空且长度上限1024字节
    * @prop {Number} type
    * 0  自动识别（中英文互转）
@@ -74,7 +72,7 @@ module.exports = class Translate {
   /**
    * 文本翻译（翻译君）
    * @description 文本翻译接口提供自动翻译能力，可以帮您快速完成一段文本的翻译，支持多种语言之间的互译。
-   * 具体参数查看：https://ai.qq.com/doc/nlptrans.shtml
+   * @see https://ai.qq.com/doc/nlptrans.shtml
    * @prop {String} text  UTF-8编码，非空且长度上限1024字节
    * @prop {String} source  默认 auto  中文  zh/英文  en/日文  jp/韩文  kr/法文  fr/西班牙文  es/意大利文  it/德文  de/土耳其文  tr/俄文  ru/葡萄牙文  pt/越南文  vi/印度尼西亚文  id/马来西亚文  ms/泰文  th/自动识别（中英互译）  auto
    * @prop {string} target   默认 en
@@ -117,7 +115,7 @@ module.exports = class Translate {
   /**
    * 图片翻译
    * @description 识别图片中的文字，并进行翻译
-   * 具体参数查看：https://ai.qq.com/doc/imagetranslate.shtml
+   * @see https://ai.qq.com/doc/imagetranslate.shtml
    * @prop {string} image  原始图片的base64编码数据（原图大小上限1MB）
    * @prop {string} session_id 一次请求ID（尽可能唯一，长度上限64字节）
    * @prop {string} scene 默认 word word-单词识别，doc-文档识别
@@ -155,7 +153,7 @@ module.exports = class Translate {
   /**
    * 语音翻译
    * @description 识别出音频中的文字，并进行翻译
-   * 具体参数查：https://ai.qq.com/doc/speechtranslate.shtml
+   * @see https://ai.qq.com/doc/speechtranslate.shtml
    * @prop {int} format 默认MP3-8 AMR  3/SILK  4/PCM  6/MP3  8/AAC  9
    * @prop {int} seq 默认0 语音分片所在语音流的偏移量（字节）
    * @prop {int} end 默认1  0  中间分片/1  结束分片
@@ -199,7 +197,7 @@ module.exports = class Translate {
   /**
    * 语种识别
    * @description 识别给出文本的语种
-   * 具体参数查看：https://ai.qq.com/doc/textdetect.shtml
+   * @see https://ai.qq.com/doc/textdetect.shtml
    * @prop {String} text  UTF-8编码，非空且长度上限1024字节
    * @prop {String} candidate_langs  语言缩写，多种语言间用“,“ 分割
    * 中文  zh \ 英文  en \ 日文  jp \ 韩文  kr

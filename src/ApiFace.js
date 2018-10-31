@@ -26,6 +26,7 @@ module.exports = class Face {
 
   /**
    * 人脸分析
+   *
    * @description 检测给定图片（Image）中的所有人脸（Face）的位置和相应的面部属性。位置包括（x, y, w, h），面部属性包括性别（gender）, 年龄（age）, 表情（expression）, 魅力（beauty）, 眼镜（glass）和姿态（pitch，roll，yaw）
    * @see https://ai.qq.com/doc/detectface.shtml
    * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
@@ -50,6 +51,7 @@ module.exports = class Face {
 
   /**
    * 多人脸检测
+   *
    * @description 检测图片中的人脸位置，可以识别出一张图片上的多个人脸。
    * @see https://ai.qq.com/doc/detectmultiface.shtml
    * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
@@ -93,6 +95,7 @@ module.exports = class Face {
 
   /**
    * 跨年龄人脸识别
+   *
    * @description 对比两张图片，并找出相似度最高的两张人脸；支持多人合照、两张图片中的人处于不同年龄段的情况。 建议：source_image中的人脸尽量不超过10个，target_image中的人脸尽量不超过15个。
    * @see https://ai.qq.com/doc/detectcrossageface.shtml
    * @param {String} source_image 待比较图片 原始图片的base64编码数据（原图大小上限1MB）
@@ -117,6 +120,7 @@ module.exports = class Face {
 
   /**
    * 五官定位
+   *
    * @description 对请求图片进行五官定位，计算构成人脸轮廓的88个点，包括眉毛（左右各8点）、眼睛（左右各8点）、鼻子（13点）、嘴巴（22点）、脸型轮廓（21点）
    * @see https://ai.qq.com/doc/faceshape.shtml
    * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）

@@ -2,7 +2,7 @@
 
 const randomstring = require('randomstring');
 
-const process = require('process');
+// const process = require('process');
 
 const {APP, fsReadSync} = require('./util');
 
@@ -10,131 +10,114 @@ const {ImgPublic} = require('../');
 
 const imgPublic = new ImgPublic(APP.appkey, APP.appid);
 
+const assert = require('assert');
+
 /**
  * 计算机视觉-图片识别公共类 API 测试文件
  */
-
-describe('', () => {
+describe('image', () => {
   // 智能鉴黄
-  it('should ', function () {
-    imgPublic.porn(fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\1.jpg` : `${__dirname}/file/1.jpg`)).then((res) => {
-      res.data.tag_list.map(item => {
-        item.tag_name = resPornKey[item.tag_name];
-      });
-      console.log('智能鉴黄', JSON.stringify(res));
+  it('porn', function () {
+    return imgPublic.porn(fsReadSync(`${__dirname}/resource/face/wxc.jpg`)).then((res) => {
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('智能鉴黄', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 
   // 暴恐图片识别
-
-  it('should ', function () {
-    imgPublic.terrorism(fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\火灾.jpg` : `${__dirname}/file/火灾.jpg`)).then((res) => {
-      res.data.tag_list.map(item => {
-        item.tag_name = resTerrorismKey[item.tag_name];
-      });
-      console.log('暴恐图片识别', JSON.stringify(res));
+  it('terrorism', function () {
+    return imgPublic.terrorism(fsReadSync(`${__dirname}/resource/vision/terrorism.jpg`)).then((res) => {
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('暴恐图片识别', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 
   // 场景识别
-
-  it('should ', function () {
-    imgPublic.scener({
-      image: fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\scener.jpg` : `${__dirname}/file/scener.jpg`),
+  it('scener', function () {
+    return imgPublic.scener({
+      image: fsReadSync(`${__dirname}/resource/vision/scener.jpg`),
       topk: 5
     }).then((res) => {
-      res.data.scene_list.map(item => {
-        item.label_id = resSceneKey[item.label_id];
-      });
-      console.log('场景识别', JSON.stringify(res));
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('场景识别', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 
   // 物体识别
-
-  it('should ', function () {
-    imgPublic.objectr({
-      image: fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\objectr.jpg` : `${__dirname}/file/objectr.jpg`),
+  it('object', function () {
+    return imgPublic.objectr({
+      image: fsReadSync(`${__dirname}/resource/vision/dog.jpg`),
       topk: 5
     }).then((res) => {
-      res.data.object_list.map(item => {
-        item.label_id = resObjectKey[item.label_id];
-      });
-      console.log('物体识别', JSON.stringify(res));
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('物体识别', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 
   // 图像标签识别
-
-  it('should ', function () {
-    imgPublic.imagetag(fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\imgtag.jpg` : `${__dirname}/file/imgtag.jpg`)).then((res) => {
-      console.log('图像标签识别', JSON.stringify(res));
+  it('tag', function () {
+    return imgPublic.imagetag(fsReadSync(`${__dirname}/resource/vision/food.jpg`)).then((res) => {
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('图像标签识别', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 
   // 车辆识别
-
-  it('should ', function () {
-    imgPublic.imgidentify(fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\che.jpg` : `${__dirname}/file/che.jpg`)).then((res) => {
-      console.log('车辆识别', JSON.stringify(res));
+  it('identify_car', function () {
+    return imgPublic.imgidentify(fsReadSync(`${__dirname}/resource/vision/vehicle.jpg`)).then((res) => {
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('车辆识别', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 
   // 花草
-
-  it('should ', function () {
-    imgPublic.imgidentify(
-      fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\hua.jpg` : `${__dirname}/file/hua.jpg`),
+  it('identify', function () {
+    return imgPublic.imgidentify(
+      fsReadSync(`${__dirname}/resource/vision/flower.jpg`),
       2
     ).then((res) => {
-      console.log('花草', JSON.stringify(res));
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('花草', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 
   // 看图说话
-
-  it('should ', function () {
-    imgPublic.imgtotext(
-      fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\1jpg.jpg` : `${__dirname}/file/1jpg.jpg`),
+  it('imgtotext', function () {
+    return imgPublic.imgtotext(
+      fsReadSync(`${__dirname}/resource/vision/food.jpg`),
       randomstring.generate({
         length: 16,
         capitalization: 'uppercase'
       })
     ).then((res) => {
-      console.log('看图说话', JSON.stringify(res));
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('看图说话', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
-  // 模糊图片检测
-  it('should ', function () {
 
-    imgPublic.imagefuzzy(fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\fuzzy.jpg` : `${__dirname}/file/fuzzy.jpg`)).then((res) => {
-      console.log('模糊图片检测', JSON.stringify(res));
+  // 模糊图片检测
+  it('fuzzy', function () {
+    return imgPublic.imagefuzzy(fsReadSync(`${__dirname}/resource/vision/food.jpg`)).then((res) => {
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('模糊图片检测', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
+
   // 美食图片识别
-  it('should ', function () {
-    imgPublic.imagefood(fsReadSync(process.platform.match(/^win/) ? `${__dirname}\\file\\food.jpg` : `${__dirname}/file/food.jpg`)).then((res) => {
-      console.log('美食图片识别', JSON.stringify(res));
+  it('food', function () {
+    return imgPublic.imagefood(fsReadSync(`${__dirname}/resource/vision/food.jpg`)).then((res) => {
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('美食图片识别', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 });

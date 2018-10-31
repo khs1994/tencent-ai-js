@@ -4,10 +4,11 @@
   "description": "Tencent AI SDK",
   "main": "./src/index.js",
   "scripts": {
-    "build":"",
-    "test": "mocha",
-    "codecov":"",
-    "prepublish":"npm run build"
+    "eslint": "eslint ./src ./test --fix",
+    "build": "",
+    "test": "nyc npm test",
+    "codecov": "nyc report --reporter=text-lcov > coverage.lcov ; ./node_modules/.bin/codecov",
+    "prepublish": "npm run build"
   },
   "author": {
     "name": "khs1994",
@@ -29,7 +30,9 @@
     "sdk"
   ],
   "devDependencies": {
-    "mocha": "^4.1.0"
+    "codecov": "^3.1.0",
+    "mocha": "^4.1.0",
+    "nyc": "^13.1.0"
   },
   "files": [
     "src",

@@ -14,9 +14,9 @@ const {
   commonParams
 } = require('../src/util');
 
-const fs = require('fs');
+// const fs = require('fs');
 
-const querystring = require('querystring');
+// const querystring = require('querystring');
 
 const iconv = require('iconv-lite');
 
@@ -77,7 +77,7 @@ var proxy = https.request(requestOpt, (pres) => {
     bufLength += chunk.length;
   }).on('end', () => {
     let chunkAll = Buffer.concat(arrBuf, bufLength);
-    
+
     let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
     let res = JSON.parse(decodedBody);
     console.log(JSON.stringify(res));
