@@ -62,7 +62,7 @@ const getReqSign = (opt, appkey) => {
   });
   str += `app_key=${appkey}`;
   sign = crypto.createHash('md5').update(str).digest('hex').toUpperCase();
-  console.log(str);
+  // console.log(str);
   return {
     sign,
     str
@@ -80,10 +80,10 @@ var proxy = https.request(requestOpt, (pres) => {
 
     let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
     let res = JSON.parse(decodedBody);
-    console.log(JSON.stringify(res));
+    // console.log(JSON.stringify(res));
   });
 }).on('error', (e) => {
-  console.log(e);
+  // console.log(e);
 });
 const {
   sign,
@@ -92,7 +92,7 @@ const {
 // opt.sign = sign
 // const postData = querystring.stringify(opt)
 const postData = str + '&sign=' + sign;
-console.log(postData);
+// console.log(postData);
 proxy.write(postData);
 proxy.end();
 

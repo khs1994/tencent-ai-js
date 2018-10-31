@@ -196,10 +196,11 @@ module.exports = class Translate {
 
   /**
    * 语种识别
+   *
    * @description 识别给出文本的语种
    * @see https://ai.qq.com/doc/textdetect.shtml
    * @prop {String} text  UTF-8编码，非空且长度上限1024字节
-   * @prop {String} candidate_langs  语言缩写，多种语言间用“,“ 分割
+   * @prop {String} candidate_langs  语言缩写，多种语言间用“|“ 分割
    * 中文  zh \ 英文  en \ 日文  jp \ 韩文  kr
    * @prop {int} force 是否强制从候选语言中选择（只对二选一有效）
    * @example
@@ -210,7 +211,7 @@ module.exports = class Translate {
    *  })
    * @return A Promise Object
    */
-  textdetect({text, candidate_langs = 'zh,en,kr,jp', force = 0}) {
+  textdetect({text, candidate_langs = 'zh|en|kr|jp', force = 0}) {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
       return PS(URIS.textdetect, this.appKey, Object.assign({}, commonParams(), {
         app_id: this.appId,

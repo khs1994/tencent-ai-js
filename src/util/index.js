@@ -7,7 +7,9 @@
  * @exports error 参数错误处理方法， 模拟服务器返回 通用定义错误类型为4096
  */
 const randomString = require('randomstring');
+
 const iconv = require('iconv-lite');
+
 module.exports.URIS = {
   // 智能语音
   // 语音合成doc https://ai.qq.com/doc/aaitts.shtml

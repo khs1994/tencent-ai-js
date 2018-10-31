@@ -27,7 +27,6 @@ describe('translate', () => {
   });
 
   // 文本翻译（翻译君）
-
   it('texttranslate', function () {
     return translate.texttranslate({text: '你好', target: 'en'}).then((res) => {
       assert.equal(res.ret, 0);
@@ -37,7 +36,6 @@ describe('translate', () => {
   });
 
   // 图片翻译
-
   it('imagetranslate', function () {
     return translate.imagetranslate({
       image: fsReadSync(`${__dirname}/resource/translate/english.jpg`),
@@ -56,7 +54,6 @@ describe('translate', () => {
   });
 
   // 语音翻译
-
   it('speechtranslate', function () {
     return translate.speechtranslate({
       speech_chunk: fsReadSync(`${__dirname}/resource/translate/t.pcm`),
@@ -73,7 +70,6 @@ describe('translate', () => {
   });
 
   // 语种识别
-
   it('textdetect', function () {
     return translate.textdetect({text: '你好'}).then(
       (res) => {

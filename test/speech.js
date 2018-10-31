@@ -53,7 +53,7 @@ describe('speech', () => {
   // 语音识别
   it('asr', function () {
     return speech.asr({
-      speech: fsReadSync(`${__dirname}/resource/audio/15s.wav`),
+      speech: fsReadSync(`${__dirname}/resource/audio/1.wav`),
       rate: 16000
     }).then((res) => {
       assert.equal(res.ret, 0);

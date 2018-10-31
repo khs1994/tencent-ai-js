@@ -81,12 +81,11 @@ describe('baseLanguage', () => {
 
   it('textpolar', function () {
     return baseLanguage.textpolar('今天的天气不错呀').then((res) => {
-      console.log('情感分析识别', JSON.stringify(res));
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('情感分析识别', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
-
 
   // 基础闲聊
   it('textchat', function () {
@@ -96,9 +95,9 @@ describe('baseLanguage', () => {
         capitalization: 'uppercase'
       })
     }).then((res) => {
-      console.log('基础闲聊', JSON.stringify(res));
+      assert.equal(res.ret, 0);
     }, (e) => {
-      console.log('基础闲聊', JSON.stringify(e));
+      assert.equal(e.ret, 0);
     });
   });
 });

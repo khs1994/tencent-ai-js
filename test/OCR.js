@@ -88,8 +88,8 @@ describe('ocr', () => {
     });
   });
 
-  // URL车牌识别
-  it('plateocr_url', function () {
+  // 车牌识别 url
+  it.skip('plateocr_url', function () {
     return ocr.plateocr('https://yyb.gtimg.com/ai/assets/ai-demo/large/plate-1-lg.jpg').then((res) => {
       assert.equal(res.ret, 0);
     }, (e) => {

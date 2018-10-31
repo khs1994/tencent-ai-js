@@ -26,8 +26,7 @@ module.exports = class ImgSpecialEffects {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      console.log('appKey and appId are required');
-      return;
+      throw Error('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;

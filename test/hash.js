@@ -2,6 +2,8 @@
 
 const crypto = require('crypto');
 
+const userId = 'aaaa111';
+
 const ksort = (opt) => {
   let arrayList = [],
     sort = (a, b) => {
@@ -34,7 +36,7 @@ const getReqSign = (opt) => {
   str = `${opt.userid}${JSON.stringify(hashOpt)}${opt.uid}`;
   // 签名
   sign = crypto.createHash('md5').update(str).digest('hex').toUpperCase();
-  console.log(str, '  ', sign);
+  // console.log(str, '  ', sign);
   return sign;
 };
 
@@ -46,4 +48,4 @@ let opt = {
 
 opt.hash = getReqSign(opt, 129);
 
-console.log(JSON.stringify(opt));
+// console.log(JSON.stringify(opt));

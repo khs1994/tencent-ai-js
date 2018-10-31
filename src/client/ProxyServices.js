@@ -110,6 +110,7 @@ class ProxyServices {
   /**
    * ksort ：根据 接口请求参数 升序排序
    * @param this.opt 接口请求参数
+   *
    * @returns 升序排序结果
    */
   ksort() {
@@ -167,7 +168,7 @@ class ProxyServices {
    * 2018-02-25 修改数据回调，提升程序健壮性
    */
   request() {
-    var proxy = https.request(this.requestOpt, (pres) => {
+    let proxy = https.request(this.requestOpt, (pres) => {
       let arrBuf = [],
         bufLength = 0,
         code = pres.headers['content-type'].split('=')[1];

@@ -35,7 +35,7 @@ describe('image', () => {
   });
 
   // 场景识别
-  it('scener', function () {
+  it.skip('scener', function () {
     return imgPublic.scener({
       image: fsReadSync(`${__dirname}/resource/vision/scener.jpg`),
       topk: 5
