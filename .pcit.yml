@@ -1,0 +1,13 @@
+language: node_js
+
+pipeline:
+  test:
+    image: node:alpine
+    command:
+    - npm install
+    - npm install
+
+  after_success:
+    image: node:alpine
+    command:
+    - npm run codecov

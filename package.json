@@ -1,0 +1,38 @@
+{
+  "name": "tencent-ai",
+  "version": "18.06.0",
+  "description": "Tencent AI SDK",
+  "main": "./src/index.js",
+  "scripts": {
+    "build":"",
+    "test": "mocha",
+    "codecov":"",
+    "prepublish":"npm run build"
+  },
+  "author": {
+    "name": "khs1994",
+    "email": "khs1994@khs1994.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khs1994-php/tencent-ai-node.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "iconv-lite": "^0.4.19",
+    "randomstring": "^1.1.5"
+  },
+  "keywords": [
+    "tencent-ai",
+    "ai",
+    "sdk"
+  ],
+  "devDependencies": {
+    "mocha": "^4.1.0"
+  },
+  "files": [
+    "src",
+    ".pcit.yml"
+  ]
+}

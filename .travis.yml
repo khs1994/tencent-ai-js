@@ -1,0 +1,17 @@
+language: node_js
+
+cache: npm
+
+install:
+- npm install codecov --save-dev
+- npm install nyc --save-dev
+
+script:
+- npm test
+- nyc npm test
+
+after_success:
+- nyc report --reporter=text-lcov > coverage.lcov
+- ./node_modules/.bin/codecov
+
+deploy:
