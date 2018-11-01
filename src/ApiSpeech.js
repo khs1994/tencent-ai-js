@@ -1,10 +1,6 @@
 'use strict';
 
-const {
-  URIS,
-  commonParams,
-  error
-} = require('./util');
+const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
@@ -53,18 +49,30 @@ module.exports = class Speech {
    *  })
    * @return A Promise Object
    */
-  tts({text = '', speaker = 1, format = 2, volume = 10, speed = 100, aht = 0, apc = 58}) {
+  tts({
+    text = '',
+    speaker = 1,
+    format = 2,
+    volume = 10,
+    speed = 100,
+    aht = 0,
+    apc = 58,
+  }) {
     if (text && Buffer.byteLength(text, 'utf8') < 150) {
-      return PS(URIS.tts, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        text: text,
-        speaker: speaker,
-        format: format,
-        volume: volume,
-        speed: speed,
-        aht: aht,
-        apc: apc
-      }));
+      return PS(
+        URIS.tts,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          text: text,
+          speaker: speaker,
+          format: format,
+          volume: volume,
+          speed: speed,
+          aht: aht,
+          apc: apc,
+        })
+      );
     } else {
       return error('text不能为空 或者应小于 150B');
     }
@@ -86,14 +94,18 @@ module.exports = class Speech {
    *  })
    * @return A Promise Object
    */
-  tta({text = '', model_type = 0, speed = 0}) {
+  tta({ text = '', model_type = 0, speed = 0 }) {
     if (text && Buffer.byteLength(text, 'utf8') < 300) {
-      return PS(URIS.tta, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        text: text,
-        model_type: model_type,
-        speed: speed
-      }));
+      return PS(
+        URIS.tta,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          text: text,
+          model_type: model_type,
+          speed: speed,
+        })
+      );
     } else {
       return error('text不能为空 或者应小于 300B');
     }
@@ -115,14 +127,18 @@ module.exports = class Speech {
    *  })
    * @return A Promise Object
    */
-  asr({speech = '', format = 2, rate = 8000}) {
+  asr({ speech = '', format = 2, rate = 8000 }) {
     if (speech && Buffer.byteLength(speech, 'base64') < 1048576 * 8) {
-      return PS(URIS.asr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        speech: speech,
-        format: format,
-        rate: rate
-      }));
+      return PS(
+        URIS.asr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          speech: speech,
+          format: format,
+          rate: rate,
+        })
+      );
     } else {
       return error('speech 不能为空');
     }
@@ -156,20 +172,39 @@ module.exports = class Speech {
    *  })
    * @return A Promise Object
    */
-  asrs({speech_chunk = '', speech_id = '', len = 0, seq = 0, end = 1, format = 2, rate = 8000}) {
-    if (speech_chunk && Buffer.byteLength(speech_chunk, 'base64') < 1048576 * 8 && speech_id && len) {
-      return PS(URIS.asrs, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        speech_chunk: speech_chunk,
-        speech_id: speech_id,
-        len: len,
-        seq: seq,
-        end: end,
-        format: format,
-        rate: rate
-      }));
+  asrs({
+    speech_chunk = '',
+    speech_id = '',
+    len = 0,
+    seq = 0,
+    end = 1,
+    format = 2,
+    rate = 8000,
+  }) {
+    if (
+      speech_chunk &&
+      Buffer.byteLength(speech_chunk, 'base64') < 1048576 * 8 &&
+      speech_id &&
+      len
+    ) {
+      return PS(
+        URIS.asrs,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          speech_chunk: speech_chunk,
+          speech_id: speech_id,
+          len: len,
+          seq: seq,
+          end: end,
+          format: format,
+          rate: rate,
+        })
+      );
     } else {
-      return error('speech_chunk/speech_id 不能为空, len不能为0  或者 speech_chunk大小必须小余8M');
+      return error(
+        'speech_chunk/speech_id 不能为空, len不能为0  或者 speech_chunk大小必须小余8M'
+      );
     }
   }
 
@@ -207,20 +242,34 @@ module.exports = class Speech {
    *  })
    * @return A Promise Object
    */
-  wxasrs(speech_chunk = '', speech_id = '', len = 0, seq = 0, end = 1, format = 2, rate = 16000, bits = 16, cont_res = 0) {
+  wxasrs(
+    speech_chunk = '',
+    speech_id = '',
+    len = 0,
+    seq = 0,
+    end = 1,
+    format = 2,
+    rate = 16000,
+    bits = 16,
+    cont_res = 0
+  ) {
     if (speech_chunk && speech_id && len) {
-      return PS(URIS.wxasrs, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        speech_chunk: speech_chunk,
-        speech_id: speech_id,
-        len: len,
-        seq: seq,
-        end: end,
-        format: format,
-        rate: rate,
-        bits: bits,
-        cont_res: cont_res
-      }));
+      return PS(
+        URIS.wxasrs,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          speech_chunk: speech_chunk,
+          speech_id: speech_id,
+          len: len,
+          seq: seq,
+          end: end,
+          format: format,
+          rate: rate,
+          bits: bits,
+          cont_res: cont_res,
+        })
+      );
     } else {
       return error('speech_chunk/speech_id 不能为空, len不能为0');
     }
@@ -243,21 +292,27 @@ module.exports = class Speech {
    *  })
    * @return A Promise Object
    */
-  wxasrlong({format = 2, callback_url = '', speech = '', speech_url = ''}) {
+  wxasrlong({ format = 2, callback_url = '', speech = '', speech_url = '' }) {
     if (callback_url && (speech || speech_url)) {
       if (Buffer.byteLength(speech, 'base64') < 1048576 * 5 || speech_url) {
-        return PS(URIS.wxasrlong, this.appKey, Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          speech_url: speech_url,
-          speech: speech,
-          callback_url: callback_url,
-          format: format
-        }));
+        return PS(
+          URIS.wxasrlong,
+          this.appKey,
+          Object.assign({}, commonParams(), {
+            app_id: this.appId,
+            speech_url: speech_url,
+            speech: speech,
+            callback_url: callback_url,
+            format: format,
+          })
+        );
       } else {
         return error('speech大小必须小余5M');
       }
     } else {
-      return error('callback_url/speech 不能为空 或者 callback_url/speech_url不能为空');
+      return error(
+        'callback_url/speech 不能为空 或者 callback_url/speech_url不能为空'
+      );
     }
   }
 };

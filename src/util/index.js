@@ -136,47 +136,53 @@ module.exports.URIS = {
 
 module.exports.commonParams = () => {
   return {
-    'nonce_str': randomString.generate({
+    nonce_str: randomString.generate({
       length: 16,
       charset: 'alphanumeric',
-      capitalization: 'uppercase'
+      capitalization: 'uppercase',
     }),
-    'time_stamp': Math.floor(Date.now() / 1000),
+    time_stamp: Math.floor(Date.now() / 1000),
   };
 };
 
-module.exports.error = (msg) => {
+module.exports.error = msg => {
   return new Promise((resolve, reject) => {
     reject({
-      'ret': 4096,
-      'msg': msg,
-      'data': {}
+      ret: 4096,
+      msg: msg,
+      data: {},
     });
   });
 };
 
-module.exports.textToGBK = (text) => {
+module.exports.textToGBK = text => {
   // http://www.qqxiuzi.cn/zh/hanzi-gbk-bianma.php
   let str = iconv.encode(text, 'gbk'),
     strList = '';
   str.map(item => {
     switch (true) {
-    // ascii 0
-    case item === 0:
-      strList += '%00';
-      break;
+      // ascii 0
+      case item === 0:
+        strList += '%00';
+        break;
       // 空格转为+号
-    case item === 32:
-      strList += '+';
-      break;
+      case item === 32:
+        strList += '+';
+        break;
       // 原样输出
-    case item === 42 || item === 45 || item === 46 || item === 95 || (item >= 48 && item <= 57) || (item >= 65 && item <= 90) || (item >= 97 && item <= 122):
-      strList += String.fromCharCode(item);
-      break;
+      case item === 42 ||
+        item === 45 ||
+        item === 46 ||
+        item === 95 ||
+        (item >= 48 && item <= 57) ||
+        (item >= 65 && item <= 90) ||
+        (item >= 97 && item <= 122):
+        strList += String.fromCharCode(item);
+        break;
       // 需要编码
-    default:
-      strList += '%' + item.toString(16).toUpperCase();
-      break;
+      default:
+        strList += '%' + item.toString(16).toUpperCase();
+        break;
     }
   });
   return strList;

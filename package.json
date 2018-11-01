@@ -8,7 +8,8 @@
     "pretest": "npm run eslint",
     "test": "nyc mocha -R spec --timeout 10000",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
-    "codecov": "./node_modules/.bin/codecov"
+    "codecov": "./node_modules/.bin/codecov",
+    "prettier": "npx prettier --write \"{src,test,mocks}/**/*.js\""
   },
   "author": {
     "name": "khs1994",
@@ -30,9 +31,12 @@
   ],
   "devDependencies": {
     "codecov": "^3.1.0",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "mocha": "^4.1.0",
     "nyc": "^13.1.0",
-    "eslint":"^5.8.0"
+    "prettier": "^1.13.7"
   },
   "files": [
     "src",

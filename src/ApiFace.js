@@ -1,6 +1,6 @@
 'use strict';
 
-const {URIS, commonParams, error} = require('./util');
+const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
@@ -39,14 +39,18 @@ module.exports = class Face {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
       return error('image 不能为空且大小小余1M');
     }
-    if (mode && mode < 0 || mode > 1) {
+    if ((mode && mode < 0) || mode > 1) {
       return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
     }
-    return PS(URIS.detectface, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      mode: mode
-    }));
+    return PS(
+      URIS.detectface,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        mode: mode,
+      })
+    );
   }
 
   /**
@@ -63,10 +67,14 @@ module.exports = class Face {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
       return error('image 不能为空且大小小余1M');
     }
-    return PS(URIS.detectmultiface, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image
-    }));
+    return PS(
+      URIS.detectmultiface,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+      })
+    );
   }
 
   /**
@@ -87,11 +95,15 @@ module.exports = class Face {
     if (image_b && Buffer.byteLength(image_b, 'base64') >= 1048576) {
       return error('image_b 不能为空且大小小余1M');
     }
-    return PS(URIS.facecompare, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image_a: image_a,
-      image_b: image_b
-    }));
+    return PS(
+      URIS.facecompare,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image_a: image_a,
+        image_b: image_b,
+      })
+    );
   }
 
   /**
@@ -112,11 +124,15 @@ module.exports = class Face {
     if (target_image && Buffer.byteLength(target_image, 'base64') >= 1048576) {
       return error('target_image 不能为空且大小小余1M');
     }
-    return PS(URIS.detectcrossageface, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      source_image: source_image,
-      target_image: target_image
-    }));
+    return PS(
+      URIS.detectcrossageface,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        source_image: source_image,
+        target_image: target_image,
+      })
+    );
   }
 
   /**
@@ -134,13 +150,17 @@ module.exports = class Face {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
       return error('image 不能为空且大小小余1M');
     }
-    if (mode && mode < 0 || mode > 1) {
+    if ((mode && mode < 0) || mode > 1) {
       return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
     }
-    return PS(URIS.faceshape, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      mode: mode
-    }));
+    return PS(
+      URIS.faceshape,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        mode: mode,
+      })
+    );
   }
 };

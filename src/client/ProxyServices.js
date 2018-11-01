@@ -78,8 +78,9 @@ const errorCode = {
   '16455': '语音过长或空---请检查语音参数是否正确编码或者长度是否合法',
   '16456': '翻译引擎失败---请联系客服反馈问题',
   '16457': '不支持的翻译类型---请检查翻译类型参数是否合法',
-  '16460': '输入图片与识别场景不匹配---请检查场景参数是否正确，所传图片与场景是否匹配',
-  '16461': '识别结果为空---当前图片无法匹配已收录的标签，请尝试更换图片'
+  '16460':
+    '输入图片与识别场景不匹配---请检查场景参数是否正确，所传图片与场景是否匹配',
+  '16461': '识别结果为空---当前图片无法匹配已收录的标签，请尝试更换图片',
 };
 
 /**
@@ -120,8 +121,8 @@ class ProxyServices {
       };
     for (let key in this.opt) {
       arrayList.push({
-        'key': key,
-        'value': this.opt[key]
+        key: key,
+        value: this.opt[key],
       });
     }
     return arrayList.sort(sort);
@@ -134,31 +135,37 @@ class ProxyServices {
    * @returns 签名结果
    */
   getReqSign() {
-    let parList, sign, str = '';
+    let parList,
+      sign,
+      str = '';
     // 1. 字典升序排序
     parList = this.ksort();
     // 2. 拼按URL键值对
     if (!this.isGBK) {
-      parList.map((item) => {
+      parList.map(item => {
         if (item.value !== '') {
-          str += `${item.key}=${ querystring.escape(item.value)}&`;
+          str += `${item.key}=${querystring.escape(item.value)}&`;
         }
       });
     } else {
-      parList.map((item) => {
+      parList.map(item => {
         if (item.value !== '') {
-          str += `${item.key}=${ item.value}&`;
+          str += `${item.key}=${item.value}&`;
         }
       });
     }
     // 处理URL编码和java、PHP不一致的问题
     str = str.replace(/%20/g, '+');
     // 4. MD5运算+转换大写，得到请求签名
-    sign = crypto.createHash('md5').update(str + `app_key=${this.appkey}`, 'utf-8').digest('hex').toUpperCase();
+    sign = crypto
+      .createHash('md5')
+      .update(str + `app_key=${this.appkey}`, 'utf-8')
+      .digest('hex')
+      .toUpperCase();
     //console.log(sign)
     return {
       sign,
-      str
+      str,
     };
   }
 
@@ -168,30 +175,41 @@ class ProxyServices {
    * 2018-02-25 修改数据回调，提升程序健壮性
    */
   request() {
-    let proxy = https.request(this.requestOpt, (pres) => {
-      let arrBuf = [],
-        bufLength = 0,
-        code = pres.headers['content-type'].split('=')[1];
-      pres.on('data', (chunk) => {
-        arrBuf.push(chunk);
-        bufLength += chunk.length;
-      }).on('end', () => {
-        let chunkAll = Buffer.concat(arrBuf, bufLength);
-        let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
-        try {
-          let res = JSON.parse(decodedBody);
-          res.retMsg = res.ret < 0 ? '表示系统出错，例如网络超时；一般情况下需要发出告警，共同定位问题原因。' : res.ret > 0 ? errorCode[res.ret] : '恭喜一切正常';
-          this.resolve(res);
-        } catch (error) {
-          this.resolve(decodedBody);
-        }
+    let proxy = https
+      .request(this.requestOpt, pres => {
+        let arrBuf = [],
+          bufLength = 0,
+          code = pres.headers['content-type'].split('=')[1];
+        pres
+          .on('data', chunk => {
+            arrBuf.push(chunk);
+            bufLength += chunk.length;
+          })
+          .on('end', () => {
+            let chunkAll = Buffer.concat(arrBuf, bufLength);
+            let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
+            try {
+              let res = JSON.parse(decodedBody);
+              res.retMsg =
+                res.ret < 0
+                  ? '表示系统出错，例如网络超时；一般情况下需要发出告警，共同定位问题原因。'
+                  : res.ret > 0
+                    ? errorCode[res.ret]
+                    : '恭喜一切正常';
+              this.resolve(res);
+            } catch (error) {
+              this.resolve(decodedBody);
+            }
+          });
+      })
+      .on('error', e => {
+        this.reject(e);
       });
-    }).on('error', (e) => {
-      this.reject(e);
-    });
 
     // 写入数据到请求主体
-    fs.writeFileSync(`${__dirname}\\data.txt`, this.postData, { encoding: 'utf8'});
+    fs.writeFileSync(`${__dirname}\\data.txt`, this.postData, {
+      encoding: 'utf8',
+    });
     proxy.write(this.postData);
     proxy.end();
   }
@@ -199,13 +217,12 @@ class ProxyServices {
   // 初始化
   init() {
     // 计算签名
-    let {
-      sign,
-      str
-    } = this.getReqSign();
+    let { sign, str } = this.getReqSign();
     this.opt['sign'] = sign;
     // 提交数据组装
-    this.postData = !this.isGBK ? querystring.stringify(this.opt) : str + 'sign=' + sign;
+    this.postData = !this.isGBK
+      ? querystring.stringify(this.opt)
+      : str + 'sign=' + sign;
     // 请求数据组装
     this.requestOpt = {
       protocol: 'https:', // <string> 使用的协议。默认为 http:
@@ -215,8 +232,8 @@ class ProxyServices {
       path: this.uri, // <string> 请求的路径。默认为 '/'。 应包括查询字符串（如有的话）。如 '/index.html?page=12'。 当请求的路径中包含非法字符时，会抛出异常。 目前只有空字符会被拒绝，但未来可能会变化。
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': Buffer.byteLength(this.postData)
-      } //<Object> 包含请求头的对象
+        'Content-Length': Buffer.byteLength(this.postData),
+      }, //<Object> 包含请求头的对象
     };
     // 发起请求
     this.request();
@@ -267,7 +284,7 @@ class ProxyServices {
  * @update
  *  2018-02-07 增加判断是否进行GBK处理参数 V1.1.3
  */
-module.exports = function (URI, appkey, OPT, isGBK) {
+module.exports = function(URI, appkey, OPT, isGBK) {
   return new Promise((resolve, reject) => {
     new ProxyServices(URI, appkey, OPT, resolve, reject, isGBK);
   });

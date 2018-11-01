@@ -1,10 +1,6 @@
 'use strict';
 
-const {
-  URIS,
-  commonParams,
-  error
-} = require('./util');
+const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
@@ -57,7 +53,7 @@ module.exports = class Person {
    * })
    * @return A Promise Object
    */
-  newperson({image, person_name, group_ids, person_id, tag = ''}) {
+  newperson({ image, person_name, group_ids, person_id, tag = '' }) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
       return error('image 不能为空且大小小余1M');
     }
@@ -70,14 +66,18 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(URIS.newperson, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      person_name: person_name,
-      group_ids: group_ids,
-      person_id: person_id,
-      tag: tag
-    }));
+    return PS(
+      URIS.newperson,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        person_name: person_name,
+        group_ids: group_ids,
+        person_id: person_id,
+        tag: tag,
+      })
+    );
   }
 
   /**
@@ -94,10 +94,14 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(URIS.delperson, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      person_id: person_id
-    }));
+    return PS(
+      URIS.delperson,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        person_id: person_id,
+      })
+    );
   }
 
   /**
@@ -119,12 +123,16 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(URIS.addface, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      images: images,
-      person_id: person_id,
-      tag: tag
-    }));
+    return PS(
+      URIS.addface,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        images: images,
+        person_id: person_id,
+        tag: tag,
+      })
+    );
   }
 
   /**
@@ -145,11 +153,15 @@ module.exports = class Person {
     if (!face_ids) {
       return error('face_ids 不能为空');
     }
-    return PS(URIS.delface, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      person_id: person_id,
-      face_ids: face_ids
-    }));
+    return PS(
+      URIS.delface,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        person_id: person_id,
+        face_ids: face_ids,
+      })
+    );
   }
 
   /**
@@ -171,12 +183,16 @@ module.exports = class Person {
     if (!person_name) {
       return error('person_name 不能为空');
     }
-    return PS(URIS.setinfo, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      person_id: person_id,
-      person_name: person_name,
-      tag: tag
-    }));
+    return PS(
+      URIS.setinfo,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        person_id: person_id,
+        person_name: person_name,
+        tag: tag,
+      })
+    );
   }
 
   /**
@@ -193,10 +209,14 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(URIS.getinfo, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      person_id: person_id
-    }));
+    return PS(
+      URIS.getinfo,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        person_id: person_id,
+      })
+    );
   }
 
   /**
@@ -209,9 +229,13 @@ module.exports = class Person {
    * @return A Promise Object
    */
   getgroupids() {
-    return PS(URIS.getgroupids, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId
-    }));
+    return PS(
+      URIS.getgroupids,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+      })
+    );
   }
 
   /**
@@ -228,10 +252,14 @@ module.exports = class Person {
     if (!group_id) {
       return error('group_id 不能为空');
     }
-    return PS(URIS.getpersonids, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      group_id: group_id
-    }));
+    return PS(
+      URIS.getpersonids,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        group_id: group_id,
+      })
+    );
   }
 
   /**
@@ -248,10 +276,14 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(URIS.getfaceids, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      person_id: person_id
-    }));
+    return PS(
+      URIS.getfaceids,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        person_id: person_id,
+      })
+    );
   }
 
   /**
@@ -268,10 +300,14 @@ module.exports = class Person {
     if (!face_id) {
       return error('face_id 不能为空');
     }
-    return PS(URIS.getfaceinfo, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      face_id: face_id
-    }));
+    return PS(
+      URIS.getfaceinfo,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        face_id: face_id,
+      })
+    );
   }
 
   /**
@@ -293,15 +329,19 @@ module.exports = class Person {
     if (!group_id) {
       return error('group_id 不能为空');
     }
-    if (topn && topn < 1 || topn > 10) {
+    if ((topn && topn < 1) || topn > 10) {
       return error('topn 不能为空且取值范围为[1~10]');
     }
-    return PS(URIS.faceidentify, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      group_id: group_id,
-      topn: topn
-    }));
+    return PS(
+      URIS.faceidentify,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        group_id: group_id,
+        topn: topn,
+      })
+    );
   }
 
   /**
@@ -322,10 +362,14 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(URIS.faceverify, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      person_id: person_id
-    }));
+    return PS(
+      URIS.faceverify,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        person_id: person_id,
+      })
+    );
   }
 };

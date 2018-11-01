@@ -1,10 +1,6 @@
 'use strict';
 
-const {
-  URIS,
-  commonParams,
-  error
-} = require('./util');
+const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
@@ -43,12 +39,19 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   idcardocr(imageBase64String, card_type = 0) {
-    if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.idcardocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String,
-        card_type: card_type
-      }));
+    if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.idcardocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+          card_type: card_type,
+        })
+      );
     } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
@@ -65,11 +68,18 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   bcocr(imageBase64String) {
-    if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.bcocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String
-      }));
+    if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.bcocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+        })
+      );
     } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
@@ -87,12 +97,19 @@ module.exports = class OCR {
    * @return {Promise} A Promise Object
    */
   driverlicenseocr(imageBase64String, type = 1) {
-    if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.driverlicenseocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String,
-        type: type
-      }));
+    if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.driverlicenseocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+          type: type,
+        })
+      );
     } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
@@ -109,11 +126,18 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   bizlicenseocr(imageBase64String) {
-    if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.bizlicenseocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String
-      }));
+    if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.bizlicenseocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+        })
+      );
     } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
@@ -130,11 +154,18 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   creditcardocr(imageBase64String) {
-    if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.creditcardocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String
-      }));
+    if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.creditcardocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+        })
+      );
     } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
@@ -151,11 +182,18 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   generalocr(imageBase64String) {
-    if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.generalocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String
-      }));
+    if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.generalocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+        })
+      );
     } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
@@ -172,16 +210,30 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   plateocr(imageBase64String) {
-    if (imageBase64String && /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)) {
-      return PS(URIS.plateocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image_url: imageBase64String
-      }));
-    } else if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.plateocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String
-      }));
+    if (
+      imageBase64String &&
+      /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)
+    ) {
+      return PS(
+        URIS.plateocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image_url: imageBase64String,
+        })
+      );
+    } else if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.plateocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+        })
+      );
     } else {
       return error('image 不能为空 且 大小小余1M 或者不是正常的图片地址');
     }
@@ -198,16 +250,30 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   handwritingocr(imageBase64String) {
-    if (imageBase64String && /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)) {
-      return PS(URIS.handwritingocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image_url: imageBase64String
-      }));
-    } else if (imageBase64String && Buffer.byteLength(imageBase64String, 'base64') < 1048576) {
-      return PS(URIS.handwritingocr, this.appKey, Object.assign({}, commonParams(), {
-        app_id: this.appId,
-        image: imageBase64String
-      }));
+    if (
+      imageBase64String &&
+      /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)
+    ) {
+      return PS(
+        URIS.handwritingocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image_url: imageBase64String,
+        })
+      );
+    } else if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.handwritingocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+        })
+      );
     } else {
       return error('image 不能为空 且 大小小余1M 或者不是正常的图片地址');
     }

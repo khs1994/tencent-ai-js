@@ -1,10 +1,6 @@
 'use strict';
 
-const {
-  URIS,
-  commonParams,
-  error
-} = require('./util');
+const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
@@ -50,11 +46,15 @@ module.exports = class ImgSpecialEffects {
     if (cosmetic && cosmetic < 1 && cosmetic > 22) {
       return error('cosmetic 不能为空且取值区间为[1-23]');
     }
-    return PS(URIS.facecosmetic, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      cosmetic: cosmetic
-    }));
+    return PS(
+      URIS.facecosmetic,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        cosmetic: cosmetic,
+      })
+    );
   }
 
   /**
@@ -75,11 +75,15 @@ module.exports = class ImgSpecialEffects {
     if (decoration && decoration < 1 && decoration > 22) {
       return error('decoration 不能为空且取值区间为[1-22]');
     }
-    return PS(URIS.facedecoration, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      decoration: decoration
-    }));
+    return PS(
+      URIS.facedecoration,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        decoration: decoration,
+      })
+    );
   }
 
   /**
@@ -100,11 +104,15 @@ module.exports = class ImgSpecialEffects {
     if (filter && filter < 1 && filter > 32) {
       return error('filter 不能为空且取值区间为[1-32]');
     }
-    return PS(URIS.ptuimgfilter, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      filter: filter
-    }));
+    return PS(
+      URIS.ptuimgfilter,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        filter: filter,
+      })
+    );
   }
 
   /**
@@ -129,12 +137,16 @@ module.exports = class ImgSpecialEffects {
     if (session_id && Buffer.byteLength(session_id, 'base64') > 64) {
       return error('session_id 不能为空且大小小余65b');
     }
-    return PS(URIS.visionimgfilter, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      filter: filter,
-      session_id: session_id
-    }));
+    return PS(
+      URIS.visionimgfilter,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        filter: filter,
+        session_id: session_id,
+      })
+    );
   }
 
   /**
@@ -156,11 +168,15 @@ module.exports = class ImgSpecialEffects {
     if (model && model < 1 && model > 50) {
       return error('model 不能为空且取值区间为[1-50]');
     }
-    return PS(URIS.facemerge, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      model: model
-    }));
+    return PS(
+      URIS.facemerge,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        model: model,
+      })
+    );
   }
 
   /**
@@ -181,11 +197,15 @@ module.exports = class ImgSpecialEffects {
     if (sticker && sticker < 1 && sticker > 32) {
       return error('model 不能为空且取值区间为[1-31]');
     }
-    return PS(URIS.facesticker, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image,
-      sticker: sticker
-    }));
+    return PS(
+      URIS.facesticker,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        sticker: sticker,
+      })
+    );
   }
 
   /**
@@ -202,9 +222,13 @@ module.exports = class ImgSpecialEffects {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
       return error('image 不能为空 且 大小小余500Kb');
     }
-    return PS(URIS.faceage, this.appKey, Object.assign({}, commonParams(), {
-      app_id: this.appId,
-      image: image
-    }));
+    return PS(
+      URIS.faceage,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+      })
+    );
   }
 };

@@ -5,6 +5,7 @@ module.exports = {
     'mocha': true,
   },
   'extends': 'eslint:recommended',
+  // "extends": ["plugin:prettier/recommended"]
   'parserOptions': {
     'ecmaVersion': 2015,
     'impliedStrict': true,
@@ -17,18 +18,18 @@ module.exports = {
     ],
     'linebreak-style': [
       'error',
-      'unix'
+      'unix',
     ],
     'quotes': [
       'error',
-      'single'
+      'single',
     ],
     'semi': [
       'error',
-      'always'
+      'always',
     ],
     'no-console': 2,
-    'strict': 2
+    'strict': 2,
   },
-  'plugins': []
+  'plugins': [],
 };
