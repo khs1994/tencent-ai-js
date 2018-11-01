@@ -5,10 +5,10 @@
   "main": "./src/index.js",
   "scripts": {
     "eslint": "eslint ./src ./test --fix",
-    "build": "",
+    "pretest": "npm run eslint",
     "test": "nyc mocha -R spec --timeout 10000",
-    "codecov": "nyc report --reporter=text-lcov > coverage.lcov ; ./node_modules/.bin/codecov",
-    "prepublish": "npm run build"
+    "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
+    "codecov": "./node_modules/.bin/codecov"
   },
   "author": {
     "name": "khs1994",

@@ -165,7 +165,7 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   plateocr(imageBase64String) {
-    if (imageBase64String && /^http\S*[\.jpg|\.bmp|\.png]$/g.test(imageBase64String)) {
+    if (imageBase64String && /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)) {
       return PS(URIS.plateocr, this.appKey, Object.assign({}, commonParams(), {
         app_id: this.appId,
         image_url: imageBase64String
@@ -190,7 +190,7 @@ module.exports = class OCR {
    * @return A Promise Object
    */
   handwritingocr(imageBase64String) {
-    if (imageBase64String && /^http\S*[\.jpg|\.bmp|\.png]$/g.test(imageBase64String)) {
+    if (imageBase64String && /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)) {
       return PS(URIS.handwritingocr, this.appKey, Object.assign({}, commonParams(), {
         app_id: this.appId,
         image_url: imageBase64String

@@ -1,6 +1,16 @@
 # TencentAI Node.js SDK
 
-**Fork from https://github.com/w89612b/qqai-api-sdk**
+[![Build Status](https://travis-ci.com/khs1994-php/tencent-ai-node.svg?branch=master)](https://travis-ci.com/khs1994-php/tencent-ai-node) [![codecov](https://codecov.io/gh/khs1994-php/tencent-ai-node/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994-php/tencent-ai-node)
+
+**This repo fork from https://github.com/w89612b/qqai-api-sdk**
+
+## 微信订阅号
+
+<p align="center">
+<img width="200" src="https://user-images.githubusercontent.com/16733187/46847944-84a96b80-ce19-11e8-9f0c-ec84b2ac463e.jpg">
+</p>
+
+<p align="center"><strong>关注项目作者微信订阅号，接收项目最新动态</strong></p>
 
 ## Installation
 
@@ -28,3 +38,7 @@ translate.texttrans({text: '你好'}).then((res)=>{
   console.log('文本翻译(AI Lab)',JSON.stringify(e));
 })
 ```
+
+## CI/CD
+
+* https://github.com/codecov/codecov-node

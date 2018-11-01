@@ -267,7 +267,7 @@ class ProxyServices {
  * @update
  *  2018-02-07 增加判断是否进行GBK处理参数 V1.1.3
  */
-const PS = module.exports = function (URI, appkey, OPT, isGBK) {
+module.exports = function (URI, appkey, OPT, isGBK) {
   return new Promise((resolve, reject) => {
     new ProxyServices(URI, appkey, OPT, resolve, reject, isGBK);
   });

@@ -155,7 +155,7 @@ module.exports.error = (msg) => {
   });
 };
 
-const textToGBK = module.exports.textToGBK = (text) => {
+module.exports.textToGBK = (text) => {
   // http://www.qqxiuzi.cn/zh/hanzi-gbk-bianma.php
   let str = iconv.encode(text, 'gbk'),
     strList = '';

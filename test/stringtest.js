@@ -79,9 +79,11 @@ var proxy = https.request(requestOpt, (pres) => {
     let chunkAll = Buffer.concat(arrBuf, bufLength);
 
     let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
+    // eslint-disable-next-line no-unused-vars
     let res = JSON.parse(decodedBody);
     // console.log(JSON.stringify(res));
   });
+// eslint-disable-next-line no-unused-vars
 }).on('error', (e) => {
   // console.log(e);
 });

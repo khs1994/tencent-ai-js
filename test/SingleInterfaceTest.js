@@ -15,9 +15,9 @@ const {
   commonParams
 } = require('../src/util');
 
-const fs = require('fs');
+// const fs = require('fs');
 
-const querystring = require('querystring');
+// const querystring = require('querystring');
 
 const iconv = require('iconv-lite');
 
@@ -54,6 +54,7 @@ const ksort = (opt) => {
 };
 
 const getReqSign = (opt, appkey) => {
+// eslint-disable-next-line no-unused-vars
   let parList, sign, str = '', tstr = '';
   parList = ksort(opt);
   parList.map((item) => {
@@ -62,7 +63,7 @@ const getReqSign = (opt, appkey) => {
     }
   });
   sign = crypto.createHash('md5').update(str + `app_key=${appkey}`).digest('hex').toUpperCase();
-  console.log(str);
+  // console.log(str);
   return {
     sign,
     str
@@ -79,9 +80,11 @@ var proxy = https.request(requestOpt, (pres) => {
   }).on('end', () => {
     let chunkAll = Buffer.concat(arrBuf, bufLength);
     let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
+    // eslint-disable-next-line no-unused-vars
     let res = JSON.parse(decodedBody);
     // console.log(JSON.stringify(res));
   });
+// eslint-disable-next-line no-unused-vars
 }).on('error', (e) => {
   // console.log(e);
 });

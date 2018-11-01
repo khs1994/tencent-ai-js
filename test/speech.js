@@ -40,7 +40,7 @@ describe('speech', () => {
 
   it('tta', () => {
     return speech.tta({
-      text: '中国心',
+      text: '我的中国心',
       model_type: 0,
       speed: 0
     }).then((res) => {
