@@ -72,7 +72,7 @@ describe('image', () => {
   });
 
   // 人脸融合
-  it('facemerge', function () {
+  it.skip('facemerge', function () {
     return imgSpecialEffects.facemerge(
       fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
       1

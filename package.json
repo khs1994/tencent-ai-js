@@ -20,7 +20,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "crypto": "^1.0.1",
     "iconv-lite": "^0.4.19",
     "randomstring": "^1.1.5"
   },

@@ -53,7 +53,7 @@ describe('ocr', () => {
   });
 
   // 行驶证OCR识别
-  it('driverlicenseocr', function () {
+  it('driverlicenseocr_driving', function () {
     return ocr.driverlicenseocr(fsReadSync(`${__dirname}/resource/ocr/driving.jpg`), 0).then((res) => {
       assert.equal(res.ret, 0);
     }, (e) => {

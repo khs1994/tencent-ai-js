@@ -13,9 +13,10 @@ install:
 
 script:
 - npm run test
-
-after_success:
 - npm run codecov
+
+# after_success:
+# - npm run codecov
 
 # https://docs.travis-ci.com/user/deployment/npm/
 deploy:

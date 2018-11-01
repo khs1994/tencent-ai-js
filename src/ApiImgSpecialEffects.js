@@ -147,6 +147,7 @@ module.exports = class ImgSpecialEffects {
    * @example
    * facemerge(imageBase64String, 1)
    * @return A Promise Object
+   * @deprecated Not Available on 2018-11-30
    */
   facemerge(image, model) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {

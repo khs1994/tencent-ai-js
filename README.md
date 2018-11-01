@@ -1,6 +1,6 @@
 # TencentAI Node.js SDK
 
-[![Build Status](https://travis-ci.com/khs1994-php/tencent-ai-node.svg?branch=master)](https://travis-ci.com/khs1994-php/tencent-ai-node) [![codecov](https://codecov.io/gh/khs1994-php/tencent-ai-node/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994-php/tencent-ai-node)
+[![npm](https://img.shields.io/npm/v/tencent-ai.svg)](https://www.npmjs.com/package/tencent-ai) [![Build Status](https://travis-ci.com/khs1994-php/tencent-ai-node.svg?branch=master)](https://travis-ci.com/khs1994-php/tencent-ai-node) [![codecov](https://codecov.io/gh/khs1994-php/tencent-ai-node/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994-php/tencent-ai-node)
 
 **This repo fork from https://github.com/w89612b/qqai-api-sdk**
 

@@ -12,6 +12,7 @@ const PS = require('./client/ProxyServices');
 module.exports = class BaseLanguae {
   /**
    * 自然语言处理基础部分
+   *
    * @prop {String} app_key 应用key
    * @prop {String} app_id  应用id
    * @function wordseg(String) 分词

@@ -30,6 +30,7 @@ module.exports = class Translate {
 
   /**
    * 文本翻译（AI Lab）
+   *
    * @description 文本翻译接口提供自动翻译能力，可以帮您快速完成一段文本的翻译，支持中、英、德、法、日、韩、西、粤语种。
    * @see https://ai.qq.com/doc/nlptrans.shtml
    * @prop {String} text  UTF-8编码，非空且长度上限1024字节
@@ -71,6 +72,7 @@ module.exports = class Translate {
 
   /**
    * 文本翻译（翻译君）
+   *
    * @description 文本翻译接口提供自动翻译能力，可以帮您快速完成一段文本的翻译，支持多种语言之间的互译。
    * @see https://ai.qq.com/doc/nlptrans.shtml
    * @prop {String} text  UTF-8编码，非空且长度上限1024字节
@@ -114,6 +116,7 @@ module.exports = class Translate {
 
   /**
    * 图片翻译
+   *
    * @description 识别图片中的文字，并进行翻译
    * @see https://ai.qq.com/doc/imagetranslate.shtml
    * @prop {string} image  原始图片的base64编码数据（原图大小上限1MB）
@@ -152,6 +155,7 @@ module.exports = class Translate {
 
   /**
    * 语音翻译
+   *
    * @description 识别出音频中的文字，并进行翻译
    * @see https://ai.qq.com/doc/speechtranslate.shtml
    * @prop {int} format 默认MP3-8 AMR  3/SILK  4/PCM  6/MP3  8/AAC  9

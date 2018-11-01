@@ -71,6 +71,7 @@ module.exports = class Face {
 
   /**
    * 人脸对比
+   *
    * @description 对请求图片的两个人脸进行对比，计算相似性以及五官相似度
    * @see https://ai.qq.com/doc/facecompare.shtml
    * @param {String} image_a 待对比人脸图片A 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）

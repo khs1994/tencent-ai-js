@@ -31,6 +31,7 @@ module.exports = class Speech {
 
   /**
    * 语音合成（AI Lab）
+   *
    * @description 将文字转换为语音，返回文字的语音数据
    * @see https://ai.qq.com/doc/aaitts.shtml
    * @prop {String} text  待合成文本 UTF-8编码，非空且长度上限150字节
@@ -71,6 +72,7 @@ module.exports = class Speech {
 
   /**
    * 语音合成（优图）
+   *
    * @description 将文字转换为语音，返回文字的语音数据
    * @see https://ai.qq.com/doc/aaitts.shtml
    * @prop {String} text 待合成语音文本 utf8格式，最大300字节
@@ -98,7 +100,8 @@ module.exports = class Speech {
   }
 
   /**
-   * 语音识别-echo版
+   * 语音识别 echo 版
+   *
    * @description 接口提供在线识别语音的能力，识别完成后，将返回语音的文字内容。
    * @see https://ai.qq.com/doc/aaiasr.shtml
    * @prop {String} speech 待识别语音（时长上30s） 单声道，16bit采样位数，语音数据的Base64编码，非空且长度上限8MB
