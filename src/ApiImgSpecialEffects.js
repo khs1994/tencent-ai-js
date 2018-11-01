@@ -10,19 +10,19 @@ module.exports = class ImgSpecialEffects {
    *
    * @param {String} appKey 应用key
    * @param {String} appId  应用id
-   * @function facecosmetic(image, cosmetic) 人脸美妆
-   * @function facedecoration(image, decoration) 人脸变妆
-   * @function ptuimgfilter(image, filter) 图片滤镜（天天P图）
-   * @function visionimgfilter(image, filter, session_id) 图片滤镜（AI Lab）
-   * @function facemerge(image, model) 人脸融合
-   * @function facesticker(image, sticker) 大头贴
-   * @function faceage(image) 颜龄检测
+   * @method facecosmetic(image, cosmetic) 人脸美妆
+   * @method facedecoration(image, decoration) 人脸变妆
+   * @method ptuimgfilter(image, filter) 图片滤镜（天天P图）
+   * @method visionimgfilter(image, filter, session_id) 图片滤镜（AI Lab）
+   * @method facemerge(image, model) 人脸融合
+   * @method facesticker(image, sticker) 大头贴
+   * @method faceage(image) 颜龄检测
    * @example
    *  new ImgSpecialEffects('a95eceb1ac8c24ee28b70f7dbba912bf', '1000001')
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw Error('appKey and appId are required');
+      throw new Error('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -31,7 +31,8 @@ module.exports = class ImgSpecialEffects {
   /**
    * 人脸美妆
    *
-   * @description 人脸美妆接口提供人脸美妆特效功能，可以帮您快速实现原始图片的人脸美妆特效处理
+   * 人脸美妆接口提供人脸美妆特效功能，可以帮您快速实现原始图片的人脸美妆特效处理
+   *
    * @see https://ai.qq.com/doc/facecosmetic.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} cosmetic 美妆编码取值区间[1-23]
@@ -60,7 +61,8 @@ module.exports = class ImgSpecialEffects {
   /**
    * 人脸变妆
    *
-   * @description 人脸变妆接口提供人脸变妆特效功能，可以帮您快速实现原始图片的人脸变妆特效处理。
+   * 人脸变妆接口提供人脸变妆特效功能，可以帮您快速实现原始图片的人脸变妆特效处理。
+   *
    * @see https://ai.qq.com/doc/facedecoration.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} decoration 人脸变妆编码取值区间[1-22]
@@ -89,7 +91,8 @@ module.exports = class ImgSpecialEffects {
   /**
    * 图片滤镜(天天P图)
    *
-   * @description 图片滤镜接口提供滤镜特效功能，可以帮您快速实现原始图片的滤镜特效处理。
+   * 图片滤镜接口提供滤镜特效功能，可以帮您快速实现原始图片的滤镜特效处理。
+   *
    * @see https://ai.qq.com/doc/ptuimgfilter.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} filter 滤镜特效编码取值区间[1-32]
@@ -118,7 +121,8 @@ module.exports = class ImgSpecialEffects {
   /**
    * 图片滤镜（AI Lab）
    *
-   * @description 图片滤镜接口提供滤镜特效功能，可以帮您快速实现原始图片的滤镜特效处理
+   * 图片滤镜接口提供滤镜特效功能，可以帮您快速实现原始图片的滤镜特效处理
+   *
    * @see https://ai.qq.com/doc/ptuimgfilter.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {Number} filter 滤镜特效编码取值区间[1-65]
@@ -152,7 +156,8 @@ module.exports = class ImgSpecialEffects {
   /**
    * 人脸融合
    *
-   * @description 人脸融合接口提供人脸融合特效功能，可以帮您快速实现原始图片的人脸融合特效处理
+   * 人脸融合接口提供人脸融合特效功能，可以帮您快速实现原始图片的人脸融合特效处理
+   *
    * @see https://ai.qq.com/doc/facemerge.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} model 默认素材模板编码见下文描述 取值区间[1-50]；自定义素材模板可在应用详情页上传和查询
@@ -182,7 +187,8 @@ module.exports = class ImgSpecialEffects {
   /**
    * 大头贴
    *
-   * @description 大头贴接口提供大头贴特效功能，可以帮您快速实现原始图片的大头贴特效处理。
+   * 大头贴接口提供大头贴特效功能，可以帮您快速实现原始图片的大头贴特效处理。
+   *
    * @see https://ai.qq.com/doc/facesticker.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} sticker 大头贴编码 取值区间[1-31]
@@ -211,7 +217,8 @@ module.exports = class ImgSpecialEffects {
   /**
    * 颜龄检测
    *
-   * @description 颜龄检测接口提供颜龄检测功能，可以帮您快速实现原始图片的颜龄检测处理。
+   * 颜龄检测接口提供颜龄检测功能，可以帮您快速实现原始图片的颜龄检测处理。
+   *
    * @see https://ai.qq.com/doc/faceage.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @example

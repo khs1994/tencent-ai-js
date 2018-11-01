@@ -8,8 +8,8 @@ module.exports = class Speech {
   /**
    * 智能语音API服务类
    *
-   * @prop {String} app_key 应用key
-   * @prop {String} app_id  应用id
+   * @property {String} app_key 应用key
+   * @property {String} app_id  应用id
    * @function tts(Object) 语音合成（AI Lab）
    * @function tta(Object) 语音合成（优图）
    * @function asr(Object) 语音识别-echo版
@@ -19,7 +19,7 @@ module.exports = class Speech {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw Error('appKey and appId are required');
+      throw new Error('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -28,7 +28,8 @@ module.exports = class Speech {
   /**
    * 语音合成（AI Lab）
    *
-   * @description 将文字转换为语音，返回文字的语音数据
+   * 将文字转换为语音，返回文字的语音数据
+   *
    * @see https://ai.qq.com/doc/aaitts.shtml
    * @prop {String} text  待合成文本 UTF-8编码，非空且长度上限150字节
    * @prop {Number} speaker 默认1 语音发音人编码，取值范围[普通话男声  1 | 静琪女声  5 | 欢馨女声  6 | 碧萱女声  7]
@@ -81,7 +82,8 @@ module.exports = class Speech {
   /**
    * 语音合成（优图）
    *
-   * @description 将文字转换为语音，返回文字的语音数据
+   * 将文字转换为语音，返回文字的语音数据
+   *
    * @see https://ai.qq.com/doc/aaitts.shtml
    * @prop {String} text 待合成语音文本 utf8格式，最大300字节
    * @prop {Number} model_type 默认0--- 发音模型，取值范围[女生  0 | 女生纯英文  1 | 男生  2 | 喜道公子  6]
@@ -114,7 +116,8 @@ module.exports = class Speech {
   /**
    * 语音识别 echo 版
    *
-   * @description 接口提供在线识别语音的能力，识别完成后，将返回语音的文字内容。
+   * 接口提供在线识别语音的能力，识别完成后，将返回语音的文字内容。
+   *
    * @see https://ai.qq.com/doc/aaiasr.shtml
    * @prop {String} speech 待识别语音（时长上30s） 单声道，16bit采样位数，语音数据的Base64编码，非空且长度上限8MB
    * @prop {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
@@ -146,7 +149,9 @@ module.exports = class Speech {
 
   /**
    * 语音识别-流式版（AI Lab）
-   * @description 流式版接口提供在线流式识别语音的能力，可以快速获取边录音边识别的能力。
+   *
+   * 流式版接口提供在线流式识别语音的能力，可以快速获取边录音边识别的能力。
+   *
    * @see https://ai.qq.com/doc/aaiasr.shtml
    * @prop {String} speech_chunk 待识别语音 单声道，语音数据的Base64编码，非空且长度上限8MB
    * 分片规则[
@@ -210,24 +215,26 @@ module.exports = class Speech {
 
   /**
    * 语音识别-流式版(WeChat AI)
-   * @description 流式版接口提供在线流式识别语音的能力，可以快速获取边录音边识别的能力。
+   *
+   * 流式版接口提供在线流式识别语音的能力，可以快速获取边录音边识别的能力。
    * 为保证识别的流畅度，语音的分片时长建议200-300ms，单段语音的总时长上限为90s。
+   *
    * @see https://ai.qq.com/doc/aaiasr.shtml
-   * @prop {String} speech_chunk 待识别语音 单声道，非空且时长上限90s，建议时长200-300ms，分片规则见下文描述
+   * @param {String} speech_chunk 待识别语音 单声道，非空且时长上限90s，建议时长200-300ms，分片规则见下文描述
    * 分片规则[
    * PCM  支持按字节或者时间切片
    * WAV  支持按字节或者时间切片
    * AMR  支持按字节或者时间切片
    * SILK  支持按字节或者时间切片
    * SPEEX  支持按字节或者时间切片]
-   * @prop {String} speech_id 语音唯一标识（同一应用内）
-   * @prop {Number} len 语音分片长度（字节）
-   * @prop {Number} seq 默认0 语音分片所在语音流的偏移量（字节）
-   * @prop {Number} end 默认1 是否结束分片标识，取值范围[0  中间分片 | 1  结束分片]
-   * @prop {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4 | SPEEX  5]
-   * @prop {Number} rate 默认16000--- 语音采样率编码，取值范围[16KHz  16000]
-   * @prop {Number} bits 默认16位--- 音频采样位数
-   * @prop {Number} cont_res 默认0--- 是否获取中间识别结果，取值范围 [0  不获取 | 1  获取]
+   * @param {String} speech_id 语音唯一标识（同一应用内）
+   * @param {Number} len 语音分片长度（字节）
+   * @param {Number} seq 默认0 语音分片所在语音流的偏移量（字节）
+   * @param {Number} end 默认1 是否结束分片标识，取值范围[0  中间分片 | 1  结束分片]
+   * @param {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4 | SPEEX  5]
+   * @param {Number} rate 默认16000--- 语音采样率编码，取值范围[16KHz  16000]
+   * @param {Number} bits 默认16位--- 音频采样位数
+   * @param {Number} cont_res 默认0--- 是否获取中间识别结果，取值范围 [0  不获取 | 1  获取]
    * @example
    *  wxasrs({
    *    format：1,
@@ -277,12 +284,14 @@ module.exports = class Speech {
 
   /**
    * 长语音识别
-   * @description 长语音识别包含两个接口：语音上传接口，回调接口。用户调用语音上传接口上传语音，返回task_id，在识别完成后平台异步通知用户，返回识别结果。
+   *
+   * 长语音识别包含两个接口：语音上传接口，回调接口。用户调用语音上传接口上传语音，返回task_id，在识别完成后平台异步通知用户，返回识别结果。
+   *
    * @see https://ai.qq.com/doc/wxasrlong.shtml
-   * @prop {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
-   * @prop {String} callback_url 用户回调url，需用户提供，用于平台向用户通知识别结果
-   * @prop {String} speech 待识别语音（时长上限15min） 语音数据的Base64编码，原始音频大小上限5MB
-   * @prop {String} speech_url 待识别语音下载地址（时长上限15min） 音频下载地址，音频大小上限30MB
+   * @param {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
+   * @param {String} callback_url 用户回调url，需用户提供，用于平台向用户通知识别结果
+   * @param {String} speech 待识别语音（时长上限15min） 语音数据的Base64编码，原始音频大小上限5MB
+   * @param {String} speech_url 待识别语音下载地址（时长上限15min） 音频下载地址，音频大小上限30MB
    * @example
    *  wxasrlong({
    *    format：1,

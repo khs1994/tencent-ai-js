@@ -110,7 +110,6 @@ class ProxyServices {
 
   /**
    * ksort ：根据 接口请求参数 升序排序
-   * @param this.opt 接口请求参数
    *
    * @returns 升序排序结果
    */
@@ -130,8 +129,6 @@ class ProxyServices {
 
   /**
    * getReqSign ：根据 接口请求参数 和 应用密钥 计算 请求签名
-   * @param this.opt 接口请求参数
-   * @param this.appkey：应用密钥
    * @returns 签名结果
    */
   getReqSign() {
@@ -245,6 +242,7 @@ class ProxyServices {
  * @param {String} URI 请求的URI，例如：'/fcgi-bin/aai/aai_tts'
  * @param {String} appkey 你的app_key
  * @param {Object} OPT 除了签名以外的请求数据对象，不用对数据进行编码，请求会进行编码
+ * @param isGBK
  * @example
  *  const fs = require('fs');
  *  // 随机字符串

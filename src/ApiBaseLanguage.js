@@ -5,8 +5,6 @@ const { URIS, commonParams, error, textToGBK } = require('./util');
 const PS = require('./client/ProxyServices');
 
 module.exports = class BaseLanguage {
-
-  // eslint-disable-next-line valid-jsdoc
   /**
    * 自然语言处理基础部分
    *
@@ -23,7 +21,7 @@ module.exports = class BaseLanguage {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw Error('appKey and appId are required');
+      throw new Error('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -207,8 +205,8 @@ module.exports = class BaseLanguage {
    * 基础闲聊接口提供基于文本的基础聊天能力，可以让您的应用快速拥有具备上下文语义理解的机器聊天功能。
    *
    * @see https://ai.qq.com/doc/nlpchat.shtml
-   * @prop {String} question  待分析文本 UTF-8编码，非空且长度上限300字节
-   * @prop {String} session  会话标识（应用内唯一） UTF-8编码，非空且长度上限32字节
+   * @param {String} question  待分析文本 UTF-8编码，非空且长度上限300字节
+   * @param {String} session  会话标识（应用内唯一） UTF-8编码，非空且长度上限32字节
    * @example
    *  textchat({
    *    question: '今天的天气不错呀',
