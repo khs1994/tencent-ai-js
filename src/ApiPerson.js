@@ -51,7 +51,7 @@ module.exports = class Person {
    *  person_id: '1509333186'
    *  tag:'备注信息'
    * })
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   newperson({ image, person_name, group_ids, person_id, tag = '' }) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -88,7 +88,7 @@ module.exports = class Person {
    * @param {String} person_id 需要删除的个体（Person）ID
    * @example
    * delperson('1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   delperson(person_id) {
     if (!person_id) {
@@ -114,7 +114,7 @@ module.exports = class Person {
    * @param {String} tag 备注信息
    * @example
    * addface('imageBase64String|imageBase64String', '1509333186', '王小二')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   addface(images, person_id, tag = '') {
     if (images && Buffer.byteLength(images, 'base64') >= 1048576) {
@@ -144,7 +144,7 @@ module.exports = class Person {
    * @param {String} face_ids 需要删除的人脸（Face）ID（多个之间用"\")
    * @example
    * delface('1509333186', '1509333186\1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   delface(person_id, face_ids) {
     if (!person_id) {
@@ -174,7 +174,7 @@ module.exports = class Person {
    * @param {String} tag 备注信息
    * @example
    * setinfo('1509333186', '中国人', '一个NB的人')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   setinfo(person_id, person_name, tag = '') {
     if (!person_id) {
@@ -203,7 +203,7 @@ module.exports = class Person {
    * @param {String} person_id 需要查询的个体（Person）ID
    * @example
    * getinfo('1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   getinfo(person_id) {
     if (!person_id) {
@@ -226,7 +226,7 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/getgroupids.shtml
    * @example
    * getgroupids()
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   getgroupids() {
     return PS(
@@ -246,7 +246,7 @@ module.exports = class Person {
    * @param {String} group_id 组（Group）ID
    * @example
    * getpersonids('1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   getpersonids(group_id) {
     if (!group_id) {
@@ -270,7 +270,7 @@ module.exports = class Person {
    * @param {String} person_id 个体（Person）ID
    * @example
    * getfaceids('1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   getfaceids(person_id) {
     if (!person_id) {
@@ -294,7 +294,7 @@ module.exports = class Person {
    * @param {String} face_id 人脸（Face） ID
    * @example
    * getfaceinfo('1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   getfaceinfo(face_id) {
     if (!face_id) {
@@ -320,7 +320,7 @@ module.exports = class Person {
    * @param {Number} topn 默认9个 返回的候选人个数可选值范围[1~10]
    * @example
    * faceidentify(imageBase64String, '1509333186', 9)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   faceidentify(image, group_id, topn = 9) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -353,7 +353,7 @@ module.exports = class Person {
    * @param {String} person_id  待验证的个体（Person）ID
    * @example
    * faceverify(imageBase64String, '1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   faceverify(image, person_id) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {

@@ -33,7 +33,7 @@ module.exports = class Face {
    * @param {Number} mode 默认1 检测模式，0-正常，1-大脸模式
    * @example
    * detectface(imageBase64String, 1)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   detectface(image, mode = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -61,7 +61,7 @@ module.exports = class Face {
    * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
    * @example
    * detectmultiface(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   detectmultiface(image) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -86,7 +86,7 @@ module.exports = class Face {
    * @param {String} image_b 待对比人脸图片B 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @example
    * facecompare(imageBase64String, imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   facecompare(image_a, image_b) {
     if (image_a && Buffer.byteLength(image_a, 'base64') >= 1048576) {
@@ -115,7 +115,7 @@ module.exports = class Face {
    * @param {String} target_image 待比较图片 原始图片的base64编码数据（原图大小上限1MB）
    * @example
    * detectcrossageface(imageBase64String, imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   detectcrossageface(source_image, target_image) {
     if (source_image && Buffer.byteLength(source_image, 'base64') >= 1048576) {
@@ -144,7 +144,7 @@ module.exports = class Face {
    * @param {Number} mode 默认1 检测模式，0-正常，1-大脸模式
    * @example
    * faceshape(imageBase64String, 1)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   faceshape(image, mode = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {

@@ -36,7 +36,7 @@ module.exports = class OCR {
    * @param {Number} card_type  身份证图片类型，0-正面，1-反面
    * @example
    * idcardocr(imageBase64String, type)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   idcardocr(imageBase64String, card_type = 0) {
     if (
@@ -65,7 +65,7 @@ module.exports = class OCR {
    * @param {String} imageBase64String  待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @example
    * bcocr(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   bcocr(imageBase64String) {
     if (
@@ -123,7 +123,7 @@ module.exports = class OCR {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @example
    * bizlicenseocr(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   bizlicenseocr(imageBase64String) {
     if (
@@ -151,7 +151,7 @@ module.exports = class OCR {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @example
    * creditcardocr(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   creditcardocr(imageBase64String) {
     if (
@@ -179,7 +179,7 @@ module.exports = class OCR {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @example
    * generalocr(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   generalocr(imageBase64String) {
     if (
@@ -207,7 +207,7 @@ module.exports = class OCR {
    * @param {String} imageBase64String 待识别图片或者待识别图片URI地址 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @example
    * plateocr(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   plateocr(imageBase64String) {
     if (
@@ -247,7 +247,7 @@ module.exports = class OCR {
    * @param {String} imageBase64String 待识别图片或者待识别图片URI地址 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @example
    * handwritingocr(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   handwritingocr(imageBase64String) {
     if (

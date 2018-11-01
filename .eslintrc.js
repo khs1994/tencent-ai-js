@@ -11,10 +11,19 @@ module.exports = {
     'impliedStrict': true,
     'sourceType': 'script',
   },
+  // https://cn.eslint.org/docs/rules/
   'rules': {
     'indent': [
       'error',
       2,
+      {
+        'SwitchCase': 1,
+        'FunctionDeclaration': {
+          'parameters': 2,
+          'body': 1,
+        },
+        'ObjectExpression': 1,
+      },
     ],
     'linebreak-style': [
       'error',
@@ -30,6 +39,7 @@ module.exports = {
     ],
     'no-console': 2,
     'strict': 2,
+    // 'valid-jsdoc': 'error',
   },
   'plugins': [],
 };

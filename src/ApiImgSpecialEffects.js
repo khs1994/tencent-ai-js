@@ -37,7 +37,7 @@ module.exports = class ImgSpecialEffects {
    * @param {Number} cosmetic 美妆编码取值区间[1-23]
    * @example
    * facecosmetic(imageBase64String, 1)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   facecosmetic(image, cosmetic = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -66,7 +66,7 @@ module.exports = class ImgSpecialEffects {
    * @param {Number} decoration 人脸变妆编码取值区间[1-22]
    * @example
    * facedecoration(imageBase64String, 1)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   facedecoration(image, decoration = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -95,7 +95,7 @@ module.exports = class ImgSpecialEffects {
    * @param {Number} filter 滤镜特效编码取值区间[1-32]
    * @example
    * ptuimgfilter(imageBase64String, 1)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   ptuimgfilter(image, filter) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -125,7 +125,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} session_id 一次请求ID 尽可能唯一，长度上限64字节
    * @example
    * visionimgfilter(imageBase64String, 1, '1509333186')
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   visionimgfilter(image, filter, session_id) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -158,7 +158,7 @@ module.exports = class ImgSpecialEffects {
    * @param {Number} model 默认素材模板编码见下文描述 取值区间[1-50]；自定义素材模板可在应用详情页上传和查询
    * @example
    * facemerge(imageBase64String, 1)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    * @deprecated Not Available on 2018-11-30
    */
   facemerge(image, model) {
@@ -188,7 +188,7 @@ module.exports = class ImgSpecialEffects {
    * @param {Number} sticker 大头贴编码 取值区间[1-31]
    * @example
    * facesticker(imageBase64String, 1)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   facesticker(image, sticker) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -216,7 +216,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @example
    *  faceage(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   faceage(image) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {

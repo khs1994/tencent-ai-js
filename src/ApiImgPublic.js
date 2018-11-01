@@ -36,7 +36,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
    * @example
    * porn(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   porn(imageBase64String) {
     if (
@@ -64,7 +64,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
    * @example
    * terrorism(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   terrorism(imageBase64String) {
     if (
@@ -98,7 +98,7 @@ module.exports = class ImgPublic {
    *  format: 1,
    *  topk: 1
    * })
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   scener({ image, format = 1, topk = 1 }) {
     if (image && Buffer.byteLength(image, 'base64') < 1048576) {
@@ -131,10 +131,7 @@ module.exports = class ImgPublic {
    *  format: 1,
    *  topk: 1
    * })
-   * @return A Promise Object
-   * @update
-   * 暂时去掉format参数, 由于加入format参数现在会报签名错误   2018-04-18
-   * 恢复format参数, 由于API修复format参数 2018-06-21
+   * @return {PS} A Promise Object
    */
   objectr({ image, format = 1, topk = 1 }) {
     if (image && Buffer.byteLength(image, 'base64') < 1048576) {
@@ -161,7 +158,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @example
    * imagetag(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   imagetag(imageBase64String) {
     if (
@@ -190,7 +187,7 @@ module.exports = class ImgPublic {
    * @param {Number} scene  识别场景，1-车辆识别，2-花草识别
    * @example
    * imgidentify(imageBase64String, scene)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   imgidentify(imageBase64String, scene = 1) {
     if (
@@ -220,7 +217,7 @@ module.exports = class ImgPublic {
    * @param {String} session_id  一次请求ID 尽可能唯一，长度上限64字节
    * @example
    * imgtotext(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   imgtotext(imageBase64String, session_id) {
     if (
@@ -253,7 +250,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @example
    * imagefuzzy(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   imagefuzzy(imageBase64String) {
     if (
@@ -281,7 +278,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @example
    * imagefood(imageBase64String)
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   imagefood(imageBase64String) {
     if (

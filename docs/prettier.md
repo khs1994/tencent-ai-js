@@ -13,4 +13,5 @@
 ```
 
 * https://prettier.io/docs/en/cli.html
+* https://prettier.io/docs/en/options.html
 * https://yq.aliyun.com/articles/422690

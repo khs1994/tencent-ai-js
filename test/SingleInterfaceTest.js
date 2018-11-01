@@ -48,10 +48,10 @@ const ksort = opt => {
 };
 
 const getReqSign = (opt, appkey) => {
-  // eslint-disable-next-line no-unused-vars
   let parList,
     sign,
     str = '',
+    // eslint-disable-next-line no-unused-vars
     tstr = '';
   parList = ksort(opt);
   parList.map(item => {
@@ -88,8 +88,8 @@ var proxy = https
         let res = JSON.parse(decodedBody);
         // console.log(JSON.stringify(res));
       });
-    // eslint-disable-next-line no-unused-vars
   })
+  // eslint-disable-next-line no-unused-vars
   .on('error', e => {
     // console.log(e);
   });

@@ -85,8 +85,8 @@ var proxy = https
         let res = JSON.parse(decodedBody);
         // console.log(JSON.stringify(res));
       });
-    // eslint-disable-next-line no-unused-vars
   })
+  // eslint-disable-next-line no-unused-vars
   .on('error', e => {
     // console.log(e);
   });

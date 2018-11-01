@@ -52,7 +52,7 @@ module.exports = class Translate {
    *    type: 0,
    *    text: '你好QQAI',
    *  })
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   texttrans({ type = 0, text = '' }) {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
@@ -99,7 +99,7 @@ module.exports = class Translate {
    *    source: 'auto',
    *    target: 'zh'
    *  })
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   texttranslate({ text = '', source = 'auto', target = 'zh' }) {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
@@ -136,7 +136,7 @@ module.exports = class Translate {
    *    source: 'zh',
    *    target: 'en',
    *  })
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   imagetranslate({
     image = '',
@@ -189,7 +189,7 @@ module.exports = class Translate {
    *    source: 'auto',
    *    target: 'en'
    *  })
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   speechtranslate({
     format = 8,
@@ -239,7 +239,7 @@ module.exports = class Translate {
    *    candidate_langs: 'zh,en',
    *    force: 0
    *  })
-   * @return A Promise Object
+   * @return {PS} A Promise Object
    */
   textdetect({ text, candidate_langs = 'zh|en|kr|jp', force = 0 }) {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
