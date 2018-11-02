@@ -35,6 +35,8 @@ pipeline:
     when:
       event: tag
       status: success
+      matrix:
+        NODE_VERSION: 11
     secrets: [npm_username,npm_password,npm_token]
 
 matrix:

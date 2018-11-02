@@ -31,11 +31,13 @@ pipeline:
     #   - NPM_TOKEN=""
     provider: npm
     email: khs1994@khs1994.com
-    # api_key:
+    # api_key: $NPM_TOKEN
     # tag: next
     when:
       event: "tag"
       status: success
+      matrix:
+        NODE_VERSION: 11
 
 matrix:
   NODE_VERSION:
