@@ -8,13 +8,13 @@ module.exports = class Translate {
   /**
    * 机器翻译API构造函数
    *
-   * @prop {String} app_key 应用key
-   * @prop {String} app_id  应用id
-   * @function texttrans(Object) 文本翻译（AI Lab）
-   * @function texttranslate(Object) 文本翻译（翻译君）
-   * @function imagetranslate(Object) 图片翻译
-   * @function speechtranslate(Object) 语音翻译
-   * @function textdetect(Object) 语种识别
+   * @property {String} app_key 应用key
+   * @property {String} app_id  应用id
+   * @method texttrans(Object) 文本翻译（AI Lab）
+   * @method texttranslate(Object) 文本翻译（翻译君）
+   * @method imagetranslate(Object) 图片翻译
+   * @method speechtranslate(Object) 语音翻译
+   * @method textdetect(Object) 语种识别
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {

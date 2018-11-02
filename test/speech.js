@@ -1,6 +1,6 @@
 'use strict';
 
-// const randomstring = require('randomstring');
+const randomstring = require('randomstring');
 
 // const process = require('process');
 
@@ -16,10 +16,28 @@ const assert = require('assert');
 
 /**
  * 智能语音 测试文件
- * 语音识别-流式版（AI Lab）、语音识别-流式版(WeChat AI)、长语音识别  没有具体测试 不明朗
+ * 语音识别-流式版（AI Lab）、语音识别-流式版(WeChat AI)、长语音识别
  */
 
 describe('speech', () => {
+  // 音频鉴黄
+  it.skip('aaievilaudio', () => {
+    return speech
+      .aaievilaudio(
+        randomstring.generate(10),
+        'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav'
+      )
+      .then(
+        res => {
+          assert.equal(res.ret, 0);
+        },
+        e => {
+          assert.equal(e.ret, 0);
+        }
+      );
+  });
+
+  // 语音合成（AI Lab）
   it('tts', function() {
     return speech
       .tts({
@@ -42,7 +60,6 @@ describe('speech', () => {
   });
 
   // 语音合成
-
   it('tta', () => {
     return speech
       .tta({

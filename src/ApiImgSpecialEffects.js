@@ -17,8 +17,6 @@ module.exports = class ImgSpecialEffects {
    * @method facemerge(image, model) 人脸融合
    * @method facesticker(image, sticker) 大头贴
    * @method faceage(image) 颜龄检测
-   * @example
-   *  new ImgSpecialEffects('a95eceb1ac8c24ee28b70f7dbba912bf', '1000001')
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
@@ -36,8 +34,7 @@ module.exports = class ImgSpecialEffects {
    * @see https://ai.qq.com/doc/facecosmetic.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} cosmetic 美妆编码取值区间[1-23]
-   * @example
-   * facecosmetic(imageBase64String, 1)
+   *
    * @return {PS} A Promise Object
    */
   facecosmetic(image, cosmetic = 1) {
@@ -66,8 +63,7 @@ module.exports = class ImgSpecialEffects {
    * @see https://ai.qq.com/doc/facedecoration.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} decoration 人脸变妆编码取值区间[1-22]
-   * @example
-   * facedecoration(imageBase64String, 1)
+   *
    * @return {PS} A Promise Object
    */
   facedecoration(image, decoration = 1) {
@@ -96,8 +92,7 @@ module.exports = class ImgSpecialEffects {
    * @see https://ai.qq.com/doc/ptuimgfilter.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} filter 滤镜特效编码取值区间[1-32]
-   * @example
-   * ptuimgfilter(imageBase64String, 1)
+   *
    * @return {PS} A Promise Object
    */
   ptuimgfilter(image, filter) {
@@ -127,8 +122,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {Number} filter 滤镜特效编码取值区间[1-65]
    * @param {String} session_id 一次请求ID 尽可能唯一，长度上限64字节
-   * @example
-   * visionimgfilter(imageBase64String, 1, '1509333186')
+   *
    * @return {PS} A Promise Object
    */
   visionimgfilter(image, filter, session_id) {
@@ -161,8 +155,7 @@ module.exports = class ImgSpecialEffects {
    * @see https://ai.qq.com/doc/facemerge.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} model 默认素材模板编码见下文描述 取值区间[1-50]；自定义素材模板可在应用详情页上传和查询
-   * @example
-   * facemerge(imageBase64String, 1)
+   *
    * @return {PS} A Promise Object
    * @deprecated Not Available on 2018-11-30
    */
@@ -192,8 +185,7 @@ module.exports = class ImgSpecialEffects {
    * @see https://ai.qq.com/doc/facesticker.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} sticker 大头贴编码 取值区间[1-31]
-   * @example
-   * facesticker(imageBase64String, 1)
+   *
    * @return {PS} A Promise Object
    */
   facesticker(image, sticker) {
@@ -221,8 +213,7 @@ module.exports = class ImgSpecialEffects {
    *
    * @see https://ai.qq.com/doc/faceage.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
-   * @example
-   *  faceage(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   faceage(image) {

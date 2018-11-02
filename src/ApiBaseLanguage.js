@@ -17,7 +17,6 @@ module.exports = class BaseLanguage {
    * @method wordcom(String) 语义解析
    * @method textpolar(String) 情感分析
    * @method textchat(Object) 智能闲聊
-   *
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
@@ -34,10 +33,7 @@ module.exports = class BaseLanguage {
    *
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
-   * @example
-   *  wordseg({
-   *    text: '你好中国'
-   *  })
+   *
    * @return {PS} A Promise Object
    */
   wordseg(text) {
@@ -63,10 +59,7 @@ module.exports = class BaseLanguage {
    *
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
-   * @example
-   *  wordpos({
-   *    text: '你好中国'
-   *  })
+   *
    * @return {PS} A Promise Object
    */
   wordpos(text) {
@@ -92,10 +85,7 @@ module.exports = class BaseLanguage {
    *
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
-   * @example
-   *  wordner({
-   *    text: '你好中国'
-   *  })
+   *
    * @return {PS|error} A Promise Object
    */
   wordner(text) {
@@ -121,10 +111,7 @@ module.exports = class BaseLanguage {
    *
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
-   * @example
-   *  wordsyn({
-   *    text: '你好中国'
-   *  })
+   *
    * @return {PS|error} A Promise Object
    */
   wordsyn(text) {
@@ -150,10 +137,7 @@ module.exports = class BaseLanguage {
    *
    * @see https://ai.qq.com/doc/nlpsem.shtml
    * @param {String} text  待分析文本 UTF-8编码，非空且长度上限100字节
-   * @example
-   *  wordcom({
-   *    text: '今天深圳的天气怎么样？明天呢'
-   *  })
+   *
    * @return {PS} A Promise Object
    */
   wordcom(text) {
@@ -178,10 +162,7 @@ module.exports = class BaseLanguage {
    *
    * @see https://ai.qq.com/doc/nlpemo.shtml
    * @param {String} text  待分析文本 UTF-8编码，非空且长度上限200字节
-   * @example
-   *  textpolar({
-   *    text: '今天的天气不错呀'
-   *  })
+   *
    * @return {PS} A Promise Object
    */
   textpolar(text) {

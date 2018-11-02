@@ -6,16 +6,16 @@ const PS = require('./client/ProxyServices');
 
 module.exports = class Speech {
   /**
-   * 智能语音API服务类
+   * 智能语音 API 服务类
    *
    * @property {String} app_key 应用key
    * @property {String} app_id  应用id
-   * @function tts(Object) 语音合成（AI Lab）
-   * @function tta(Object) 语音合成（优图）
-   * @function asr(Object) 语音识别-echo版
-   * @function asrs(Object) 语音识别-流式版（AI Lab）
-   * @function wxasrs(Object) 语音识别-流式版(WeChat AI)
-   * @function wxasrlong(Object) 长语音识别
+   * @method tts(Object) 语音合成（AI Lab）
+   * @method tta(Object) 语音合成（优图）
+   * @method asr(Object) 语音识别-echo版
+   * @method asrs(Object) 语音识别-流式版（AI Lab）
+   * @method wxasrs(Object) 语音识别-流式版(WeChat AI)
+   * @method wxasrlong(Object) 长语音识别
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
@@ -23,6 +23,29 @@ module.exports = class Speech {
     }
     this.appKey = appKey;
     this.appId = appId;
+  }
+
+  /**
+   * 音频鉴黄
+   *
+   * 识别用户提供链接的音频，判断是否为色情音频。
+   *
+   * @see https://ai.qq.com/doc/aaievilaudio.shtml
+   * @param {string} speech_id 语音唯一标识 非空且长度上限64B，同一应用内每段语音流标识需唯一
+   * @param {string} speech_url 音频URL，建议音频时长不超过3分钟 非空且长度上限512B
+   *
+   * @return {PS}
+   */
+  aaievilaudio(speech_id, speech_url) {
+    return PS(
+      URIS.aaievilaudio,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        speech_id: speech_id,
+        speech_url: speech_url,
+      })
+    );
   }
 
   /**

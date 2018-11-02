@@ -35,8 +35,7 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/ocridcardocr.shtml
    * @param {String} imageBase64String  待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {Number} card_type  身份证图片类型，0-正面，1-反面
-   * @example
-   * idcardocr(imageBase64String, type)
+   *
    * @return {PS} A Promise Object
    */
   idcardocr(imageBase64String, card_type = 0) {
@@ -119,14 +118,41 @@ module.exports = class OCR {
   }
 
   /**
+   * 通用 OCR 识别
+   *
+   * 根据用户上传的图像，返回识别出的字段信息
+   *
+   * @see https://ai.qq.com/doc/ocrgeneralocr.shtml
+   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
+   *
+   * @return {PS} A Promise Object
+   */
+  generalocr(imageBase64String) {
+    if (
+      imageBase64String &&
+      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+    ) {
+      return PS(
+        URIS.generalocr,
+        this.appKey,
+        Object.assign({}, commonParams(), {
+          app_id: this.appId,
+          image: imageBase64String,
+        })
+      );
+    } else {
+      return error('imageBase64String 不能为空 且 大小小余1M');
+    }
+  }
+
+  /**
    * 营业执照 OCR 识别
    *
    * 营业执照OCR 识别，根据用户上传的营业执照图像，返回识别出的注册号、公司名称、地址字段信息。
    *
    * @see https://ai.qq.com/doc/ocrbizlicenseocr.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @example
-   * bizlicenseocr(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   bizlicenseocr(imageBase64String) {
@@ -154,8 +180,7 @@ module.exports = class OCR {
    *
    * @see https://ai.qq.com/doc/ocrcreditcardocr.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @example
-   * creditcardocr(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   creditcardocr(imageBase64String) {
@@ -177,43 +202,13 @@ module.exports = class OCR {
   }
 
   /**
-   * 通用 OCR 识别
-   *
-   * 根据用户上传的图像，返回识别出的字段信息
-   *
-   * @see https://ai.qq.com/doc/ocrgeneralocr.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @example
-   * generalocr(imageBase64String)
-   * @return {PS} A Promise Object
-   */
-  generalocr(imageBase64String) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return PS(
-        URIS.generalocr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        })
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
-    }
-  }
-
-  /**
    * 车牌 OCR
    *
    * 识别车牌上面的字段信息
    *
    * @see https://ai.qq.com/doc/plateocr.shtml
    * @param {String} imageBase64String 待识别图片或者待识别图片URI地址 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @example
-   * plateocr(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   plateocr(imageBase64String) {
@@ -253,8 +248,7 @@ module.exports = class OCR {
    *
    * @see https://ai.qq.com/doc/handwritingocr.shtml
    * @param {String} imageBase64String 待识别图片或者待识别图片URI地址 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @example
-   * handwritingocr(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   handwritingocr(imageBase64String) {

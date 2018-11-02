@@ -30,10 +30,39 @@ describe('image', () => {
       );
   });
 
+  it.skip('porn_url', function() {
+    return imgPublic
+      .porn('', 'https://yyb.gtimg.com/aiplat/static/ai-demo/large/y-3.jpg')
+      .then(
+        res => {
+          assert.equal(res.ret, 0);
+        },
+        e => {
+          assert.equal(e.ret, 0);
+        }
+      );
+  });
+
   // 暴恐图片识别
   it('terrorism', function() {
     return imgPublic
       .terrorism(fsReadSync(`${__dirname}/resource/vision/terrorism.jpg`))
+      .then(
+        res => {
+          assert.equal(res.ret, 0);
+        },
+        e => {
+          assert.equal(e.ret, 0);
+        }
+      );
+  });
+
+  it.skip('terrorism_url', function() {
+    return imgPublic
+      .terrorism(
+        '',
+        'https://yyb.gtimg.com/ai/assets/ai-demo/large/terror-14-lg.jpg'
+      )
       .then(
         res => {
           assert.equal(res.ret, 0);

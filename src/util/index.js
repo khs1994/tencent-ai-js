@@ -43,11 +43,13 @@ module.exports.URIS = {
   speechtranslate: '/fcgi-bin/nlp/nlp_speechtranslate',
   // 语种识别doc https://ai.qq.com/doc/textdetect.shtml
   textdetect: '/fcgi-bin/nlp/nlp_textdetect',
-  // 计算机视觉
+  // 敏感信息审核
   // 智能鉴黄doc https://ai.qq.com/doc/jianhuang.shtml
   porn: '/fcgi-bin/vision/vision_porn',
   // 暴恐图片识别doc https://ai.qq.com/doc/imageterrorism.shtml
   terrorism: '/fcgi-bin/image/image_terrorism',
+  // 音频鉴黄doc https://ai.qq.com/doc/aaievilaudio.shtml
+  aaievilaudio: '/fcgi-bin/aai/aai_evilaudio',
   // OCR识别
   // 身份证OCR识别doc https://ai.qq.com/doc/ocridcardocr.shtml
   idcardocr: '/fcgi-bin/ocr/ocr_idcardocr',

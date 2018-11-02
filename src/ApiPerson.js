@@ -10,20 +10,18 @@ module.exports = class Person {
    *
    * @param {String} appKey 应用key
    * @param {String} appId 应用id
-   * @function newperson 个体创建
-   * @function delperson 删除个体
-   * @function addface 增加人脸
-   * @function delface 删除人脸
-   * @function setinfo 设置信息
-   * @function getinfo 获取信息
-   * @function getgroupids 获取组列表
-   * @function getpersonids 获取个体列表
-   * @function getfaceids 获取人脸列表
-   * @function getfaceinfo 获取人脸信息
-   * @function faceidentify 人脸识别
-   * @function faceverify 人脸验证
-   * @example
-   * new Person('a95eceb1ac8c24ee28b70f7dbba912bf', '1000001')
+   * @method newperson 个体创建
+   * @method delperson 删除个体
+   * @method addface 增加人脸
+   * @method delface 删除人脸
+   * @method setinfo 设置信息
+   * @method getinfo 获取信息
+   * @method getgroupids 获取组列表
+   * @method getpersonids 获取个体列表
+   * @method getfaceids 获取人脸列表
+   * @method getfaceinfo 获取人脸信息
+   * @method faceidentify 人脸识别
+   * @method faceverify 人脸验证
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
@@ -88,8 +86,7 @@ module.exports = class Person {
    *
    * @see https://ai.qq.com/doc/delperson.shtml
    * @param {String} person_id 需要删除的个体（Person）ID
-   * @example
-   * delperson('1509333186')
+   *
    * @return {PS} A Promise Object
    */
   delperson(person_id) {
@@ -115,8 +112,7 @@ module.exports = class Person {
    * @param {String} images 多个人脸图片之间用“|”分隔 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {String} person_id  指定的个体（Person）ID
    * @param {String} tag 备注信息
-   * @example
-   * addface('imageBase64String|imageBase64String', '1509333186', '王小二')
+   *
    * @return {PS} A Promise Object
    */
   addface(images, person_id, tag = '') {
@@ -146,8 +142,7 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/delface.shtml
    * @param {String} person_id 指定的个体（Person）ID
    * @param {String} face_ids 需要删除的人脸（Face）ID（多个之间用"\")
-   * @example
-   * delface('1509333186', '1509333186\1509333186')
+   *
    * @return {PS} A Promise Object
    */
   delface(person_id, face_ids) {
@@ -177,8 +172,7 @@ module.exports = class Person {
    * @param {String} person_id 需要设置的个体（Person）ID
    * @param {String} person_name 新的名字
    * @param {String} tag 备注信息
-   * @example
-   * setinfo('1509333186', '中国人', '一个NB的人')
+   *
    * @return {PS} A Promise Object
    */
   setinfo(person_id, person_name, tag = '') {
@@ -207,8 +201,7 @@ module.exports = class Person {
    *
    * @see https://ai.qq.com/doc/getinfo.shtml
    * @param {String} person_id 需要查询的个体（Person）ID
-   * @example
-   * getinfo('1509333186')
+   *
    * @return {PS} A Promise Object
    */
   getinfo(person_id) {
@@ -231,8 +224,7 @@ module.exports = class Person {
    * 获取一个AppId下所有Group ID。
    *
    * @see https://ai.qq.com/doc/getgroupids.shtml
-   * @example
-   * getgroupids()
+   *
    * @return {PS} A Promise Object
    */
   getgroupids() {
@@ -252,8 +244,7 @@ module.exports = class Person {
    *
    * @see https://ai.qq.com/doc/getpersonids.shtml
    * @param {String} group_id 组（Group）ID
-   * @example
-   * getpersonids('1509333186')
+   *
    * @return {PS} A Promise Object
    */
   getpersonids(group_id) {
@@ -277,8 +268,7 @@ module.exports = class Person {
    *
    * @see https://ai.qq.com/doc/getfaceids.shtml
    * @param {String} person_id 个体（Person）ID
-   * @example
-   * getfaceids('1509333186')
+   *
    * @return {PS} A Promise Object
    */
   getfaceids(person_id) {
@@ -302,8 +292,7 @@ module.exports = class Person {
    *
    * @see https://ai.qq.com/doc/getfaceinfo.shtml
    * @param {String} face_id 人脸（Face） ID
-   * @example
-   * getfaceinfo('1509333186')
+   *
    * @return {PS} A Promise Object
    */
   getfaceinfo(face_id) {
@@ -329,8 +318,7 @@ module.exports = class Person {
    * @param {String} image 待识别人脸图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {String} group_id 候选人组ID（个体创建时设定）
    * @param {Number} topn 默认9个 返回的候选人个数可选值范围[1~10]
-   * @example
-   * faceidentify(imageBase64String, '1509333186', 9)
+   *
    * @return {PS} A Promise Object
    */
   faceidentify(image, group_id, topn = 9) {
@@ -363,8 +351,7 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/faceverify.shtml
    * @param {String} image 待验证人脸图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {String} person_id  待验证的个体（Person）ID
-   * @example
-   * faceverify(imageBase64String, '1509333186')
+   *
    * @return {PS} A Promise Object
    */
   faceverify(image, person_id) {

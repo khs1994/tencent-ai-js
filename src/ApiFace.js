@@ -6,7 +6,7 @@ const PS = require('./client/ProxyServices');
 
 module.exports = class Face {
   /**
-   * 面部识别API服务类
+   * 面部识别 API 服务类
    *
    * @param {String} appKey 应用key
    * @param {String} appId 应用id
@@ -32,8 +32,7 @@ module.exports = class Face {
    * @see https://ai.qq.com/doc/detectface.shtml
    * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {Number} mode 默认1 检测模式，0-正常，1-大脸模式
-   * @example
-   * detectface(imageBase64String, 1)
+   *
    * @return {PS} A Promise Object
    */
   detectface(image, mode = 1) {
@@ -61,8 +60,7 @@ module.exports = class Face {
    *
    * @see https://ai.qq.com/doc/detectmultiface.shtml
    * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
-   * @example
-   * detectmultiface(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   detectmultiface(image) {
@@ -87,8 +85,7 @@ module.exports = class Face {
    * @see https://ai.qq.com/doc/facecompare.shtml
    * @param {String} image_a 待对比人脸图片A 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {String} image_b 待对比人脸图片B 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @example
-   * facecompare(imageBase64String, imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   facecompare(image_a, image_b) {
@@ -118,7 +115,7 @@ module.exports = class Face {
    * @param {String} source_image 待比较图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {String} target_image 待比较图片 原始图片的base64编码数据（原图大小上限1MB）
    * @example
-   * detectcrossageface(imageBase64String, imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   detectcrossageface(source_image, target_image) {
@@ -147,8 +144,7 @@ module.exports = class Face {
    * @see https://ai.qq.com/doc/faceshape.shtml
    * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {Number} mode 默认1 检测模式，0-正常，1-大脸模式
-   * @example
-   * faceshape(imageBase64String, 1)
+   *
    * @return {PS} A Promise Object
    */
   faceshape(image, mode = 1) {

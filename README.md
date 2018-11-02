@@ -42,3 +42,13 @@ translate.texttrans({text: '你好'}).then((res)=>{
 ## CI/CD
 
 * https://github.com/codecov/codecov-node
+
+## Tests
+
+set system env first
+
+```bash
+NODE_TENCENT_AI_APP_KEY=
+
+NODE_TENCENT_AI_APP_ID=
+```

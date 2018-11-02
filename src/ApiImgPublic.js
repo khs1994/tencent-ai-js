@@ -6,10 +6,10 @@ const PS = require('./client/ProxyServices');
 
 module.exports = class ImgPublic {
   /**
-   * 图片识别公共API服务类
+   * 图片识别公共 API 服务类
    *
-   * @prop {String} app_key 应用key
-   * @prop {String} app_id  应用id
+   * @prop {String} app_key 应用 key
+   * @prop {String} app_id  应用 id
    * @method porn(imageBase64String) 智能鉴黄
    * @method terrorism(imageBase64String) 暴恐识别
    * @method scener(imageBase64String) 场景识别
@@ -35,26 +35,39 @@ module.exports = class ImgPublic {
    *
    * @see https://ai.qq.com/doc/jianhuang.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
-   * @example
-   * porn(imageBase64String)
+   * @param {String} image_url
+   *
    * @return {PS} A Promise Object
    */
-  porn(imageBase64String) {
+  porn(imageBase64String = '', image_url = '') {
     if (
       imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+      Buffer.byteLength(imageBase64String, 'base64') > 1048576
     ) {
-      return PS(
-        URIS.porn,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        })
-      );
-    } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
+
+    if (!imageBase64String && !image_url) {
+      return error('image and url all empty');
+    }
+
+    return PS(
+      URIS.porn,
+      this.appKey,
+      Object.assign(
+        {},
+        commonParams(),
+        imageBase64String
+          ? {
+            app_id: this.appId,
+            image: imageBase64String,
+          }
+          : {
+            app_id: this.appId,
+            image_url: image_url,
+          }
+      )
+    );
   }
 
   /**
@@ -64,26 +77,39 @@ module.exports = class ImgPublic {
    *
    * @see https://ai.qq.com/doc/imageterrorism.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
-   * @example
-   * terrorism(imageBase64String)
+   * @param {String} image_url
+   *
    * @return {PS} A Promise Object
    */
-  terrorism(imageBase64String) {
+  terrorism(imageBase64String = '', image_url = '') {
     if (
       imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+      Buffer.byteLength(imageBase64String, 'base64') > 1048576
     ) {
-      return PS(
-        URIS.terrorism,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        })
-      );
-    } else {
       return error('imageBase64String 不能为空 且 大小小余1M');
     }
+
+    if (!imageBase64String && !image_url) {
+      return error('image and url all empty');
+    }
+
+    return PS(
+      URIS.terrorism,
+      this.appKey,
+      Object.assign(
+        {},
+        commonParams(),
+        image_url
+          ? {
+            app_id: this.appId,
+            image_url: image_url,
+          }
+          : {
+            app_id: this.appId,
+            image: imageBase64String,
+          }
+      )
+    );
   }
 
   /**
