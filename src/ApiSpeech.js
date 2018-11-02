@@ -8,8 +8,8 @@ module.exports = class Speech {
   /**
    * 智能语音 API 服务类
    *
-   * @property {String} app_key 应用key
-   * @property {String} app_id  应用id
+   * @param {String} appKey 应用key
+   * @param {String} appId  应用id
    * @method tts(Object) 语音合成（AI Lab）
    * @method tta(Object) 语音合成（优图）
    * @method asr(Object) 语音识别-echo版

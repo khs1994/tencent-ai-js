@@ -8,8 +8,8 @@ module.exports = class Translate {
   /**
    * 机器翻译API构造函数
    *
-   * @property {String} app_key 应用key
-   * @property {String} app_id  应用id
+   * @param {String} appKey 应用key
+   * @param {String} appId  应用id
    * @method texttrans(Object) 文本翻译（AI Lab）
    * @method texttranslate(Object) 文本翻译（翻译君）
    * @method imagetranslate(Object) 图片翻译

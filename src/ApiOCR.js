@@ -8,8 +8,8 @@ module.exports = class OCR {
   /**
    * OCR 服务类
    *
-   * @prop {String} app_key 应用key
-   * @prop {String} app_id  应用id
+   * @param {String} appKey 应用key
+   * @param {String} appId  应用id
    * @method idcardocr(imageBase64String, type) 身份证OCR识别
    * @method bcocr(imageBase64String) 名片OCR识别
    * @method driverlicenseocr(imageBase64String, type) 行驶证驾驶证OCR识别

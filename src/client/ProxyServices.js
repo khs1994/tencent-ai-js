@@ -85,6 +85,7 @@ const errorCode = {
 
 /**
  * 腾讯AI请求代理类
+ *
  * @param {string} uri  请求的URI
  * @param {string} appkey 请求的APP_key
  * @param {Object} opt 请求的数据对象，不包含签名属性,不用进行数据编码
@@ -109,7 +110,9 @@ class ProxyServices {
   }
 
   /**
-   * ksort ：根据 接口请求参数 升序排序
+   * ksort
+   *
+   * 根据 接口请求参数 升序排序
    *
    * @returns 升序排序结果
    */
@@ -128,7 +131,10 @@ class ProxyServices {
   }
 
   /**
-   * getReqSign ：根据 接口请求参数 和 应用密钥 计算 请求签名
+   * getReqSign
+   *
+   * 根据 接口请求参数 和 应用密钥 计算 请求签名
+   *
    * @returns 签名结果
    */
   getReqSign() {

@@ -8,8 +8,8 @@ module.exports = class ImgPublic {
   /**
    * 图片识别公共 API 服务类
    *
-   * @prop {String} app_key 应用 key
-   * @prop {String} app_id  应用 id
+   * @param {String} appKey 应用 key
+   * @param {String} appId  应用 id
    * @method porn(imageBase64String) 智能鉴黄
    * @method terrorism(imageBase64String) 暴恐识别
    * @method scener(imageBase64String) 场景识别
@@ -59,13 +59,13 @@ module.exports = class ImgPublic {
         commonParams(),
         imageBase64String
           ? {
-            app_id: this.appId,
-            image: imageBase64String,
-          }
+              app_id: this.appId,
+              image: imageBase64String,
+            }
           : {
-            app_id: this.appId,
-            image_url: image_url,
-          }
+              app_id: this.appId,
+              image_url: image_url,
+            }
       )
     );
   }
@@ -101,13 +101,13 @@ module.exports = class ImgPublic {
         commonParams(),
         image_url
           ? {
-            app_id: this.appId,
-            image_url: image_url,
-          }
+              app_id: this.appId,
+              image_url: image_url,
+            }
           : {
-            app_id: this.appId,
-            image: imageBase64String,
-          }
+              app_id: this.appId,
+              image: imageBase64String,
+            }
       )
     );
   }

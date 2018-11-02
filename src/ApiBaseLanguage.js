@@ -8,8 +8,8 @@ module.exports = class BaseLanguage {
   /**
    * 自然语言处理基础部分
    *
-   * @property {String} app_key 应用key
-   * @property {String} app_id  应用id
+   * @param {String} appKey 应用key
+   * @param {String} appId  应用id
    * @method wordseg(String) 分词
    * @method wordpos(String) 词性标注
    * @method wordner(String) 专有名词识别
