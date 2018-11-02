@@ -22,5 +22,13 @@ deploy:
   provider: npm
   email: "khs1994@khs1994.com"
   api_key: $NPM_TOKEN
+  # tag: next
+  # https://docs.travis-ci.com/user/deployment#conditional-releases-with-on
   on:
     tags: true
+    node: '11'
+    # condition: $MY_ENV = super_awesome
+    # branch: release
+    # repo: username/repo
+    # all_branches: true
+    # skip_cleanup: true
