@@ -31,7 +31,7 @@ describe('image', function() {
       );
   });
 
-  it.skip('porn_url', function() {
+  it('porn_url', function() {
     return imgPublic
       .porn('', 'https://yyb.gtimg.com/aiplat/static/ai-demo/large/y-3.jpg')
       .then(

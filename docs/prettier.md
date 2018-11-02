@@ -1,3 +1,5 @@
+# 代码格式化工具 Prettier
+
 ```bash
 {
   "printWidth": 120,               // 换行字符串阈值

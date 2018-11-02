@@ -1,6 +1,6 @@
 {
   "name": "@khs1994/tencent-ai",
-  "version": "18.06.0",
+  "version": "18.06.01",
   "description": "Tencent AI SDK",
   "main": "./src/index.js",
   "scripts": {
