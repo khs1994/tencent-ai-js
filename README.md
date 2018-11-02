@@ -1,6 +1,6 @@
 # TencentAI Node.js SDK
 
-[![npm](https://img.shields.io/npm/v/tencent-ai.svg)](https://www.npmjs.com/package/tencent-ai) [![Build Status](https://travis-ci.com/khs1994-php/tencent-ai-node.svg?branch=master)](https://travis-ci.com/khs1994-php/tencent-ai-node) [![codecov](https://codecov.io/gh/khs1994-php/tencent-ai-node/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994-php/tencent-ai-node) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![npm](https://img.shields.io/npm/v/@khs1994/tencent-ai.svg)](https://www.npmjs.com/package/tencent-ai) [![Build Status](https://travis-ci.com/khs1994-php/tencent-ai-node.svg?branch=master)](https://travis-ci.com/khs1994-php/tencent-ai-node) [![codecov](https://codecov.io/gh/khs1994-php/tencent-ai-node/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994-php/tencent-ai-node) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 **This repo fork from https://github.com/w89612b/qqai-api-sdk**
 
@@ -17,13 +17,13 @@
 ## Installation
 
 ```bash
-$ npm install tencent-ai
+$ npm install @khs1994/tencent-ai
 ```
 
 ## Usage
 
 ```js
-const { Translate } = require('tencent-ai');
+const { Translate } = require('@khs1994/tencent-ai');
 
 const APP = {
   // 设置请求数据（应用密钥、接口请求参数）
