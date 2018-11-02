@@ -39,7 +39,7 @@ module.exports = class ImgSpecialEffects {
    */
   facecosmetic(image, cosmetic = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小余500KB');
+      return error('image 不能为空且大小小于500KB');
     }
     if (cosmetic && cosmetic < 1 && cosmetic > 22) {
       return error('cosmetic 不能为空且取值区间为[1-23]');
@@ -68,7 +68,7 @@ module.exports = class ImgSpecialEffects {
    */
   facedecoration(image, decoration = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小余500KB');
+      return error('image 不能为空且大小小于500KB');
     }
     if (decoration && decoration < 1 && decoration > 22) {
       return error('decoration 不能为空且取值区间为[1-22]');
@@ -97,7 +97,7 @@ module.exports = class ImgSpecialEffects {
    */
   ptuimgfilter(image, filter) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小余500KB');
+      return error('image 不能为空且大小小于500KB');
     }
     if (filter && filter < 1 && filter > 32) {
       return error('filter 不能为空且取值区间为[1-32]');
@@ -127,13 +127,13 @@ module.exports = class ImgSpecialEffects {
    */
   visionimgfilter(image, filter, session_id) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     if (filter && filter < 1 && filter > 65) {
       return error('filter 不能为空且取值区间为[1-65]');
     }
     if (session_id && Buffer.byteLength(session_id, 'base64') > 64) {
-      return error('session_id 不能为空且大小小余65b');
+      return error('session_id 不能为空且大小小于65b');
     }
     return PS(
       URIS.visionimgfilter,
@@ -161,7 +161,7 @@ module.exports = class ImgSpecialEffects {
    */
   facemerge(image, model) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小余500Kb');
+      return error('image 不能为空且大小小于500Kb');
     }
     if (model && model < 1 && model > 50) {
       return error('model 不能为空且取值区间为[1-50]');
@@ -190,7 +190,7 @@ module.exports = class ImgSpecialEffects {
    */
   facesticker(image, sticker) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空 且 大小小余500Kb');
+      return error('image 不能为空 且 大小小于500Kb');
     }
     if (sticker && sticker < 1 && sticker > 32) {
       return error('model 不能为空且取值区间为[1-31]');
@@ -218,7 +218,7 @@ module.exports = class ImgSpecialEffects {
    */
   faceage(image) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空 且 大小小余500Kb');
+      return error('image 不能为空 且 大小小于500Kb');
     }
     return PS(
       URIS.faceage,

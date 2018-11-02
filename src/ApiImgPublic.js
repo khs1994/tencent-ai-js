@@ -44,7 +44,7 @@ module.exports = class ImgPublic {
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') > 1048576
     ) {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
 
     if (!imageBase64String && !image_url) {
@@ -59,13 +59,13 @@ module.exports = class ImgPublic {
         commonParams(),
         imageBase64String
           ? {
-              app_id: this.appId,
-              image: imageBase64String,
-            }
+            app_id: this.appId,
+            image: imageBase64String,
+          }
           : {
-              app_id: this.appId,
-              image_url: image_url,
-            }
+            app_id: this.appId,
+            image_url: image_url,
+          }
       )
     );
   }
@@ -86,7 +86,7 @@ module.exports = class ImgPublic {
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') > 1048576
     ) {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
 
     if (!imageBase64String && !image_url) {
@@ -101,13 +101,13 @@ module.exports = class ImgPublic {
         commonParams(),
         image_url
           ? {
-              app_id: this.appId,
-              image_url: image_url,
-            }
+            app_id: this.appId,
+            image_url: image_url,
+          }
           : {
-              app_id: this.appId,
-              image: imageBase64String,
-            }
+            app_id: this.appId,
+            image: imageBase64String,
+          }
       )
     );
   }
@@ -142,7 +142,7 @@ module.exports = class ImgPublic {
         })
       );
     } else {
-      return error('image 不能为空 且 大小小余1M');
+      return error('image 不能为空 且 大小小于1M');
     }
   }
 
@@ -176,7 +176,7 @@ module.exports = class ImgPublic {
         })
       );
     } else {
-      return error('image 不能为空 且 大小小余1M');
+      return error('image 不能为空 且 大小小于1M');
     }
   }
 
@@ -205,7 +205,7 @@ module.exports = class ImgPublic {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -236,7 +236,7 @@ module.exports = class ImgPublic {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -270,7 +270,7 @@ module.exports = class ImgPublic {
       );
     } else {
       return error(
-        'imageBase64String/session_id 不能为空 且 imageBase64String大小小余1M session_id长度小于64B'
+        'imageBase64String/session_id 不能为空 且 imageBase64String大小小于1M session_id长度小于64B'
       );
     }
   }
@@ -300,7 +300,7 @@ module.exports = class ImgPublic {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -329,7 +329,7 @@ module.exports = class ImgPublic {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 };

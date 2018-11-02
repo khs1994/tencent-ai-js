@@ -36,9 +36,9 @@ module.exports = class Speech {
    *
    * @return {PS}
    */
-  aaievilaudio(speech_id, speech_url) {
+  evilaudio(speech_id, speech_url) {
     return PS(
-      URIS.aaievilaudio,
+      URIS.evilaudio,
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
@@ -231,7 +231,7 @@ module.exports = class Speech {
       );
     } else {
       return error(
-        'speech_chunk/speech_id 不能为空, len不能为0  或者 speech_chunk大小必须小余8M'
+        'speech_chunk/speech_id 不能为空, len不能为0  或者 speech_chunk大小必须小于8M'
       );
     }
   }
@@ -315,16 +315,10 @@ module.exports = class Speech {
    * @param {String} callback_url 用户回调url，需用户提供，用于平台向用户通知识别结果
    * @param {String} speech 待识别语音（时长上限15min） 语音数据的Base64编码，原始音频大小上限5MB
    * @param {String} speech_url 待识别语音下载地址（时长上限15min） 音频下载地址，音频大小上限30MB
-   * @example
-   *  wxasrlong({
-   *    format：1,
-   *    callback_url: 'url',
-   *    speech：database64,
-   *    speech_url：'url',
-   *  })
+   *
    * @return {PS} A Promise Object
    */
-  wxasrlong({ format = 2, callback_url = '', speech = '', speech_url = '' }) {
+  wxasrlong({ format = 2, callback_url, speech = '', speech_url = '' }) {
     if (callback_url && (speech || speech_url)) {
       if (Buffer.byteLength(speech, 'base64') < 1048576 * 5 || speech_url) {
         return PS(
@@ -339,12 +333,54 @@ module.exports = class Speech {
           })
         );
       } else {
-        return error('speech大小必须小余5M');
+        return error('speech大小必须小于5M');
       }
     } else {
       return error(
         'callback_url/speech 不能为空 或者 callback_url/speech_url不能为空'
       );
     }
+  }
+
+  /**
+   * 关键词检索
+   *
+   * 上传长音频，提供回调接口，异步获取识别结果
+   *
+   * @see https://ai.qq.com/doc/detectword.shtml
+   * @param format
+   * @param callback_url 用户回调url，需用户提供，用于平台向用户通知识别结果
+   * @param key_words 待识别关键词 非空，多个关键词之间用“|”分隔，每个词长度不低于两个字，上限500个词
+   * @param speech 语音数据的Base64编码，原始音频大小上限5MB 待识别语音（时长上限15min）
+   * @param speech_url 音频下载地址，音频大小上限30MB 待识别语音下载地址（时长上限15min）
+   *
+   * @return {PS}
+   */
+  detectkeyword(
+    callback_url,
+    key_words,
+    format = '2',
+    speech = '',
+    speech_url = ''
+  ) {
+    if (speech && Buffer.byteLength(speech, 'base64') > 1048576 * 5) {
+      return error('speech大小必须小于5M');
+    }
+
+    return PS(
+      URIS.detectkeyword,
+      this.appKey,
+      Object.assign(
+        {},
+        commonParams(),
+        {
+          app_id: this.appId,
+          callback_url: callback_url,
+          key_words: key_words,
+          format: format,
+        },
+        speech ? { speech: speech } : { speech_url: speech_url }
+      )
+    );
   }
 };

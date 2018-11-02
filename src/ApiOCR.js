@@ -53,7 +53,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -82,7 +82,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -113,7 +113,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -141,7 +141,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -169,7 +169,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -197,7 +197,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('imageBase64String 不能为空 且 大小小余1M');
+      return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
 
@@ -237,7 +237,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('image 不能为空 且 大小小余1M 或者不是正常的图片地址');
+      return error('image 不能为空 且 大小小于1M 或者不是正常的图片地址');
     }
   }
 
@@ -277,7 +277,7 @@ module.exports = class OCR {
         })
       );
     } else {
-      return error('image 不能为空 且 大小小余1M 或者不是正常的图片地址');
+      return error('image 不能为空 且 大小小于1M 或者不是正常的图片地址');
     }
   }
 };

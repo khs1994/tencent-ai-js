@@ -98,4 +98,21 @@ describe('face', () => {
         }
       );
   });
+
+  // 跨年龄人脸识别
+  it('detectcrossageface', function() {
+    return face
+      .detectcrossageface(
+        fsReadSync(__dirname + '/resource/face/peterye1.jpg'),
+        fsReadSync(__dirname + '/resource/face/peterye2.jpg')
+      )
+      .then(
+        res => {
+          assert.equal(res.ret, 0);
+        },
+        e => {
+          assert.equal(e.ret, 0);
+        }
+      );
+  });
 });

@@ -54,7 +54,7 @@ module.exports = class Person {
    */
   newperson({ image, person_name, group_ids, person_id, tag = '' }) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     if (!person_name) {
       return error('person_name 不能为空');
@@ -117,7 +117,7 @@ module.exports = class Person {
    */
   addface(images, person_id, tag = '') {
     if (images && Buffer.byteLength(images, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     if (!person_id) {
       return error('person_id 不能为空');
@@ -323,7 +323,7 @@ module.exports = class Person {
    */
   faceidentify(image, group_id, topn = 9) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     if (!group_id) {
       return error('group_id 不能为空');
@@ -356,7 +356,7 @@ module.exports = class Person {
    */
   faceverify(image, person_id) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     if (!person_id) {
       return error('person_id 不能为空');

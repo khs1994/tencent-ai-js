@@ -37,7 +37,7 @@ module.exports = class Face {
    */
   detectface(image, mode = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     if ((mode && mode < 0) || mode > 1) {
       return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
@@ -65,7 +65,7 @@ module.exports = class Face {
    */
   detectmultiface(image) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     return PS(
       URIS.detectmultiface,
@@ -90,10 +90,10 @@ module.exports = class Face {
    */
   facecompare(image_a, image_b) {
     if (image_a && Buffer.byteLength(image_a, 'base64') >= 1048576) {
-      return error('image_a 不能为空且大小小余1M');
+      return error('image_a 不能为空且大小小于1M');
     }
     if (image_b && Buffer.byteLength(image_b, 'base64') >= 1048576) {
-      return error('image_b 不能为空且大小小余1M');
+      return error('image_b 不能为空且大小小于1M');
     }
     return PS(
       URIS.facecompare,
@@ -120,10 +120,10 @@ module.exports = class Face {
    */
   detectcrossageface(source_image, target_image) {
     if (source_image && Buffer.byteLength(source_image, 'base64') >= 1048576) {
-      return error('source_image 不能为空且大小小余1M');
+      return error('source_image 不能为空且大小小于1M');
     }
     if (target_image && Buffer.byteLength(target_image, 'base64') >= 1048576) {
-      return error('target_image 不能为空且大小小余1M');
+      return error('target_image 不能为空且大小小于1M');
     }
     return PS(
       URIS.detectcrossageface,
@@ -149,7 +149,7 @@ module.exports = class Face {
    */
   faceshape(image, mode = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小余1M');
+      return error('image 不能为空且大小小于1M');
     }
     if ((mode && mode < 0) || mode > 1) {
       return error('mode 不能为空且检测模式，0-正常，1-大脸模式');

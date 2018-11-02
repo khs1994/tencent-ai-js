@@ -4,6 +4,8 @@
 
 **This repo fork from https://github.com/w89612b/qqai-api-sdk**
 
+* [Tencent AI News](https://github.com/khs1994-php/tencent-ai-news)
+
 ## 微信订阅号
 
 <p align="center">
