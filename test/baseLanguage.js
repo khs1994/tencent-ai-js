@@ -48,7 +48,6 @@ describe('baseLanguage', function() {
   });
 
   // 专有名词识别
-
   it('wordner', () => {
     return baseLanguage.wordner('最近张学友在深圳开了一场演唱会').then(
       res => {
@@ -63,7 +62,6 @@ describe('baseLanguage', function() {
   });
 
   // 同义词识别
-
   it('wordsyn', () => {
     return baseLanguage.wordsyn('今天的天气怎么样').then(
       res => {
@@ -76,7 +74,6 @@ describe('baseLanguage', function() {
   });
 
   // 语义解析
-
   it('wordcom', () => {
     return baseLanguage.wordcom('Despacito歌词搜索').then(
       res => {
@@ -89,7 +86,6 @@ describe('baseLanguage', function() {
   });
 
   // 情感分析识别
-
   it('textpolar', function() {
     return baseLanguage.textpolar('今天的天气不错呀').then(
       res => {

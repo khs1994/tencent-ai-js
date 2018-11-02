@@ -6,15 +6,38 @@ language: node_js
 
 pipeline:
   script:
-    image: node:alpine
+    image: node:${NODE_VERSION}-alpine
+    # environment:
+    #   - NODE_TENCENT_AI_APP_KEY=abc
+    #   - NODE_TENCENT_AI_APP_ID=123
     commands:
-    - export PATH=./node_modules/.bin:$PATH
-    - npm install
-    - npm test
+      - export PATH=./node_modules/.bin:$PATH
+      - npm install --registry=https://registry.npm.taobao.org
+      - npm test
 
   after_success:
     image: node:alpine
     # environment:
     #   - CODECOV_TOKEN=XXX
     commands:
-    - npm run codecov
+      - export PATH=./node_modules/.bin:$PATH
+      - npm run codecov
+    when:
+      status: success
+
+  deploy:
+    # image: khs1994/deployer
+    # environment:
+    #   - NPM_TOKEN=""
+    provider: npm
+    email: khs1994@khs1994.com
+    # api_key:
+    # tag: next
+    when:
+      event: "tag"
+      status: success
+
+matrix:
+  NODE_VERSION:
+    - 11
+    - 10
