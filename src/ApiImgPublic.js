@@ -57,15 +57,10 @@ module.exports = class ImgPublic {
       Object.assign(
         {},
         commonParams(),
+        { app_id: this.appId },
         imageBase64String
-          ? {
-            app_id: this.appId,
-            image: imageBase64String,
-          }
-          : {
-            app_id: this.appId,
-            image_url: image_url,
-          }
+          ? { image: imageBase64String }
+          : { image_url: image_url }
       )
     );
   }
@@ -99,15 +94,8 @@ module.exports = class ImgPublic {
       Object.assign(
         {},
         commonParams(),
-        image_url
-          ? {
-            app_id: this.appId,
-            image_url: image_url,
-          }
-          : {
-            app_id: this.appId,
-            image: imageBase64String,
-          }
+        { app_id: this.appId },
+        image_url ? { image_url: image_url } : { image: imageBase64String }
       )
     );
   }

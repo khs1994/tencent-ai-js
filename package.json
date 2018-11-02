@@ -4,7 +4,7 @@
   "description": "Tencent AI SDK",
   "main": "./src/index.js",
   "scripts": {
-    "eslint": "eslint ./src ./test --fix",
+    "eslint": "eslint ./src ./test",
     "pretest": "npm run eslint",
     "test": "nyc mocha -R spec --timeout 10000",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
