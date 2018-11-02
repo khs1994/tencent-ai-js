@@ -12,10 +12,17 @@ const { BaseLanguage } = require('../');
 
 const baseLanguage = new BaseLanguage(APP.appkey, APP.appid);
 
+describe('index', () => {
+  it('index', () => {
+    assert.throws(() => new BaseLanguage('', ''), Error);
+  });
+});
+
 /**
  * 自然语言处理-基本类 API 测试文件
  */
-describe('baseLanguage', () => {
+describe('baseLanguage', function() {
+  this.retries(4);
   // 基本文本分析 分词
   it('wordseg', () => {
     return baseLanguage.wordseg('中国 人啊，a c ! hello word').then(

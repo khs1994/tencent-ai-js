@@ -15,7 +15,8 @@ const assert = require('assert');
 /**
  * OCR API 测试文件
  */
-describe('ocr', () => {
+describe('ocr', function() {
+  this.retries(4);
   // 身份证OCR识别 人像面 正面
   it('idcard_z', function() {
     return ocr

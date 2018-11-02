@@ -18,8 +18,8 @@ const assert = require('assert');
  * 智能语音 测试文件
  * 语音识别-流式版（AI Lab）、语音识别-流式版(WeChat AI)、长语音识别
  */
-
-describe('speech', () => {
+describe('speech', function() {
+  this.retries(4);
   // 音频鉴黄
   it.skip('evilaudio', () => {
     return speech

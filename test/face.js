@@ -11,7 +11,8 @@ const assert = require('assert');
 /**
  * 面部识别API 测试类
  */
-describe('face', () => {
+describe('face', function() {
+  this.retries(4);
   // 人脸分析
   it('detectface', () => {
     return face

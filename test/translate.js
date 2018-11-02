@@ -15,8 +15,8 @@ const assert = require('assert');
 /**
  * 自然语言处理-翻译类 测试文件
  */
-
-describe('translate', () => {
+describe('translate', function() {
+  this.retries(4);
   // 文本翻译（AI Lab）
   it('texttrans', () => {
     return translate.texttrans({ text: 'Hello 世界', type: 0 }).then(

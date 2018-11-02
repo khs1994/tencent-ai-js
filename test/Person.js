@@ -11,7 +11,9 @@ const assert = require('assert');
 /**
  * 人体管理API 测试类
  */
-describe('person', () => {
+describe('person', function() {
+  this.retries(4);
+
   let group_ids = 'group100';
   let person_id = '1504533187';
   let face_id;

@@ -13,7 +13,8 @@
   },
   "author": {
     "name": "khs1994",
-    "email": "khs1994@khs1994.com"
+    "email": "khs1994@khs1994.com",
+    "url": "https://khs1994.com"
   },
   "repository": {
     "type": "git",
@@ -41,5 +42,21 @@
   "files": [
     "src",
     ".pcit.yml"
-  ]
+  ],
+  "engines": {
+    "node": ">=6.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "private": false,
+  "homepage": "https://github.com/khs1994-php/tencent-ai-node",
+  "bugs": {
+    "url": "https://github.com/khs1994-php/tencent-ai-node/issues"
+  },
+  "directories": {
+    "doc": "./docs",
+    "lib": "./src"
+  }
 }

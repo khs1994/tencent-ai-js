@@ -17,7 +17,8 @@ const assert = require('assert');
 /**
  * 计算机视觉-图片特效类 API 测试文件
  */
-describe('image', () => {
+describe('image', function() {
+  this.retries(4);
   // 人脸美妆
   it('facecosmetic', () => {
     return imgSpecialEffects

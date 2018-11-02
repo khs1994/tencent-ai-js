@@ -15,7 +15,8 @@ const assert = require('assert');
 /**
  * 计算机视觉-图片识别公共类 API 测试文件
  */
-describe('image', () => {
+describe('image', function() {
+  this.retries(4);
   // 智能鉴黄
   it('porn', function() {
     return imgPublic
