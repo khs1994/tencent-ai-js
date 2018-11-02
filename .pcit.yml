@@ -16,7 +16,7 @@ pipeline:
       - npm test
 
   after_success:
-    image: node:alpine
+    image: khs1994/node:git
     # environment:
     #   - CODECOV_TOKEN=XXX
     commands:

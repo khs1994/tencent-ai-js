@@ -15,7 +15,7 @@ pipeline:
     privileged: true
 
   after_success:
-    image: node:alpine
+    image: khs1994/node:git
     # environment:
     #   - CODECOV_TOKEN=XXX
     commands:
@@ -23,24 +23,11 @@ pipeline:
       - npm run codecov
     when:
       status: success
-    # secrets: [codecov_token]
-
-  npm_auth:
-    image: robertstettner/drone-npm-auth
-    # username: khs1994
-    # password: mypassword
-    # email: khs1994@khs1994.com
-    registry: https://registry.npmjs.org
-    # scope: ''
-    # path: './'
-    secrets: [npm_username,npm_password,npm_email]
-    when:
-      event: tag
-      status: success
+    secrets: [codecov_token]
 
   deploy:
     image: plugins/npm
-    # username: khs1994
+    username: khs1994
     # password: mypassword
     # token: mytoken
     email: khs1994@khs1994.com
@@ -48,6 +35,7 @@ pipeline:
     when:
       event: tag
       status: success
+    secrets: [npm_username,npm_password,npm_token]
 
 matrix:
   NODE_VERSION:
