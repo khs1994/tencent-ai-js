@@ -14,106 +14,70 @@ const assert = require('assert');
 describe('face', function() {
   this.retries(4);
   // 人脸分析
-  it('detectface', () => {
-    return face
-      .detectface(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 0)
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('detectface', async () => {
+    let r = await face.detectface(
+      fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
+      0
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 人脸分析 大脸
-  it('detectface_big', function() {
-    return face
-      .detectface(fsReadSync(`${__dirname}/resource/face/wxc2.jpg`), 1)
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('detectface_big', async function() {
+    let r = await face.detectface(
+      fsReadSync(`${__dirname}/resource/face/wxc2.jpg`),
+      1
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 多人脸检测
-  it('detectmultiface', function() {
-    return face
-      .detectmultiface(fsReadSync(`${__dirname}/resource/face/peterye2.jpg`))
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('detectmultiface', async function() {
+    let r = await face.detectmultiface(
+      fsReadSync(`${__dirname}/resource/face/peterye2.jpg`)
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 人脸对比
-  it('facecompare', function() {
-    return face
-      .facecompare(
-        fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
-        fsReadSync(`${__dirname}/resource/face/wxc2.jpg`)
-      )
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('facecompare', async function() {
+    let r = await face.facecompare(
+      fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
+      fsReadSync(`${__dirname}/resource/face/wxc2.jpg`)
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 五官定位
-  it('faceshape', function() {
-    return face
-      .faceshape(fsReadSync(`${__dirname}/resource/face/wxc3.jpg`), 0)
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('faceshape', async function() {
+    let r = await face.faceshape(
+      fsReadSync(`${__dirname}/resource/face/wxc3.jpg`),
+      0
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 五官定位 大脸
-  it('faceshape_big', function() {
-    return face
-      .faceshape(fsReadSync(`${__dirname}/resource/face/wxc3.jpg`), 1)
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('faceshape_big', async function() {
+    let r = await face.faceshape(
+      fsReadSync(`${__dirname}/resource/face/wxc3.jpg`),
+      1
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 跨年龄人脸识别
-  it('detectcrossageface', function() {
-    return face
-      .detectcrossageface(
-        fsReadSync(__dirname + '/resource/face/peterye1.jpg'),
-        fsReadSync(__dirname + '/resource/face/peterye2.jpg')
-      )
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('detectcrossageface', async function() {
+    let r = await face.detectcrossageface(
+      fsReadSync(__dirname + '/resource/face/peterye1.jpg'),
+      fsReadSync(__dirname + '/resource/face/peterye2.jpg')
+    );
+    assert.equal(r.ret, 0);
   });
 });

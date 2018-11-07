@@ -71,7 +71,7 @@ const getReqSign = (opt, appkey) => {
   };
 };
 
-var proxy = https
+let proxy = https
   .request(requestOpt, pres => {
     let arrBuf = [],
       bufLength = 0,

@@ -55,9 +55,9 @@ describe('baseLanguage', function() {
 
   // 语义解析
   it('wordcom', async () => {
-    let r = await baseLanguage.wordcom('Despacito歌词搜索');
+    let r = await baseLanguage.wordcom('今天深圳的天气怎么样？明天呢');
 
-    assert(r.ret, 0);
+    assert.equal(r.ret, 0);
   });
 
   // 情感分析识别

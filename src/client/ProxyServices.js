@@ -191,17 +191,19 @@ class ProxyServices {
           .on('end', () => {
             let chunkAll = Buffer.concat(arrBuf, bufLength);
             let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
+
             try {
               let res = JSON.parse(decodedBody);
-              res.retMsg =
-                res.ret < 0
-                  ? '表示系统出错，例如网络超时；一般情况下需要发出告警，共同定位问题原因。'
-                  : res.ret > 0
-                    ? errorCode[res.ret]
-                    : '恭喜一切正常';
-              this.resolve(res);
+              // 判断返回码
+              if (res.ret === 0) {
+                this.resolve(res);
+                return;
+              }
+              res.retMsg = errorCode[res.ret];
+              // 错误信息不存在，抛出异常
+              this.reject(res);
             } catch (error) {
-              this.resolve(decodedBody);
+              this.reject(decodedBody);
             }
           });
       })

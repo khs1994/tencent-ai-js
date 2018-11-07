@@ -31,14 +31,14 @@
     "randomstring": "^1.1.5"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "^10.0.1",
     "codecov": "^3.1.0",
     "eslint": "^5.8.0",
-    "eslint-config-prettier": "^3.0.0",
+    "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "mocha": "^4.1.0",
+    "mocha": "^5.2.0",
     "nyc": "^13.1.0",
-    "prettier": "^1.13.7"
+    "prettier": "^1.15.1"
   },
   "files": [
     "src",

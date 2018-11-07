@@ -43,7 +43,7 @@ translate.texttrans({text: '你好'}).then((res)=>{
 
 ## CI/CD
 
-* https://github.com/codecov/codecov-node
+[PCIT](https://github.com/khs1994-php/pcit) Node.js 示例项目。
 
 ## Test
 
