@@ -21,16 +21,17 @@
     "url": "https://github.com/khs1994-php/tencent-ai-node.git"
   },
   "license": "MIT",
-  "dependencies": {
-    "iconv-lite": "^0.4.19",
-    "randomstring": "^1.1.5"
-  },
   "keywords": [
     "tencent-ai",
     "ai",
     "sdk"
   ],
+  "dependencies": {
+    "iconv-lite": "^0.4.19",
+    "randomstring": "^1.1.5"
+  },
   "devDependencies": {
+    "babel-eslint": "^8.2.6",
     "codecov": "^3.1.0",
     "eslint": "^5.8.0",
     "eslint-config-prettier": "^3.0.0",

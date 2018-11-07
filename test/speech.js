@@ -21,59 +21,46 @@ const assert = require('assert');
 describe('speech', function() {
   this.retries(4);
   // 音频鉴黄
-  it.skip('evilaudio', () => {
-    return speech
-      .evilaudio(
-        randomstring.generate(10),
-        'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav'
-      )
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('evilaudio', async () => {
+    let r = await speech.evilaudio(
+      randomstring.generate(10),
+      'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav'
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 音频关键词搜索
-  it('detectkeyword', () => {
-    return speech
-      .detectkeyword(
-        'https://127.0.0.1',
-        '商业',
-        2,
-        fsReadSync(__dirname + '/resource/audio/15s.wav')
-      )
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('detectkeyword', async () => {
+    let r = await speech.detectkeyword(
+      'https://127.0.0.1',
+      '商业',
+      2,
+      fsReadSync(__dirname + '/resource/audio/15s.wav')
+    );
+
+    assert.equal(r.ret, 0);
   });
 
   // 音频关键词搜索 url
-  it('detectkeyword_url', () => {
-    return speech
-      .detectkeyword(
-        'https://127.0.0.1',
-        '商业',
-        2,
-        '',
-        'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav'
-      )
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('detectkeyword_url', done => {
+    (async () => {
+      try {
+        let r = await speech.detectkeyword(
+          'https://127.0.0.1',
+          '商业',
+          2,
+          '',
+          'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav'
+        );
+
+        assert.equal(r.ret, 0);
+        done();
+      } catch (err) {
+        assert.equal(err.ret, 0);
+        done();
+      }
+    })();
   });
 
   // 语音合成（AI Lab）
