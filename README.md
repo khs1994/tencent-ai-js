@@ -47,10 +47,12 @@ translate.texttrans({ text: '你好' }).then(
 
 (async () => {
   try {
-    let res = await translate.texttrans({ text: 'hello' });
+    let text = 'hello';
+    let res = await translate.texttrans({ text });
     console.log(res);
     // error demo
-    res = await translate.texttrans({ tex: 'hello' });
+    let tex = 'hello'
+    res = await translate.texttrans({ tex });
   } catch (e) {
     console.log(e);
   }

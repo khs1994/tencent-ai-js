@@ -66,9 +66,11 @@ describe('translate', function() {
 
   // 语音翻译
   it('speechtranslate', function() {
+    let speech_chunk = fsReadSync(`${__dirname}/resource/translate/t.pcm`);
+
     return translate
       .speechtranslate({
-        speech_chunk: fsReadSync(`${__dirname}/resource/translate/t.pcm`),
+        speech_chunk,
         session_id: randomstring.generate({
           length: 16,
           capitalization: 'uppercase',

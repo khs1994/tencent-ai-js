@@ -21,6 +21,7 @@ pipeline:
     commands:
       - export PATH=./node_modules/.bin:$PATH
       - npm run codecov
+      - rm -rf src/client/data.txt
     when:
       status: success
     secrets: [codecov_token]
