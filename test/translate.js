@@ -31,7 +31,10 @@ describe('translate', function() {
 
   // 文本翻译（翻译君）
   it('texttranslate', function() {
-    return translate.texttranslate({ text: '你好', target: 'en' }).then(
+    // ES6
+    let text = '你好';
+    // {text: '你好', target: 'en'}
+    return translate.texttranslate({ text, target: 'en' }).then(
       res => {
         assert.equal(res.ret, 0);
       },

@@ -51,7 +51,7 @@ translate.texttrans({ text: '你好' }).then(
     let res = await translate.texttrans({ text });
     console.log(res);
     // error demo
-    let tex = 'hello'
+    let tex = 'hello';
     res = await translate.texttrans({ tex });
   } catch (e) {
     console.log(e);
@@ -61,7 +61,7 @@ translate.texttrans({ text: '你好' }).then(
 
 ## CI/CD
 
-[PCIT](https://github.com/khs1994-php/pcit) Node.js 示例项目。
+[PCIT](https://github.com/khs1994-php/pcit) Node.js 示例项目
 
 ## Test
 
