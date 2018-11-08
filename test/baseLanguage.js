@@ -8,13 +8,13 @@ const assert = require('assert');
 
 const { APP } = require('./util');
 
-const { BaseLanguage } = require('../');
+const { BaseLanguage, TencentAIError } = require('../');
 
 const baseLanguage = new BaseLanguage(APP.appkey, APP.appid);
 
 describe('index', () => {
   it('index', () => {
-    assert.throws(() => new BaseLanguage('', ''), Error);
+    assert.throws(() => new BaseLanguage('', ''), TencentAIError);
   });
 });
 
@@ -27,14 +27,14 @@ describe('baseLanguage', function() {
   it('wordseg', async () => {
     let r = await baseLanguage.wordseg('中国 人啊，a c ! hello word');
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 
   // 词性定义
   it('wordpos', async () => {
     let r = await baseLanguage.wordpos('腾讯人工智能');
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 
   // 专有名词识别
@@ -50,21 +50,21 @@ describe('baseLanguage', function() {
   it('wordsyn', async () => {
     let r = await baseLanguage.wordsyn('今天的天气怎么样');
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 
   // 语义解析
   it('wordcom', async () => {
     let r = await baseLanguage.wordcom('今天深圳的天气怎么样？明天呢');
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 
   // 情感分析识别
   it('textpolar', async function() {
     let r = await baseLanguage.textpolar('今天的天气不错呀');
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 
   // 基础闲聊
@@ -77,6 +77,6 @@ describe('baseLanguage', function() {
       }),
     });
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 });

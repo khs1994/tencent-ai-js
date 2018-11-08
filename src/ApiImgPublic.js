@@ -4,6 +4,8 @@ const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class ImgPublic {
   /**
    * 图片识别公共 API 服务类
@@ -22,7 +24,7 @@ module.exports = class ImgPublic {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -60,8 +62,8 @@ module.exports = class ImgPublic {
         { app_id: this.appId },
         imageBase64String
           ? { image: imageBase64String }
-          : { image_url: image_url }
-      )
+          : { image_url: image_url },
+      ),
     );
   }
 
@@ -95,8 +97,8 @@ module.exports = class ImgPublic {
         {},
         commonParams(),
         { app_id: this.appId },
-        image_url ? { image_url: image_url } : { image: imageBase64String }
-      )
+        image_url ? { image_url: image_url } : { image: imageBase64String },
+      ),
     );
   }
 
@@ -127,7 +129,7 @@ module.exports = class ImgPublic {
           image: image,
           format: format,
           topk: topk,
-        })
+        }),
       );
     } else {
       return error('image 不能为空 且 大小小于1M');
@@ -161,7 +163,7 @@ module.exports = class ImgPublic {
           image: image,
           format: format,
           topk: topk,
-        })
+        }),
       );
     } else {
       return error('image 不能为空 且 大小小于1M');
@@ -190,7 +192,7 @@ module.exports = class ImgPublic {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -221,7 +223,7 @@ module.exports = class ImgPublic {
           app_id: this.appId,
           image: imageBase64String,
           scene: scene,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -254,11 +256,11 @@ module.exports = class ImgPublic {
           app_id: this.appId,
           image: imageBase64String,
           session_id: session_id,
-        })
+        }),
       );
     } else {
       return error(
-        'imageBase64String/session_id 不能为空 且 imageBase64String大小小于1M session_id长度小于64B'
+        'imageBase64String/session_id 不能为空 且 imageBase64String大小小于1M session_id长度小于64B',
       );
     }
   }
@@ -285,7 +287,7 @@ module.exports = class ImgPublic {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -314,7 +316,7 @@ module.exports = class ImgPublic {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');

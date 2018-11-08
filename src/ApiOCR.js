@@ -4,6 +4,8 @@ const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class OCR {
   /**
    * OCR 服务类
@@ -21,7 +23,7 @@ module.exports = class OCR {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -50,7 +52,7 @@ module.exports = class OCR {
           app_id: this.appId,
           image: imageBase64String,
           card_type: card_type,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -79,7 +81,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -110,7 +112,7 @@ module.exports = class OCR {
           app_id: this.appId,
           image: imageBase64String,
           type: type,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -138,7 +140,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -166,7 +168,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -194,7 +196,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
@@ -222,7 +224,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image_url: imageBase64String,
-        })
+        }),
       );
     } else if (
       imageBase64String &&
@@ -234,7 +236,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('image 不能为空 且 大小小于1M 或者不是正常的图片地址');
@@ -262,7 +264,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image_url: imageBase64String,
-        })
+        }),
       );
     } else if (
       imageBase64String &&
@@ -274,7 +276,7 @@ module.exports = class OCR {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           image: imageBase64String,
-        })
+        }),
       );
     } else {
       return error('image 不能为空 且 大小小于1M 或者不是正常的图片地址');

@@ -23,11 +23,11 @@ describe('ocr', function() {
       .idcardocr(fsReadSync(`${__dirname}/resource/ocr/idcardz.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -37,11 +37,11 @@ describe('ocr', function() {
       .idcardocr(fsReadSync(`${__dirname}/resource/ocr/idcardf.jpg`), 1)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -51,11 +51,11 @@ describe('ocr', function() {
       .bcocr(fsReadSync(`${__dirname}/resource/ocr/businesscard.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -65,11 +65,11 @@ describe('ocr', function() {
       .driverlicenseocr(fsReadSync(`${__dirname}/resource/ocr/driver.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -79,11 +79,11 @@ describe('ocr', function() {
       .driverlicenseocr(fsReadSync(`${__dirname}/resource/ocr/driving.jpg`), 0)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -93,11 +93,11 @@ describe('ocr', function() {
       .bizlicenseocr(fsReadSync(`${__dirname}/resource/ocr/biz.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -107,11 +107,11 @@ describe('ocr', function() {
       .creditcardocr(fsReadSync(`${__dirname}/resource/ocr/creditcard.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -121,11 +121,11 @@ describe('ocr', function() {
       .generalocr(fsReadSync(`${__dirname}/resource/ocr/general.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -135,11 +135,11 @@ describe('ocr', function() {
       .plateocr('https://yyb.gtimg.com/ai/assets/ai-demo/large/plate-1-lg.jpg')
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -149,11 +149,11 @@ describe('ocr', function() {
       .plateocr(fsReadSync(`${__dirname}/resource/ocr/` + 'plate.jpg'))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -161,15 +161,15 @@ describe('ocr', function() {
   it('handwritingocr_url', function() {
     return ocr
       .handwritingocr(
-        'https://thumbs.dreamstime.com/z/%E6%B1%89%E8%AF%AD%E6%89%8B%E5%86%99-36694605.jpg'
+        'https://thumbs.dreamstime.com/z/%E6%B1%89%E8%AF%AD%E6%89%8B%E5%86%99-36694605.jpg',
       )
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -179,11 +179,11 @@ describe('ocr', function() {
       .handwritingocr(fsReadSync(`${__dirname}/resource/ocr/` + 'hd.jpg'))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 });

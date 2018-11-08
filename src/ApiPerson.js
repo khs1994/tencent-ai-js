@@ -4,6 +4,8 @@ const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class Person {
   /**
    * 人体管理 API 服务类
@@ -25,7 +27,7 @@ module.exports = class Person {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -75,7 +77,7 @@ module.exports = class Person {
         group_ids: group_ids,
         person_id: person_id,
         tag: tag,
-      })
+      }),
     );
   }
 
@@ -99,7 +101,7 @@ module.exports = class Person {
       Object.assign({}, commonParams(), {
         app_id: this.appId,
         person_id: person_id,
-      })
+      }),
     );
   }
 
@@ -130,7 +132,7 @@ module.exports = class Person {
         images: images,
         person_id: person_id,
         tag: tag,
-      })
+      }),
     );
   }
 
@@ -159,7 +161,7 @@ module.exports = class Person {
         app_id: this.appId,
         person_id: person_id,
         face_ids: face_ids,
-      })
+      }),
     );
   }
 
@@ -190,7 +192,7 @@ module.exports = class Person {
         person_id: person_id,
         person_name: person_name,
         tag: tag,
-      })
+      }),
     );
   }
 
@@ -214,7 +216,7 @@ module.exports = class Person {
       Object.assign({}, commonParams(), {
         app_id: this.appId,
         person_id: person_id,
-      })
+      }),
     );
   }
 
@@ -233,7 +235,7 @@ module.exports = class Person {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-      })
+      }),
     );
   }
 
@@ -257,7 +259,7 @@ module.exports = class Person {
       Object.assign({}, commonParams(), {
         app_id: this.appId,
         group_id: group_id,
-      })
+      }),
     );
   }
 
@@ -281,7 +283,7 @@ module.exports = class Person {
       Object.assign({}, commonParams(), {
         app_id: this.appId,
         person_id: person_id,
-      })
+      }),
     );
   }
 
@@ -305,7 +307,7 @@ module.exports = class Person {
       Object.assign({}, commonParams(), {
         app_id: this.appId,
         face_id: face_id,
-      })
+      }),
     );
   }
 
@@ -339,7 +341,7 @@ module.exports = class Person {
         image: image,
         group_id: group_id,
         topn: topn,
-      })
+      }),
     );
   }
 
@@ -368,7 +370,7 @@ module.exports = class Person {
         app_id: this.appId,
         image: image,
         person_id: person_id,
-      })
+      }),
     );
   }
 };

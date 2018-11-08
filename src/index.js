@@ -9,4 +9,5 @@ module.exports = {
   Person: require('./ApiPerson'),
   Speech: require('./ApiSpeech'),
   Translate: require('./ApiTranslate'),
+  TencentAIError: require('./Error/TencentAIError'),
 };

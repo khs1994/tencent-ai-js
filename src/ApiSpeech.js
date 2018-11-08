@@ -4,6 +4,8 @@ const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class Speech {
   /**
    * 智能语音 API 服务类
@@ -19,7 +21,7 @@ module.exports = class Speech {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -44,7 +46,7 @@ module.exports = class Speech {
         app_id: this.appId,
         speech_id: speech_id,
         speech_url: speech_url,
-      })
+      }),
     );
   }
 
@@ -95,7 +97,7 @@ module.exports = class Speech {
           speed: speed,
           aht: aht,
           apc: apc,
-        })
+        }),
       );
     } else {
       return error('text不能为空 或者应小于 150B');
@@ -129,7 +131,7 @@ module.exports = class Speech {
           text: text,
           model_type: model_type,
           speed: speed,
-        })
+        }),
       );
     } else {
       return error('text不能为空 或者应小于 300B');
@@ -163,7 +165,7 @@ module.exports = class Speech {
           speech: speech,
           format: format,
           rate: rate,
-        })
+        }),
       );
     } else {
       return error('speech 不能为空');
@@ -227,11 +229,11 @@ module.exports = class Speech {
           end: end,
           format: format,
           rate: rate,
-        })
+        }),
       );
     } else {
       return error(
-        'speech_chunk/speech_id 不能为空, len不能为0  或者 speech_chunk大小必须小于8M'
+        'speech_chunk/speech_id 不能为空, len不能为0  或者 speech_chunk大小必须小于8M',
       );
     }
   }
@@ -281,7 +283,7 @@ module.exports = class Speech {
     format = 2,
     rate = 16000,
     bits = 16,
-    cont_res = 0
+    cont_res = 0,
   ) {
     if (speech_chunk && speech_id && len) {
       return PS(
@@ -298,7 +300,7 @@ module.exports = class Speech {
           rate: rate,
           bits: bits,
           cont_res: cont_res,
-        })
+        }),
       );
     } else {
       return error('speech_chunk/speech_id 不能为空, len不能为0');
@@ -330,14 +332,14 @@ module.exports = class Speech {
             speech: speech,
             callback_url: callback_url,
             format: format,
-          })
+          }),
         );
       } else {
         return error('speech大小必须小于5M');
       }
     } else {
       return error(
-        'callback_url/speech 不能为空 或者 callback_url/speech_url不能为空'
+        'callback_url/speech 不能为空 或者 callback_url/speech_url不能为空',
       );
     }
   }
@@ -361,7 +363,7 @@ module.exports = class Speech {
     key_words,
     format = '2',
     speech = '',
-    speech_url = ''
+    speech_url = '',
   ) {
     if (speech && Buffer.byteLength(speech, 'base64') > 1048576 * 5) {
       return error('speech大小必须小于5M');
@@ -379,8 +381,8 @@ module.exports = class Speech {
           key_words: key_words,
           format: format,
         },
-        speech ? { speech: speech } : { speech_url: speech_url }
-      )
+        speech ? { speech: speech } : { speech_url: speech_url },
+      ),
     );
   }
 };

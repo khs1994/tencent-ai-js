@@ -18,30 +18,21 @@ const assert = require('assert');
 describe('image', function() {
   this.retries(4);
   // 智能鉴黄
-  it('porn', function() {
-    return imgPublic
-      .porn(fsReadSync(`${__dirname}/resource/face/wxc.jpg`))
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('porn', async function() {
+    let r = await imgPublic.porn(
+      fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
+    );
+
+    assert.strictEqual(r.ret, 0);
   });
 
-  it('porn_url', function() {
-    return imgPublic
-      .porn('', 'https://yyb.gtimg.com/aiplat/static/ai-demo/large/y-3.jpg')
-      .then(
-        res => {
-          assert.equal(res.ret, 0);
-        },
-        e => {
-          assert.equal(e.ret, 0);
-        }
-      );
+  it('porn_url', async function() {
+    let r = await imgPublic.porn(
+      '',
+      'https://yyb.gtimg.com/aiplat/static/ai-demo/large/y-3.jpg',
+    );
+
+    assert.strictEqual(r.ret, 0);
   });
 
   // 暴恐图片识别
@@ -50,11 +41,11 @@ describe('image', function() {
       .terrorism(fsReadSync(`${__dirname}/resource/vision/terrorism.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -62,15 +53,15 @@ describe('image', function() {
     return imgPublic
       .terrorism(
         '',
-        'https://yyb.gtimg.com/ai/assets/ai-demo/large/terror-14-lg.jpg'
+        'https://yyb.gtimg.com/ai/assets/ai-demo/large/terror-14-lg.jpg',
       )
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -83,11 +74,11 @@ describe('image', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -100,11 +91,11 @@ describe('image', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -114,11 +105,11 @@ describe('image', function() {
       .imagetag(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -128,11 +119,11 @@ describe('image', function() {
       .imgidentify(fsReadSync(`${__dirname}/resource/vision/vehicle.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -142,11 +133,11 @@ describe('image', function() {
       .imgidentify(fsReadSync(`${__dirname}/resource/vision/flower.jpg`), 2)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -158,15 +149,15 @@ describe('image', function() {
         randomstring.generate({
           length: 16,
           capitalization: 'uppercase',
-        })
+        }),
       )
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -176,11 +167,11 @@ describe('image', function() {
       .imagefuzzy(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -190,11 +181,11 @@ describe('image', function() {
       .imagefood(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 });

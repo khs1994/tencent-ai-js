@@ -30,12 +30,12 @@ describe('person', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
           face_id = res.data.face_id;
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -45,15 +45,15 @@ describe('person', function() {
       .addface(
         fsReadSync(`${__dirname}/resource/face/wxc2.jpg`),
         person_id,
-        '备注信息'
+        '备注信息',
       )
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -61,11 +61,11 @@ describe('person', function() {
   it('getgroupids', function() {
     return person.getgroupids().then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -73,11 +73,11 @@ describe('person', function() {
   it('getpersonids', () => {
     return person.getpersonids(group_ids).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -85,11 +85,11 @@ describe('person', function() {
   it('getfaceids', function() {
     return person.getfaceids(person_id).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -97,11 +97,11 @@ describe('person', function() {
   it('getfaceinfo', function() {
     return person.getfaceinfo(face_id).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -109,11 +109,11 @@ describe('person', function() {
   it('getinfo', function() {
     return person.getinfo(person_id).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -121,11 +121,11 @@ describe('person', function() {
   it('setinfo', function() {
     return person.setinfo(person_id, 'wxc', '新的备注信息').then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -135,15 +135,15 @@ describe('person', function() {
       .faceidentify(
         fsReadSync(`${__dirname}/resource/face/wxc5.jpg`),
         'group1',
-        9
+        9,
       )
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -153,11 +153,11 @@ describe('person', function() {
       .faceverify(fsReadSync(`${__dirname}/resource/face/wxc3.jpg`), person_id)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -165,11 +165,11 @@ describe('person', function() {
   it('delface', () => {
     return person.delface(person_id, face_id).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -177,11 +177,11 @@ describe('person', function() {
   it('deleteperson', () => {
     return person.delperson(person_id).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 });

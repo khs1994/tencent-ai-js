@@ -4,6 +4,8 @@ const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class ImgSpecialEffects {
   /**
    * 图片特效API服务类
@@ -20,7 +22,7 @@ module.exports = class ImgSpecialEffects {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -51,7 +53,7 @@ module.exports = class ImgSpecialEffects {
         app_id: this.appId,
         image: image,
         cosmetic: cosmetic,
-      })
+      }),
     );
   }
 
@@ -80,7 +82,7 @@ module.exports = class ImgSpecialEffects {
         app_id: this.appId,
         image: image,
         decoration: decoration,
-      })
+      }),
     );
   }
 
@@ -109,7 +111,7 @@ module.exports = class ImgSpecialEffects {
         app_id: this.appId,
         image: image,
         filter: filter,
-      })
+      }),
     );
   }
 
@@ -143,7 +145,7 @@ module.exports = class ImgSpecialEffects {
         image: image,
         filter: filter,
         session_id: session_id,
-      })
+      }),
     );
   }
 
@@ -173,7 +175,7 @@ module.exports = class ImgSpecialEffects {
         app_id: this.appId,
         image: image,
         model: model,
-      })
+      }),
     );
   }
 
@@ -202,7 +204,7 @@ module.exports = class ImgSpecialEffects {
         app_id: this.appId,
         image: image,
         sticker: sticker,
-      })
+      }),
     );
   }
 
@@ -226,7 +228,7 @@ module.exports = class ImgSpecialEffects {
       Object.assign({}, commonParams(), {
         app_id: this.appId,
         image: image,
-      })
+      }),
     );
   }
 };

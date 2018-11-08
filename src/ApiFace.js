@@ -4,6 +4,8 @@ const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class Face {
   /**
    * 面部识别 API 服务类
@@ -18,7 +20,7 @@ module.exports = class Face {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -49,7 +51,7 @@ module.exports = class Face {
         app_id: this.appId,
         image: image,
         mode: mode,
-      })
+      }),
     );
   }
 
@@ -73,7 +75,7 @@ module.exports = class Face {
       Object.assign({}, commonParams(), {
         app_id: this.appId,
         image: image,
-      })
+      }),
     );
   }
 
@@ -102,7 +104,7 @@ module.exports = class Face {
         app_id: this.appId,
         image_a: image_a,
         image_b: image_b,
-      })
+      }),
     );
   }
 
@@ -132,7 +134,7 @@ module.exports = class Face {
         app_id: this.appId,
         source_image: source_image,
         target_image: target_image,
-      })
+      }),
     );
   }
 
@@ -161,7 +163,7 @@ module.exports = class Face {
         app_id: this.appId,
         image: image,
         mode: mode,
-      })
+      }),
     );
   }
 };

@@ -21,11 +21,11 @@ describe('translate', function() {
   it('texttrans', () => {
     return translate.texttrans({ text: 'Hello 世界', type: 0 }).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -36,11 +36,11 @@ describe('translate', function() {
     // {text: '你好', target: 'en'}
     return translate.texttranslate({ text, target: 'en' }).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 
@@ -59,11 +59,11 @@ describe('translate', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -82,11 +82,11 @@ describe('translate', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -94,11 +94,11 @@ describe('translate', function() {
   it('textdetect', function() {
     return translate.textdetect({ text: '你好' }).then(
       res => {
-        assert.equal(res.ret, 0);
+        assert.strictEqual(res.ret, 0);
       },
       e => {
-        assert.equal(e.ret, 0);
-      }
+        assert.strictEqual(e.ret, 0);
+      },
     );
   });
 });

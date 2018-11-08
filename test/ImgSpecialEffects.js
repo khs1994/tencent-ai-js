@@ -25,11 +25,11 @@ describe('image', function() {
       .facecosmetic(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 22)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -39,11 +39,11 @@ describe('image', function() {
       .facedecoration(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 22)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -53,11 +53,11 @@ describe('image', function() {
       .ptuimgfilter(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 5)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -71,15 +71,15 @@ describe('image', function() {
           length: 16,
           charset: 'alphanumeric',
           capitalization: 'uppercase',
-        })
+        }),
       )
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -89,11 +89,11 @@ describe('image', function() {
       .facemerge(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 1)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -103,11 +103,11 @@ describe('image', function() {
       .facesticker(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 26)
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -117,11 +117,11 @@ describe('image', function() {
       .faceage(fsReadSync(`${__dirname}/resource/face/wxc.jpg`))
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 });

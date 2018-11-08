@@ -24,10 +24,10 @@ describe('speech', function() {
   it('evilaudio', async () => {
     let r = await speech.evilaudio(
       randomstring.generate(10),
-      'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav'
+      'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav',
     );
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 
   // 音频关键词搜索
@@ -36,10 +36,10 @@ describe('speech', function() {
       'https://127.0.0.1',
       '商业',
       2,
-      fsReadSync(__dirname + '/resource/audio/15s.wav')
+      fsReadSync(__dirname + '/resource/audio/15s.wav'),
     );
 
-    assert.equal(r.ret, 0);
+    assert.strictEqual(r.ret, 0);
   });
 
   // 音频关键词搜索 url
@@ -51,13 +51,13 @@ describe('speech', function() {
           '商业',
           2,
           '',
-          'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav'
+          'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav',
         );
 
-        assert.equal(r.ret, 0);
+        assert.strictEqual(r.ret, 0);
         done();
       } catch (err) {
-        assert.equal(err.ret, 0);
+        assert.strictEqual(err.ret, 0);
         done();
       }
     })();
@@ -77,11 +77,11 @@ describe('speech', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -95,11 +95,11 @@ describe('speech', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -112,11 +112,11 @@ describe('speech', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 
@@ -130,11 +130,11 @@ describe('speech', function() {
       })
       .then(
         res => {
-          assert.equal(res.ret, 0);
+          assert.strictEqual(res.ret, 0);
         },
         e => {
-          assert.equal(e.ret, 0);
-        }
+          assert.strictEqual(e.ret, 0);
+        },
       );
   });
 });

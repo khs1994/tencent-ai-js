@@ -4,6 +4,8 @@ const { URIS, commonParams, error } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class Translate {
   /**
    * 机器翻译API构造函数
@@ -18,7 +20,7 @@ module.exports = class Translate {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -64,7 +66,7 @@ module.exports = class Translate {
           app_id: this.appId,
           type: type,
           text: text,
-        })
+        }),
       );
     } else {
       return error('text不能为空 或者应小于 1024B');
@@ -113,7 +115,7 @@ module.exports = class Translate {
           text: text,
           source: source,
           target: target,
-        })
+        }),
       );
     } else {
       return error('text不能为空 或者应小于 1024B');
@@ -160,7 +162,7 @@ module.exports = class Translate {
             scene: scene,
             source: source,
             target: target,
-          })
+          }),
         );
       } else {
         return error('图片大小必须小于1M');
@@ -218,7 +220,7 @@ module.exports = class Translate {
             speech_chunk: speech_chunk,
             source: source,
             target: target,
-          })
+          }),
         );
       } else {
         return error('speech_chunk必须小于8M');
@@ -256,7 +258,7 @@ module.exports = class Translate {
           text: text,
           candidate_langs: candidate_langs,
           force: force,
-        })
+        }),
       );
     } else {
       return error('text不能为空 或者应小于 1024B');

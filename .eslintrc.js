@@ -12,12 +12,18 @@ module.exports = {
   // https://eslint.org/docs/user-guide/configuring#specifying-parser
   parser: 'babel-eslint',
   // https://eslint.org/docs/user-guide/configuring#extending-configuration-files
-  extends: ['eslint:recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    // https://github.com/prettier/eslint-plugin-prettier
+    'plugin:prettier/recommended',
+    // https://github.com/mysticatea/eslint-plugin-node
+    'plugin:node/recommended',
+  ],
   // "extends": ["plugin:prettier/recommended"]
   // https://eslint.org/docs/user-guide/configuring#specifying-parser-options
   parserOptions: {
     // 'ecmaVersion': 2015,
-    ecmaVersion: 7,
+    ecmaVersion: 2019,
     impliedStrict: true,
     sourceType: 'script',
   },
@@ -39,6 +45,8 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
+    // 禁止抛出字面量错误 throw "error";
+    'no-throw-literal': 2,
 
     // 'valid-jsdoc': 'error',
 
@@ -49,6 +57,11 @@ module.exports = {
     strict: 2,
     'no-console': 2,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+
+    'node/exports-style': ['error', 'module.exports'],
+    'node/prefer-global/process': ['error', 'always'],
+
+    'prettier/prettier': ['error', { 'trailingComma': 'all' }],
   },
   // https://eslint.org/docs/user-guide/configuring#configuring-plugins
   plugins: [],

@@ -4,6 +4,8 @@ const { URIS, commonParams, error, textToGBK } = require('./util');
 
 const PS = require('./client/ProxyServices');
 
+const TencentAIError = require('./Error/TencentAIError');
+
 module.exports = class BaseLanguage {
   /**
    * 自然语言处理基础部分
@@ -20,7 +22,7 @@ module.exports = class BaseLanguage {
    */
   constructor(appKey, appId) {
     if (!appKey || !appId) {
-      throw new Error('appKey and appId are required');
+      throw new TencentAIError('appKey and appId are required');
     }
     this.appKey = appKey;
     this.appId = appId;
@@ -45,7 +47,7 @@ module.exports = class BaseLanguage {
           app_id: this.appId,
           text: textToGBK(text),
         }),
-        true
+        true,
       );
     } else {
       return error('text不能为空 或者GBK编码应小于1024B');
@@ -71,7 +73,7 @@ module.exports = class BaseLanguage {
           app_id: this.appId,
           text: textToGBK(text),
         }),
-        true
+        true,
       );
     } else {
       return error('text不能为空 或者GBK编码应小于1024B');
@@ -97,7 +99,7 @@ module.exports = class BaseLanguage {
           app_id: this.appId,
           text: textToGBK(text),
         }),
-        true
+        true,
       );
     } else {
       return error('text不能为空 或者GBK编码应小于1024B');
@@ -123,7 +125,7 @@ module.exports = class BaseLanguage {
           app_id: this.appId,
           text: textToGBK(text),
         }),
-        true
+        true,
       );
     } else {
       return error('text不能为空 或者GBK编码应小于1024B');
@@ -148,7 +150,7 @@ module.exports = class BaseLanguage {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           text: text,
-        })
+        }),
       );
     } else {
       return error('text不能为空 或者UTF-8编码应小于100B');
@@ -173,7 +175,7 @@ module.exports = class BaseLanguage {
         Object.assign({}, commonParams(), {
           app_id: this.appId,
           text: text,
-        })
+        }),
       );
     } else {
       return error('text不能为空 或者UTF-8编码应小于200B');
@@ -209,11 +211,11 @@ module.exports = class BaseLanguage {
           app_id: this.appId,
           question: question,
           session: session,
-        })
+        }),
       );
     } else {
       return error(
-        'question/session不能为空 或者questio UTF-8编码应小于300B session  UTF-8编码应小于64B'
+        'question/session不能为空 或者questio UTF-8编码应小于300B session  UTF-8编码应小于64B',
       );
     }
   }

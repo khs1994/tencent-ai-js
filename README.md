@@ -23,7 +23,7 @@ $ npm install @khs1994/tencent-ai
 ## Usage
 
 ```js
-const { Translate } = require('@khs1994/tencent-ai');
+const { Translate, TencentAIError } = require('@khs1994/tencent-ai');
 
 const App = {
   // 设置请求数据（应用密钥、接口请求参数）
