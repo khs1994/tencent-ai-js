@@ -2,8 +2,6 @@
 
 const randomstring = require('randomstring');
 
-// const iconv = require('iconv-lite');
-
 const assert = require('assert');
 
 const { APP } = require('./util');
@@ -69,13 +67,13 @@ describe('baseLanguage', function() {
 
   // 基础闲聊
   it('textchat', async function() {
-    let r = await baseLanguage.textchat({
-      question: '今天的天气不错呀',
-      session: randomstring.generate({
+    let r = await baseLanguage.textchat(
+      '今天的天气不错呀',
+      randomstring.generate({
         length: 16,
         capitalization: 'uppercase',
       }),
-    });
+    );
 
     assert.strictEqual(r.ret, 0);
   });

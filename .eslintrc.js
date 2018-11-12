@@ -18,6 +18,7 @@ module.exports = {
     'plugin:prettier/recommended',
     // https://github.com/mysticatea/eslint-plugin-node
     'plugin:node/recommended',
+    // "plugin:promise/recommended",
   ],
   // "extends": ["plugin:prettier/recommended"]
   // https://eslint.org/docs/user-guide/configuring#specifying-parser-options

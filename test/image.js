@@ -85,10 +85,7 @@ describe('image', function() {
   // 物体识别
   it('object', function() {
     return imgPublic
-      .objectr({
-        image: fsReadSync(`${__dirname}/resource/vision/dog.jpg`),
-        topk: 5,
-      })
+      .objectr(fsReadSync(`${__dirname}/resource/vision/dog.jpg`), 1, 5)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);

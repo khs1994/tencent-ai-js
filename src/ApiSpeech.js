@@ -56,26 +56,17 @@ module.exports = class Speech {
    * 将文字转换为语音，返回文字的语音数据
    *
    * @see https://ai.qq.com/doc/aaitts.shtml
-   * @prop {String} text  待合成文本 UTF-8编码，非空且长度上限150字节
-   * @prop {Number} speaker 默认1 语音发音人编码，取值范围[普通话男声  1 | 静琪女声  5 | 欢馨女声  6 | 碧萱女声  7]
-   * @prop {Number} format 默认2  合成语音格式编码，取值范围[PCM  1 | WAV  2 | MP3  3]
-   * @prop {Number} volume 默认10dB 合成语音音量，取值范围[-10, 10]，
-   * @prop {Number} speed 默认100---- 合成语音语速，取值范围[50, 200]
-   * @prop {Number} aht 默认0---- 合成语音降低/升高半音个数，即改变音高，取值范围[-24, 24]
-   * @prop {Number} apc 默认58--- 控制频谱翘曲的程度，改变说话人的音色，取值范围[0, 100]
-   * @example
-   *  tts({
-   *    text: '你好中国',
-   *    speaker: 1,
-   *    format: 2,
-   *    volume: 10,
-   *    speed: 100,
-   *    aht: 0,
-   *    apc: 58
-   *  })
+   * @param {String} text  待合成文本 UTF-8编码，非空且长度上限150字节
+   * @param {Number} speaker 默认1 语音发音人编码，取值范围[普通话男声  1 | 静琪女声  5 | 欢馨女声  6 | 碧萱女声  7]
+   * @param {Number} format 默认2  合成语音格式编码，取值范围[PCM  1 | WAV  2 | MP3  3]
+   * @param {Number} volume 默认10dB 合成语音音量，取值范围[-10, 10]，
+   * @param {Number} speed 默认100---- 合成语音语速，取值范围[50, 200]
+   * @param {Number} aht 默认0---- 合成语音降低/升高半音个数，即改变音高，取值范围[-24, 24]
+   * @param {Number} apc 默认58--- 控制频谱翘曲的程度，改变说话人的音色，取值范围[0, 100]
+   *
    * @return {PS} A Promise Object
    */
-  tts({
+  tts(
     text = '',
     speaker = 1,
     format = 2,
@@ -83,7 +74,7 @@ module.exports = class Speech {
     speed = 100,
     aht = 0,
     apc = 58,
-  }) {
+  ) {
     if (text && Buffer.byteLength(text, 'utf8') < 150) {
       return PS(
         URIS.tts,
@@ -110,18 +101,13 @@ module.exports = class Speech {
    * 将文字转换为语音，返回文字的语音数据
    *
    * @see https://ai.qq.com/doc/aaitts.shtml
-   * @prop {String} text 待合成语音文本 utf8格式，最大300字节
-   * @prop {Number} model_type 默认0--- 发音模型，取值范围[女生  0 | 女生纯英文  1 | 男生  2 | 喜道公子  6]
-   * @prop {Number} speed 默认0--- 合成语音语速，取值范围[0.6倍速  -2 | 0.8倍速  -1 | 正常速度  0 | 1.2倍速  1 | 1.5倍速  2]
-   * @example
-   *  tta({
-   *    text: '你好中国',
-   *    model_type: 0,
-   *    speed: 0
-   *  })
+   * @param {String} text 待合成语音文本 utf8格式，最大300字节
+   * @param {Number} model_type 默认0--- 发音模型，取值范围[女生  0 | 女生纯英文  1 | 男生  2 | 喜道公子  6]
+   * @param {Number} speed 默认0--- 合成语音语速，取值范围[0.6倍速  -2 | 0.8倍速  -1 | 正常速度  0 | 1.2倍速  1 | 1.5倍速  2]
+   *
    * @return {PS} A Promise Object
    */
-  tta({ text = '', model_type = 0, speed = 0 }) {
+  tta(text = '', model_type = 0, speed = 0) {
     if (text && Buffer.byteLength(text, 'utf8') < 300) {
       return PS(
         URIS.tta,
@@ -144,18 +130,13 @@ module.exports = class Speech {
    * 接口提供在线识别语音的能力，识别完成后，将返回语音的文字内容。
    *
    * @see https://ai.qq.com/doc/aaiasr.shtml
-   * @prop {String} speech 待识别语音（时长上30s） 单声道，16bit采样位数，语音数据的Base64编码，非空且长度上限8MB
-   * @prop {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
-   * @prop {Number} rate 默认8000--- 语音采样率编码，取值范围[8KHz  8000 | 16KHz  16000]
-   * @example
-   *  asr({
-   *    text: '你好中国',
-   *    model_type: 2,
-   *    speed: 8000
-   *  })
+   * @param {String} speech 待识别语音（时长上30s） 单声道，16bit采样位数，语音数据的Base64编码，非空且长度上限8MB
+   * @param {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
+   * @param {Number} rate 默认8000--- 语音采样率编码，取值范围[8KHz  8000 | 16KHz  16000]
+   *
    * @return {PS} A Promise Object
    */
-  asr({ speech = '', format = 2, rate = 8000 }) {
+  asr(speech = '', format = 2, rate = 8000) {
     if (speech && Buffer.byteLength(speech, 'base64') < 1048576 * 8) {
       return PS(
         URIS.asr,
@@ -178,31 +159,22 @@ module.exports = class Speech {
    * 流式版接口提供在线流式识别语音的能力，可以快速获取边录音边识别的能力。
    *
    * @see https://ai.qq.com/doc/aaiasr.shtml
-   * @prop {String} speech_chunk 待识别语音 单声道，语音数据的Base64编码，非空且长度上限8MB
+   * @param {String} speech_chunk 待识别语音 单声道，语音数据的Base64编码，非空且长度上限8MB
    * 分片规则[
    * PCM  支持按字节或者时间切片  |
    * WAV  支持按字节或者时间切片   |
    * AMR  仅支持按帧切片，第一个分片需包含AMR头标识（#!AMR\n），每个分片至少包含一个AMR帧，一个分片允许包含多个AMR帧   |
    * SILK  仅支持按帧切片，第一个分片需包含SILK头标识（#!SILK_V3），每个分片至少包含一个SILK帧，一个分片允许包含多个SILK帧]
-   * @prop {String} speech_id 语音唯一标识（同一应用内）
-   * @prop {Number} len 语音分片长度（字节）
-   * @prop {Number} seq 默认0 语音分片所在语音流的偏移量（字节）
-   * @prop {Number} end 默认1 是否结束分片标识，取值范围[0  中间分片 | 1  结束分片]
-   * @prop {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
-   * @prop {Number} rate 默认8000--- 语音采样率编码，取值范围[8KHz  8000 | 16KHz  16000]
-   * @example
-   *  asrs({
-   *    format：1,
-   *    rate：16000,
-   *    seq：2048,
-   *    len：1024,
-   *    end：1,
-   *    speech_id：id,
-   *    speech_chunk：database64
-   *  })
+   * @param {String} speech_id 语音唯一标识（同一应用内）
+   * @param {Number} len 语音分片长度（字节）
+   * @param {Number} seq 默认0 语音分片所在语音流的偏移量（字节）
+   * @param {Number} end 默认1 是否结束分片标识，取值范围[0  中间分片 | 1  结束分片]
+   * @param {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
+   * @param {Number} rate 默认8000--- 语音采样率编码，取值范围[8KHz  8000 | 16KHz  16000]
+   *
    * @return {PS} A Promise Object
    */
-  asrs({
+  asrs(
     speech_chunk = '',
     speech_id = '',
     len = 0,
@@ -210,7 +182,7 @@ module.exports = class Speech {
     end = 1,
     format = 2,
     rate = 8000,
-  }) {
+  ) {
     if (
       speech_chunk &&
       Buffer.byteLength(speech_chunk, 'base64') < 1048576 * 8 &&
@@ -260,18 +232,7 @@ module.exports = class Speech {
    * @param {Number} rate 默认16000--- 语音采样率编码，取值范围[16KHz  16000]
    * @param {Number} bits 默认16位--- 音频采样位数
    * @param {Number} cont_res 默认0--- 是否获取中间识别结果，取值范围 [0  不获取 | 1  获取]
-   * @example
-   *  wxasrs({
-   *    format：1,
-   *    rate：16000,
-   *    seq：2048,
-   *    len：1024,
-   *    end：1,
-   *    speech_id：id,
-   *    speech_chunk：database64,
-   *    bits: 16,
-   *    cont_res: 0
-   *  })
+   *
    * @return {PS} A Promise Object
    */
   wxasrs(
@@ -320,7 +281,7 @@ module.exports = class Speech {
    *
    * @return {PS} A Promise Object
    */
-  wxasrlong({ format = 2, callback_url, speech = '', speech_url = '' }) {
+  wxasrlong(format = 2, callback_url, speech = '', speech_url = '') {
     if (callback_url && (speech || speech_url)) {
       if (Buffer.byteLength(speech, 'base64') < 1048576 * 5 || speech_url) {
         return PS(

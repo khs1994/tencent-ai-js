@@ -111,15 +111,10 @@ module.exports = class ImgPublic {
    * @param {String} image 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {Number} format 默认1 图片格式 [1  JPG格式（image/jpeg）]
    * @param {Number} topk 默认1 返回结果个数（已按置信度倒排）[1-5]
-   * @example
-   * scener({
-   *  image: imageBase64String,
-   *  format: 1,
-   *  topk: 1
-   * })
+   *
    * @return {PS} A Promise Object
    */
-  scener({ image, format = 1, topk = 1 }) {
+  scener(image, format = 1, topk = 1) {
     if (image && Buffer.byteLength(image, 'base64') < 1048576) {
       return PS(
         URIS.scener,
@@ -145,15 +140,10 @@ module.exports = class ImgPublic {
    * @param {String} image 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {Number} format 默认1 图片格式 [1  JPG格式（image/jpeg）]
    * @param {Number} topk 默认1 返回结果个数（已按置信度倒排）[1-5]
-   * @example
-   * objectr({
-   *  image: imageBase64String,
-   *  format: 1,
-   *  topk: 1
-   * })
+   *
    * @return {PS} A Promise Object
    */
-  objectr({ image, format = 1, topk = 1 }) {
+  objectr(image, format = 1, topk = 1) {
     if (image && Buffer.byteLength(image, 'base64') < 1048576) {
       return PS(
         URIS.objectr,
@@ -177,8 +167,7 @@ module.exports = class ImgPublic {
    *
    * @see https://ai.qq.com/doc/imagetag.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
-   * @example
-   * imagetag(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   imagetag(imageBase64String) {
@@ -207,8 +196,7 @@ module.exports = class ImgPublic {
    * @see https://ai.qq.com/doc/imgidentify.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {Number} scene  识别场景，1-车辆识别，2-花草识别
-   * @example
-   * imgidentify(imageBase64String, scene)
+   *
    * @return {PS} A Promise Object
    */
   imgidentify(imageBase64String, scene = 1) {
@@ -238,8 +226,7 @@ module.exports = class ImgPublic {
    * @see https://ai.qq.com/doc/imgtotext.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {String} session_id  一次请求ID 尽可能唯一，长度上限64字节
-   * @example
-   * imgtotext(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   imgtotext(imageBase64String, session_id) {
@@ -272,8 +259,7 @@ module.exports = class ImgPublic {
    *
    * @see https://ai.qq.com/doc/imagefuzzy.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
-   * @example
-   * imagefuzzy(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   imagefuzzy(imageBase64String) {
@@ -301,8 +287,7 @@ module.exports = class ImgPublic {
    *
    * @see https://ai.qq.com/doc/imagefood.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
-   * @example
-   * imagefood(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   imagefood(imageBase64String) {

@@ -65,51 +65,32 @@ describe('speech', function() {
 
   // 语音合成（AI Lab）
   it('tts', function() {
-    return speech
-      .tts({
-        text: '你好中国',
-        speaker: 1,
-        format: 2,
-        volume: 10,
-        speed: 100,
-        aht: 0,
-        apc: 58,
-      })
-      .then(
-        res => {
-          assert.strictEqual(res.ret, 0);
-        },
-        e => {
-          assert.strictEqual(e.ret, 0);
-        },
-      );
+    return speech.tts('你好中国', 1, 2, 10, 100, 0, 58).then(
+      res => {
+        assert.strictEqual(res.ret, 0);
+      },
+      e => {
+        assert.strictEqual(e.ret, 0);
+      },
+    );
   });
 
   // 语音合成
   it('tta', () => {
-    return speech
-      .tta({
-        text: '我的中国心',
-        model_type: 0,
-        speed: 0,
-      })
-      .then(
-        res => {
-          assert.strictEqual(res.ret, 0);
-        },
-        e => {
-          assert.strictEqual(e.ret, 0);
-        },
-      );
+    return speech.tta('我的中国心', 0, 0).then(
+      res => {
+        assert.strictEqual(res.ret, 0);
+      },
+      e => {
+        assert.strictEqual(e.ret, 0);
+      },
+    );
   });
 
   // 语音识别
   it('asr', function() {
     return speech
-      .asr({
-        speech: fsReadSync(`${__dirname}/resource/audio/1.wav`),
-        rate: 16000,
-      })
+      .asr(fsReadSync(`${__dirname}/resource/audio/1.wav`), 2, 16000)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -123,11 +104,11 @@ describe('speech', function() {
   // 长语音识别
   it('wxasrlong', () => {
     return speech
-      .wxasrlong({
-        format: 2,
-        callback_url: 'https://127.0.0.1',
-        speech: fsReadSync(__dirname + '/resource/audio/15s.wav'),
-      })
+      .wxasrlong(
+        2,
+        'https://127.0.0.1',
+        fsReadSync(__dirname + '/resource/audio/15s.wav'),
+      )
       .then(
         res => {
           assert.strictEqual(res.ret, 0);

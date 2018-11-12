@@ -8,9 +8,9 @@ const randomString = require('randomstring');
 
 // const process = require('process');
 
-const { ImgSpecialEffects } = require('../');
+const { ImgSpecialEffects: ImageSpecialEffects } = require('../');
 
-const imgSpecialEffects = new ImgSpecialEffects(APP.appkey, APP.appid);
+const imgSpecialEffects = new ImageSpecialEffects(APP.appkey, APP.appid);
 
 const assert = require('assert');
 

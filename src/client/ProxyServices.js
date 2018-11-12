@@ -91,8 +91,7 @@ const errorCode = {
  * @param {Object} opt 请求的数据对象，不包含签名属性,不用进行数据编码
  * @param {Function} resolve 请求正确结果的处理方法
  * @param {Function} reject 请求错误的处理方法
- * @example
- *   new ProxyServices(uri, appkey, opt, resolve, reject)
+ *
  * @returns ProxyServices实体类
  */
 class ProxyServices {

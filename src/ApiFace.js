@@ -116,7 +116,6 @@ module.exports = class Face {
    * @see https://ai.qq.com/doc/detectcrossageface.shtml
    * @param {String} source_image 待比较图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {String} target_image 待比较图片 原始图片的base64编码数据（原图大小上限1MB）
-   * @example
    *
    * @return {PS} A Promise Object
    */

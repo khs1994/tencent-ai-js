@@ -21,13 +21,13 @@ describe('person', function() {
   // 个体创建
   it('newperson', () => {
     return person
-      .newperson({
-        image: fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
-        person_name: '王小二',
-        group_ids: group_ids,
-        person_id: person_id,
-        tag: '备注信息',
-      })
+      .newperson(
+        fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
+        '王小二',
+        group_ids,
+        person_id,
+        '备注信息',
+      )
       .then(
         res => {
           assert.strictEqual(res.ret, 0);

@@ -66,8 +66,7 @@ module.exports = class OCR {
    *
    * @see https://ai.qq.com/doc/ocrbcocr.shtml
    * @param {String} imageBase64String  待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @example
-   * bcocr(imageBase64String)
+   *
    * @return {PS} A Promise Object
    */
   bcocr(imageBase64String) {
@@ -96,8 +95,7 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/ocrdriverlicenseocr.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {Number} type  识别类型，0-行驶证识别，1-驾驶证识别
-   * @example
-   * driverlicenseocr(imageBase64String, type)
+   *
    * @return {Promise} A Promise Object
    */
   driverlicenseocr(imageBase64String, type = 1) {

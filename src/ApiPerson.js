@@ -39,22 +39,15 @@ module.exports = class Person {
    * 创建一个个体（Person），并将个体放置到指定的组（Group）当中。一个组（Group）里面的个体（Person）总数上限为20000个。如果ID指定的组不存在，则会新建组并创建个体。
    *
    * @see https://ai.qq.com/doc/newperson.shtml
-   * @prop {String} image 个体图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
-   * @prop {String} person_id 指定的个体（Person）ID
-   * @prop {String} person_name 名字
-   * @prop {String} group_ids group
-   * @prop {String} tag 备注信息
-   * @example
-   * newperson({
-   *  image: 'imageBase64String'
-   *  person_name: '王小二'
-   *  group_ids: 'group'
-   *  person_id: '1509333186'
-   *  tag:'备注信息'
-   * })
+   * @param {String} image 个体图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
+   * @param {String} person_id 指定的个体（Person）ID
+   * @param {String} person_name 名字
+   * @param {String} group_ids group
+   * @param {String} tag 备注信息
+   *
    * @return {PS} A Promise Object
    */
-  newperson({ image, person_name, group_ids, person_id, tag = '' }) {
+  newperson(image, person_name, group_ids, person_id, tag = '') {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
       return error('image 不能为空且大小小于1M');
     }

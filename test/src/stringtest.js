@@ -1,13 +1,12 @@
 'use strict';
 
-//原始测试
 const https = require('https');
 
 const crypto = require('crypto');
 
-const { APP } = require('./util');
+const { APP } = require('../util');
 
-const { URIS, textToGBK, commonParams } = require('../src/util');
+const { URIS, textToGBK, commonParams } = require('../../src/util');
 
 // const fs = require('fs');
 
@@ -28,7 +27,7 @@ const requestOpt = {
 
 const opt = Object.assign({}, commonParams(), {
   app_id: APP.appid,
-  text: textToGBK('中国 人啊，a c ! hello word'),
+  text: textToGBK('ａ'),
   sign: '',
 });
 
@@ -43,25 +42,23 @@ const ksort = opt => {
       value: opt[key],
     });
   }
-
   return arrayList.sort(sort);
 };
 
 const getReqSign = (opt, appkey) => {
   let parList,
     sign,
-    str = '',
-    // eslint-disable-next-line no-unused-vars
-    tstr = '';
+    str = '';
   parList = ksort(opt);
   parList.map(item => {
     if (item.value !== '') {
       str += `${item.key}=${item.value}&`;
     }
   });
+  str += `app_key=${appkey}`;
   sign = crypto
     .createHash('md5')
-    .update(str + `app_key=${appkey}`)
+    .update(str)
     .digest('hex')
     .toUpperCase();
   // console.log(str);
@@ -70,8 +67,7 @@ const getReqSign = (opt, appkey) => {
     str,
   };
 };
-
-let proxy = https
+var proxy = https
   .request(requestOpt, pres => {
     let arrBuf = [],
       bufLength = 0,
@@ -83,6 +79,7 @@ let proxy = https
       })
       .on('end', () => {
         let chunkAll = Buffer.concat(arrBuf, bufLength);
+
         let decodedBody = iconv.decode(chunkAll, code ? code : 'utf8');
         // eslint-disable-next-line no-unused-vars
         let res = JSON.parse(decodedBody);
@@ -96,7 +93,7 @@ let proxy = https
 const { sign, str } = getReqSign(opt, APP.appkey);
 // opt.sign = sign
 // const postData = querystring.stringify(opt)
-const postData = str + 'sign=' + sign;
+const postData = str + '&sign=' + sign;
 // console.log(postData);
 proxy.write(postData);
 proxy.end();

@@ -190,14 +190,10 @@ module.exports = class BaseLanguage {
    * @see https://ai.qq.com/doc/nlpchat.shtml
    * @param {String} question  待分析文本 UTF-8编码，非空且长度上限300字节
    * @param {String} session  会话标识（应用内唯一） UTF-8编码，非空且长度上限32字节
-   * @example
-   *  textchat({
-   *    question: '今天的天气不错呀',
-   *    session: '10000'
-   *  })
+   *
    * @return {PS} A Promise Object
    */
-  textchat({ question = '', session = '' }) {
+  textchat(question = '', session = '') {
     if (
       question &&
       Buffer.byteLength(question, 'utf8') < 300 &&

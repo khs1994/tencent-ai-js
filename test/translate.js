@@ -18,8 +18,8 @@ const assert = require('assert');
 describe('translate', function() {
   this.retries(4);
   // 文本翻译（AI Lab）
-  it('texttrans', () => {
-    return translate.texttrans({ text: 'Hello 世界', type: 0 }).then(
+  it('texttranslate', () => {
+    return translate.texttrans('Hello 世界', 0).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -31,10 +31,9 @@ describe('translate', function() {
 
   // 文本翻译（翻译君）
   it('texttranslate', function() {
-    // ES6
     let text = '你好';
     // {text: '你好', target: 'en'}
-    return translate.texttranslate({ text, target: 'en' }).then(
+    return translate.texttranslate(text, 'zh', 'en').then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -47,16 +46,16 @@ describe('translate', function() {
   // 图片翻译
   it('imagetranslate', function() {
     return translate
-      .imagetranslate({
-        image: fsReadSync(`${__dirname}/resource/translate/english.jpg`),
-        session_id: randomstring.generate({
+      .imagetranslate(
+        fsReadSync(`${__dirname}/resource/translate/english.jpg`),
+        randomstring.generate({
           length: 16,
           capitalization: 'uppercase',
         }),
-        scene: 'doc',
-        source: 'en',
-        target: 'zh',
-      })
+        'doc',
+        'en',
+        'zh',
+      )
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -72,14 +71,14 @@ describe('translate', function() {
     let speech_chunk = fsReadSync(`${__dirname}/resource/translate/t.pcm`);
 
     return translate
-      .speechtranslate({
+      .speechtranslate(
         speech_chunk,
-        session_id: randomstring.generate({
+        randomstring.generate({
           length: 16,
           capitalization: 'uppercase',
         }),
-        format: 6,
-      })
+        6,
+      )
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -92,7 +91,7 @@ describe('translate', function() {
 
   // 语种识别
   it('textdetect', function() {
-    return translate.textdetect({ text: '你好' }).then(
+    return translate.textdetect('你好').then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
