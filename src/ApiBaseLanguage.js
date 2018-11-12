@@ -193,7 +193,7 @@ module.exports = class BaseLanguage {
    *
    * @return {PS} A Promise Object
    */
-  textchat(question = '', session = '') {
+  textchat(question, session) {
     if (
       question &&
       Buffer.byteLength(question, 'utf8') < 300 &&

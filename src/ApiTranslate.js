@@ -96,7 +96,7 @@ module.exports = class Translate {
    *
    * @return {PS} A Promise Object
    */
-  texttranslate(text = '', source = 'auto', target = 'zh') {
+  texttranslate(text, source = 'auto', target = 'zh') {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
       return PS(
         URIS.texttranslate,
@@ -128,8 +128,8 @@ module.exports = class Translate {
    * @return {PS} A Promise Object
    */
   imagetranslate(
-    image = '',
-    session_id = '',
+    image,
+    session_id,
     scene = 'word',
     source = 'auto',
     target = 'en',

@@ -2,7 +2,7 @@
 
 const https = require('https');
 const querystring = require('querystring');
-const crypto = require('crypto');
+const node_md5 = require('../util/node_md5').md5;
 const iconv = require('iconv-lite');
 const fs = require('fs');
 const errorCode = {
@@ -116,16 +116,18 @@ class ProxyServices {
    * @returns 升序排序结果
    */
   ksort() {
-    let arrayList = [],
-      sort = (a, b) => {
-        return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
-      };
+    let arrayList = [];
+    let sort = (a, b) => {
+      return a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
+    };
+
     for (let key in this.opt) {
       arrayList.push({
         key: key,
         value: this.opt[key],
       });
     }
+
     return arrayList.sort(sort);
   }
 
@@ -134,7 +136,7 @@ class ProxyServices {
    *
    * 根据 接口请求参数 和 应用密钥 计算 请求签名
    *
-   * @returns 签名结果
+   * @returns {Object} 签名结果
    */
   getReqSign() {
     let parList,
@@ -159,16 +161,9 @@ class ProxyServices {
     // 处理URL编码和java、PHP不一致的问题
     str = str.replace(/%20/g, '+');
     // 4. MD5运算+转换大写，得到请求签名
-    sign = crypto
-      .createHash('md5')
-      .update(str + `app_key=${this.appkey}`, 'utf-8')
-      .digest('hex')
-      .toUpperCase();
+    sign = node_md5(str + `app_key=${this.appkey}`).toUpperCase();
     //console.log(sign)
-    return {
-      sign,
-      str,
-    };
+    return { sign, str };
   }
 
   /**
@@ -217,6 +212,8 @@ class ProxyServices {
     proxy.write(this.postData);
     proxy.end();
   }
+
+  wxRequest() {}
 
   // 初始化
   init() {

@@ -47,7 +47,7 @@ module.exports = class Person {
    *
    * @return {PS} A Promise Object
    */
-  newperson(image, person_name, group_ids, person_id, tag = '') {
+  newperson(image, person_name, group_ids, person_id, tag) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
       return error('image 不能为空且大小小于1M');
     }
@@ -110,7 +110,7 @@ module.exports = class Person {
    *
    * @return {PS} A Promise Object
    */
-  addface(images, person_id, tag = '') {
+  addface(images, person_id, tag) {
     if (images && Buffer.byteLength(images, 'base64') >= 1048576) {
       return error('image 不能为空且大小小于1M');
     }
@@ -170,7 +170,7 @@ module.exports = class Person {
    *
    * @return {PS} A Promise Object
    */
-  setinfo(person_id, person_name, tag = '') {
+  setinfo(person_id, person_name, tag) {
     if (!person_id) {
       return error('person_id 不能为空');
     }

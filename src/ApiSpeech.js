@@ -67,7 +67,7 @@ module.exports = class Speech {
    * @return {PS} A Promise Object
    */
   tts(
-    text = '',
+    text,
     speaker = 1,
     format = 2,
     volume = 10,
@@ -107,7 +107,7 @@ module.exports = class Speech {
    *
    * @return {PS} A Promise Object
    */
-  tta(text = '', model_type = 0, speed = 0) {
+  tta(text, model_type = 0, speed = 0) {
     if (text && Buffer.byteLength(text, 'utf8') < 300) {
       return PS(
         URIS.tta,
@@ -136,7 +136,7 @@ module.exports = class Speech {
    *
    * @return {PS} A Promise Object
    */
-  asr(speech = '', format = 2, rate = 8000) {
+  asr(speech, format = 2, rate = 8000) {
     if (speech && Buffer.byteLength(speech, 'base64') < 1048576 * 8) {
       return PS(
         URIS.asr,
@@ -175,8 +175,8 @@ module.exports = class Speech {
    * @return {PS} A Promise Object
    */
   asrs(
-    speech_chunk = '',
-    speech_id = '',
+    speech_chunk,
+    speech_id,
     len = 0,
     seq = 0,
     end = 1,
@@ -236,8 +236,8 @@ module.exports = class Speech {
    * @return {PS} A Promise Object
    */
   wxasrs(
-    speech_chunk = '',
-    speech_id = '',
+    speech_chunk,
+    speech_id,
     len = 0,
     seq = 0,
     end = 1,
