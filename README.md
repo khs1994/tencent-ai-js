@@ -34,7 +34,7 @@ const App = {
 const translate = new Translate(App.appkey, App.appid);
 
 // 文本翻译（AI Lab）
-translate.texttrans({ text: '你好' }).then(
+translate.texttrans('你好').then(
   res => {
     console.log(res);
   },
@@ -47,12 +47,10 @@ translate.texttrans({ text: '你好' }).then(
 
 (async () => {
   try {
-    let text = 'hello';
-    let res = await translate.texttrans({ text });
+    let res = await translate.texttrans('hello');
     console.log(res);
     // error demo
-    let tex = 'hello';
-    res = await translate.texttrans({ tex });
+    res = await translate.texttrans();
   } catch (e) {
     console.log(e);
   }
