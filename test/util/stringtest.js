@@ -6,7 +6,7 @@ const crypto = require('crypto');
 
 const { APP } = require('../util');
 
-const { URIS, textToGBK, commonParams } = require('../../src/util');
+const { URIS, textToGBK, commonParams } = require('../../src/util/util');
 
 // const fs = require('fs');
 

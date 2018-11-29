@@ -5,8 +5,7 @@
   "main": "./lib/TencentAI.js",
   "scripts": {
     "eslint": "eslint ./src ./test",
-    "pretest": "npx tsc",
-    "test": "nyc mocha -R ts-node/register --timeout 10000",
+    "test": "nyc mocha -r ts-node/register --timeout 10000 ./test/**/*.ts",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
     "codecov": "./node_modules/.bin/codecov",
     "prettier": "npx prettier --write ./**/*.js ./**/*.ts",

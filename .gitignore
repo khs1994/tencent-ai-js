@@ -11,3 +11,5 @@ coverage.lcov
 
 /lib
 /dist
+
+/test/output

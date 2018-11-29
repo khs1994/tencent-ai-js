@@ -1,5 +1,5 @@
 import AbstractTencentAI from './AbstractTencentAI';
-import { URIS, commonParams, error } from './util/index';
+import { URIS, commonParams, error } from './util/util';
 import Request from './client/Request';
 
 export default class OCR extends AbstractTencentAI {

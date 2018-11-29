@@ -2,7 +2,7 @@ const randomstring = require('randomstring');
 
 // const process = require('process');
 
-const { APP, fsReadSync } = require('./util');
+import { APP, fsReadSync } from './util';
 
 const { Translate } = require('../src/TencentAI');
 

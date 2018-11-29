@@ -4,9 +4,9 @@ const randomstring = require('randomstring');
 
 // const fs = require('fs');
 
-const { APP, fsReadSync } = require('./util');
+import { APP, fsReadSync } from './util';
 
-const { Speech } = require('../');
+import { Speech } from '../src/TencentAI';
 
 const speech = new Speech(APP.appkey, APP.appid);
 

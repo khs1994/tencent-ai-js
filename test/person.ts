@@ -1,6 +1,6 @@
-const { APP, fsReadSync } = require('./util');
+import { APP, fsReadSync } from './util';
 
-const { Person } = require('../');
+import { Person } from '../src/TencentAI';
 
 const person = new Person(APP.appkey, APP.appid);
 

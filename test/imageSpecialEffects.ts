@@ -1,4 +1,4 @@
-const { APP, fsReadSync } = require('./util');
+import { APP, fsReadSync } from './util';
 
 const randomString = require('randomstring');
 
@@ -6,7 +6,7 @@ const randomString = require('randomstring');
 
 // const process = require('process');
 
-const { ImageSpecialEffects: ImageSpecialEffects } = require('../');
+import { ImageSpecialEffects } from '../src/TencentAI';
 
 const imgSpecialEffects = new ImageSpecialEffects(APP.appkey, APP.appid);
 

@@ -1,6 +1,6 @@
 import AbstractTencentAI from './AbstractTencentAI';
 import Request from './client/Request';
-import { URIS, commonParams, error } from './util/index';
+import { URIS, commonParams, error } from './util/util';
 
 export default class Speech extends AbstractTencentAI {
   /**
@@ -309,7 +309,7 @@ export default class Speech extends AbstractTencentAI {
   detectkeyword(
     callback_url,
     key_words,
-    format = '2',
+    format: number = 2,
     speech = '',
     speech_url = '',
   ) {

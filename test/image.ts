@@ -2,9 +2,9 @@ const randomstring = require('randomstring');
 
 // const process = require('process');
 
-const { APP, fsReadSync } = require('./util');
+import { APP, fsReadSync } from './util';
 
-const { Image } = require('../');
+import { Image } from '../src/TencentAI';
 
 const imgPublic = new Image(APP.appkey, APP.appid);
 
@@ -66,10 +66,7 @@ describe('image', function() {
   // 场景识别
   it.skip('scener', function() {
     return imgPublic
-      .scener({
-        image: fsReadSync(`${__dirname}/resource/vision/scener.jpg`),
-        topk: 5,
-      })
+      .scener(fsReadSync(`${__dirname}/resource/vision/scener.jpg`), 5)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);

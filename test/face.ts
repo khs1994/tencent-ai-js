@@ -1,10 +1,8 @@
-const { APP, fsReadSync } = require('./util');
-
-const { Face } = require('../');
+import { APP, fsReadSync } from './util';
+import { Face } from '../src/TencentAI';
+import * as assert from 'assert';
 
 const face = new Face(APP.appkey, APP.appid);
-
-const assert = require('assert');
 
 /**
  * 面部识别API 测试类

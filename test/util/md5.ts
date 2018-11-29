@@ -1,7 +1,5 @@
-'use strict';
-
-const md5 = require('../../src/util/md5').hex_md5;
-const assert = require('assert');
+import md5 from '../../src/util/md5';
+import * as assert from 'assert';
 
 describe('md5', () => {
   it('md5', () => {

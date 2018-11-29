@@ -1,12 +1,10 @@
-'use strict';
-
 // const randomstring = require('randomstring');
 
 // const process = require('process');
 
-const { APP, fsReadSync } = require('./util');
+import { APP, fsReadSync } from './util';
 
-const { OCR } = require('../');
+import { OCR } from '../src/TencentAI';
 
 const ocr = new OCR(APP.appkey, APP.appid);
 

@@ -1,6 +1,6 @@
 import AbstractTencentAI from './AbstractTencentAI';
 import Request from './client/Request';
-import { URIS, commonParams, error } from './util/index';
+import { URIS, commonParams, error } from './util/util';
 
 export default class Translate extends AbstractTencentAI {
   /**

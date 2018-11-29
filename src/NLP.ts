@@ -1,4 +1,4 @@
-import { URIS, commonParams, error, textToGBK } from './util/index';
+import { URIS, commonParams, error, textToGBK } from './util/util';
 import AbstractTencentAI from './AbstractTencentAI';
 import Request from './client/Request';
 

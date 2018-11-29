@@ -1,6 +1,7 @@
-import { error } from '../util';
+import { error } from '../util/util';
 import node_md5 from '../util/node_md5';
 import * as querystring from 'querystring';
+import hex_md5 from '../util/md5';
 
 export default class Request {
   static request(
@@ -10,7 +11,14 @@ export default class Request {
     isGbk: boolean = false,
     method: string = 'post',
   ) {
-    const request = require('node-fetch');
+    let is_wx = false;
+    let request;
+
+    try {
+      request = require('node-fetch');
+    } catch (e) {
+      is_wx = true;
+    }
 
     url = 'https://api.ai.qq.com' + url;
     method = method.toUpperCase();
@@ -23,7 +31,11 @@ export default class Request {
 
     // 追加 app_key
     // MD5运算，将得到的 MD5 值所有字符转换成大写，得到接口请求签名
-    let sign = node_md5(str + `app_key=${appKey}`).toUpperCase();
+    let sign = is_wx
+      ? hex_md5(str + `app_key=${appKey}`)
+      : node_md5(str + `app_key=${appKey}`);
+
+    sign = sign.toUpperCase();
 
     data['sign'] = sign;
 
@@ -32,6 +44,24 @@ export default class Request {
     let headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
     };
+
+    if (is_wx) {
+      return new Promise((resolve, reject) => {
+        // @ts-ignore
+        wx.request({
+          url,
+          method,
+          data: body,
+          header: headers,
+          success(res: any) {
+            resolve(res);
+          },
+          fail(e: any) {
+            reject(e);
+          },
+        });
+      });
+    }
 
     return request(url, {
       method,
@@ -49,7 +79,7 @@ export default class Request {
   }
 
   static handle_gbk(sort_list: any, isGbk: boolean = false) {
-    let str;
+    let str = '';
 
     if (!isGbk) {
       sort_list.map(item => {

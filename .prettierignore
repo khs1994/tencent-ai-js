@@ -1,5 +1,5 @@
 .git/
 node_modules/
 coverage/
-src/util/md5.js
+src/util/md5.ts
 lib
