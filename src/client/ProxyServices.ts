@@ -1,8 +1,7 @@
-'use strict';
-
 const https = require('https');
 const querystring = require('querystring');
-const node_md5 = require('../util/node_md5').md5;
+import node_md5 from '../util/node_md5';
+
 const iconv = require('iconv-lite');
 const fs = require('fs');
 const errorCode = {
@@ -95,15 +94,25 @@ const errorCode = {
  * @returns ProxyServices实体类
  */
 class ProxyServices {
-  constructor(uri, appkey, opt, resolve, reject, isGBK = false) {
-    this.uri = uri; // 绑定请求资源
-    this.opt = opt; // 绑定基础数据
-    this.resolve = resolve; // 绑定正确处理方法
-    this.reject = reject; // 绑定错误处理方法
-    this.appkey = appkey; // 绑定APPkey
+  public postData;
+  public requestOpt;
+
+  constructor(
+    readonly uri: string,
+    public appkey: any,
+    public opt: any,
+    public resolve: any,
+    public reject: any,
+    readonly isGBK: boolean = false,
+  ) {
+    // this.uri = uri; // 绑定请求资源
+    // this.opt = opt; // 绑定基础数据
+    // this.resolve = resolve; // 绑定正确处理方法
+    // this.reject = reject; // 绑定错误处理方法
+    // this.appkey = appkey; // 绑定APPkey
     this.postData = null; // 请求数据
     this.requestOpt = null; // 请求参数
-    this.isGBK = isGBK; // GBK转码特殊操作
+    // this.isGBK = isGBK; // GBK转码特殊操作
     // 初始化
     this.init();
   }
@@ -206,14 +215,12 @@ class ProxyServices {
       });
 
     // 写入数据到请求主体
-    fs.writeFileSync(`${__dirname}\\data.txt`, this.postData, {
-      encoding: 'utf8',
-    });
+    // fs.writeFileSync(`${__dirname}\\data.txt`, this.postData, {
+    //   encoding: 'utf8',
+    // });
     proxy.write(this.postData);
     proxy.end();
   }
-
-  wxRequest() {}
 
   // 初始化
   init() {

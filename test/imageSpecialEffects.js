@@ -1,5 +1,3 @@
-'use strict';
-
 const { APP, fsReadSync } = require('./util');
 
 const randomString = require('randomstring');
@@ -8,7 +6,7 @@ const randomString = require('randomstring');
 
 // const process = require('process');
 
-const { ImgSpecialEffects: ImageSpecialEffects } = require('../');
+const { ImageSpecialEffects: ImageSpecialEffects } = require('../');
 
 const imgSpecialEffects = new ImageSpecialEffects(APP.appkey, APP.appid);
 

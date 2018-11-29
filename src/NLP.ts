@@ -1,17 +1,11 @@
-'use strict';
+import { URIS, commonParams, error, textToGBK } from './util/index';
+import AbstractTencentAI from './AbstractTencentAI';
+import Request from './client/Request';
 
-const { URIS, commonParams, error, textToGBK } = require('./util');
-
-const PS = require('./client/ProxyServices');
-
-const TencentAIError = require('./Error/TencentAIError');
-
-module.exports = class BaseLanguage {
+export default class NLP extends AbstractTencentAI {
   /**
    * 自然语言处理基础部分
    *
-   * @param {String} appKey 应用key
-   * @param {String} appId  应用id
    * @method wordseg(String) 分词
    * @method wordpos(String) 词性标注
    * @method wordner(String) 专有名词识别
@@ -20,13 +14,6 @@ module.exports = class BaseLanguage {
    * @method textpolar(String) 情感分析
    * @method textchat(Object) 智能闲聊
    */
-  constructor(appKey, appId) {
-    if (!appKey || !appId) {
-      throw new TencentAIError('appKey and appId are required');
-    }
-    this.appKey = appKey;
-    this.appId = appId;
-  }
 
   /**
    * 分词
@@ -36,11 +23,11 @@ module.exports = class BaseLanguage {
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   wordseg(text) {
     if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return PS(
+      return Request.request(
         URIS.wordseg,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -62,11 +49,11 @@ module.exports = class BaseLanguage {
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   wordpos(text) {
     if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return PS(
+      return Request.request(
         URIS.wordpos,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -88,11 +75,11 @@ module.exports = class BaseLanguage {
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
    *
-   * @return {PS|error} A Promise Object
+   * @return {Promise|error} A Promise Object
    */
   wordner(text) {
     if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return PS(
+      return Request.request(
         URIS.wordner,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -114,11 +101,11 @@ module.exports = class BaseLanguage {
    * @see https://ai.qq.com/doc/nlpbase.shtml
    * @param {String} text  待分析文本 GBK编码，非空且长度上限1024字节
    *
-   * @return {PS|error} A Promise Object
+   * @return {Promise|error} A Promise Object
    */
   wordsyn(text) {
     if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return PS(
+      return Request.request(
         URIS.wordsyn,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -140,11 +127,11 @@ module.exports = class BaseLanguage {
    * @see https://ai.qq.com/doc/nlpsem.shtml
    * @param {String} text  待分析文本 UTF-8编码，非空且长度上限100字节
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   wordcom(text) {
     if (text && Buffer.byteLength(text, 'utf8') < 100) {
-      return PS(
+      return Request.request(
         URIS.wordcom,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -165,11 +152,11 @@ module.exports = class BaseLanguage {
    * @see https://ai.qq.com/doc/nlpemo.shtml
    * @param {String} text  待分析文本 UTF-8编码，非空且长度上限200字节
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   textpolar(text) {
     if (text && Buffer.byteLength(text, 'utf8') < 200) {
-      return PS(
+      return Request.request(
         URIS.textpolar,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -191,7 +178,7 @@ module.exports = class BaseLanguage {
    * @param {String} question  待分析文本 UTF-8编码，非空且长度上限300字节
    * @param {String} session  会话标识（应用内唯一） UTF-8编码，非空且长度上限32字节
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   textchat(question, session) {
     if (
@@ -200,7 +187,7 @@ module.exports = class BaseLanguage {
       session &&
       Buffer.byteLength(session, 'utf8') < 64
     ) {
-      return PS(
+      return Request.request(
         URIS.textchat,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -215,4 +202,4 @@ module.exports = class BaseLanguage {
       );
     }
   }
-};
+}

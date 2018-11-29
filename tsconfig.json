@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "lib": [
+      "es2018"
+    ],
+    "target": "es2018",
+    "module": "commonjs"
+  },
+  "include": [
+    "src"
+  ]
+}

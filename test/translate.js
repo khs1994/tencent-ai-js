@@ -1,5 +1,3 @@
-'use strict';
-
 const randomstring = require('randomstring');
 
 // const process = require('process');

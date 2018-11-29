@@ -1,5 +1,3 @@
-'use strict';
-
 const { APP, fsReadSync } = require('./util');
 
 const { Person } = require('../');

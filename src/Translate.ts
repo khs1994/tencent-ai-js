@@ -1,30 +1,17 @@
-'use strict';
+import AbstractTencentAI from './AbstractTencentAI';
+import Request from './client/Request';
+import { URIS, commonParams, error } from './util/index';
 
-const { URIS, commonParams, error } = require('./util');
-
-const PS = require('./client/ProxyServices');
-
-const TencentAIError = require('./Error/TencentAIError');
-
-module.exports = class Translate {
+export default class Translate extends AbstractTencentAI {
   /**
    * 机器翻译API构造函数
    *
-   * @param {String} appKey 应用key
-   * @param {String} appId  应用id
    * @method texttrans(Object) 文本翻译（AI Lab）
    * @method texttranslate(Object) 文本翻译（翻译君）
    * @method imagetranslate(Object) 图片翻译
    * @method speechtranslate(Object) 语音翻译
    * @method textdetect(Object) 语种识别
    */
-  constructor(appKey, appId) {
-    if (!appKey || !appId) {
-      throw new TencentAIError('appKey and appId are required');
-    }
-    this.appKey = appKey;
-    this.appId = appId;
-  }
 
   /**
    * 文本翻译（AI Lab）
@@ -51,11 +38,11 @@ module.exports = class Translate {
    * 15  中文翻译成日文
    * 16  日文翻译成中文
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   texttrans(text, type = 0) {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
-      return PS(
+      return Request.request(
         URIS.texttrans,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -94,11 +81,11 @@ module.exports = class Translate {
    * jp=>>zh----
    * kr=>>zh----
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   texttranslate(text, source = 'auto', target = 'zh') {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
-      return PS(
+      return Request.request(
         URIS.texttranslate,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -125,7 +112,7 @@ module.exports = class Translate {
    * @param {string} source 默认 auto 中文  zh \ 英文  en \ 日文  jp \ 韩文  kr \ 自动识别（中英互译）  auto
    * @param {string} target 默认 en en=>zh \ zh=>en,jp,kr \j p=>zh \ kr=>zh
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   imagetranslate(
     image,
@@ -136,7 +123,7 @@ module.exports = class Translate {
   ) {
     if (image && session_id) {
       if (Buffer.byteLength(image, 'base64') < 1048576) {
-        return PS(
+        return Request.request(
           URIS.imagetranslate,
           this.appKey,
           Object.assign({}, commonParams(), {
@@ -170,7 +157,7 @@ module.exports = class Translate {
    * @param {string} source 默认auto 中文  zh / 英文  en/ 日文  jp /韩文  kr / 自动识别（中英互译）  auto
    * @param {string} target 默认auto  en=>  zh / zh=>  en, jp, kr / jp=>zh / kr=> zh
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   speechtranslate(
     speech_chunk,
@@ -183,7 +170,7 @@ module.exports = class Translate {
   ) {
     if (speech_chunk && session_id) {
       if (Buffer.byteLength(speech_chunk, 'base64') < 1048576 * 8) {
-        return PS(
+        return Request.request(
           URIS.speechtranslate,
           this.appKey,
           Object.assign({}, commonParams(), {
@@ -216,11 +203,11 @@ module.exports = class Translate {
    * 中文  zh \ 英文  en \ 日文  jp \ 韩文  kr
    * @param {int} force 是否强制从候选语言中选择（只对二选一有效）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   textdetect(text, candidate_langs = 'zh|en|kr|jp', force = 0) {
     if (text && Buffer.byteLength(text, 'utf8') < 1024) {
-      return PS(
+      return Request.request(
         URIS.textdetect,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -234,4 +221,4 @@ module.exports = class Translate {
       return error('text不能为空 或者应小于 1024B');
     }
   }
-};
+}

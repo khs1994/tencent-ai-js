@@ -1,14 +1,12 @@
-'use strict';
-
 const randomstring = require('randomstring');
 
 // const process = require('process');
 
 const { APP, fsReadSync } = require('./util');
 
-const { ImgPublic } = require('../');
+const { Image } = require('../');
 
-const imgPublic = new ImgPublic(APP.appkey, APP.appid);
+const imgPublic = new Image(APP.appkey, APP.appid);
 
 const assert = require('assert');
 

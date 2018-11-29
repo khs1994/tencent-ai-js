@@ -1,15 +1,16 @@
 {
   "name": "@khs1994/tencent-ai",
-  "version": "18.06.04",
+  "version": "18.12.0-alpha.0",
   "description": "Tencent AI SDK",
-  "main": "./src/index.js",
+  "main": "./lib/TencentAI.js",
   "scripts": {
     "eslint": "eslint ./src ./test",
-    "pretest": "npm run eslint",
+    "pretest": "npx tsc",
     "test": "nyc mocha -R spec --timeout 10000",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
     "codecov": "./node_modules/.bin/codecov",
-    "prettier": "npx prettier --write \"{src,test,mocks}/**/*.js\""
+    "prettier": "npx prettier --write ./**/*.js ./**/*.ts",
+    "webpack-pro": "npx webpack-cli --mode=production"
   },
   "author": {
     "name": "khs1994",
@@ -28,18 +29,24 @@
   ],
   "dependencies": {
     "iconv-lite": "^0.4.19",
+    "node-fetch": "^2.3.0",
     "randomstring": "^1.1.5"
   },
   "devDependencies": {
+    "@types/node": "^10.12.10",
     "babel-eslint": "^10.0.1",
     "codecov": "^3.1.0",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-typescript": "^0.14.0",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
-    "prettier": "^1.15.2"
+    "prettier": "^1.15.2",
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.1.6",
+    "typescript-eslint-parser": "^21.0.1"
   },
   "files": [
     "src",

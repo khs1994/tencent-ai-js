@@ -1,17 +1,11 @@
-'use strict';
+import AbstractTencentAI from './AbstractTencentAI';
+import { URIS, commonParams, error } from './util/index';
+import Request from './client/Request';
 
-const { URIS, commonParams, error } = require('./util');
-
-const PS = require('./client/ProxyServices');
-
-const TencentAIError = require('./Error/TencentAIError');
-
-module.exports = class ImgSpecialEffects {
+export default class ImageSpecialEffects extends AbstractTencentAI {
   /**
    * 图片特效API服务类
    *
-   * @param {String} appKey 应用key
-   * @param {String} appId  应用id
    * @method facecosmetic(image, cosmetic) 人脸美妆
    * @method facedecoration(image, decoration) 人脸变妆
    * @method ptuimgfilter(image, filter) 图片滤镜（天天P图）
@@ -20,13 +14,6 @@ module.exports = class ImgSpecialEffects {
    * @method facesticker(image, sticker) 大头贴
    * @method faceage(image) 颜龄检测
    */
-  constructor(appKey, appId) {
-    if (!appKey || !appId) {
-      throw new TencentAIError('appKey and appId are required');
-    }
-    this.appKey = appKey;
-    this.appId = appId;
-  }
 
   /**
    * 人脸美妆
@@ -37,7 +24,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} cosmetic 美妆编码取值区间[1-23]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   facecosmetic(image, cosmetic = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -46,7 +33,7 @@ module.exports = class ImgSpecialEffects {
     if (cosmetic && cosmetic < 1 && cosmetic > 22) {
       return error('cosmetic 不能为空且取值区间为[1-23]');
     }
-    return PS(
+    return Request.request(
       URIS.facecosmetic,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -66,7 +53,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} decoration 人脸变妆编码取值区间[1-22]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   facedecoration(image, decoration = 1) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -75,7 +62,7 @@ module.exports = class ImgSpecialEffects {
     if (decoration && decoration < 1 && decoration > 22) {
       return error('decoration 不能为空且取值区间为[1-22]');
     }
-    return PS(
+    return Request.request(
       URIS.facedecoration,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -95,7 +82,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} filter 滤镜特效编码取值区间[1-32]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   ptuimgfilter(image, filter) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -104,7 +91,7 @@ module.exports = class ImgSpecialEffects {
     if (filter && filter < 1 && filter > 32) {
       return error('filter 不能为空且取值区间为[1-32]');
     }
-    return PS(
+    return Request.request(
       URIS.ptuimgfilter,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -125,7 +112,7 @@ module.exports = class ImgSpecialEffects {
    * @param {Number} filter 滤镜特效编码取值区间[1-65]
    * @param {String} session_id 一次请求ID 尽可能唯一，长度上限64字节
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   visionimgfilter(image, filter, session_id) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -137,7 +124,7 @@ module.exports = class ImgSpecialEffects {
     if (session_id && Buffer.byteLength(session_id, 'base64') > 64) {
       return error('session_id 不能为空且大小小于65b');
     }
-    return PS(
+    return Request.request(
       URIS.visionimgfilter,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -158,7 +145,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} model 默认素材模板编码见下文描述 取值区间[1-50]；自定义素材模板可在应用详情页上传和查询
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    * @deprecated Not Available on 2018-11-30
    */
   facemerge(image, model) {
@@ -168,7 +155,7 @@ module.exports = class ImgSpecialEffects {
     if (model && model < 1 && model > 50) {
       return error('model 不能为空且取值区间为[1-50]');
     }
-    return PS(
+    return Request.request(
       URIS.facemerge,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -188,7 +175,7 @@ module.exports = class ImgSpecialEffects {
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    * @param {Number} sticker 大头贴编码 取值区间[1-31]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   facesticker(image, sticker) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
@@ -197,7 +184,7 @@ module.exports = class ImgSpecialEffects {
     if (sticker && sticker < 1 && sticker > 32) {
       return error('model 不能为空且取值区间为[1-31]');
     }
-    return PS(
+    return Request.request(
       URIS.facesticker,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -216,13 +203,13 @@ module.exports = class ImgSpecialEffects {
    * @see https://ai.qq.com/doc/faceage.shtml
    * @param {String} image 待处理图片 原始图片的base64编码数据（原图大小上限500KB）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   faceage(image) {
     if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
       return error('image 不能为空 且 大小小于500Kb');
     }
-    return PS(
+    return Request.request(
       URIS.faceage,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -231,4 +218,4 @@ module.exports = class ImgSpecialEffects {
       }),
     );
   }
-};
+}

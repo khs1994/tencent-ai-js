@@ -1,17 +1,11 @@
-'use strict';
+import AbstractTencentAI from './AbstractTencentAI';
+import Request from './client/Request';
+import { URIS, commonParams, error } from './util/index';
 
-const { URIS, commonParams, error } = require('./util');
-
-const PS = require('./client/ProxyServices');
-
-const TencentAIError = require('./Error/TencentAIError');
-
-module.exports = class Speech {
+export default class Speech extends AbstractTencentAI {
   /**
    * 智能语音 API 服务类
    *
-   * @param {String} appKey 应用key
-   * @param {String} appId  应用id
    * @method tts(Object) 语音合成（AI Lab）
    * @method tta(Object) 语音合成（优图）
    * @method asr(Object) 语音识别-echo版
@@ -19,13 +13,6 @@ module.exports = class Speech {
    * @method wxasrs(Object) 语音识别-流式版(WeChat AI)
    * @method wxasrlong(Object) 长语音识别
    */
-  constructor(appKey, appId) {
-    if (!appKey || !appId) {
-      throw new TencentAIError('appKey and appId are required');
-    }
-    this.appKey = appKey;
-    this.appId = appId;
-  }
 
   /**
    * 音频鉴黄
@@ -36,10 +23,10 @@ module.exports = class Speech {
    * @param {string} speech_id 语音唯一标识 非空且长度上限64B，同一应用内每段语音流标识需唯一
    * @param {string} speech_url 音频URL，建议音频时长不超过3分钟 非空且长度上限512B
    *
-   * @return {PS}
+   * @return {Promise}
    */
   evilaudio(speech_id, speech_url) {
-    return PS(
+    return Request.request(
       URIS.evilaudio,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -64,7 +51,7 @@ module.exports = class Speech {
    * @param {Number} aht 默认0---- 合成语音降低/升高半音个数，即改变音高，取值范围[-24, 24]
    * @param {Number} apc 默认58--- 控制频谱翘曲的程度，改变说话人的音色，取值范围[0, 100]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   tts(
     text,
@@ -76,7 +63,7 @@ module.exports = class Speech {
     apc = 58,
   ) {
     if (text && Buffer.byteLength(text, 'utf8') < 150) {
-      return PS(
+      return Request.request(
         URIS.tts,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -105,11 +92,11 @@ module.exports = class Speech {
    * @param {Number} model_type 默认0--- 发音模型，取值范围[女生  0 | 女生纯英文  1 | 男生  2 | 喜道公子  6]
    * @param {Number} speed 默认0--- 合成语音语速，取值范围[0.6倍速  -2 | 0.8倍速  -1 | 正常速度  0 | 1.2倍速  1 | 1.5倍速  2]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   tta(text, model_type = 0, speed = 0) {
     if (text && Buffer.byteLength(text, 'utf8') < 300) {
-      return PS(
+      return Request.request(
         URIS.tta,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -134,11 +121,11 @@ module.exports = class Speech {
    * @param {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
    * @param {Number} rate 默认8000--- 语音采样率编码，取值范围[8KHz  8000 | 16KHz  16000]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   asr(speech, format = 2, rate = 8000) {
     if (speech && Buffer.byteLength(speech, 'base64') < 1048576 * 8) {
-      return PS(
+      return Request.request(
         URIS.asr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -172,7 +159,7 @@ module.exports = class Speech {
    * @param {Number} format 默认2--- 语音压缩格式编码，取值范围[PCM  1 | WAV  2 | AMR  3 | SILK  4]
    * @param {Number} rate 默认8000--- 语音采样率编码，取值范围[8KHz  8000 | 16KHz  16000]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   asrs(
     speech_chunk,
@@ -189,7 +176,7 @@ module.exports = class Speech {
       speech_id &&
       len
     ) {
-      return PS(
+      return Request.request(
         URIS.asrs,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -233,7 +220,7 @@ module.exports = class Speech {
    * @param {Number} bits 默认16位--- 音频采样位数
    * @param {Number} cont_res 默认0--- 是否获取中间识别结果，取值范围 [0  不获取 | 1  获取]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   wxasrs(
     speech_chunk,
@@ -247,7 +234,7 @@ module.exports = class Speech {
     cont_res = 0,
   ) {
     if (speech_chunk && speech_id && len) {
-      return PS(
+      return Request.request(
         URIS.wxasrs,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -279,12 +266,12 @@ module.exports = class Speech {
    * @param {String} speech 待识别语音（时长上限15min） 语音数据的Base64编码，原始音频大小上限5MB
    * @param {String} speech_url 待识别语音下载地址（时长上限15min） 音频下载地址，音频大小上限30MB
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   wxasrlong(format = 2, callback_url, speech = '', speech_url = '') {
     if (callback_url && (speech || speech_url)) {
       if (Buffer.byteLength(speech, 'base64') < 1048576 * 5 || speech_url) {
-        return PS(
+        return Request.request(
           URIS.wxasrlong,
           this.appKey,
           Object.assign({}, commonParams(), {
@@ -317,7 +304,7 @@ module.exports = class Speech {
    * @param speech 语音数据的Base64编码，原始音频大小上限5MB 待识别语音（时长上限15min）
    * @param speech_url 音频下载地址，音频大小上限30MB 待识别语音下载地址（时长上限15min）
    *
-   * @return {PS}
+   * @return {Promise}
    */
   detectkeyword(
     callback_url,
@@ -330,7 +317,7 @@ module.exports = class Speech {
       return error('speech大小必须小于5M');
     }
 
-    return PS(
+    return Request.request(
       URIS.detectkeyword,
       this.appKey,
       Object.assign(
@@ -346,4 +333,4 @@ module.exports = class Speech {
       ),
     );
   }
-};
+}

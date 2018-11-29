@@ -1,5 +1,5 @@
 module.exports = {
-  'root': true,
+  root: true,
   // https://eslint.org/docs/user-guide/configuring#specifying-environments
   env: {
     node: true,
@@ -10,14 +10,15 @@ module.exports = {
   // http://www.php.cn/js-tutorial-386185.html
   // 为了让 eslint 支持 es7 或更高的语法
   // https://eslint.org/docs/user-guide/configuring#specifying-parser
-  parser: 'babel-eslint',
+  // parser: 'babel-eslint',
+  parser: 'typescript-eslint-parser',
   // https://eslint.org/docs/user-guide/configuring#extending-configuration-files
   extends: [
     'eslint:recommended',
     // https://github.com/prettier/eslint-plugin-prettier
     'plugin:prettier/recommended',
     // https://github.com/mysticatea/eslint-plugin-node
-    'plugin:node/recommended',
+    // 'plugin:node/recommended',
     // "plugin:promise/recommended",
   ],
   // "extends": ["plugin:prettier/recommended"]
@@ -26,7 +27,7 @@ module.exports = {
     // 'ecmaVersion': 2015,
     ecmaVersion: 2019,
     impliedStrict: true,
-    sourceType: 'script',
+    sourceType: 'module',
   },
   // https://cn.eslint.org/docs/rules/
   // https://eslint.org/docs/user-guide/configuring#configuring-rules
@@ -59,11 +60,11 @@ module.exports = {
     'no-console': 2,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
 
-    'node/exports-style': ['error', 'module.exports'],
-    'node/prefer-global/process': ['error', 'always'],
+    // 'node/exports-style': ['error', 'module.exports'],
+    // 'node/prefer-global/process': ['error', 'always'],
 
-    'prettier/prettier': ['error', { 'trailingComma': 'all' }],
+    'prettier/prettier': ['error', { trailingComma: 'all' }],
   },
   // https://eslint.org/docs/user-guide/configuring#configuring-plugins
-  plugins: [],
+  plugins: ['typescript'],
 };

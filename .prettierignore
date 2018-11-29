@@ -2,3 +2,4 @@
 node_modules/
 coverage/
 src/util/md5.js
+lib

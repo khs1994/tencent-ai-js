@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * 定义通用类
  *
@@ -11,7 +9,7 @@ const randomString = require('randomstring');
 
 const iconv = require('iconv-lite');
 
-module.exports.URIS = {
+export const URIS = {
   // 智能语音
   // 语音合成doc https://ai.qq.com/doc/aaitts.shtml
   tts: '/fcgi-bin/aai/aai_tts',
@@ -140,7 +138,7 @@ module.exports.URIS = {
   faceage: '/fcgi-bin/ptu/ptu_faceage',
 };
 
-module.exports.commonParams = () => {
+export const commonParams = () => {
   return {
     nonce_str: randomString.generate({
       length: 16,
@@ -151,7 +149,7 @@ module.exports.commonParams = () => {
   };
 };
 
-module.exports.error = msg => {
+export const error = msg => {
   return new Promise((resolve, reject) => {
     reject({
       ret: 4096,
@@ -161,7 +159,7 @@ module.exports.error = msg => {
   });
 };
 
-module.exports.textToGBK = text => {
+export const textToGBK = text => {
   // http://www.qqxiuzi.cn/zh/hanzi-gbk-bianma.php
   let str = iconv.encode(text, 'gbk'),
     strList = '';

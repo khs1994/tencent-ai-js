@@ -1,17 +1,11 @@
-'use strict';
+import AbstractTencentAI from './AbstractTencentAI';
+import { URIS, commonParams, error } from './util/index';
+import Request from './client/Request';
 
-const { URIS, commonParams, error } = require('./util');
-
-const PS = require('./client/ProxyServices');
-
-const TencentAIError = require('./Error/TencentAIError');
-
-module.exports = class OCR {
+export default class OCR extends AbstractTencentAI {
   /**
    * OCR 服务类
    *
-   * @param {String} appKey 应用key
-   * @param {String} appId  应用id
    * @method idcardocr(imageBase64String, type) 身份证OCR识别
    * @method bcocr(imageBase64String) 名片OCR识别
    * @method driverlicenseocr(imageBase64String, type) 行驶证驾驶证OCR识别
@@ -21,13 +15,6 @@ module.exports = class OCR {
    * @method plateocr(imageBase64String) 车牌识别
    * @method handwritingocr(imageBase64String) 手写体识别
    */
-  constructor(appKey, appId) {
-    if (!appKey || !appId) {
-      throw new TencentAIError('appKey and appId are required');
-    }
-    this.appKey = appKey;
-    this.appId = appId;
-  }
 
   /**
    * 身份证 OCR 识别
@@ -38,14 +25,14 @@ module.exports = class OCR {
    * @param {String} imageBase64String  待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {Number} card_type  身份证图片类型，0-正面，1-反面
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   idcardocr(imageBase64String, card_type = 0) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.idcardocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -67,14 +54,14 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/ocrbcocr.shtml
    * @param {String} imageBase64String  待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   bcocr(imageBase64String) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.bcocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -103,7 +90,7 @@ module.exports = class OCR {
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.driverlicenseocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -125,14 +112,14 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/ocrgeneralocr.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   generalocr(imageBase64String) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.generalocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -153,14 +140,14 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/ocrbizlicenseocr.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   bizlicenseocr(imageBase64String) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.bizlicenseocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -181,14 +168,14 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/ocrcreditcardocr.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   creditcardocr(imageBase64String) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.creditcardocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -209,14 +196,14 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/plateocr.shtml
    * @param {String} imageBase64String 待识别图片或者待识别图片URI地址 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   plateocr(imageBase64String) {
     if (
       imageBase64String &&
       /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)
     ) {
-      return PS(
+      return Request.request(
         URIS.plateocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -228,7 +215,7 @@ module.exports = class OCR {
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.plateocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -249,14 +236,14 @@ module.exports = class OCR {
    * @see https://ai.qq.com/doc/handwritingocr.shtml
    * @param {String} imageBase64String 待识别图片或者待识别图片URI地址 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   handwritingocr(imageBase64String) {
     if (
       imageBase64String &&
       /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)
     ) {
-      return PS(
+      return Request.request(
         URIS.handwritingocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -268,7 +255,7 @@ module.exports = class OCR {
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.handwritingocr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -280,4 +267,4 @@ module.exports = class OCR {
       return error('image 不能为空 且 大小小于1M 或者不是正常的图片地址');
     }
   }
-};
+}

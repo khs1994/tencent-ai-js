@@ -1,17 +1,11 @@
-'use strict';
+import AbstractTencentAI from './AbstractTencentAI';
+import { URIS, commonParams, error } from './util/index';
+import Request from './client/Request';
 
-const { URIS, commonParams, error } = require('./util');
-
-const PS = require('./client/ProxyServices');
-
-const TencentAIError = require('./Error/TencentAIError');
-
-module.exports = class ImgPublic {
+export default class Image extends AbstractTencentAI {
   /**
    * 图片识别公共 API 服务类
    *
-   * @param {String} appKey 应用 key
-   * @param {String} appId  应用 id
    * @method porn(imageBase64String) 智能鉴黄
    * @method terrorism(imageBase64String) 暴恐识别
    * @method scener(imageBase64String) 场景识别
@@ -22,13 +16,6 @@ module.exports = class ImgPublic {
    * @method imagefuzzy(imageBase64String) 模糊图片检测
    * @method imagefood(imageBase64String) 获取人脸信息
    */
-  constructor(appKey, appId) {
-    if (!appKey || !appId) {
-      throw new TencentAIError('appKey and appId are required');
-    }
-    this.appKey = appKey;
-    this.appId = appId;
-  }
 
   /**
    * 智能鉴黄
@@ -39,7 +26,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {String} image_url
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   porn(imageBase64String = '', image_url = '') {
     if (
@@ -53,7 +40,7 @@ module.exports = class ImgPublic {
       return error('image and url all empty');
     }
 
-    return PS(
+    return Request.request(
       URIS.porn,
       this.appKey,
       Object.assign(
@@ -76,7 +63,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {String} image_url
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   terrorism(imageBase64String = '', image_url = '') {
     if (
@@ -90,7 +77,7 @@ module.exports = class ImgPublic {
       return error('image and url all empty');
     }
 
-    return PS(
+    return Request.request(
       URIS.terrorism,
       this.appKey,
       Object.assign(
@@ -112,11 +99,11 @@ module.exports = class ImgPublic {
    * @param {Number} format 默认1 图片格式 [1  JPG格式（image/jpeg）]
    * @param {Number} topk 默认1 返回结果个数（已按置信度倒排）[1-5]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   scener(image, format = 1, topk = 1) {
     if (image && Buffer.byteLength(image, 'base64') < 1048576) {
-      return PS(
+      return Request.request(
         URIS.scener,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -141,11 +128,11 @@ module.exports = class ImgPublic {
    * @param {Number} format 默认1 图片格式 [1  JPG格式（image/jpeg）]
    * @param {Number} topk 默认1 返回结果个数（已按置信度倒排）[1-5]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   objectr(image, format = 1, topk = 1) {
     if (image && Buffer.byteLength(image, 'base64') < 1048576) {
-      return PS(
+      return Request.request(
         URIS.objectr,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -168,14 +155,14 @@ module.exports = class ImgPublic {
    * @see https://ai.qq.com/doc/imagetag.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   imagetag(imageBase64String) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.imagetag,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -197,14 +184,14 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {Number} scene  识别场景，1-车辆识别，2-花草识别
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   imgidentify(imageBase64String, scene = 1) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.imgidentify,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -227,7 +214,7 @@ module.exports = class ImgPublic {
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {String} session_id  一次请求ID 尽可能唯一，长度上限64字节
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   imgtotext(imageBase64String, session_id) {
     if (
@@ -236,7 +223,7 @@ module.exports = class ImgPublic {
       session_id &&
       Buffer.byteLength(session_id, 'base64') < 64
     ) {
-      return PS(
+      return Request.request(
         URIS.imgtotext,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -260,14 +247,14 @@ module.exports = class ImgPublic {
    * @see https://ai.qq.com/doc/imagefuzzy.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   imagefuzzy(imageBase64String) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.imagefuzzy,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -288,14 +275,14 @@ module.exports = class ImgPublic {
    * @see https://ai.qq.com/doc/imagefood.shtml
    * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   imagefood(imageBase64String) {
     if (
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return PS(
+      return Request.request(
         URIS.imagefood,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -307,4 +294,4 @@ module.exports = class ImgPublic {
       return error('imageBase64String 不能为空 且 大小小于1M');
     }
   }
-};
+}

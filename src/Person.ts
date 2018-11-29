@@ -1,17 +1,11 @@
-'use strict';
+import AbstractTencentAI from './AbstractTencentAI';
+import { URIS, commonParams, error } from './util/index';
+import Request from './Client/Request';
 
-const { URIS, commonParams, error } = require('./util');
-
-const PS = require('./client/ProxyServices');
-
-const TencentAIError = require('./Error/TencentAIError');
-
-module.exports = class Person {
+export default class Person extends AbstractTencentAI {
   /**
    * 人体管理 API 服务类
    *
-   * @param {String} appKey 应用key
-   * @param {String} appId 应用id
    * @method newperson 个体创建
    * @method delperson 删除个体
    * @method addface 增加人脸
@@ -25,13 +19,6 @@ module.exports = class Person {
    * @method faceidentify 人脸识别
    * @method faceverify 人脸验证
    */
-  constructor(appKey, appId) {
-    if (!appKey || !appId) {
-      throw new TencentAIError('appKey and appId are required');
-    }
-    this.appKey = appKey;
-    this.appId = appId;
-  }
 
   /**
    * 个体创建
@@ -45,7 +32,7 @@ module.exports = class Person {
    * @param {String} group_ids group
    * @param {String} tag 备注信息
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   newperson(image, person_name, group_ids, person_id, tag) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -60,7 +47,7 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.newperson,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -82,13 +69,13 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/delperson.shtml
    * @param {String} person_id 需要删除的个体（Person）ID
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   delperson(person_id) {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.delperson,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -108,7 +95,7 @@ module.exports = class Person {
    * @param {String} person_id  指定的个体（Person）ID
    * @param {String} tag 备注信息
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   addface(images, person_id, tag) {
     if (images && Buffer.byteLength(images, 'base64') >= 1048576) {
@@ -117,7 +104,7 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.addface,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -138,7 +125,7 @@ module.exports = class Person {
    * @param {String} person_id 指定的个体（Person）ID
    * @param {String} face_ids 需要删除的人脸（Face）ID（多个之间用"\")
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   delface(person_id, face_ids) {
     if (!person_id) {
@@ -147,7 +134,7 @@ module.exports = class Person {
     if (!face_ids) {
       return error('face_ids 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.delface,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -168,7 +155,7 @@ module.exports = class Person {
    * @param {String} person_name 新的名字
    * @param {String} tag 备注信息
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   setinfo(person_id, person_name, tag) {
     if (!person_id) {
@@ -177,7 +164,7 @@ module.exports = class Person {
     if (!person_name) {
       return error('person_name 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.setinfo,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -197,13 +184,13 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/getinfo.shtml
    * @param {String} person_id 需要查询的个体（Person）ID
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   getinfo(person_id) {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.getinfo,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -220,10 +207,10 @@ module.exports = class Person {
    *
    * @see https://ai.qq.com/doc/getgroupids.shtml
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   getgroupids() {
-    return PS(
+    return Request.request(
       URIS.getgroupids,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -240,13 +227,13 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/getpersonids.shtml
    * @param {String} group_id 组（Group）ID
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   getpersonids(group_id) {
     if (!group_id) {
       return error('group_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.getpersonids,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -264,13 +251,13 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/getfaceids.shtml
    * @param {String} person_id 个体（Person）ID
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   getfaceids(person_id) {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.getfaceids,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -288,13 +275,13 @@ module.exports = class Person {
    * @see https://ai.qq.com/doc/getfaceinfo.shtml
    * @param {String} face_id 人脸（Face） ID
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   getfaceinfo(face_id) {
     if (!face_id) {
       return error('face_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.getfaceinfo,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -314,7 +301,7 @@ module.exports = class Person {
    * @param {String} group_id 候选人组ID（个体创建时设定）
    * @param {Number} topn 默认9个 返回的候选人个数可选值范围[1~10]
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   faceidentify(image, group_id, topn = 9) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -326,7 +313,7 @@ module.exports = class Person {
     if ((topn && topn < 1) || topn > 10) {
       return error('topn 不能为空且取值范围为[1~10]');
     }
-    return PS(
+    return Request.request(
       URIS.faceidentify,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -347,7 +334,7 @@ module.exports = class Person {
    * @param {String} image 待验证人脸图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
    * @param {String} person_id  待验证的个体（Person）ID
    *
-   * @return {PS} A Promise Object
+   * @return {Promise} A Promise Object
    */
   faceverify(image, person_id) {
     if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
@@ -356,7 +343,7 @@ module.exports = class Person {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return PS(
+    return Request.request(
       URIS.faceverify,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -366,4 +353,4 @@ module.exports = class Person {
       }),
     );
   }
-};
+}
