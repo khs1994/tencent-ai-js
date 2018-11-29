@@ -1,10 +1,10 @@
-const randomstring = require('randomstring');
+// const randomstring = require('randomstring');
 
 // const process = require('process');
 
 import { APP, fsReadSync } from './util';
 
-const { Translate } = require('../src/TencentAI');
+import { Translate } from '../src/TencentAI';
 
 const translate = new Translate(APP.appkey, APP.appid);
 
@@ -46,10 +46,11 @@ describe('translate', function() {
     return translate
       .imagetranslate(
         fsReadSync(`${__dirname}/resource/translate/english.jpg`),
-        randomstring.generate({
-          length: 16,
-          capitalization: 'uppercase',
-        }),
+        // randomstring.generate({
+        //   length: 16,
+        //   capitalization: 'uppercase',
+        // }),
+        'test',
         'doc',
         'en',
         'zh',
@@ -71,10 +72,11 @@ describe('translate', function() {
     return translate
       .speechtranslate(
         speech_chunk,
-        randomstring.generate({
-          length: 16,
-          capitalization: 'uppercase',
-        }),
+        // randomstring.generate({
+        //   length: 16,
+        //   capitalization: 'uppercase',
+        // }),
+        'test',
         6,
       )
       .then(

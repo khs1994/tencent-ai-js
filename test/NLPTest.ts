@@ -1,4 +1,4 @@
-const randomstring = require('randomstring');
+// const randomstring = require('randomstring');
 
 const assert = require('assert');
 
@@ -67,10 +67,11 @@ describe('baseLanguage', function() {
   it('textchat', async function() {
     let r = await NLPTest.textchat(
       '今天的天气不错呀',
-      randomstring.generate({
-        length: 16,
-        capitalization: 'uppercase',
-      }),
+      // randomstring.generate({
+      //   length: 16,
+      //   capitalization: 'uppercase',
+      // }),
+      'test',
     );
 
     assert.strictEqual(r.ret, 0);

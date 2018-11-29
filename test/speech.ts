@@ -1,4 +1,4 @@
-const randomstring = require('randomstring');
+// const randomstring = require('randomstring');
 
 // const process = require('process');
 
@@ -21,7 +21,8 @@ describe('speech', function() {
   // 音频鉴黄
   it('evilaudio', async () => {
     let r = await speech.evilaudio(
-      randomstring.generate(10),
+      // randomstring.generate(10),
+      'test',
       'https://gitee.com/khs1994-php/resource/raw/master/audio/1.wav',
     );
 

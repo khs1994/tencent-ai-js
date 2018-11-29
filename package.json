@@ -9,7 +9,8 @@
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
     "codecov": "./node_modules/.bin/codecov",
     "prettier": "npx prettier --write ./**/*.js ./**/*.ts",
-    "webpack-pro": "npx webpack-cli --mode=production"
+    "webpack-pro": "npx webpack-cli --mode=production",
+    "prepublishOnly": "npx tsc"
   },
   "author": {
     "name": "khs1994",
@@ -28,8 +29,7 @@
   ],
   "dependencies": {
     "iconv-lite": "^0.4.19",
-    "node-fetch": "^2.3.0",
-    "randomstring": "^1.1.5"
+    "node-fetch": "^2.3.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",

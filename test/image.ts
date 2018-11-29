@@ -1,4 +1,4 @@
-const randomstring = require('randomstring');
+// const randomstring = require('randomstring');
 
 // const process = require('process');
 
@@ -138,10 +138,11 @@ describe('image', function() {
     return imgPublic
       .imgtotext(
         fsReadSync(`${__dirname}/resource/vision/food.jpg`),
-        randomstring.generate({
-          length: 16,
-          capitalization: 'uppercase',
-        }),
+        // randomstring.generate({
+        //   length: 16,
+        //   capitalization: 'uppercase',
+        // }),
+        'test',
       )
       .then(
         res => {

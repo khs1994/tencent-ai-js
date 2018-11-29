@@ -1,6 +1,6 @@
 import { APP, fsReadSync } from './util';
 
-const randomString = require('randomstring');
+// const randomString = require('randomstring');
 
 // const fs = require('fs');
 
@@ -65,11 +65,12 @@ describe('image', function() {
       .visionimgfilter(
         fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
         26,
-        randomString.generate({
-          length: 16,
-          charset: 'alphanumeric',
-          capitalization: 'uppercase',
-        }),
+        // randomString.generate({
+        //   length: 16,
+        //   charset: 'alphanumeric',
+        //   capitalization: 'uppercase',
+        // }),
+        'test',
       )
       .then(
         res => {

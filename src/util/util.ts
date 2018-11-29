@@ -5,7 +5,9 @@
  * @exports commonParams 签名通用字段处理方法 时间和随机字符串
  * @exports error 参数错误处理方法， 模拟服务器返回 通用定义错误类型为4096
  */
-const randomString = require('randomstring');
+import hex_md5 from './md5';
+
+// const randomString = require('randomstring');
 
 const iconv = require('iconv-lite');
 
@@ -140,11 +142,12 @@ export const URIS = {
 
 export const commonParams = () => {
   return {
-    nonce_str: randomString.generate({
-      length: 16,
-      charset: 'alphanumeric',
-      capitalization: 'uppercase',
-    }),
+    // nonce_str: randomString.generate({
+    //   length: 16,
+    //   charset: 'alphanumeric',
+    //   capitalization: 'uppercase',
+    // }),
+    nonce_str: hex_md5(Date.now()),
     time_stamp: Math.floor(Date.now() / 1000),
   };
 };
