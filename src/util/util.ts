@@ -9,7 +9,8 @@ import hex_md5 from './md5';
 
 // const randomString = require('randomstring');
 
-const iconv = require('iconv-lite');
+// const iconv = require('iconv-lite');
+const gbk = require('gbk.js');
 
 export const URIS = {
   // 智能语音
@@ -162,10 +163,19 @@ export const error = msg => {
   });
 };
 
+export const gbkEncode = text => {
+  return gbk.URI.encodeURIComponent(text);
+};
+
+export const gbkDecode = text => {
+  return gbk.URI.decodeURIComponent(text);
+};
+
 export const textToGBK = text => {
   // http://www.qqxiuzi.cn/zh/hanzi-gbk-bianma.php
-  let str = iconv.encode(text, 'gbk'),
-    strList = '';
+  // let str = iconv.encode(text, 'gbk');
+  let str = gbk.encode(text);
+  let strList = '';
   str.map(item => {
     switch (true) {
       // ascii 0
