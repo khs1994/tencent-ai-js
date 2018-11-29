@@ -3,3 +3,4 @@ node_modules/
 coverage/
 src/util/md5.ts
 lib
+dist/

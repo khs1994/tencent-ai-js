@@ -47,6 +47,8 @@ class Response {
   }
 }
 
+// declare const wx: any;
+
 export default function wxFetch(url: string, options: FetchInterface = {}) {
   return new Promise((resolve, reject) => {
     wx.request({
