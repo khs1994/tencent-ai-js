@@ -1,4 +1,7 @@
 import TencentAI from './TencentAI';
 
 // @ts-ignore
-window.TencentAI = TencentAI;
+if (typeof window !== 'undefined') {
+  // @ts-ignore
+  window.TencentAI = TencentAI;
+}

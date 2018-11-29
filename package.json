@@ -10,7 +10,7 @@
     "codecov": "./node_modules/.bin/codecov",
     "prettier": "npx prettier --write ./**/*.js ./**/*.ts",
     "webpack-pro": "npx webpack-cli --mode=production",
-    "prepublishOnly": "npx tsc"
+    "prepublishOnly": "npx rimraf lib dist && npx tsc"
   },
   "author": {
     "name": "khs1994",
@@ -29,7 +29,8 @@
   ],
   "dependencies": {
     "iconv-lite": "^0.4.19",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "qs": "^6.6.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
@@ -50,7 +51,7 @@
     "typescript-eslint-parser": "^21.0.1"
   },
   "files": [
-    "src",
+    "lib",
     ".pcit.yml"
   ],
   "engines": {
@@ -67,6 +68,7 @@
   },
   "directories": {
     "doc": "./docs",
-    "lib": "./src"
+    "lib": "./lib",
+    "src": "./src"
   }
 }
