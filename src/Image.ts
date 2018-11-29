@@ -29,15 +29,17 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   porn(imageBase64String = '', image_url = '') {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') > 1048576
-    ) {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    if (!this.isWx) {
+      if (
+        imageBase64String &&
+        Buffer.byteLength(imageBase64String, 'base64') > 1048576
+      ) {
+        return error('imageBase64String 不能为空 且 大小小于1M');
+      }
 
-    if (!imageBase64String && !image_url) {
-      return error('image and url all empty');
+      if (!imageBase64String && !image_url) {
+        return error('image and url all empty');
+      }
     }
 
     return Request.request(
@@ -66,15 +68,17 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   terrorism(imageBase64String = '', image_url = '') {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') > 1048576
-    ) {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    if (!this.isWx) {
+      if (
+        imageBase64String &&
+        Buffer.byteLength(imageBase64String, 'base64') > 1048576
+      ) {
+        return error('imageBase64String 不能为空 且 大小小于1M');
+      }
 
-    if (!imageBase64String && !image_url) {
-      return error('image and url all empty');
+      if (!imageBase64String && !image_url) {
+        return error('image and url all empty');
+      }
     }
 
     return Request.request(
@@ -102,20 +106,16 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   scener(image, format = 1, topk = 1) {
-    if (image && Buffer.byteLength(image, 'base64') < 1048576) {
-      return Request.request(
-        URIS.scener,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: image,
-          format: format,
-          topk: topk,
-        }),
-      );
-    } else {
-      return error('image 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.scener,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        format: format,
+        topk: topk,
+      }),
+    );
   }
 
   /**
@@ -131,20 +131,16 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   objectr(image, format = 1, topk = 1) {
-    if (image && Buffer.byteLength(image, 'base64') < 1048576) {
-      return Request.request(
-        URIS.objectr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: image,
-          format: format,
-          topk: topk,
-        }),
-      );
-    } else {
-      return error('image 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.objectr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        format: format,
+        topk: topk,
+      }),
+    );
   }
 
   /**
@@ -158,21 +154,14 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   imagetag(imageBase64String) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.imagetag,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.imagetag,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+      }),
+    );
   }
 
   /**
@@ -186,23 +175,16 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  imgidentify(imageBase64String, scene = 1) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.imgidentify,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-          scene: scene,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+  imgidentify(imageBase64String, scene: 1 | 2 = 1) {
+    return Request.request(
+      URIS.imgidentify,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+        scene: scene,
+      }),
+    );
   }
 
   /**
@@ -217,26 +199,15 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   imgtotext(imageBase64String, session_id) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576 &&
-      session_id &&
-      Buffer.byteLength(session_id, 'base64') < 64
-    ) {
-      return Request.request(
-        URIS.imgtotext,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-          session_id: session_id,
-        }),
-      );
-    } else {
-      return error(
-        'imageBase64String/session_id 不能为空 且 imageBase64String大小小于1M session_id长度小于64B',
-      );
-    }
+    return Request.request(
+      URIS.imgtotext,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+        session_id: session_id,
+      }),
+    );
   }
 
   /**
@@ -250,21 +221,14 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   imagefuzzy(imageBase64String) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.imagefuzzy,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.imagefuzzy,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+      }),
+    );
   }
 
   /**
@@ -278,20 +242,13 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   imagefood(imageBase64String) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.imagefood,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.imagefood,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+      }),
+    );
   }
 }

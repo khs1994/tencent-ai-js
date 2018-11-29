@@ -35,9 +35,12 @@ export default class Person extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   newperson(image, person_name, group_ids, person_id, tag) {
-    if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
+        return error('image 不能为空且大小小于1M');
+      }
     }
+
     if (!person_name) {
       return error('person_name 不能为空');
     }
@@ -47,6 +50,7 @@ export default class Person extends AbstractTencentAI {
     if (!person_id) {
       return error('person_id 不能为空');
     }
+
     return Request.request(
       URIS.newperson,
       this.appKey,
@@ -98,9 +102,6 @@ export default class Person extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   addface(images, person_id, tag) {
-    if (images && Buffer.byteLength(images, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
-    }
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -304,9 +305,6 @@ export default class Person extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   faceidentify(image, group_id, topn = 9) {
-    if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
-    }
     if (!group_id) {
       return error('group_id 不能为空');
     }
@@ -337,9 +335,6 @@ export default class Person extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   faceverify(image, person_id) {
-    if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
-    }
     if (!person_id) {
       return error('person_id 不能为空');
     }

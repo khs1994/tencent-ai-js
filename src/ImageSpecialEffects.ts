@@ -27,12 +27,15 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   facecosmetic(image, cosmetic = 1) {
-    if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小于500KB');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
+        return error('image 不能为空且大小小于500KB');
+      }
+      if (cosmetic && cosmetic < 1 && cosmetic > 22) {
+        return error('cosmetic 不能为空且取值区间为[1-23]');
+      }
     }
-    if (cosmetic && cosmetic < 1 && cosmetic > 22) {
-      return error('cosmetic 不能为空且取值区间为[1-23]');
-    }
+
     return Request.request(
       URIS.facecosmetic,
       this.appKey,
@@ -56,12 +59,15 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   facedecoration(image, decoration = 1) {
-    if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小于500KB');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
+        return error('image 不能为空且大小小于500KB');
+      }
+      if (decoration && decoration < 1 && decoration > 22) {
+        return error('decoration 不能为空且取值区间为[1-22]');
+      }
     }
-    if (decoration && decoration < 1 && decoration > 22) {
-      return error('decoration 不能为空且取值区间为[1-22]');
-    }
+
     return Request.request(
       URIS.facedecoration,
       this.appKey,
@@ -85,12 +91,15 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   ptuimgfilter(image, filter) {
-    if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小于500KB');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
+        return error('image 不能为空且大小小于500KB');
+      }
+      if (filter && filter < 1 && filter > 32) {
+        return error('filter 不能为空且取值区间为[1-32]');
+      }
     }
-    if (filter && filter < 1 && filter > 32) {
-      return error('filter 不能为空且取值区间为[1-32]');
-    }
+
     return Request.request(
       URIS.ptuimgfilter,
       this.appKey,
@@ -115,15 +124,18 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   visionimgfilter(image, filter, session_id) {
-    if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
+        return error('image 不能为空且大小小于1M');
+      }
+      if (filter && filter < 1 && filter > 65) {
+        return error('filter 不能为空且取值区间为[1-65]');
+      }
+      if (session_id && Buffer.byteLength(session_id, 'base64') > 64) {
+        return error('session_id 不能为空且大小小于65b');
+      }
     }
-    if (filter && filter < 1 && filter > 65) {
-      return error('filter 不能为空且取值区间为[1-65]');
-    }
-    if (session_id && Buffer.byteLength(session_id, 'base64') > 64) {
-      return error('session_id 不能为空且大小小于65b');
-    }
+
     return Request.request(
       URIS.visionimgfilter,
       this.appKey,
@@ -149,12 +161,15 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @deprecated Not Available on 2018-11-30
    */
   facemerge(image, model) {
-    if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空且大小小于500Kb');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
+        return error('image 不能为空且大小小于500Kb');
+      }
+      if (model && model < 1 && model > 50) {
+        return error('model 不能为空且取值区间为[1-50]');
+      }
     }
-    if (model && model < 1 && model > 50) {
-      return error('model 不能为空且取值区间为[1-50]');
-    }
+
     return Request.request(
       URIS.facemerge,
       this.appKey,
@@ -178,12 +193,15 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   facesticker(image, sticker) {
-    if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空 且 大小小于500Kb');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
+        return error('image 不能为空 且 大小小于500Kb');
+      }
+      if (sticker && sticker < 1 && sticker > 32) {
+        return error('model 不能为空且取值区间为[1-31]');
+      }
     }
-    if (sticker && sticker < 1 && sticker > 32) {
-      return error('model 不能为空且取值区间为[1-31]');
-    }
+
     return Request.request(
       URIS.facesticker,
       this.appKey,
@@ -206,9 +224,12 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   faceage(image) {
-    if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
-      return error('image 不能为空 且 大小小于500Kb');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
+        return error('image 不能为空 且 大小小于500Kb');
+      }
     }
+
     return Request.request(
       URIS.faceage,
       this.appKey,

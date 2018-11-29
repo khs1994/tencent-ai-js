@@ -24,14 +24,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectface(image, mode = 1) {
-    if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
-    }
-    if ((mode && mode < 0) || mode > 1) {
-      return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
-    }
-
+  detectface(image, mode: 0 | 1 = 1) {
     return Request.request(
       URIS.detectface,
       this.appKey,
@@ -54,8 +47,10 @@ export default class Face extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   detectmultiface(image) {
-    if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
+        return error('image 不能为空且大小小于1M');
+      }
     }
 
     return Request.request(
@@ -80,13 +75,14 @@ export default class Face extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   facecompare(image_a, image_b) {
-    if (image_a && Buffer.byteLength(image_a, 'base64') >= 1048576) {
-      return error('image_a 不能为空且大小小于1M');
+    if (!this.isWx) {
+      if (image_a && Buffer.byteLength(image_a, 'base64') >= 1048576) {
+        return error('image_a 不能为空且大小小于1M');
+      }
+      if (image_b && Buffer.byteLength(image_b, 'base64') >= 1048576) {
+        return error('image_b 不能为空且大小小于1M');
+      }
     }
-    if (image_b && Buffer.byteLength(image_b, 'base64') >= 1048576) {
-      return error('image_b 不能为空且大小小于1M');
-    }
-
     return Request.request(
       URIS.facecompare,
       this.appKey,
@@ -110,11 +106,19 @@ export default class Face extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   detectcrossageface(source_image, target_image) {
-    if (source_image && Buffer.byteLength(source_image, 'base64') >= 1048576) {
-      return error('source_image 不能为空且大小小于1M');
-    }
-    if (target_image && Buffer.byteLength(target_image, 'base64') >= 1048576) {
-      return error('target_image 不能为空且大小小于1M');
+    if (!this.isWx) {
+      if (
+        source_image &&
+        Buffer.byteLength(source_image, 'base64') >= 1048576
+      ) {
+        return error('source_image 不能为空且大小小于1M');
+      }
+      if (
+        target_image &&
+        Buffer.byteLength(target_image, 'base64') >= 1048576
+      ) {
+        return error('target_image 不能为空且大小小于1M');
+      }
     }
 
     return Request.request(
@@ -139,12 +143,14 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceshape(image, mode = 1) {
-    if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-      return error('image 不能为空且大小小于1M');
-    }
-    if ((mode && mode < 0) || mode > 1) {
-      return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
+  faceshape(image, mode: 0 | 1 = 1) {
+    if (!this.isWx) {
+      if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
+        return error('image 不能为空且大小小于1M');
+      }
+      if ((mode && mode < 0) || mode > 1) {
+        return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
+      }
     }
 
     return Request.request(

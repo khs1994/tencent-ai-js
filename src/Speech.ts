@@ -62,24 +62,20 @@ export default class Speech extends AbstractTencentAI {
     aht = 0,
     apc = 58,
   ) {
-    if (text && Buffer.byteLength(text, 'utf8') < 150) {
-      return Request.request(
-        URIS.tts,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: text,
-          speaker: speaker,
-          format: format,
-          volume: volume,
-          speed: speed,
-          aht: aht,
-          apc: apc,
-        }),
-      );
-    } else {
-      return error('text不能为空 或者应小于 150B');
-    }
+    return Request.request(
+      URIS.tts,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: text,
+        speaker: speaker,
+        format: format,
+        volume: volume,
+        speed: speed,
+        aht: aht,
+        apc: apc,
+      }),
+    );
   }
 
   /**
@@ -95,20 +91,22 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   tta(text, model_type = 0, speed = 0) {
-    if (text && Buffer.byteLength(text, 'utf8') < 300) {
-      return Request.request(
-        URIS.tta,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: text,
-          model_type: model_type,
-          speed: speed,
-        }),
-      );
-    } else {
-      return error('text不能为空 或者应小于 300B');
+    if (!this.isWx) {
+      if (text && Buffer.byteLength(text, 'utf8') > 300) {
+        return error('text不能为空 或者应小于 300B');
+      }
     }
+
+    return Request.request(
+      URIS.tta,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: text,
+        model_type: model_type,
+        speed: speed,
+      }),
+    );
   }
 
   /**
@@ -124,20 +122,16 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   asr(speech, format = 2, rate = 8000) {
-    if (speech && Buffer.byteLength(speech, 'base64') < 1048576 * 8) {
-      return Request.request(
-        URIS.asr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          speech: speech,
-          format: format,
-          rate: rate,
-        }),
-      );
-    } else {
-      return error('speech 不能为空');
-    }
+    return Request.request(
+      URIS.asr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        speech: speech,
+        format: format,
+        rate: rate,
+      }),
+    );
   }
 
   /**
@@ -170,31 +164,20 @@ export default class Speech extends AbstractTencentAI {
     format = 2,
     rate = 8000,
   ) {
-    if (
-      speech_chunk &&
-      Buffer.byteLength(speech_chunk, 'base64') < 1048576 * 8 &&
-      speech_id &&
-      len
-    ) {
-      return Request.request(
-        URIS.asrs,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          speech_chunk: speech_chunk,
-          speech_id: speech_id,
-          len: len,
-          seq: seq,
-          end: end,
-          format: format,
-          rate: rate,
-        }),
-      );
-    } else {
-      return error(
-        'speech_chunk/speech_id 不能为空, len不能为0  或者 speech_chunk大小必须小于8M',
-      );
-    }
+    return Request.request(
+      URIS.asrs,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        speech_chunk: speech_chunk,
+        speech_id: speech_id,
+        len: len,
+        seq: seq,
+        end: end,
+        format: format,
+        rate: rate,
+      }),
+    );
   }
 
   /**
@@ -269,27 +252,17 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   wxasrlong(format = 2, callback_url, speech = '', speech_url = '') {
-    if (callback_url && (speech || speech_url)) {
-      if (Buffer.byteLength(speech, 'base64') < 1048576 * 5 || speech_url) {
-        return Request.request(
-          URIS.wxasrlong,
-          this.appKey,
-          Object.assign({}, commonParams(), {
-            app_id: this.appId,
-            speech_url: speech_url,
-            speech: speech,
-            callback_url: callback_url,
-            format: format,
-          }),
-        );
-      } else {
-        return error('speech大小必须小于5M');
-      }
-    } else {
-      return error(
-        'callback_url/speech 不能为空 或者 callback_url/speech_url不能为空',
-      );
-    }
+    return Request.request(
+      URIS.wxasrlong,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        speech_url: speech_url,
+        speech: speech,
+        callback_url: callback_url,
+        format: format,
+      }),
+    );
   }
 
   /**
@@ -313,8 +286,10 @@ export default class Speech extends AbstractTencentAI {
     speech = '',
     speech_url = '',
   ) {
-    if (speech && Buffer.byteLength(speech, 'base64') > 1048576 * 5) {
-      return error('speech大小必须小于5M');
+    if (!this.isWx) {
+      if (speech && Buffer.byteLength(speech, 'base64') > 1048576 * 5) {
+        return error('speech大小必须小于5M');
+      }
     }
 
     return Request.request(

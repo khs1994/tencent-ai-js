@@ -28,22 +28,15 @@ export default class OCR extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   idcardocr(imageBase64String, card_type = 0) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.idcardocr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-          card_type: card_type,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.idcardocr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+        card_type: card_type,
+      }),
+    );
   }
 
   /**
@@ -58,20 +51,20 @@ export default class OCR extends AbstractTencentAI {
    */
   bcocr(imageBase64String) {
     if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
+      !imageBase64String ||
+      Buffer.byteLength(imageBase64String, 'base64') > 1048576
     ) {
-      return Request.request(
-        URIS.bcocr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        }),
-      );
-    } else {
       return error('imageBase64String 不能为空 且 大小小于1M');
     }
+
+    return Request.request(
+      URIS.bcocr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+      }),
+    );
   }
 
   /**
@@ -86,22 +79,15 @@ export default class OCR extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   driverlicenseocr(imageBase64String, type = 1) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.driverlicenseocr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-          type: type,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.driverlicenseocr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+        type: type,
+      }),
+    );
   }
 
   /**
@@ -115,21 +101,14 @@ export default class OCR extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   generalocr(imageBase64String) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.generalocr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.generalocr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+      }),
+    );
   }
 
   /**
@@ -143,21 +122,14 @@ export default class OCR extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   bizlicenseocr(imageBase64String) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.bizlicenseocr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.bizlicenseocr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+      }),
+    );
   }
 
   /**
@@ -171,21 +143,14 @@ export default class OCR extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   creditcardocr(imageBase64String) {
-    if (
-      imageBase64String &&
-      Buffer.byteLength(imageBase64String, 'base64') < 1048576
-    ) {
-      return Request.request(
-        URIS.creditcardocr,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          image: imageBase64String,
-        }),
-      );
-    } else {
-      return error('imageBase64String 不能为空 且 大小小于1M');
-    }
+    return Request.request(
+      URIS.creditcardocr,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: imageBase64String,
+      }),
+    );
   }
 
   /**

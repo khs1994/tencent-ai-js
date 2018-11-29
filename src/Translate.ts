@@ -41,19 +41,15 @@ export default class Translate extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   texttrans(text, type = 0) {
-    if (text && Buffer.byteLength(text, 'utf8') < 1024) {
-      return Request.request(
-        URIS.texttrans,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          type: type,
-          text: text,
-        }),
-      );
-    } else {
-      return error('text不能为空 或者应小于 1024B');
-    }
+    return Request.request(
+      URIS.texttrans,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        type: type,
+        text: text,
+      }),
+    );
   }
 
   /**
@@ -84,20 +80,16 @@ export default class Translate extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   texttranslate(text, source = 'auto', target = 'zh') {
-    if (text && Buffer.byteLength(text, 'utf8') < 1024) {
-      return Request.request(
-        URIS.texttranslate,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: text,
-          source: source,
-          target: target,
-        }),
-      );
-    } else {
-      return error('text不能为空 或者应小于 1024B');
-    }
+    return Request.request(
+      URIS.texttranslate,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: text,
+        source: source,
+        target: target,
+      }),
+    );
   }
 
   /**
@@ -121,26 +113,24 @@ export default class Translate extends AbstractTencentAI {
     source = 'auto',
     target = 'en',
   ) {
-    if (image && session_id) {
-      if (Buffer.byteLength(image, 'base64') < 1048576) {
-        return Request.request(
-          URIS.imagetranslate,
-          this.appKey,
-          Object.assign({}, commonParams(), {
-            app_id: this.appId,
-            image: image,
-            session_id: session_id,
-            scene: scene,
-            source: source,
-            target: target,
-          }),
-        );
-      } else {
+    if (!this.isWx) {
+      if (Buffer.byteLength(image, 'base64') > 1048576) {
         return error('图片大小必须小于1M');
       }
-    } else {
-      return error('image/session_id 不能为空');
     }
+
+    return Request.request(
+      URIS.imagetranslate,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        image: image,
+        session_id: session_id,
+        scene: scene,
+        source: source,
+        target: target,
+      }),
+    );
   }
 
   /**
@@ -168,28 +158,20 @@ export default class Translate extends AbstractTencentAI {
     source = 'auto',
     target = 'auto',
   ) {
-    if (speech_chunk && session_id) {
-      if (Buffer.byteLength(speech_chunk, 'base64') < 1048576 * 8) {
-        return Request.request(
-          URIS.speechtranslate,
-          this.appKey,
-          Object.assign({}, commonParams(), {
-            app_id: this.appId,
-            format: format,
-            seq: seq,
-            end: end,
-            session_id: session_id,
-            speech_chunk: speech_chunk,
-            source: source,
-            target: target,
-          }),
-        );
-      } else {
-        return error('speech_chunk必须小于8M');
-      }
-    } else {
-      return error('speech_chunk/session_id 不能为空');
-    }
+    return Request.request(
+      URIS.speechtranslate,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        format: format,
+        seq: seq,
+        end: end,
+        session_id: session_id,
+        speech_chunk: speech_chunk,
+        source: source,
+        target: target,
+      }),
+    );
   }
 
   /**
@@ -206,19 +188,21 @@ export default class Translate extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   textdetect(text, candidate_langs = 'zh|en|kr|jp', force = 0) {
-    if (text && Buffer.byteLength(text, 'utf8') < 1024) {
-      return Request.request(
-        URIS.textdetect,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: text,
-          candidate_langs: candidate_langs,
-          force: force,
-        }),
-      );
-    } else {
-      return error('text不能为空 或者应小于 1024B');
+    if (!this.isWx) {
+      if (!text || Buffer.byteLength(text, 'utf8') > 1024) {
+        return error('text不能为空 或者应小于 1024B');
+      }
     }
+
+    return Request.request(
+      URIS.textdetect,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: text,
+        candidate_langs: candidate_langs,
+        force: force,
+      }),
+    );
   }
 }

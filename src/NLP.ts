@@ -1,4 +1,4 @@
-import { URIS, commonParams, error, textToGBK } from './util/util';
+import { URIS, commonParams, textToGBK } from './util/util';
 import AbstractTencentAI from './AbstractTencentAI';
 import Request from './client/Request';
 
@@ -26,19 +26,15 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   wordseg(text) {
-    if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return Request.request(
-        URIS.wordseg,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: textToGBK(text),
-        }),
-        true,
-      );
-    } else {
-      return error('text不能为空 或者GBK编码应小于1024B');
-    }
+    return Request.request(
+      URIS.wordseg,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: textToGBK(text),
+      }),
+      true,
+    );
   }
 
   /**
@@ -52,19 +48,15 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   wordpos(text) {
-    if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return Request.request(
-        URIS.wordpos,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: textToGBK(text),
-        }),
-        true,
-      );
-    } else {
-      return error('text不能为空 或者GBK编码应小于1024B');
-    }
+    return Request.request(
+      URIS.wordpos,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: textToGBK(text),
+      }),
+      true,
+    );
   }
 
   /**
@@ -78,19 +70,15 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise|error} A Promise Object
    */
   wordner(text) {
-    if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return Request.request(
-        URIS.wordner,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: textToGBK(text),
-        }),
-        true,
-      );
-    } else {
-      return error('text不能为空 或者GBK编码应小于1024B');
-    }
+    return Request.request(
+      URIS.wordner,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: textToGBK(text),
+      }),
+      true,
+    );
   }
 
   /**
@@ -104,19 +92,15 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise|error} A Promise Object
    */
   wordsyn(text) {
-    if (text && Buffer.byteLength(text, 'GBK') < 1024) {
-      return Request.request(
-        URIS.wordsyn,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: textToGBK(text),
-        }),
-        true,
-      );
-    } else {
-      return error('text不能为空 或者GBK编码应小于1024B');
-    }
+    return Request.request(
+      URIS.wordsyn,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: textToGBK(text),
+      }),
+      true,
+    );
   }
 
   /**
@@ -130,18 +114,14 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   wordcom(text) {
-    if (text && Buffer.byteLength(text, 'utf8') < 100) {
-      return Request.request(
-        URIS.wordcom,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: text,
-        }),
-      );
-    } else {
-      return error('text不能为空 或者UTF-8编码应小于100B');
-    }
+    return Request.request(
+      URIS.wordcom,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: text,
+      }),
+    );
   }
 
   /**
@@ -155,18 +135,14 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   textpolar(text) {
-    if (text && Buffer.byteLength(text, 'utf8') < 200) {
-      return Request.request(
-        URIS.textpolar,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          text: text,
-        }),
-      );
-    } else {
-      return error('text不能为空 或者UTF-8编码应小于200B');
-    }
+    return Request.request(
+      URIS.textpolar,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        text: text,
+      }),
+    );
   }
 
   /**
@@ -181,25 +157,14 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   textchat(question, session) {
-    if (
-      question &&
-      Buffer.byteLength(question, 'utf8') < 300 &&
-      session &&
-      Buffer.byteLength(session, 'utf8') < 64
-    ) {
-      return Request.request(
-        URIS.textchat,
-        this.appKey,
-        Object.assign({}, commonParams(), {
-          app_id: this.appId,
-          question: question,
-          session: session,
-        }),
-      );
-    } else {
-      return error(
-        'question/session不能为空 或者questio UTF-8编码应小于300B session  UTF-8编码应小于64B',
-      );
-    }
+    return Request.request(
+      URIS.textchat,
+      this.appKey,
+      Object.assign({}, commonParams(), {
+        app_id: this.appId,
+        question: question,
+        session: session,
+      }),
+    );
   }
 }
