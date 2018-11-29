@@ -6,7 +6,7 @@
   "scripts": {
     "eslint": "eslint ./src ./test",
     "pretest": "npx tsc",
-    "test": "nyc mocha -R spec --timeout 10000",
+    "test": "nyc mocha -R ts-node/register --timeout 10000",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
     "codecov": "./node_modules/.bin/codecov",
     "prettier": "npx prettier --write ./**/*.js ./**/*.ts",
@@ -33,6 +33,7 @@
     "randomstring": "^1.1.5"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.10",
     "babel-eslint": "^10.0.1",
     "codecov": "^3.1.0",
@@ -45,6 +46,7 @@
     "nyc": "^13.1.0",
     "prettier": "^1.15.2",
     "ts-loader": "^5.3.1",
+    "ts-node": "^7.0.1",
     "typescript": "^3.1.6",
     "typescript-eslint-parser": "^21.0.1"
   },

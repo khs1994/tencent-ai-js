@@ -4,7 +4,7 @@ const randomstring = require('randomstring');
 
 const { APP, fsReadSync } = require('./util');
 
-const { Translate } = require('../');
+const { Translate } = require('../src/TencentAI');
 
 const translate = new Translate(APP.appkey, APP.appid);
 

@@ -4,7 +4,7 @@ const assert = require('assert');
 
 const { APP } = require('./util');
 
-const { NLP, TencentAIError } = require('../');
+const { NLP, TencentAIError } = require('../src/TencentAI');
 
 const NLPTest = new NLP(APP.appkey, APP.appid);
 
@@ -18,7 +18,7 @@ describe('index', () => {
  * 自然语言处理-基本类 API 测试文件
  */
 describe('baseLanguage', function() {
-  this.retries(4);
+  // this.retries(4);
   // 基本文本分析 分词
   it('wordseg', async () => {
     let r = await NLPTest.wordseg('中国 人啊，a c ! hello word');
@@ -72,6 +72,8 @@ describe('baseLanguage', function() {
         capitalization: 'uppercase',
       }),
     );
+
+    console.log(r);
 
     assert.strictEqual(r.ret, 0);
   });

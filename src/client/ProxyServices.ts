@@ -1,9 +1,10 @@
-const https = require('https');
-const querystring = require('querystring');
 import node_md5 from '../util/node_md5';
 
+const https = require('https');
+const querystring = require('querystring');
 const iconv = require('iconv-lite');
-const fs = require('fs');
+// const fs = require('fs');
+
 const errorCode = {
   '4096': '参数非法---请检查请求参数是否符合要求',
   '12289': '应用不存在---请检查app_id是否有效的应用标识（AppId）',
