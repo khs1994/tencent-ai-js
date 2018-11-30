@@ -21,7 +21,7 @@ describe('baseLanguage', function() {
   this.retries(4);
   // 基本文本分析 分词
   it('wordseg', async () => {
-    let r = await NLPTest.wordseg('中国 人啊，a c  hello word');
+    let r = await NLPTest.wordseg('中国 人啊，a c !  hello word');
 
     assert.strictEqual(r.ret, 0);
   });
@@ -66,7 +66,7 @@ describe('baseLanguage', function() {
   // 基础闲聊
   it('textchat', async function() {
     let r = await NLPTest.textchat(
-      '今天的天气不错呀',
+      '今天的天气不错呀&',
       // randomstring.generate({
       //   length: 16,
       //   capitalization: 'uppercase',

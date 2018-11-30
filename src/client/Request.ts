@@ -87,7 +87,7 @@ export default class Request {
     }
 
     str = str.replace(/%20/g, '+');
-
+    // console.log(str);
     return str;
   }
 

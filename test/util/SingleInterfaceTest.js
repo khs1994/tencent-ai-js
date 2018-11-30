@@ -1,5 +1,3 @@
-'use strict';
-
 //原始测试
 const https = require('https');
 

@@ -2,43 +2,11 @@ import md5 from '../../src/util/md5';
 import * as assert from 'assert';
 import { urlencode } from '../../src/util/util';
 import * as querystring from 'querystring';
+import gbkEncodeByIconv from './gbkEncodeByIconv';
 
 const iconv = require('iconv-lite');
 const gbk = require('gbk.js');
-
-const textToGBK = text => {
-  // http://www.qqxiuzi.cn/zh/hanzi-gbk-bianma.php
-  // let str = iconv.encode(text, 'gbk');
-  let str = gbk.encode(text);
-  let strList = '';
-  str.map(item => {
-    switch (true) {
-      // ascii 0
-      case item === 0:
-        strList += '%00';
-        break;
-      // 空格转为+号
-      case item === 32:
-        strList += '+';
-        break;
-      // 原样输出
-      case item === 42 ||
-        item === 45 ||
-        item === 46 ||
-        item === 95 ||
-        (item >= 48 && item <= 57) ||
-        (item >= 65 && item <= 90) ||
-        (item >= 97 && item <= 122):
-        strList += String.fromCharCode(item);
-        break;
-      // 需要编码
-      default:
-        strList += '%' + item.toString(16).toUpperCase();
-        break;
-    }
-  });
-  return strList;
-};
+import * as querystringNode from 'querystring';
 
 describe('md5', () => {
   it('md5', () => {
@@ -53,7 +21,12 @@ describe('md5', () => {
     console.log(iconv.encode('你好?', 'gbk'));
     console.log(gbk.encode('你好?'));
 
-    console.log(textToGBK('你好?'));
+    console.log(gbkEncodeByIconv('你好?'));
     console.log(gbk.URI.encodeURI('你好?'));
+  });
+
+  it('urlencode', () => {
+    console.log(querystringNode.escape('你好?'));
+    console.log(encodeURIComponent('你好?'));
   });
 });
