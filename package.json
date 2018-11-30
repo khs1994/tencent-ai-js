@@ -8,7 +8,7 @@
     "test": "nyc mocha -R spec -r ts-node/register --timeout 10000 ./test/*.ts",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
     "codecov": "./node_modules/.bin/codecov",
-    "prettier": "npx prettier --write ./**/*.js ./**/*.ts",
+    "prettier": "npx prettier --write ./**/*.js ./**/*.ts ./*.md",
     "webpack-pro": "npx webpack-cli --mode=production",
     "prepublishOnly": "npx rimraf lib dist && npm run webpack-pro && npx tsc",
     "dev-miniprogram": "npx tsc --outDir ../../app/pcit/miniprogram/node_modules/@khs1994/tencent-ai/lib"

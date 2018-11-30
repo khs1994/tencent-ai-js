@@ -21,10 +21,7 @@ describe('face', function() {
 
   // 人脸分析 大脸
   it('detectface_big', async function() {
-    let r = await face.detectface(
-      fsReadSync(`${__dirname}/resource/face/wxc2.jpg`),
-      1,
-    );
+    let r = await face.detectface(`${__dirname}/resource/face/wxc2.jpg`, 1);
 
     assert.strictEqual(r.ret, 0);
   });
@@ -41,7 +38,7 @@ describe('face', function() {
   // 人脸对比
   it('facecompare', async function() {
     let r = await face.facecompare(
-      fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
+      `${__dirname}/resource/face/wxc.jpg`,
       fsReadSync(`${__dirname}/resource/face/wxc2.jpg`),
     );
 
@@ -60,10 +57,7 @@ describe('face', function() {
 
   // 五官定位 大脸
   it('faceshape_big', async function() {
-    let r = await face.faceshape(
-      fsReadSync(`${__dirname}/resource/face/wxc3.jpg`),
-      1,
-    );
+    let r = await face.faceshape(`${__dirname}/resource/face/wxc3.jpg`, 1);
 
     assert.strictEqual(r.ret, 0);
   });

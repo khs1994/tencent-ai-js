@@ -1,6 +1,6 @@
 import AbstractTencentAI from './AbstractTencentAI';
 import { URIS, commonParams, error } from './util/util';
-import Request from './Client/Request';
+import Request from './client/Request';
 
 export default class Person extends AbstractTencentAI {
   /**

@@ -22,9 +22,11 @@ $ npm install @khs1994/tencent-ai
 
 ## Usage
 
-* 可直接运行于 Node.js 浏览器 微信小程序端
+- 可直接运行于 Node.js 浏览器 微信小程序端
 
-* 一切逻辑均在微信小程序客户端完成，无需第三方服务器，保证用户隐私。
+- 一切逻辑均在微信小程序客户端完成，无需第三方服务器，保证用户隐私。
+
+- Node.js 端文件相关 API 可传入 base64 编码、本地文件路径、图片 url(TODO)
 
 ```js
 const { Translate, TencentAIError } = require('@khs1994/tencent-ai');
@@ -44,7 +46,7 @@ translate.texttrans('你好').then(
   },
   e => {
     console.log(e);
-  }
+  },
 );
 
 // Or Using async / await ES7
@@ -65,22 +67,27 @@ translate.texttrans('你好').then(
 
 ```js
 // 解构赋值
-const {TencentAI} = require('@khs1994/tencent-ai');
+const { TencentAI } = require('@khs1994/tencent-ai');
 
 // 以下两项请到 ai.qq.com 控制台查看。
 const app_key = '';
 const app_id = '';
 
 // 获取全部实例，也可以只获取特定实例，例如 NLP，具体参考上边例子
-const ai = new TencentAI(app_key,app_id);
+const ai = new TencentAI(app_key, app_id);
 
-ai.nlp.textchat('hello','session_id').then(res=>{
-  // TODO
-  console.log(res);
-},e=>console.log(e));
+ai.nlp.textchat('hello', 'session_id').then(
+  res => {
+    // TODO
+    console.log(res);
+  },
+  e => console.log(e),
+);
 ```
 
-* 在小程序端调用文件相关的 API 时(人脸识别、OCR、音频)，直接传入文件路径即可，无需转码。
+- 在小程序端调用文件相关的 API 时(人脸识别、OCR、音频)，可以直接传入文件路径，无需转码。也可传入 base64 编码。
+
+- 由于小程序限制，请避免传入 url。
 
 ### TypeScript
 
