@@ -25,6 +25,8 @@ export default class Face extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   detectface(image, mode: 0 | 1 = 1) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.detectface,
       this.appKey,
@@ -52,6 +54,8 @@ export default class Face extends AbstractTencentAI {
         return error('image 不能为空且大小小于1M');
       }
     }
+
+    image = this.readFileSync(image);
 
     return Request.request(
       URIS.detectmultiface,
@@ -83,6 +87,10 @@ export default class Face extends AbstractTencentAI {
         return error('image_b 不能为空且大小小于1M');
       }
     }
+
+    image_a = this.readFileSync(image_a);
+    image_b = this.readFileSync(image_b);
+
     return Request.request(
       URIS.facecompare,
       this.appKey,
@@ -121,6 +129,9 @@ export default class Face extends AbstractTencentAI {
       }
     }
 
+    source_image = this.readFileSync(source_image);
+    target_image = this.readFileSync(target_image);
+
     return Request.request(
       URIS.detectcrossageface,
       this.appKey,
@@ -152,6 +163,8 @@ export default class Face extends AbstractTencentAI {
         return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
       }
     }
+
+    image = this.readFileSync(image);
 
     return Request.request(
       URIS.faceshape,

@@ -1,4 +1,5 @@
 import TencentAIError from './Error/TencentAIError';
+import readFileSync from './util/wxFs';
 
 export default abstract class AbstractTencentAI {
   public isWx = false;
@@ -10,6 +11,14 @@ export default abstract class AbstractTencentAI {
 
     if (typeof wx !== 'undefined') {
       this.isWx = true;
+    }
+  }
+
+  public readFileSync(file) {
+    if (this.isWx) {
+      return readFileSync(file);
+    } else {
+      return file;
     }
   }
 }

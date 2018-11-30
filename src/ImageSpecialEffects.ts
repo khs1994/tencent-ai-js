@@ -36,6 +36,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       }
     }
 
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.facecosmetic,
       this.appKey,
@@ -68,6 +70,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       }
     }
 
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.facedecoration,
       this.appKey,
@@ -99,6 +103,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
         return error('filter 不能为空且取值区间为[1-32]');
       }
     }
+
+    image = this.readFileSync(image);
 
     return Request.request(
       URIS.ptuimgfilter,
@@ -136,6 +142,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       }
     }
 
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.visionimgfilter,
       this.appKey,
@@ -170,6 +178,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       }
     }
 
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.facemerge,
       this.appKey,
@@ -202,6 +212,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       }
     }
 
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.facesticker,
       this.appKey,
@@ -229,6 +241,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
         return error('image 不能为空 且 大小小于500Kb');
       }
     }
+
+    image = this.readFileSync(image);
 
     return Request.request(
       URIS.faceage,

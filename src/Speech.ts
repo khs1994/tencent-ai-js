@@ -122,6 +122,8 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   asr(speech, format = 2, rate = 8000) {
+    speech = this.readFileSync(speech);
+
     return Request.request(
       URIS.asr,
       this.appKey,
@@ -164,6 +166,8 @@ export default class Speech extends AbstractTencentAI {
     format = 2,
     rate = 8000,
   ) {
+    speech_chunk = this.readFileSync(speech_chunk);
+
     return Request.request(
       URIS.asrs,
       this.appKey,
@@ -216,6 +220,8 @@ export default class Speech extends AbstractTencentAI {
     bits = 16,
     cont_res = 0,
   ) {
+    speech_chunk = this.readFileSync(speech_chunk);
+
     if (speech_chunk && speech_id && len) {
       return Request.request(
         URIS.wxasrs,
@@ -252,6 +258,8 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   wxasrlong(format = 2, callback_url, speech = '', speech_url = '') {
+    speech = this.readFileSync(speech);
+
     return Request.request(
       URIS.wxasrlong,
       this.appKey,
@@ -291,6 +299,8 @@ export default class Speech extends AbstractTencentAI {
         return error('speech大小必须小于5M');
       }
     }
+
+    speech = this.readFileSync(speech);
 
     return Request.request(
       URIS.detectkeyword,

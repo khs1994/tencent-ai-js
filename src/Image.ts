@@ -23,24 +23,23 @@ export default class Image extends AbstractTencentAI {
    * 识别一个图像是否为色情图像
    *
    * @see https://ai.qq.com/doc/jianhuang.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
+   * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {String} image_url
    *
    * @return {Promise} A Promise Object
    */
-  porn(imageBase64String = '', image_url = '') {
+  porn(image = '', image_url = '') {
     if (!this.isWx) {
-      if (
-        imageBase64String &&
-        Buffer.byteLength(imageBase64String, 'base64') > 1048576
-      ) {
+      if (image && Buffer.byteLength(image, 'base64') > 1048576) {
         return error('imageBase64String 不能为空 且 大小小于1M');
       }
 
-      if (!imageBase64String && !image_url) {
+      if (!image && !image_url) {
         return error('image and url all empty');
       }
     }
+
+    image = this.readFileSync(image);
 
     return Request.request(
       URIS.porn,
@@ -49,9 +48,7 @@ export default class Image extends AbstractTencentAI {
         {},
         commonParams(),
         { app_id: this.appId },
-        imageBase64String
-          ? { image: imageBase64String }
-          : { image_url: image_url },
+        image ? { image: image } : { image_url: image_url },
       ),
     );
   }
@@ -62,24 +59,23 @@ export default class Image extends AbstractTencentAI {
    * 识别一个图像是否为暴恐图像
    *
    * @see https://ai.qq.com/doc/imageterrorism.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
+   * @param {String} image 待识别图片 原始图片的base64编码数据（原图大小上限1MB）
    * @param {String} image_url
    *
    * @return {Promise} A Promise Object
    */
-  terrorism(imageBase64String = '', image_url = '') {
+  terrorism(image = '', image_url = '') {
     if (!this.isWx) {
-      if (
-        imageBase64String &&
-        Buffer.byteLength(imageBase64String, 'base64') > 1048576
-      ) {
+      if (image && Buffer.byteLength(image, 'base64') > 1048576) {
         return error('imageBase64String 不能为空 且 大小小于1M');
       }
 
-      if (!imageBase64String && !image_url) {
+      if (!image && !image_url) {
         return error('image and url all empty');
       }
     }
+
+    image = this.readFileSync(image);
 
     return Request.request(
       URIS.terrorism,
@@ -88,7 +84,7 @@ export default class Image extends AbstractTencentAI {
         {},
         commonParams(),
         { app_id: this.appId },
-        image_url ? { image_url: image_url } : { image: imageBase64String },
+        image_url ? { image_url: image_url } : { image: image },
       ),
     );
   }
@@ -106,6 +102,8 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   scener(image, format = 1, topk = 1) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.scener,
       this.appKey,
@@ -131,6 +129,8 @@ export default class Image extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   objectr(image, format = 1, topk = 1) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.objectr,
       this.appKey,
@@ -149,17 +149,19 @@ export default class Image extends AbstractTencentAI {
    * 识别一个图像的标签信息,对图像分类
    *
    * @see https://ai.qq.com/doc/imagetag.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
+   * @param {String} image 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    *
    * @return {Promise} A Promise Object
    */
-  imagetag(imageBase64String) {
+  imagetag(image) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.imagetag,
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: imageBase64String,
+        image: image,
       }),
     );
   }
@@ -170,18 +172,20 @@ export default class Image extends AbstractTencentAI {
    * 花草/车辆识别接口提供特定类别的识别能力，可以根据您选择的场景识别出图片中的花草或车辆信息，目前已覆盖3000种常见花草，近3000类车型。
    *
    * @see https://ai.qq.com/doc/imgidentify.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
+   * @param {String} image 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {Number} scene  识别场景，1-车辆识别，2-花草识别
    *
    * @return {Promise} A Promise Object
    */
-  imgidentify(imageBase64String, scene: 1 | 2 = 1) {
+  imgidentify(image, scene: 1 | 2 = 1) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.imgidentify,
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: imageBase64String,
+        image: image,
         scene: scene,
       }),
     );
@@ -193,18 +197,20 @@ export default class Image extends AbstractTencentAI {
    * 用一句话文字描述图片。
    *
    * @see https://ai.qq.com/doc/imgtotext.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
+   * @param {String} image 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    * @param {String} session_id  一次请求ID 尽可能唯一，长度上限64字节
    *
    * @return {Promise} A Promise Object
    */
-  imgtotext(imageBase64String, session_id) {
+  imgtotext(image, session_id) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.imgtotext,
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: imageBase64String,
+        image: image,
         session_id: session_id,
       }),
     );
@@ -216,17 +222,19 @@ export default class Image extends AbstractTencentAI {
    * 判断一个图像的模糊程度。
    *
    * @see https://ai.qq.com/doc/imagefuzzy.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
+   * @param {String} image 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    *
    * @return {Promise} A Promise Object
    */
-  imagefuzzy(imageBase64String) {
+  imagefuzzy(image) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.imagefuzzy,
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: imageBase64String,
+        image: image,
       }),
     );
   }
@@ -237,17 +245,19 @@ export default class Image extends AbstractTencentAI {
    * 识别一个图像是否为美食图像。
    *
    * @see https://ai.qq.com/doc/imagefood.shtml
-   * @param {String} imageBase64String 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
+   * @param {String} image 待识别图片 原始图片的base64编码数据（解码后大小上限1MB）
    *
    * @return {Promise} A Promise Object
    */
-  imagefood(imageBase64String) {
+  imagefood(image) {
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.imagefood,
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: imageBase64String,
+        image: image,
       }),
     );
   }

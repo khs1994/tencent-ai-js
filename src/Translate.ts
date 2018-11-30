@@ -119,6 +119,8 @@ export default class Translate extends AbstractTencentAI {
       }
     }
 
+    image = this.readFileSync(image);
+
     return Request.request(
       URIS.imagetranslate,
       this.appKey,
@@ -158,6 +160,8 @@ export default class Translate extends AbstractTencentAI {
     source = 'auto',
     target = 'auto',
   ) {
+    speech_chunk = this.readFileSync(speech_chunk);
+
     return Request.request(
       URIS.speechtranslate,
       this.appKey,
