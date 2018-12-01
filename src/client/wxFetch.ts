@@ -68,7 +68,7 @@ class Response {
   }
 
   buffer() {
-    return Promise.resolve(new Int8Array(this.res.data));
+    return Promise.resolve(new Uint8Array(this.res.data));
   }
 }
 

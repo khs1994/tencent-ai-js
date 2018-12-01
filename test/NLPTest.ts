@@ -23,6 +23,8 @@ describe('baseLanguage', function() {
   it('wordseg', async () => {
     let r = await NLPTest.wordseg('中国 人啊，a c !  hello word');
 
+    // console.log(r);
+
     assert.strictEqual(r.ret, 0);
   });
 

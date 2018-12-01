@@ -16,11 +16,11 @@ export default class Request {
     isGbk: boolean = false,
     method: string = 'post',
   ) {
-    let is_wx = false;
-
-    if (typeof wx !== 'undefined') {
-      is_wx = true;
-    }
+    // let is_wx = false;
+    //
+    // if (typeof wx !== 'undefined') {
+    //   is_wx = true;
+    // }
 
     if (!this.requestInstance) {
       try {
