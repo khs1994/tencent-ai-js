@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 export default class Image extends AbstractTencentAI {
     /**
      * 图片识别公共 API 服务类
@@ -49,7 +49,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    scener(image: any, format?: number, topk?: number): any;
+    scener(image: string, format?: 1, topk?: 1 | 2 | 3 | 4 | 5): Promise<TencentAIReturn>;
     /**
      * 物体识别
      *
@@ -62,7 +62,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    objectr(image: any, format?: number, topk?: number): any;
+    objectr(image: string, format?: 1, topk?: 1 | 2 | 3 | 4 | 5): Promise<TencentAIReturn>;
     /**
      * 图像标签识别
      *
@@ -73,7 +73,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagetag(image: any): any;
+    imagetag(image: string): Promise<TencentAIReturn>;
     /**
      * 花草/车辆识别
      *
@@ -85,7 +85,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imgidentify(image: any, scene?: 1 | 2): any;
+    imgidentify(image: string, scene?: 1 | 2): Promise<TencentAIReturn>;
     /**
      * 看图说话
      *
@@ -97,7 +97,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imgtotext(image: any, session_id: any): any;
+    imgtotext(image: any, session_id: any): Promise<TencentAIReturn>;
     /**
      * 模糊图片检测
      *
@@ -108,7 +108,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagefuzzy(image: any): any;
+    imagefuzzy(image: any): Promise<TencentAIReturn>;
     /**
      * 美食图片识别
      *
@@ -119,5 +119,5 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagefood(image: any): any;
+    imagefood(image: any): Promise<TencentAIReturn>;
 }

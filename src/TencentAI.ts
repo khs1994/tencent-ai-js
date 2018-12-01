@@ -10,35 +10,35 @@ import Translate from './Translate';
 import TencentAIError from './Error/TencentAIError';
 
 class TencentAI extends AbstractTencentAI {
-  get nlp() {
+  get nlp(): NLP {
     return new NLP(this.appKey, this.appId);
   }
 
-  get face() {
+  get face(): Face {
     return new Face(this.appKey, this.appId);
   }
 
-  get image() {
+  get image(): Image {
     return new Image(this.appKey, this.appId);
   }
 
-  get imageSpecialEffects() {
+  get imageSpecialEffects(): ImageSpecialEffects {
     return new ImageSpecialEffects(this.appKey, this.appId);
   }
 
-  get ocr() {
+  get ocr(): OCR {
     return new OCR(this.appKey, this.appId);
   }
 
-  get person() {
+  get person(): Person {
     return new Person(this.appKey, this.appId);
   }
 
-  get speech() {
+  get speech(): Speech {
     return new Speech(this.appKey, this.appId);
   }
 
-  get translate() {
+  get translate(): Translate {
     return new Translate(this.appKey, this.appId);
   }
 }

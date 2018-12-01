@@ -3,6 +3,7 @@ import { error, urlencode } from '../util/util';
 // import * as querystring from 'querystring';
 import hex_md5 from '../util/md5';
 import wxFetch from './wxFetch';
+import { TencentAIReturn } from '../AbstractTencentAI';
 
 const querystring = require('qs');
 
@@ -15,7 +16,7 @@ export default class Request {
     data: any,
     isGbk: boolean = false,
     method: string = 'post',
-  ) {
+  ): Promise<TencentAIReturn> {
     // let is_wx = false;
     //
     // if (typeof wx !== 'undefined') {

@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 import Request from './client/Request';
 import { URIS, commonParams, error } from './util/util';
 
@@ -40,7 +40,7 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  texttrans(text, type = 0) {
+  texttrans(text: string, type: number = 0): Promise<TencentAIReturn> {
     return Request.request(
       URIS.texttrans,
       this.appKey,
@@ -79,7 +79,11 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  texttranslate(text, source = 'auto', target = 'zh') {
+  texttranslate(
+    text: string,
+    source: string = 'auto',
+    target: string = 'zh',
+  ): Promise<TencentAIReturn> {
     return Request.request(
       URIS.texttranslate,
       this.appKey,
@@ -107,12 +111,12 @@ export default class Translate extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   imagetranslate(
-    image,
-    session_id,
-    scene = 'word',
-    source = 'auto',
-    target = 'en',
-  ) {
+    image: string,
+    session_id: string,
+    scene: string = 'word',
+    source: string = 'auto',
+    target: string = 'en',
+  ): any {
     if (!this.isWx) {
       if (Buffer.byteLength(image, 'base64') > 1048576) {
         return error('图片大小必须小于1M');
@@ -152,14 +156,14 @@ export default class Translate extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   speechtranslate(
-    speech_chunk,
-    session_id,
-    format = 8,
-    seq = 0,
-    end = 1,
-    source = 'auto',
-    target = 'auto',
-  ) {
+    speech_chunk: string,
+    session_id: string,
+    format: number = 8,
+    seq: number = 0,
+    end: number = 1,
+    source: string = 'auto',
+    target: string = 'auto',
+  ): Promise<TencentAIReturn> {
     speech_chunk = this.readFileSync(speech_chunk);
 
     return Request.request(
@@ -191,7 +195,11 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  textdetect(text, candidate_langs = 'zh|en|kr|jp', force = 0) {
+  textdetect(
+    text: string,
+    candidate_langs: string = 'zh|en|kr|jp',
+    force: 0 | 1 = 0,
+  ): any {
     if (!this.isWx) {
       if (!text || Buffer.byteLength(text, 'utf8') > 1024) {
         return error('text不能为空 或者应小于 1024B');

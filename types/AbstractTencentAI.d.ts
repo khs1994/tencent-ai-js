@@ -3,5 +3,9 @@ export default abstract class AbstractTencentAI {
     readonly appId: string | number;
     isWx: boolean;
     constructor(appKey: string, appId: string | number);
-    readFileSync(file: any): any;
+    readFileSync(file: string): any;
+}
+export interface TencentAIReturn {
+    ret: number;
+    data: any;
 }

@@ -64,9 +64,9 @@ describe('image', function() {
   });
 
   // 场景识别
-  it.skip('scener', function() {
+  it('scener', function() {
     return imgPublic
-      .scener(fsReadSync(`${__dirname}/resource/vision/scener.jpg`), 5)
+      .scener(fsReadSync(`${__dirname}/resource/vision/scener.jpg`), 1)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);

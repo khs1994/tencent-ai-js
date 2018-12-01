@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 import { URIS, commonParams, error } from './util/util';
 import Request from './client/Request';
 
@@ -28,7 +28,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  porn(image = '', image_url = '') {
+  porn(image: string = '', image_url: string = ''): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') > 1048576) {
         return error('imageBase64String 不能为空 且 大小小于1M');
@@ -64,7 +64,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  terrorism(image = '', image_url = '') {
+  terrorism(image: string = '', image_url: string = ''): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') > 1048576) {
         return error('imageBase64String 不能为空 且 大小小于1M');
@@ -101,7 +101,11 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  scener(image, format = 1, topk = 1) {
+  scener(
+    image: string,
+    format: 1 = 1,
+    topk: 1 | 2 | 3 | 4 | 5 = 1,
+  ): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -128,7 +132,11 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  objectr(image, format = 1, topk = 1) {
+  objectr(
+    image: string,
+    format: 1 = 1,
+    topk: 1 | 2 | 3 | 4 | 5 = 1,
+  ): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -153,7 +161,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  imagetag(image) {
+  imagetag(image: string): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -177,7 +185,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  imgidentify(image, scene: 1 | 2 = 1) {
+  imgidentify(image: string, scene: 1 | 2 = 1): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -202,7 +210,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  imgtotext(image, session_id) {
+  imgtotext(image, session_id): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -226,7 +234,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  imagefuzzy(image) {
+  imagefuzzy(image): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -249,7 +257,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  imagefood(image) {
+  imagefood(image): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(

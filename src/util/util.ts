@@ -11,6 +11,7 @@ import hex_md5 from './md5';
 
 // const iconv = require('iconv-lite');
 import gbk = require('./gbk.js');
+import { TencentAIReturn } from '../AbstractTencentAI';
 
 export const URIS = {
   // 智能语音

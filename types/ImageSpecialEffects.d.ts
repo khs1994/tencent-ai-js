@@ -22,7 +22,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    facecosmetic(image: any, cosmetic?: number): any;
+    facecosmetic(image: string, cosmetic?: number): any;
     /**
      * 人脸变妆
      *
@@ -34,7 +34,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    facedecoration(image: any, decoration?: number): any;
+    facedecoration(image: string, decoration?: number): any;
     /**
      * 图片滤镜(天天P图)
      *
@@ -46,7 +46,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    ptuimgfilter(image: any, filter: any): any;
+    ptuimgfilter(image: string, filter: number): any;
     /**
      * 图片滤镜（AI Lab）
      *
@@ -59,7 +59,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    visionimgfilter(image: any, filter: any, session_id: any): any;
+    visionimgfilter(image: string, filter: number, session_id: string): any;
     /**
      * 人脸融合
      *
@@ -72,7 +72,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
      * @return {Promise} A Promise Object
      * @deprecated Not Available on 2018-11-30
      */
-    facemerge(image: any, model: any): any;
+    facemerge(image: string, model: number): any;
     /**
      * 大头贴
      *
@@ -84,7 +84,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    facesticker(image: any, sticker: any): any;
+    facesticker(image: string, sticker: number): any;
     /**
      * 颜龄检测
      *
@@ -95,5 +95,5 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    faceage(image: any): any;
+    faceage(image: string): any;
 }

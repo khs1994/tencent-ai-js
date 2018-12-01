@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 export default class NLP extends AbstractTencentAI {
     /**
      * 自然语言处理基础部分
@@ -21,7 +21,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wordseg(text: any): any;
+    wordseg(text: string): Promise<TencentAIReturn>;
     /**
      * 词性标注
      *
@@ -32,7 +32,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wordpos(text: any): any;
+    wordpos(text: string): Promise<TencentAIReturn>;
     /**
      * 专有名词识别
      *
@@ -43,7 +43,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise|error} A Promise Object
      */
-    wordner(text: any): any;
+    wordner(text: string): Promise<TencentAIReturn>;
     /**
      * 同义词识别
      *
@@ -54,7 +54,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise|error} A Promise Object
      */
-    wordsyn(text: any): any;
+    wordsyn(text: string): Promise<TencentAIReturn>;
     /**
      * 语义解析
      *
@@ -65,7 +65,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wordcom(text: any): any;
+    wordcom(text: string): Promise<TencentAIReturn>;
     /**
      * 情感分析
      *
@@ -76,7 +76,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    textpolar(text: any): any;
+    textpolar(text: string): Promise<TencentAIReturn>;
     /**
      * 智能闲聊
      *
@@ -88,5 +88,5 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    textchat(question: any, session: any): any;
+    textchat(question: string, session: string): Promise<TencentAIReturn>;
 }

@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 import { URIS, commonParams, error } from './util/util';
 import Request from './client/Request';
 
@@ -24,7 +24,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectface(image, mode: 0 | 1 = 1) {
+  detectface(image: string, mode: 0 | 1 = 1): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -48,7 +48,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectmultiface(image) {
+  detectmultiface(image: string): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');
@@ -78,7 +78,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  facecompare(image_a, image_b) {
+  facecompare(image_a: string, image_b: string): any {
     if (!this.isWx) {
       if (image_a && Buffer.byteLength(image_a, 'base64') >= 1048576) {
         return error('image_a 不能为空且大小小于1M');
@@ -113,7 +113,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectcrossageface(source_image, target_image) {
+  detectcrossageface(source_image: string, target_image: string): any {
     if (!this.isWx) {
       if (
         source_image &&
@@ -154,7 +154,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceshape(image, mode: 0 | 1 = 1) {
+  faceshape(image: string, mode: 0 | 1 = 1): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');

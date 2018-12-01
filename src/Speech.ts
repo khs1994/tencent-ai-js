@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 import Request from './client/Request';
 import { URIS, commonParams, error } from './util/util';
 
@@ -25,7 +25,7 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise}
    */
-  evilaudio(speech_id, speech_url) {
+  evilaudio(speech_id: string, speech_url: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.evilaudio,
       this.appKey,
@@ -54,14 +54,14 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   tts(
-    text,
-    speaker = 1,
-    format = 2,
-    volume = 10,
-    speed = 100,
-    aht = 0,
-    apc = 58,
-  ) {
+    text: string,
+    speaker: 1 | 5 | 6 | 7 = 1,
+    format: 1 | 2 | 3 = 2,
+    volume: number = 10,
+    speed: number = 100,
+    aht: number = 0,
+    apc: number = 58,
+  ): Promise<TencentAIReturn> {
     return Request.request(
       URIS.tts,
       this.appKey,
@@ -90,7 +90,7 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  tta(text, model_type = 0, speed = 0) {
+  tta(text: string, model_type: 0 | 1 | 2 | 6 = 0, speed: number = 0): any {
     if (!this.isWx) {
       if (text && Buffer.byteLength(text, 'utf8') > 300) {
         return error('text不能为空 或者应小于 300B');
@@ -121,7 +121,11 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  asr(speech, format = 2, rate = 8000) {
+  asr(
+    speech: string,
+    format: 1 | 2 | 3 | 4 = 2,
+    rate: 8000 | 16000 = 8000,
+  ): Promise<TencentAIReturn> {
     speech = this.readFileSync(speech);
 
     return Request.request(
@@ -158,14 +162,14 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   asrs(
-    speech_chunk,
-    speech_id,
-    len = 0,
-    seq = 0,
-    end = 1,
-    format = 2,
-    rate = 8000,
-  ) {
+    speech_chunk: string,
+    speech_id: string,
+    len: number = 0,
+    seq: number = 0,
+    end: 0 | 1 = 1,
+    format: 1 | 2 | 3 | 4 = 2,
+    rate: 8000 | 16000 = 8000,
+  ): Promise<TencentAIReturn> {
     speech_chunk = this.readFileSync(speech_chunk);
 
     return Request.request(
@@ -210,16 +214,16 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   wxasrs(
-    speech_chunk,
-    speech_id,
-    len = 0,
-    seq = 0,
-    end = 1,
-    format = 2,
-    rate = 16000,
-    bits = 16,
-    cont_res = 0,
-  ) {
+    speech_chunk: string,
+    speech_id: string,
+    len: number = 0,
+    seq: number = 0,
+    end: 0 | 1 = 1,
+    format: 1 | 2 | 3 | 4 | 5 = 2,
+    rate: 8000 | 16000 = 16000,
+    bits: number = 16,
+    cont_res: 0 | 1 = 0,
+  ): any {
     speech_chunk = this.readFileSync(speech_chunk);
 
     if (speech_chunk && speech_id && len) {
@@ -257,7 +261,12 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wxasrlong(format = 2, callback_url, speech = '', speech_url = '') {
+  wxasrlong(
+    format: 1 | 2 | 3 | 4 = 2,
+    callback_url: string,
+    speech: string = '',
+    speech_url: string = '',
+  ): Promise<TencentAIReturn> {
     speech = this.readFileSync(speech);
 
     return Request.request(
@@ -288,12 +297,12 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise}
    */
   detectkeyword(
-    callback_url,
-    key_words,
+    callback_url: string,
+    key_words: string,
     format: number = 2,
-    speech = '',
-    speech_url = '',
-  ) {
+    speech: string = '',
+    speech_url: string = '',
+  ): any {
     if (!this.isWx) {
       if (speech && Buffer.byteLength(speech, 'base64') > 1048576 * 5) {
         return error('speech大小必须小于5M');

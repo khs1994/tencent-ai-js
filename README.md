@@ -17,7 +17,7 @@
 ## Installation
 
 ```bash
-$ npm install @khs1994/tencent-ai
+$ npm i --save @khs1994/tencent-ai
 ```
 
 ## Usage
@@ -64,6 +64,8 @@ translate.texttrans('你好').then(
 ```
 
 ### 微信小程序
+
+- 使用 npm 安装，之后在菜单栏选择构建 npm
 
 - 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）。
 

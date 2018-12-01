@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 export default class Translate extends AbstractTencentAI {
     /**
      * 机器翻译API构造函数
@@ -36,7 +36,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    texttrans(text: any, type?: number): any;
+    texttrans(text: string, type?: number): Promise<TencentAIReturn>;
     /**
      * 文本翻译（翻译君）
      *
@@ -64,7 +64,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    texttranslate(text: any, source?: string, target?: string): any;
+    texttranslate(text: string, source?: string, target?: string): Promise<TencentAIReturn>;
     /**
      * 图片翻译
      *
@@ -79,7 +79,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagetranslate(image: any, session_id: any, scene?: string, source?: string, target?: string): any;
+    imagetranslate(image: string, session_id: string, scene?: string, source?: string, target?: string): any;
     /**
      * 语音翻译
      *
@@ -96,7 +96,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    speechtranslate(speech_chunk: any, session_id: any, format?: number, seq?: number, end?: number, source?: string, target?: string): any;
+    speechtranslate(speech_chunk: string, session_id: string, format?: number, seq?: number, end?: number, source?: string, target?: string): Promise<TencentAIReturn>;
     /**
      * 语种识别
      *
@@ -110,5 +110,5 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    textdetect(text: any, candidate_langs?: string, force?: number): any;
+    textdetect(text: string, candidate_langs?: string, force?: 0 | 1): any;
 }

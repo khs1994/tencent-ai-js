@@ -1,5 +1,5 @@
 import { URIS, commonParams, textToGBK } from './util/util';
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 import Request from './client/Request';
 
 export default class NLP extends AbstractTencentAI {
@@ -25,7 +25,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wordseg(text) {
+  wordseg(text: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.wordseg,
       this.appKey,
@@ -47,7 +47,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wordpos(text) {
+  wordpos(text: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.wordpos,
       this.appKey,
@@ -69,7 +69,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise|error} A Promise Object
    */
-  wordner(text) {
+  wordner(text: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.wordner,
       this.appKey,
@@ -91,7 +91,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise|error} A Promise Object
    */
-  wordsyn(text) {
+  wordsyn(text: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.wordsyn,
       this.appKey,
@@ -113,7 +113,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wordcom(text) {
+  wordcom(text: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.wordcom,
       this.appKey,
@@ -134,7 +134,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  textpolar(text) {
+  textpolar(text: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.textpolar,
       this.appKey,
@@ -156,7 +156,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  textchat(question, session) {
+  textchat(question: string, session: string): Promise<TencentAIReturn> {
     return Request.request(
       URIS.textchat,
       this.appKey,

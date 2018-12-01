@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 import { URIS, commonParams, error } from './util/util';
 import Request from './client/Request';
 
@@ -27,7 +27,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  idcardocr(image, card_type = 0) {
+  idcardocr(image: string, card_type: 0 | 1 = 0): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -51,7 +51,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  bcocr(image) {
+  bcocr(image: string): any {
     if (!image || Buffer.byteLength(image, 'base64') > 1048576) {
       return error('imageBase64String 不能为空 且 大小小于1M');
     }
@@ -79,7 +79,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  driverlicenseocr(image, type = 1) {
+  driverlicenseocr(image: string, type: 0 | 1 = 1): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -103,7 +103,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  generalocr(image) {
+  generalocr(image: string): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -126,7 +126,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  bizlicenseocr(image) {
+  bizlicenseocr(image: string): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -149,7 +149,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  creditcardocr(image) {
+  creditcardocr(image: string): Promise<TencentAIReturn> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -172,7 +172,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  plateocr(imageBase64String) {
+  plateocr(imageBase64String: string): any {
     if (
       imageBase64String &&
       /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)
@@ -212,7 +212,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  handwritingocr(imageBase64String) {
+  handwritingocr(imageBase64String: string): any {
     if (
       imageBase64String &&
       /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)

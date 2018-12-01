@@ -14,7 +14,7 @@ export default abstract class AbstractTencentAI {
     }
   }
 
-  public readFileSync(file) {
+  public readFileSync(file: string) {
     if (this.isWx) {
       return readFileSync(file);
     } else {
@@ -43,4 +43,9 @@ export default abstract class AbstractTencentAI {
       return file;
     }
   }
+}
+
+export interface TencentAIReturn {
+  ret: number;
+  data: any;
 }

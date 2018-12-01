@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 import { URIS, commonParams, error } from './util/util';
 import Request from './client/Request';
 
@@ -34,7 +34,13 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  newperson(image, person_name, group_ids, person_id, tag) {
+  newperson(
+    image: string,
+    person_name: string,
+    group_ids: string,
+    person_id: string,
+    tag: string,
+  ): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');
@@ -77,7 +83,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  delperson(person_id) {
+  delperson(person_id: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -104,7 +110,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  addface(images, person_id, tag) {
+  addface(images: string, person_id: string, tag: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -134,7 +140,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  delface(person_id, face_ids) {
+  delface(person_id: string, face_ids: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -165,7 +171,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  setinfo(person_id, person_name, tag) {
+  setinfo(person_id: string, person_name: string, tag: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -194,7 +200,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getinfo(person_id) {
+  getinfo(person_id: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -217,7 +223,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getgroupids() {
+  getgroupids(): Promise<TencentAIReturn> {
     return Request.request(
       URIS.getgroupids,
       this.appKey,
@@ -237,7 +243,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getpersonids(group_id) {
+  getpersonids(group_id: string): any {
     if (!group_id) {
       return error('group_id 不能为空');
     }
@@ -261,7 +267,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getfaceids(person_id) {
+  getfaceids(person_id: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -285,7 +291,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getfaceinfo(face_id) {
+  getfaceinfo(face_id: string): any {
     if (!face_id) {
       return error('face_id 不能为空');
     }
@@ -311,7 +317,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceidentify(image, group_id, topn = 9) {
+  faceidentify(image: string, group_id: string, topn = 9): any {
     if (!group_id) {
       return error('group_id 不能为空');
     }
@@ -344,7 +350,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceverify(image, person_id) {
+  faceverify(image: string, person_id: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }

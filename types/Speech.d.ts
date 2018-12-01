@@ -1,4 +1,4 @@
-import AbstractTencentAI from './AbstractTencentAI';
+import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
 export default class Speech extends AbstractTencentAI {
     /**
      * 智能语音 API 服务类
@@ -21,7 +21,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise}
      */
-    evilaudio(speech_id: any, speech_url: any): any;
+    evilaudio(speech_id: string, speech_url: string): Promise<TencentAIReturn>;
     /**
      * 语音合成（AI Lab）
      *
@@ -38,7 +38,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    tts(text: any, speaker?: number, format?: number, volume?: number, speed?: number, aht?: number, apc?: number): any;
+    tts(text: string, speaker?: 1 | 5 | 6 | 7, format?: 1 | 2 | 3, volume?: number, speed?: number, aht?: number, apc?: number): Promise<TencentAIReturn>;
     /**
      * 语音合成（优图）
      *
@@ -51,7 +51,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    tta(text: any, model_type?: number, speed?: number): any;
+    tta(text: string, model_type?: 0 | 1 | 2 | 6, speed?: number): any;
     /**
      * 语音识别 echo 版
      *
@@ -64,7 +64,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    asr(speech: any, format?: number, rate?: number): any;
+    asr(speech: string, format?: 1 | 2 | 3 | 4, rate?: 8000 | 16000): Promise<TencentAIReturn>;
     /**
      * 语音识别-流式版（AI Lab）
      *
@@ -86,7 +86,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    asrs(speech_chunk: any, speech_id: any, len?: number, seq?: number, end?: number, format?: number, rate?: number): any;
+    asrs(speech_chunk: string, speech_id: string, len?: number, seq?: number, end?: 0 | 1, format?: 1 | 2 | 3 | 4, rate?: 8000 | 16000): Promise<TencentAIReturn>;
     /**
      * 语音识别-流式版(WeChat AI)
      *
@@ -112,7 +112,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wxasrs(speech_chunk: any, speech_id: any, len?: number, seq?: number, end?: number, format?: number, rate?: number, bits?: number, cont_res?: number): any;
+    wxasrs(speech_chunk: string, speech_id: string, len?: number, seq?: number, end?: 0 | 1, format?: 1 | 2 | 3 | 4 | 5, rate?: 8000 | 16000, bits?: number, cont_res?: 0 | 1): any;
     /**
      * 长语音识别
      *
@@ -126,7 +126,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wxasrlong(format: number, callback_url: any, speech?: string, speech_url?: string): any;
+    wxasrlong(format: 1 | 2 | 3 | 4, callback_url: string, speech?: string, speech_url?: string): Promise<TencentAIReturn>;
     /**
      * 关键词检索
      *
@@ -141,5 +141,5 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise}
      */
-    detectkeyword(callback_url: any, key_words: any, format?: number, speech?: string, speech_url?: string): any;
+    detectkeyword(callback_url: string, key_words: string, format?: number, speech?: string, speech_url?: string): any;
 }
