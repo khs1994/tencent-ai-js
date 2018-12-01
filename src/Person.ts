@@ -81,6 +81,7 @@ export default class Person extends AbstractTencentAI {
     if (!person_id) {
       return error('person_id 不能为空');
     }
+
     return Request.request(
       URIS.delperson,
       this.appKey,
@@ -107,6 +108,9 @@ export default class Person extends AbstractTencentAI {
     if (!person_id) {
       return error('person_id 不能为空');
     }
+
+    images = this.readFileSync(images);
+
     return Request.request(
       URIS.addface,
       this.appKey,
@@ -137,6 +141,7 @@ export default class Person extends AbstractTencentAI {
     if (!face_ids) {
       return error('face_ids 不能为空');
     }
+
     return Request.request(
       URIS.delface,
       this.appKey,

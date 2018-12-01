@@ -16,7 +16,11 @@ export default class Request {
     isGbk: boolean = false,
     method: string = 'post',
   ) {
-    // let is_wx = false;
+    let is_wx = false;
+
+    if (typeof wx !== 'undefined') {
+      is_wx = true;
+    }
 
     if (!this.requestInstance) {
       try {
@@ -49,19 +53,49 @@ export default class Request {
       'Content-Type': 'application/x-www-form-urlencoded',
     };
 
+    let charset;
+
     return this.requestInstance(url, {
       method,
       headers,
       body,
+      charset: isGbk ? 'gbk' : 'utf8',
     })
       .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
+        if (!res.ok) {
           return error('error');
         }
+
+        charset = res.headers
+          .get('content-type')
+          .split(';')[1]
+          .split('=')[1];
+
+        if (charset === 'gbk' && !is_wx) {
+          return res.buffer();
+        }
+
+        return res.json();
       })
-      .then(res => res)
+      .then(res => {
+        if (charset === 'gbk' && !is_wx) {
+          // 返回 buffer
+          // const iconv = require('iconv-lite');
+          const gbk = require('gbk.js');
+          // 返回 json
+          // res = iconv.decode(res, charset);
+          res = gbk.decode(res);
+          res = JSON.parse(res);
+        }
+
+        // 返回 json
+
+        if (res.ret === 0) {
+          return res;
+        }
+
+        return Promise.reject(res);
+      })
       .catch(e => Promise.reject(e));
   }
 
@@ -73,8 +107,8 @@ export default class Request {
       sort_list.map(item => {
         if (item.value !== '') {
           // str += `${item.key}=${querystring.escape(item.value)}&`;
-          // str += `${item.key}=${urlencode(item.value)}&`;
-          str += `${item.key}=${encodeURIComponent(item.value)}&`;
+          str += `${item.key}=${urlencode(item.value)}&`;
+          // str += `${item.key}=${encodeURIComponent(item.value)}&`;
         }
       });
     } else {
@@ -86,7 +120,8 @@ export default class Request {
       });
     }
 
-    str = str.replace(/%20/g, '+');
+    // str = str.replace(/%20/g, '+');
+    // str = str.replace(/!/g, '%21');
     // console.log(str);
     return str;
   }

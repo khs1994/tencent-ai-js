@@ -64,19 +64,21 @@ describe('speech', function() {
 
   // 语音合成（AI Lab）
   it('tts', function() {
-    return speech.tts('你好中国', 1, 2, 10, 100, 0, 58).then(
-      res => {
-        assert.strictEqual(res.ret, 0);
-      },
-      e => {
-        assert.strictEqual(e.ret, 0);
-      },
-    );
+    return speech
+      .tts('一个人心理成熟的具体表现都有哪些', 1, 2, 10, 100, 0, 58)
+      .then(
+        res => {
+          assert.strictEqual(res.ret, 0);
+        },
+        e => {
+          assert.strictEqual(e.ret, 0);
+        },
+      );
   });
 
   // 语音合成
   it('tta', () => {
-    return speech.tta('我的中国心', 0, 0).then(
+    return speech.tta('一个人心理成熟的具体表现都有哪些', 0, 0).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },

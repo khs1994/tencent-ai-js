@@ -1,4 +1,5 @@
 const iconv = require('iconv-lite');
+// import gbk = require('gbk.js');
 
 export default function gbkEncode(text) {
   // http://www.qqxiuzi.cn/zh/hanzi-gbk-bianma.php

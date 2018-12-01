@@ -6,6 +6,8 @@ import { APP } from './util';
 
 import { NLP, TencentAIError } from '../src/TencentAI';
 
+const gbk = require('gbk.js');
+
 const NLPTest = new NLP(APP.appkey, APP.appid);
 
 describe('index', () => {
@@ -58,7 +60,7 @@ describe('baseLanguage', function() {
 
   // 情感分析识别
   it('textpolar', async function() {
-    let r = await NLPTest.textpolar('今天的天气不错呀');
+    let r = await NLPTest.textpolar('今天的天气不错呀!()english');
 
     assert.strictEqual(r.ret, 0);
   });
@@ -66,7 +68,7 @@ describe('baseLanguage', function() {
   // 基础闲聊
   it('textchat', async function() {
     let r = await NLPTest.textchat(
-      '今天的天气不错呀&',
+      '今天的天气不错呀?!()',
       // randomstring.generate({
       //   length: 16,
       //   capitalization: 'uppercase',

@@ -18,15 +18,26 @@ describe('md5', () => {
   });
 
   it('gbk', () => {
-    console.log(iconv.encode('你好?', 'gbk'));
-    console.log(gbk.encode('你好?'));
+    console.log(iconv.encode('https://你好!@#$%^&*=+()_-. 1A', 'gbk'));
+    console.log(gbk.encode('https://你好!@#$%^&*=+()_-. 1A'));
 
-    console.log(gbkEncodeByIconv('你好?'));
-    console.log(gbk.URI.encodeURI('你好?'));
+    console.log(gbkEncodeByIconv('https://你好!@#$%^&*=+()_-. 1A'));
+
+    console.log(gbk.URI.encodeURI('https://你好!@#$%^&*=+()_-. 1A'));
+    console.log(gbk.URI.encodeURIComponent('https://你好!@#$%^&*=+()_-. 1A'));
+
+    console.log(gbk.encode('a', 'gbk'));
   });
 
-  it('urlencode', () => {
-    console.log(querystringNode.escape('你好?'));
-    console.log(encodeURIComponent('你好?'));
+  it('urlencode_', () => {
+    // ! * () 没有被编码
+    console.log(querystringNode.escape('https://你好!@#$%^&*=+()_-. 1A'));
+    // 除了空格之外的其他字符都原封不动,只有空格被替换成了%20
+    console.log(encodeURI('https://你好!@#$%^&*=+()_-. 1A'));
+    // 保留编码的字符： -、.、_、数字、大小写字母（这些字符在URL编码结果后不会变化）
+    // 特殊编码的字符：空格（这个字符在URL编码后变成+符号）
+    console.log(encodeURIComponent('https://你好!@#$%^&*=+()_-. 1A'));
+    // 本项目使用的 urlencode 方法
+    console.log(urlencode('https://你好!@#$%^&*=+()_-. 1A'));
   });
 });

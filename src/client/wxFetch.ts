@@ -20,6 +20,27 @@ interface FetchInterface extends Object {
   integrity?: any;
   keepalive?: any;
   signal?: any;
+  charset?: string;
+}
+
+class Headers {
+  constructor(public headers) {}
+
+  get(key) {
+    for (let obj_key in this.headers) {
+      if (key.toUpperCase() === obj_key.toUpperCase()) {
+        return this.headers[obj_key];
+      }
+    }
+  }
+
+  has(key) {
+    return !!this.get(key);
+  }
+
+  keys() {}
+
+  values() {}
 }
 
 class Response {
@@ -35,7 +56,7 @@ class Response {
     this.res = res;
     this.bodyUsed = false;
     this.ok = true;
-    this.headers = res.header;
+    this.headers = new Headers(res.header);
     this.redirected = false;
     this.status = res.statusCode;
     this.statusText = 'OK';
@@ -56,7 +77,8 @@ export default function wxFetch(url: string, options: FetchInterface = {}) {
       data: options.body || undefined,
       header: options.headers || undefined,
       method: options.method || 'GET',
-      dataType: 'json',
+      dataType: options.charset === 'utf8' ? 'json' : '',
+      responseType: options.charset === 'utf8' ? 'text' : 'arraybuffer',
       success(res: any) {
         resolve(new Response(url, res));
       },
