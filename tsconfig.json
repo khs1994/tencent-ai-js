@@ -4,7 +4,10 @@
     "rootDir": "./src",
     "target": "es6",
     "module": "commonjs",
-    "allowJs": true
+    "declaration": true,
+    "declarationDir": "./types",
+    "newLine": "LF",
+    "locale": "zh-CN"
   },
   "include": [
     "src"

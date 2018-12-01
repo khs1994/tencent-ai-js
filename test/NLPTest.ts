@@ -17,7 +17,7 @@ describe('index', () => {
 /**
  * 自然语言处理-基本类 API 测试文件
  */
-describe('baseLanguage', function() {
+describe('nlp', function() {
   this.retries(4);
   // 基本文本分析 分词
   it('wordseg', async () => {

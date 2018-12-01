@@ -1,4 +1,4 @@
-module.exports = function(GBK) {
+export = function(GBK) {
   var passChars = "!'()*-._~";
   var otherPassChars = '#$&+,/:;=?@';
   function getModue(passChars) {

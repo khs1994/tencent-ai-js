@@ -5,7 +5,7 @@ import * as querystring from 'querystring';
 import gbkEncodeByIconv from './gbkEncodeByIconv';
 
 const iconv = require('iconv-lite');
-const gbk = require('../../src/util/gbk.js');
+import gbk = require('../../src/util/gbk.js');
 import * as querystringNode from 'querystring';
 
 describe('md5', () => {

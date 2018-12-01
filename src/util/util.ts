@@ -10,7 +10,7 @@ import hex_md5 from './md5';
 // const randomString = require('randomstring');
 
 // const iconv = require('iconv-lite');
-const gbk = require('./gbk.js');
+import gbk = require('./gbk.js');
 
 export const URIS = {
   // 智能语音

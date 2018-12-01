@@ -34,4 +34,5 @@ var GBK = function(gbk_us) {
   };
   return gbk;
 };
-module.exports = GBK;
+
+export = GBK;

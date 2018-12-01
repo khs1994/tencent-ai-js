@@ -65,6 +65,8 @@ translate.texttrans('你好').then(
 
 ### 微信小程序
 
+- 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）。
+
 ```js
 // 解构赋值
 const { TencentAI } = require('@khs1994/tencent-ai');
@@ -91,7 +93,18 @@ ai.nlp.textchat('hello', 'session_id').then(
 
 ### TypeScript
 
-TODO
+```ts
+import TencentAI from '@khs1994/tencent-ai';
+
+const app_key = '';
+const app_id = '';
+
+const ai = new TencentAI(app_key, app_id);
+
+ai.nlp.textchat('hello', '1').then(res => {
+  console.log(res);
+});
+```
 
 ## CI/CD
 
