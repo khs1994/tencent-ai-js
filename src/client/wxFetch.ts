@@ -66,6 +66,10 @@ class Response {
   json() {
     return Promise.resolve(this.res.data);
   }
+
+  buffer() {
+    return Promise.resolve(new Int8Array(this.res.data));
+  }
 }
 
 // declare const wx: any;

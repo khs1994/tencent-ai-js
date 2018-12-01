@@ -1,0 +1,79 @@
+{
+  "_from": "gbk.js",
+  "_id": "gbk.js@0.2.3",
+  "_inBundle": false,
+  "_integrity": "sha1-+aCem/AcC69EReSWDGag4H5smBA=",
+  "_location": "/gbk.js",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "gbk.js",
+    "name": "gbk.js",
+    "escapedName": "gbk.js",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://registry.npm.taobao.org/gbk.js/download/gbk.js-0.2.3.tgz",
+  "_shasum": "f9a09e9bf01c0baf4445e4960c66a0e07e6c9810",
+  "_spec": "gbk.js",
+  "_where": "C:\\Users\\90621\\github\\tencent-ai-node",
+  "author": {
+    "name": "cnwhy",
+    "email": "w.why@163.com"
+  },
+  "bugs": {
+    "url": "https://github.com/cnwhy/GBK.js/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "一个小而快的GBK库,支持浏览器",
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "browserify": "^15.2.0",
+    "cross-env": "^5.1.4",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-header": "^2.0.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-uglify": "^3.0.0",
+    "iconv-lite": "^0.4.21",
+    "mocha": "^5.1.0",
+    "power-assert": "^1.5.0",
+    "rollup": "^0.63.4",
+    "rollup-plugin-commonjs": "^9.1.4",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "systemjs": "^0.21.2"
+  },
+  "files": [
+    "src/*",
+    "data/*",
+    "dist/*",
+    "README.md",
+    "index.js"
+  ],
+  "homepage": "https://github.com/cnwhy/GBK.js",
+  "keywords": [
+    "gbk",
+    "gb2312",
+    "iconv"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "gbk.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnwhy/GBK.js.git"
+  },
+  "scripts": {
+    "build": "gulp",
+    "test": "node test/"
+  },
+  "version": "0.2.3"
+}

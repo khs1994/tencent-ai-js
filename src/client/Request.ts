@@ -71,17 +71,17 @@ export default class Request {
           .split(';')[1]
           .split('=')[1];
 
-        if (charset === 'gbk' && !is_wx) {
+        if (charset === 'gbk') {
           return res.buffer();
         }
 
         return res.json();
       })
       .then(res => {
-        if (charset === 'gbk' && !is_wx) {
+        if (charset === 'gbk') {
           // 返回 buffer
           // const iconv = require('iconv-lite');
-          const gbk = require('gbk.js');
+          const gbk = require('./../util/gbk.js');
           // 返回 json
           // res = iconv.decode(res, charset);
           res = gbk.decode(res);

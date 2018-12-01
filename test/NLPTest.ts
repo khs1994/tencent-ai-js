@@ -6,8 +6,6 @@ import { APP } from './util';
 
 import { NLP, TencentAIError } from '../src/TencentAI';
 
-const gbk = require('gbk.js');
-
 const NLPTest = new NLP(APP.appkey, APP.appid);
 
 describe('index', () => {

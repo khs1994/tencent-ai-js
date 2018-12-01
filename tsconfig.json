@@ -3,7 +3,8 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "target": "es6",
-    "module": "commonjs"
+    "module": "commonjs",
+    "allowJs": true
   },
   "include": [
     "src"
