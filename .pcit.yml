@@ -5,6 +5,11 @@ git:
 language: node_js
 
 pipeline:
+  install:
+    image: khs1994/node:git
+    commands:
+      - npm install --registry=https://registry.npm.taobao.org
+
   script:
     image: node:${NODE_VERSION}-alpine
     # environment:
@@ -12,7 +17,6 @@ pipeline:
     #   - NODE_TENCENT_AI_APP_ID=123
     commands:
       - export PATH=./node_modules/.bin:$PATH
-      - npm install --registry=https://registry.npm.taobao.org
       - npm test
 
   after_success:

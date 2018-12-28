@@ -1,6 +1,6 @@
 {
   "name": "@khs1994/tencent-ai",
-  "version": "18.12.0-alpha.0",
+  "version": "18.12.0-alpha.1",
   "description": "Tencent AI SDK",
   "main": "./lib/TencentAI.js",
   "types": "./types/TencentAI.d.ts",
@@ -12,7 +12,7 @@
     "prettier": "npx prettier --write ./**/*.js ./**/*.ts ./*.md",
     "webpack-pro": "npx webpack-cli --mode=production",
     "prepublishOnly": "npx rimraf lib dist types && npm run webpack-pro && npx tsc",
-    "dev-miniprogram": "npx tsc --outDir ../../app/pcit/miniprogram/node_modules/@khs1994/tencent-ai/lib"
+    "dev-miniprogram": "npx tsc --outDir ../../app/pcit/miniprogram/client/node_modules/@khs1994/tencent-ai/lib"
   },
   "author": {
     "name": "khs1994",
