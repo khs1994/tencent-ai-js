@@ -72,7 +72,7 @@ export default class Request {
           .split('=')[1];
 
         if (charset === 'gbk') {
-          return res.buffer();
+          return res.arrayBuffer();
         }
 
         return res.json();
@@ -84,7 +84,7 @@ export default class Request {
           const gbk = require('./../util/gbk.js');
           // 返回 json
           // res = iconv.decode(res, charset);
-          res = gbk.decode(res);
+          res = gbk.decode(new Uint8Array(res));
           res = JSON.parse(res);
         }
 
