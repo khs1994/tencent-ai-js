@@ -10,7 +10,7 @@ import { ImageSpecialEffects } from '../src/TencentAI';
 
 const imgSpecialEffects = new ImageSpecialEffects(APP.appkey, APP.appid);
 
-const assert = require('assert');
+import * as assert from 'assert';
 
 /**
  * 计算机视觉-图片特效类 API 测试文件

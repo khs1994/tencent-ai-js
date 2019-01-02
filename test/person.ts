@@ -4,7 +4,7 @@ import { Person } from '../src/TencentAI';
 
 const person = new Person(APP.appkey, APP.appid);
 
-const assert = require('assert');
+import * as assert from 'assert';
 
 /**
  * 人体管理API 测试类

@@ -10,7 +10,7 @@ import { Speech } from '../src/TencentAI';
 
 const speech = new Speech(APP.appkey, APP.appid);
 
-const assert = require('assert');
+import * as assert from 'assert';
 
 /**
  * 智能语音 测试文件

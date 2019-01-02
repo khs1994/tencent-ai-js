@@ -8,7 +8,7 @@ import { Translate } from '../src/TencentAI';
 
 const translate = new Translate(APP.appkey, APP.appid);
 
-const assert = require('assert');
+import * as assert from 'assert';
 
 /**
  * 自然语言处理-翻译类 测试文件

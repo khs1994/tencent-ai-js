@@ -8,7 +8,7 @@ import { Image } from '../src/TencentAI';
 
 const imgPublic = new Image(APP.appkey, APP.appid);
 
-const assert = require('assert');
+import * as assert from 'assert';
 
 /**
  * 计算机视觉-图片识别公共类 API 测试文件

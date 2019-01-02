@@ -8,7 +8,7 @@ import { OCR } from '../src/TencentAI';
 
 const ocr = new OCR(APP.appkey, APP.appid);
 
-const assert = require('assert');
+import * as assert from 'assert';
 
 /**
  * OCR API 测试文件

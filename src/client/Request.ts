@@ -2,7 +2,6 @@ import { error, urlencode } from '../util/util';
 // import node_md5 from '../util/node_md5';
 // import * as querystring from 'querystring';
 import hex_md5 from '../util/md5';
-import wxFetch from './wxFetch';
 import { TencentAIReturn } from '../AbstractTencentAI';
 
 const querystring = require('qs');
@@ -27,7 +26,7 @@ export default class Request {
       try {
         this.requestInstance = require('node-fetch');
       } catch (e) {
-        this.requestInstance = wxFetch;
+        this.requestInstance = require('wx-fetch');
       }
     }
 

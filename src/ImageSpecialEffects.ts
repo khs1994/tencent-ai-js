@@ -60,7 +60,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  facedecoration(image: string, decoration: number = 1):any {
+  facedecoration(image: string, decoration: number = 1): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500KB');

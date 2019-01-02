@@ -1,6 +1,6 @@
 // const randomstring = require('randomstring');
 
-const assert = require('assert');
+import * as assert from 'assert';
 
 import { APP } from './util';
 
