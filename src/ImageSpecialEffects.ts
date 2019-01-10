@@ -39,6 +39,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.facecosmetic,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -73,6 +74,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.facedecoration,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -107,6 +109,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.ptuimgfilter,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -145,6 +148,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.visionimgfilter,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -181,6 +185,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.facemerge,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -215,6 +220,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.facesticker,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -245,6 +251,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.faceage,
       this.appKey,
       Object.assign({}, commonParams(), {

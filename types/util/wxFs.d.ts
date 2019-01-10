@@ -1,2 +1,2 @@
-export default function readFileSync(image: any): any;
-export declare function readFile(image: any): Promise<{}>;
+export default function readFileSync(image: string): string | ArrayBuffer;
+export declare function readFile(image: string): Promise<{}>;

@@ -28,6 +28,7 @@ export default class Face extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.detectface,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -58,6 +59,7 @@ export default class Face extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.detectmultiface,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -92,6 +94,7 @@ export default class Face extends AbstractTencentAI {
     image_b = this.readFileSync(image_b);
 
     return Request.request(
+      this.proxy,
       URIS.facecompare,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -133,6 +136,7 @@ export default class Face extends AbstractTencentAI {
     target_image = this.readFileSync(target_image);
 
     return Request.request(
+      this.proxy,
       URIS.detectcrossageface,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -167,6 +171,7 @@ export default class Face extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.faceshape,
       this.appKey,
       Object.assign({}, commonParams(), {

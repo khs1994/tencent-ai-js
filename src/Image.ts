@@ -42,6 +42,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.porn,
       this.appKey,
       Object.assign(
@@ -78,6 +79,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.terrorism,
       this.appKey,
       Object.assign(
@@ -109,6 +111,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.scener,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -140,6 +143,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.objectr,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -165,6 +169,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.imagetag,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -189,6 +194,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.imgidentify,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -214,6 +220,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.imgtotext,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -238,6 +245,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.imagefuzzy,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -261,6 +269,7 @@ export default class Image extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.imagefood,
       this.appKey,
       Object.assign({}, commonParams(), {

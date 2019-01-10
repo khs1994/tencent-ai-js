@@ -27,6 +27,7 @@ export default class NLP extends AbstractTencentAI {
    */
   wordseg(text: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.wordseg,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -49,6 +50,7 @@ export default class NLP extends AbstractTencentAI {
    */
   wordpos(text: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.wordpos,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -71,6 +73,7 @@ export default class NLP extends AbstractTencentAI {
    */
   wordner(text: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.wordner,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -93,6 +96,7 @@ export default class NLP extends AbstractTencentAI {
    */
   wordsyn(text: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.wordsyn,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -115,6 +119,7 @@ export default class NLP extends AbstractTencentAI {
    */
   wordcom(text: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.wordcom,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -136,6 +141,7 @@ export default class NLP extends AbstractTencentAI {
    */
   textpolar(text: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.textpolar,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -158,6 +164,7 @@ export default class NLP extends AbstractTencentAI {
    */
   textchat(question: string, session: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.textchat,
       this.appKey,
       Object.assign({}, commonParams(), {

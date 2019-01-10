@@ -4,7 +4,11 @@ import readFileSync from './util/wxFs';
 export default abstract class AbstractTencentAI {
   public isWx = false;
 
-  public constructor(readonly appKey: string, readonly appId: string | number) {
+  public constructor(
+    readonly appKey: string,
+    readonly appId: string | number,
+    readonly proxy: string = 'https://api.ai.qq.com',
+  ) {
     if (!appKey || !appId) {
       throw new TencentAIError('appKey and appId are required');
     }

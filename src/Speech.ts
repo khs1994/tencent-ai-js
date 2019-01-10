@@ -27,6 +27,7 @@ export default class Speech extends AbstractTencentAI {
    */
   evilaudio(speech_id: string, speech_url: string): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.evilaudio,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -63,6 +64,7 @@ export default class Speech extends AbstractTencentAI {
     apc: number = 58,
   ): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.tts,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -98,6 +100,7 @@ export default class Speech extends AbstractTencentAI {
     }
 
     return Request.request(
+      this.proxy,
       URIS.tta,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -129,6 +132,7 @@ export default class Speech extends AbstractTencentAI {
     speech = this.readFileSync(speech);
 
     return Request.request(
+      this.proxy,
       URIS.asr,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -173,6 +177,7 @@ export default class Speech extends AbstractTencentAI {
     speech_chunk = this.readFileSync(speech_chunk);
 
     return Request.request(
+      this.proxy,
       URIS.asrs,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -228,6 +233,7 @@ export default class Speech extends AbstractTencentAI {
 
     if (speech_chunk && speech_id && len) {
       return Request.request(
+        this.proxy,
         URIS.wxasrs,
         this.appKey,
         Object.assign({}, commonParams(), {
@@ -270,6 +276,7 @@ export default class Speech extends AbstractTencentAI {
     speech = this.readFileSync(speech);
 
     return Request.request(
+      this.proxy,
       URIS.wxasrlong,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -312,6 +319,7 @@ export default class Speech extends AbstractTencentAI {
     speech = this.readFileSync(speech);
 
     return Request.request(
+      this.proxy,
       URIS.detectkeyword,
       this.appKey,
       Object.assign(

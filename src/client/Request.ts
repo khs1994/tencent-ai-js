@@ -11,6 +11,7 @@ export default class Request {
   private static requestInstance: any;
 
   static request(
+    proxy: string,
     url: string,
     appKey: string,
     data: any,
@@ -31,7 +32,7 @@ export default class Request {
       }
     }
 
-    url = 'https://api.ai.qq.com' + url;
+    url = proxy + url;
     method = method.toUpperCase();
 
     // 按 key 进行字典升序排序,得到有序的参数对列表N

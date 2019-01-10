@@ -60,6 +60,7 @@ export default class Person extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.newperson,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -89,6 +90,7 @@ export default class Person extends AbstractTencentAI {
     }
 
     return Request.request(
+      this.proxy,
       URIS.delperson,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -118,6 +120,7 @@ export default class Person extends AbstractTencentAI {
     images = this.readFileSync(images);
 
     return Request.request(
+      this.proxy,
       URIS.addface,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -149,6 +152,7 @@ export default class Person extends AbstractTencentAI {
     }
 
     return Request.request(
+      this.proxy,
       URIS.delface,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -179,6 +183,7 @@ export default class Person extends AbstractTencentAI {
       return error('person_name 不能为空');
     }
     return Request.request(
+      this.proxy,
       URIS.setinfo,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -205,6 +210,7 @@ export default class Person extends AbstractTencentAI {
       return error('person_id 不能为空');
     }
     return Request.request(
+      this.proxy,
       URIS.getinfo,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -225,6 +231,7 @@ export default class Person extends AbstractTencentAI {
    */
   getgroupids(): Promise<TencentAIReturn> {
     return Request.request(
+      this.proxy,
       URIS.getgroupids,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -248,6 +255,7 @@ export default class Person extends AbstractTencentAI {
       return error('group_id 不能为空');
     }
     return Request.request(
+      this.proxy,
       URIS.getpersonids,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -272,6 +280,7 @@ export default class Person extends AbstractTencentAI {
       return error('person_id 不能为空');
     }
     return Request.request(
+      this.proxy,
       URIS.getfaceids,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -296,6 +305,7 @@ export default class Person extends AbstractTencentAI {
       return error('face_id 不能为空');
     }
     return Request.request(
+      this.proxy,
       URIS.getfaceinfo,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -328,6 +338,7 @@ export default class Person extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.faceidentify,
       this.appKey,
       Object.assign({}, commonParams(), {
@@ -358,6 +369,7 @@ export default class Person extends AbstractTencentAI {
     image = this.readFileSync(image);
 
     return Request.request(
+      this.proxy,
       URIS.faceverify,
       this.appKey,
       Object.assign({}, commonParams(), {

@@ -1,4 +1,4 @@
-export default function readFileSync(image) {
+export default function readFileSync(image: string) {
   const fs = wx.getFileSystemManager();
   // 编码 直接返回
 
@@ -15,7 +15,7 @@ export default function readFileSync(image) {
   }
 }
 
-export function readFile(image) {
+export function readFile(image: string) {
   const fs = wx.getFileSystemManager();
 
   return new Promise((resolve, reject) => {
