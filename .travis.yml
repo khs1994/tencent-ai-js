@@ -25,6 +25,7 @@ deploy:
   api_key: $NPM_TOKEN
   # tag: next
   # https://docs.travis-ci.com/user/deployment#conditional-releases-with-on
+  skip_cleanup: true
   on:
     tags: true
     node: '11'
@@ -32,4 +33,3 @@ deploy:
     # branch: release
     # repo: username/repo
     # all_branches: true
-    # skip_cleanup: true

@@ -3,8 +3,9 @@ import { error, urlencode } from '../util/util';
 // import * as querystring from 'querystring';
 import hex_md5 from '../util/md5';
 import { TencentAIReturn } from '../AbstractTencentAI';
-
-const querystring = require('qs');
+// @ts-ignore
+import querystring = require('qs');
+import errorCode from '../util/errorCode';
 
 export default class Request {
   private static requestInstance: any;
@@ -77,7 +78,7 @@ export default class Request {
 
         return res.json();
       })
-      .then(res => {
+      .then((res: any) => {
         if (charset === 'gbk') {
           // 返回 buffer
           // const iconv = require('iconv-lite');
@@ -94,7 +95,7 @@ export default class Request {
           return res;
         }
 
-        return Promise.reject(res);
+        return Promise.reject(errorCode[<number>res.ret] || res);
       })
       .catch(e => Promise.reject(e));
   }
