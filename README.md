@@ -1,10 +1,10 @@
-# TencentAI Node.js SDK
+# TencentAI JavaScript SDK
 
-[![npm](https://img.shields.io/npm/v/@khs1994/tencent-ai.svg)](https://www.npmjs.com/package/@khs1994/tencent-ai) [![Build Status](https://travis-ci.com/khs1994/tencent-ai-node.svg?branch=master)](https://travis-ci.com/khs1994/tencent-ai-node) [![codecov](https://codecov.io/gh/khs1994/tencent-ai-node/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994/tencent-ai-node) [![install size](https://packagephobia.now.sh/badge?p=@khs1994/tencent-ai)](https://packagephobia.now.sh/result?p=@khs1994/tencent-ai) [![code style: prettier](https://badgen.now.sh/badge/code%20style/prettier/ff69b4)](https://github.com/prettier/prettier)
+[![npm](https://img.shields.io/npm/v/@khs1994/tencent-ai.svg)](https://www.npmjs.com/package/@khs1994/tencent-ai) [![Build Status](https://travis-ci.com/khs1994/tencent-ai-js.svg?branch=master)](https://travis-ci.com/khs1994/tencent-ai-js) [![codecov](https://codecov.io/gh/khs1994/tencent-ai-js/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994/tencent-ai-js) [![install size](https://packagephobia.now.sh/badge?p=@khs1994/tencent-ai)](https://packagephobia.now.sh/result?p=@khs1994/tencent-ai) [![code style: prettier](https://badgen.now.sh/badge/code%20style/prettier/ff69b4)](https://github.com/prettier/prettier)
 
 **This repo fork from https://github.com/w89612b/qqai-api-sdk**
 
-- [Tencent AI News](https://github.com/khs1994-php/tencent-ai-news)
+- [Tencent AI News](https://github.com/khs1994/tencent-ai-news)
 
 ## 微信订阅号
 
@@ -133,7 +133,7 @@ location /proxy_tencent_ai {
 
 ## CI/CD
 
-[PCIT](https://github.com/khs1994-php/pcit) Node.js 示例项目
+[PCIT](https://github.com/pcit-ce/pcit) Node.js 示例项目
 
 ## Test
 

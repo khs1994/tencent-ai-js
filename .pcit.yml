@@ -1,8 +1,8 @@
+language: node_js
+
 git:
   submodule_override:
     "test/resource": "https://gitee.com/khs1994-php/resource"
-
-language: node_js
 
 pipeline:
   install:
@@ -31,13 +31,13 @@ pipeline:
       status: success
 
   deploy:
-    # image: khs1994/deployer
+    settings:
+      provider: npm
+      email: khs1994@khs1994.com
+      api_key: $NPM_TOKEN
+      # tag: next
     # environment:
     #   - NPM_TOKEN=""
-    provider: npm
-    email: khs1994@khs1994.com
-    # api_key: $NPM_TOKEN
-    # tag: next
     when:
       event: "tag"
       status: success
