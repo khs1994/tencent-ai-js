@@ -12,8 +12,8 @@ import * as assert from 'assert';
 describe('person', function() {
   this.retries(4);
 
-  let group_ids = 'group100';
-  let person_id = '1504533187';
+  let group_ids = new Date().getTime().toString();
+  let person_id = new Date().getTime().toString();
   let face_id;
 
   // 个体创建

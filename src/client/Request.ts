@@ -99,7 +99,11 @@ export default class Request {
           return res;
         }
 
-        return Promise.reject(errorCode[<number>res.ret] || res);
+        return Promise.reject({
+          ret: res.ret,
+          msg: errorCode[res.ret] || res.msg || '',
+          data: {},
+        });
       })
       .catch(e => Promise.reject(e));
   }
