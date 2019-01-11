@@ -8,8 +8,6 @@ import querystring = require('qs');
 import errorCode from '../util/errorCode';
 
 export default class Request {
-  private static requestInstance: any;
-
   static request(
     proxy: string,
     url: string,
@@ -24,11 +22,17 @@ export default class Request {
     //   is_wx = true;
     // }
 
-    if (!this.requestInstance) {
+    let request;
+
+    // @ts-ignore
+    if (typeof fetch === 'function') {
+      // @ts-ignore
+      request = fetch;
+    } else {
       try {
-        this.requestInstance = require('node-fetch');
+        request = require('node-fetch');
       } catch (e) {
-        this.requestInstance = require('wx-fetch');
+        request = require('wx-fetch');
       }
     }
 
@@ -56,8 +60,7 @@ export default class Request {
     };
 
     let charset;
-
-    return this.requestInstance(url, {
+    return request(url, {
       method,
       headers,
       body,
