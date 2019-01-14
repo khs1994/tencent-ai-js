@@ -1,4 +1,5 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
+import Detect from './Interface/Face/Detect';
 export default class Face extends AbstractTencentAI {
     /**
      * 面部识别 API 服务类
@@ -20,7 +21,7 @@ export default class Face extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    detectface(image: string, mode?: 0 | 1): Promise<TencentAIReturn>;
+    detect(image: string, mode?: 0 | 1): Promise<Detect>;
     /**
      * 多人脸检测
      *
@@ -31,7 +32,7 @@ export default class Face extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    detectmultiface(image: string): any;
+    detectmulti(image: string): any;
     /**
      * 人脸对比
      *
@@ -43,7 +44,7 @@ export default class Face extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    facecompare(image_a: string, image_b: string): any;
+    compare(image_a: string, image_b: string): any;
     /**
      * 跨年龄人脸识别
      *
@@ -55,7 +56,7 @@ export default class Face extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    detectcrossageface(source_image: string, target_image: string): any;
+    detectcrossage(source_image: string, target_image: string): any;
     /**
      * 五官定位
      *
@@ -67,5 +68,5 @@ export default class Face extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    faceshape(image: string, mode?: 0 | 1): any;
+    shape(image: string, mode?: 0 | 1): any;
 }

@@ -21,7 +21,7 @@ describe('nlp', function() {
   this.retries(4);
   // 基本文本分析 分词
   it('wordseg', async () => {
-    let r = await NLPTest.wordseg('中国 人啊，a c !  hello word');
+    let r = await NLPTest.seg('中国 人啊，a c !  hello word');
 
     // console.log(r);
 
@@ -30,14 +30,14 @@ describe('nlp', function() {
 
   // 词性定义
   it('wordpos', async () => {
-    let r = await NLPTest.wordpos('腾讯人工智能');
+    let r = await NLPTest.pos('腾讯人工智能');
 
     assert.strictEqual(r.ret, 0);
   });
 
   // 专有名词识别
   it('wordner', async () => {
-    let r = await NLPTest.wordner('最近张学友在深圳开了一场演唱会');
+    let r = await NLPTest.ner('最近张学友在深圳开了一场演唱会');
 
     r.data.ner_tokens.map(item => {
       assert.ok(item.types[0]);
@@ -46,28 +46,28 @@ describe('nlp', function() {
 
   // 同义词识别
   it('wordsyn', async () => {
-    let r = await NLPTest.wordsyn('今天的天气怎么样');
+    let r = await NLPTest.syn('今天的天气怎么样');
 
     assert.strictEqual(r.ret, 0);
   });
 
   // 语义解析
   it('wordcom', async () => {
-    let r = await NLPTest.wordcom('今天深圳的天气怎么样？明天呢');
+    let r = await NLPTest.com('今天深圳的天气怎么样？明天呢');
 
     assert.strictEqual(r.ret, 0);
   });
 
   // 情感分析识别
   it('textpolar', async function() {
-    let r = await NLPTest.textpolar('今天的天气不错呀!()english');
+    let r = await NLPTest.textPolar('今天的天气不错呀!()english');
 
     assert.strictEqual(r.ret, 0);
   });
 
   // 基础闲聊
   it('textchat', async function() {
-    let r = await NLPTest.textchat(
+    let r = await NLPTest.textChat(
       '今天的天气不错呀?!()',
       // randomstring.generate({
       //   length: 16,

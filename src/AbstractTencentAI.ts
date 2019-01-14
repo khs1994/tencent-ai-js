@@ -49,8 +49,3 @@ export default abstract class AbstractTencentAI {
     }
   }
 }
-
-export interface TencentAIReturn {
-  ret: number;
-  data: any;
-}

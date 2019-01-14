@@ -1,4 +1,5 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
+import TencentAIResult from './TencentAIResult';
 export default class NLP extends AbstractTencentAI {
     /**
      * 自然语言处理基础部分
@@ -21,7 +22,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wordseg(text: string): Promise<TencentAIReturn>;
+    seg(text: string): Promise<TencentAIResult>;
     /**
      * 词性标注
      *
@@ -32,7 +33,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wordpos(text: string): Promise<TencentAIReturn>;
+    pos(text: string): Promise<TencentAIResult>;
     /**
      * 专有名词识别
      *
@@ -43,7 +44,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise|error} A Promise Object
      */
-    wordner(text: string): Promise<TencentAIReturn>;
+    ner(text: string): Promise<TencentAIResult>;
     /**
      * 同义词识别
      *
@@ -54,7 +55,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise|error} A Promise Object
      */
-    wordsyn(text: string): Promise<TencentAIReturn>;
+    syn(text: string): Promise<TencentAIResult>;
     /**
      * 语义解析
      *
@@ -65,7 +66,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wordcom(text: string): Promise<TencentAIReturn>;
+    com(text: string): Promise<TencentAIResult>;
     /**
      * 情感分析
      *
@@ -76,7 +77,7 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    textpolar(text: string): Promise<TencentAIReturn>;
+    textPolar(text: string): Promise<TencentAIResult>;
     /**
      * 智能闲聊
      *
@@ -88,5 +89,5 @@ export default class NLP extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    textchat(question: string, session: string): Promise<TencentAIReturn>;
+    textChat(question: string, session: string): Promise<TencentAIResult>;
 }

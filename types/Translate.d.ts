@@ -1,4 +1,5 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
+import TencentAIResult from './TencentAIResult';
 export default class Translate extends AbstractTencentAI {
     /**
      * 机器翻译API构造函数
@@ -36,7 +37,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    texttrans(text: string, type?: number): Promise<TencentAIReturn>;
+    textByAILab(text: string, type?: number): Promise<TencentAIResult>;
     /**
      * 文本翻译（翻译君）
      *
@@ -64,7 +65,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    texttranslate(text: string, source?: string, target?: string): Promise<TencentAIReturn>;
+    text(text: string, source?: string, target?: string): Promise<TencentAIResult>;
     /**
      * 图片翻译
      *
@@ -79,7 +80,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagetranslate(image: string, session_id: string, scene?: string, source?: string, target?: string): any;
+    image(image: string, session_id: string, scene?: string, source?: string, target?: string): any;
     /**
      * 语音翻译
      *
@@ -96,7 +97,7 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    speechtranslate(speech_chunk: string, session_id: string, format?: number, seq?: number, end?: number, source?: string, target?: string): Promise<TencentAIReturn>;
+    speech(speech_chunk: string, session_id: string, format?: number, seq?: number, end?: number, source?: string, target?: string): Promise<TencentAIResult>;
     /**
      * 语种识别
      *
@@ -110,5 +111,5 @@ export default class Translate extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    textdetect(text: string, candidate_langs?: string, force?: 0 | 1): any;
+    textDetect(text: string, candidate_langs?: string, force?: 0 | 1): any;
 }

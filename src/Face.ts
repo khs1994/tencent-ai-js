@@ -1,6 +1,7 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
 import { URIS, commonParams, error } from './util/util';
 import Request from './client/Request';
+import Detect from './Interface/Face/Detect';
 
 export default class Face extends AbstractTencentAI {
   /**
@@ -24,7 +25,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectface(image: string, mode: 0 | 1 = 1): Promise<TencentAIReturn> {
+  detect(image: string, mode: 0 | 1 = 1): Promise<Detect> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -49,7 +50,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectmultiface(image: string): any {
+  detectmulti(image: string): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');
@@ -80,7 +81,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  facecompare(image_a: string, image_b: string): any {
+  compare(image_a: string, image_b: string): any {
     if (!this.isWx) {
       if (image_a && Buffer.byteLength(image_a, 'base64') >= 1048576) {
         return error('image_a 不能为空且大小小于1M');
@@ -116,7 +117,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectcrossageface(source_image: string, target_image: string): any {
+  detectcrossage(source_image: string, target_image: string): any {
     if (!this.isWx) {
       if (
         source_image &&
@@ -158,7 +159,7 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceshape(image: string, mode: 0 | 1 = 1): any {
+  shape(image: string, mode: 0 | 1 = 1): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');

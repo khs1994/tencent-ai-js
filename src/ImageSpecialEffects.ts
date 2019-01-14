@@ -26,7 +26,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  facecosmetic(image: string, cosmetic: number = 1): any {
+  faceCosmetic(image: string, cosmetic: number = 1): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500KB');
@@ -61,7 +61,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  facedecoration(image: string, decoration: number = 1): any {
+  faceDecoration(image: string, decoration: number = 1): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500KB');
@@ -96,7 +96,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  ptuimgfilter(image: string, filter: number): any {
+  ptuFilter(image: string, filter: number): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500KB');
@@ -132,7 +132,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  visionimgfilter(image: string, filter: number, session_id: string): any {
+  visionFilter(image: string, filter: number, session_id: string): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');
@@ -172,7 +172,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    * @deprecated Not Available on 2018-11-30
    */
-  facemerge(image: string, model: number): any {
+  faceMerge(image: string, model: number): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500Kb');
@@ -207,7 +207,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  facesticker(image: string, sticker: number): any {
+  faceSticker(image: string, sticker: number): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空 且 大小小于500Kb');
@@ -241,7 +241,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceage(image: string): any {
+  faceAge(image: string): any {
     if (!this.isWx) {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空 且 大小小于500Kb');

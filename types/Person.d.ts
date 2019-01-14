@@ -1,4 +1,5 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
+import TencentAIResult from './TencentAIResult';
 export default class Person extends AbstractTencentAI {
     /**
      * 人体管理 API 服务类
@@ -30,7 +31,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    newperson(image: string, person_name: string, group_ids: string, person_id: string, tag: string): any;
+    newPerson(image: string, person_name: string, group_ids: string, person_id: string, tag: string): any;
     /**
      * 删除个体
      *
@@ -41,7 +42,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    delperson(person_id: string): any;
+    deletePerson(person_id: string): any;
     /**
      * 增加人脸
      *
@@ -54,7 +55,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    addface(images: string, person_id: string, tag: string): any;
+    addFace(images: string, person_id: string, tag: string): any;
     /**
      * 删除人脸
      *
@@ -66,7 +67,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    delface(person_id: string, face_ids: string): any;
+    deleteFace(person_id: string, face_ids: string): any;
     /**
      * 设置信息
      *
@@ -100,7 +101,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    getgroupids(): Promise<TencentAIReturn>;
+    getGroupIds(): Promise<TencentAIResult>;
     /**
      * 获取个体列表
      *
@@ -111,7 +112,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    getpersonids(group_id: string): any;
+    getPersonIds(group_id: string): any;
     /**
      * 获取人脸列表
      *
@@ -122,7 +123,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    getfaceids(person_id: string): any;
+    getFaceIds(person_id: string): any;
     /**
      * 获取人脸信息
      *
@@ -133,7 +134,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    getfaceinfo(face_id: string): any;
+    getFaceinfo(face_id: string): any;
     /**
      * 人脸识别
      *
@@ -146,7 +147,7 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    faceidentify(image: string, group_id: string, topn?: number): any;
+    faceIdentify(image: string, group_id: string, topn?: number): any;
     /**
      * 人脸验证
      *
@@ -158,5 +159,5 @@ export default class Person extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    faceverify(image: string, person_id: string): any;
+    faceVerify(image: string, person_id: string): any;
 }

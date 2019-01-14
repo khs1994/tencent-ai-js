@@ -94,7 +94,7 @@ describe('image', function() {
   // 图像标签识别
   it('tag', function() {
     return imgPublic
-      .imagetag(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
+      .tag(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -108,7 +108,7 @@ describe('image', function() {
   // 车辆识别
   it('identify_car', function() {
     return imgPublic
-      .imgidentify(fsReadSync(`${__dirname}/resource/vision/vehicle.jpg`))
+      .identify(fsReadSync(`${__dirname}/resource/vision/vehicle.jpg`))
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -122,7 +122,7 @@ describe('image', function() {
   // 花草
   it('identify', function() {
     return imgPublic
-      .imgidentify(fsReadSync(`${__dirname}/resource/vision/flower.jpg`), 2)
+      .identify(fsReadSync(`${__dirname}/resource/vision/flower.jpg`), 2)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -136,7 +136,7 @@ describe('image', function() {
   // 看图说话
   it('imgtotext', function() {
     return imgPublic
-      .imgtotext(
+      .toText(
         fsReadSync(`${__dirname}/resource/vision/food.jpg`),
         // randomstring.generate({
         //   length: 16,
@@ -157,7 +157,7 @@ describe('image', function() {
   // 模糊图片检测
   it('fuzzy', function() {
     return imgPublic
-      .imagefuzzy(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
+      .fuzzy(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -171,7 +171,7 @@ describe('image', function() {
   // 美食图片识别
   it('food', function() {
     return imgPublic
-      .imagefood(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
+      .food(fsReadSync(`${__dirname}/resource/vision/food.jpg`))
       .then(
         res => {
           assert.strictEqual(res.ret, 0);

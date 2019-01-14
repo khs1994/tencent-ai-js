@@ -1,4 +1,5 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
+import TencentAIResult from './TencentAIResult';
 export default class Speech extends AbstractTencentAI {
     /**
      * 智能语音 API 服务类
@@ -21,7 +22,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise}
      */
-    evilaudio(speech_id: string, speech_url: string): Promise<TencentAIReturn>;
+    evilaudio(speech_id: string, speech_url: string): Promise<TencentAIResult>;
     /**
      * 语音合成（AI Lab）
      *
@@ -38,7 +39,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    tts(text: string, speaker?: 1 | 5 | 6 | 7, format?: 1 | 2 | 3, volume?: number, speed?: number, aht?: number, apc?: number): Promise<TencentAIReturn>;
+    tts(text: string, speaker?: 1 | 5 | 6 | 7, format?: 1 | 2 | 3, volume?: number, speed?: number, aht?: number, apc?: number): Promise<TencentAIResult>;
     /**
      * 语音合成（优图）
      *
@@ -64,7 +65,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    asr(speech: string, format?: 1 | 2 | 3 | 4, rate?: 8000 | 16000): Promise<TencentAIReturn>;
+    asr(speech: string, format?: 1 | 2 | 3 | 4, rate?: 8000 | 16000): Promise<TencentAIResult>;
     /**
      * 语音识别-流式版（AI Lab）
      *
@@ -86,7 +87,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    asrs(speech_chunk: string, speech_id: string, len?: number, seq?: number, end?: 0 | 1, format?: 1 | 2 | 3 | 4, rate?: 8000 | 16000): Promise<TencentAIReturn>;
+    asrs(speech_chunk: string, speech_id: string, len?: number, seq?: number, end?: 0 | 1, format?: 1 | 2 | 3 | 4, rate?: 8000 | 16000): Promise<TencentAIResult>;
     /**
      * 语音识别-流式版(WeChat AI)
      *
@@ -126,7 +127,7 @@ export default class Speech extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    wxasrlong(format: 1 | 2 | 3 | 4, callback_url: string, speech?: string, speech_url?: string): Promise<TencentAIReturn>;
+    wxasrlong(format: 1 | 2 | 3 | 4, callback_url: string, speech?: string, speech_url?: string): Promise<TencentAIResult>;
     /**
      * 关键词检索
      *

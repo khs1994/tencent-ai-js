@@ -1,6 +1,7 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
 import { URIS, commonParams, error } from './util/util';
 import Request from './client/Request';
+import TencentAIResult from './TencentAIResult';
 
 export default class Person extends AbstractTencentAI {
   /**
@@ -34,7 +35,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  newperson(
+  newPerson(
     image: string,
     person_name: string,
     group_ids: string,
@@ -84,7 +85,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  delperson(person_id: string): any {
+  deletePerson(person_id: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -112,7 +113,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  addface(images: string, person_id: string, tag: string): any {
+  addFace(images: string, person_id: string, tag: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -143,7 +144,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  delface(person_id: string, face_ids: string): any {
+  deleteFace(person_id: string, face_ids: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -229,7 +230,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getgroupids(): Promise<TencentAIReturn> {
+  getGroupIds(): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.getgroupids,
@@ -250,7 +251,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getpersonids(group_id: string): any {
+  getPersonIds(group_id: string): any {
     if (!group_id) {
       return error('group_id 不能为空');
     }
@@ -275,7 +276,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getfaceids(person_id: string): any {
+  getFaceIds(person_id: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }
@@ -300,7 +301,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  getfaceinfo(face_id: string): any {
+  getFaceinfo(face_id: string): any {
     if (!face_id) {
       return error('face_id 不能为空');
     }
@@ -327,7 +328,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceidentify(image: string, group_id: string, topn = 9): any {
+  faceIdentify(image: string, group_id: string, topn = 9): any {
     if (!group_id) {
       return error('group_id 不能为空');
     }
@@ -361,7 +362,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceverify(image: string, person_id: string): any {
+  faceVerify(image: string, person_id: string): any {
     if (!person_id) {
       return error('person_id 不能为空');
     }

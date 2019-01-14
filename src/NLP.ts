@@ -1,6 +1,7 @@
 import { URIS, commonParams, textToGBK } from './util/util';
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
 import Request from './client/Request';
+import TencentAIResult from './TencentAIResult';
 
 export default class NLP extends AbstractTencentAI {
   /**
@@ -25,7 +26,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wordseg(text: string): Promise<TencentAIReturn> {
+  seg(text: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.wordseg,
@@ -48,7 +49,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wordpos(text: string): Promise<TencentAIReturn> {
+  pos(text: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.wordpos,
@@ -71,7 +72,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise|error} A Promise Object
    */
-  wordner(text: string): Promise<TencentAIReturn> {
+  ner(text: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.wordner,
@@ -94,7 +95,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise|error} A Promise Object
    */
-  wordsyn(text: string): Promise<TencentAIReturn> {
+  syn(text: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.wordsyn,
@@ -117,7 +118,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wordcom(text: string): Promise<TencentAIReturn> {
+  com(text: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.wordcom,
@@ -139,7 +140,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  textpolar(text: string): Promise<TencentAIReturn> {
+  textPolar(text: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.textpolar,
@@ -162,7 +163,7 @@ export default class NLP extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  textchat(question: string, session: string): Promise<TencentAIReturn> {
+  textChat(question: string, session: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.textchat,

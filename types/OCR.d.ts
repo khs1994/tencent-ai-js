@@ -1,4 +1,5 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
+import TencentAIResult from './TencentAIResult';
 export default class OCR extends AbstractTencentAI {
     /**
      * OCR 服务类
@@ -23,7 +24,7 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    idcardocr(image: string, card_type?: 0 | 1): Promise<TencentAIReturn>;
+    idcard(image: string, card_type?: 0 | 1): Promise<TencentAIResult>;
     /**
      * 名片 OCR 识别
      *
@@ -34,7 +35,7 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    bcocr(image: string): any;
+    bc(image: string): any;
     /**
      * 行驶证驾驶证 OCR 识别
      *
@@ -46,7 +47,7 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    driverlicenseocr(image: string, type?: 0 | 1): Promise<TencentAIReturn>;
+    driverLicense(image: string, type?: 0 | 1): Promise<TencentAIResult>;
     /**
      * 通用 OCR 识别
      *
@@ -57,7 +58,7 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    generalocr(image: string): Promise<TencentAIReturn>;
+    general(image: string): Promise<TencentAIResult>;
     /**
      * 营业执照 OCR 识别
      *
@@ -68,7 +69,7 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    bizlicenseocr(image: string): Promise<TencentAIReturn>;
+    bizlicense(image: string): Promise<TencentAIResult>;
     /**
      * 银行卡 OCR 识别
      *
@@ -79,7 +80,7 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    creditcardocr(image: string): Promise<TencentAIReturn>;
+    creditcard(image: string): Promise<TencentAIResult>;
     /**
      * 车牌 OCR
      *
@@ -90,7 +91,7 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    plateocr(imageBase64String: string): any;
+    plate(imageBase64String: string): any;
     /**
      * 手写体 OCR
      *
@@ -101,5 +102,5 @@ export default class OCR extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    handwritingocr(imageBase64String: string): any;
+    handwriting(imageBase64String: string): any;
 }

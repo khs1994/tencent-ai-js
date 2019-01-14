@@ -39,8 +39,8 @@ const App = {
 
 const translate = new Translate(App.appkey, App.appid);
 
-// 文本翻译（AI Lab）
-translate.texttrans('你好').then(
+// 文本翻译
+translate.text('你好').then(
   res => {
     console.log(res);
   },
@@ -53,10 +53,10 @@ translate.texttrans('你好').then(
 
 (async () => {
   try {
-    let res = await translate.texttrans('hello');
+    let res = await translate.text('hello');
     console.log(res);
     // error demo
-    res = await translate.texttrans();
+    res = await translate.text();
   } catch (e) {
     console.log(e);
   }
@@ -80,7 +80,7 @@ const app_id = '';
 // 获取全部实例，也可以只获取特定实例，例如 NLP，具体参考上边例子
 const ai = new TencentAI(app_key, app_id);
 
-ai.nlp.textchat('hello', 'session_id').then(
+ai.nlp.textChat('hello', 'session_id').then(
   res => {
     // TODO
     console.log(res);
@@ -103,7 +103,7 @@ const app_id = '';
 
 const ai = new TencentAI(app_key, app_id);
 
-ai.nlp.textchat('hello', '1').then(res => {
+ai.nlp.textChat('hello', '1').then(res => {
   console.log(res);
 });
 ```
@@ -113,7 +113,7 @@ ai.nlp.textchat('hello', '1').then(res => {
 > 如何安全的保存 **密钥（app_key）** 请自行实现。
 
 ```html
-<script src="https://unpkg.com/@khs1994/tencent-ai@18.12.1/dist/tencent-ai.min.js"></script>
+<script src="https://unpkg.com/@khs1994/tencent-ai@19.06.0-alpha0/dist/tencent-ai.min.js"></script>
 
 <script>
   // 由于跨域限制，请事先搭建好代理服务器，并在第三个参数传入代理服务器地址

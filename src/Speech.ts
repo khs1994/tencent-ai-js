@@ -1,6 +1,7 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
 import Request from './client/Request';
 import { URIS, commonParams, error } from './util/util';
+import TencentAIResult from './TencentAIResult';
 
 export default class Speech extends AbstractTencentAI {
   /**
@@ -25,7 +26,7 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise}
    */
-  evilaudio(speech_id: string, speech_url: string): Promise<TencentAIReturn> {
+  evilaudio(speech_id: string, speech_url: string): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.evilaudio,
@@ -62,7 +63,7 @@ export default class Speech extends AbstractTencentAI {
     speed: number = 100,
     aht: number = 0,
     apc: number = 58,
-  ): Promise<TencentAIReturn> {
+  ): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.tts,
@@ -128,7 +129,7 @@ export default class Speech extends AbstractTencentAI {
     speech: string,
     format: 1 | 2 | 3 | 4 = 2,
     rate: 8000 | 16000 = 8000,
-  ): Promise<TencentAIReturn> {
+  ): Promise<TencentAIResult> {
     speech = this.readFileSync(speech);
 
     return Request.request(
@@ -173,7 +174,7 @@ export default class Speech extends AbstractTencentAI {
     end: 0 | 1 = 1,
     format: 1 | 2 | 3 | 4 = 2,
     rate: 8000 | 16000 = 8000,
-  ): Promise<TencentAIReturn> {
+  ): Promise<TencentAIResult> {
     speech_chunk = this.readFileSync(speech_chunk);
 
     return Request.request(
@@ -272,7 +273,7 @@ export default class Speech extends AbstractTencentAI {
     callback_url: string,
     speech: string = '',
     speech_url: string = '',
-  ): Promise<TencentAIReturn> {
+  ): Promise<TencentAIResult> {
     speech = this.readFileSync(speech);
 
     return Request.request(

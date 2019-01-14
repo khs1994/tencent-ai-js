@@ -20,7 +20,7 @@ describe('image', function() {
   // 人脸美妆
   it('facecosmetic', () => {
     return imgSpecialEffects
-      .facecosmetic(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 22)
+      .faceCosmetic(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 22)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -34,7 +34,7 @@ describe('image', function() {
   // 人脸变妆
   it('decoration', function() {
     return imgSpecialEffects
-      .facedecoration(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 22)
+      .faceDecoration(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 22)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -48,7 +48,7 @@ describe('image', function() {
   // 天天P图
   it('ptuimgfilter', function() {
     return imgSpecialEffects
-      .ptuimgfilter(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 5)
+      .ptuFilter(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 5)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -62,7 +62,7 @@ describe('image', function() {
   // 图片滤镜 AI Lab
   it('visionimgfilter', function() {
     return imgSpecialEffects
-      .visionimgfilter(
+      .visionFilter(
         fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
         26,
         // randomString.generate({
@@ -85,7 +85,7 @@ describe('image', function() {
   // 人脸融合
   it.skip('facemerge', function() {
     return imgSpecialEffects
-      .facemerge(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 1)
+      .faceMerge(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 1)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -99,7 +99,7 @@ describe('image', function() {
   // 大头贴
   it('facesticker', function() {
     return imgSpecialEffects
-      .facesticker(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 26)
+      .faceSticker(fsReadSync(`${__dirname}/resource/face/wxc.jpg`), 26)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -113,7 +113,7 @@ describe('image', function() {
   // 颜龄检测
   it('faceage', function() {
     return imgSpecialEffects
-      .faceage(fsReadSync(`${__dirname}/resource/face/wxc.jpg`))
+      .faceAge(fsReadSync(`${__dirname}/resource/face/wxc.jpg`))
       .then(
         res => {
           assert.strictEqual(res.ret, 0);

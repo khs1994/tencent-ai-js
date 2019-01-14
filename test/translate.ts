@@ -17,7 +17,7 @@ describe('translate', function() {
   this.retries(4);
   // 文本翻译（AI Lab）
   it('texttranslate', () => {
-    return translate.texttrans('Hello 世界', 0).then(
+    return translate.textByAILab('Hello 世界', 0).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -31,7 +31,7 @@ describe('translate', function() {
   it('texttranslate', function() {
     let text = '你好';
     // {text: '你好', target: 'en'}
-    return translate.texttranslate(text, 'zh', 'en').then(
+    return translate.text(text, 'zh', 'en').then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -44,7 +44,7 @@ describe('translate', function() {
   // 图片翻译
   it('imagetranslate', function() {
     return translate
-      .imagetranslate(
+      .image(
         fsReadSync(`${__dirname}/resource/translate/english.jpg`),
         // randomstring.generate({
         //   length: 16,
@@ -70,7 +70,7 @@ describe('translate', function() {
     let speech_chunk = fsReadSync(`${__dirname}/resource/translate/t.pcm`);
 
     return translate
-      .speechtranslate(
+      .speech(
         speech_chunk,
         // randomstring.generate({
         //   length: 16,
@@ -91,7 +91,7 @@ describe('translate', function() {
 
   // 语种识别
   it('textdetect', function() {
-    return translate.textdetect('你好').then(
+    return translate.textDetect('你好').then(
       res => {
         assert.strictEqual(res.ret, 0);
       },

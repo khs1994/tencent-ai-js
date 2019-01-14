@@ -2,7 +2,8 @@ import { error, urlencode } from '../util/util';
 // import node_md5 from '../util/node_md5';
 // import * as querystring from 'querystring';
 import hex_md5 from '../util/md5';
-import { TencentAIReturn } from '../AbstractTencentAI';
+import TencentAIResult from '../TencentAIResult';
+
 // @ts-ignore
 import querystring = require('qs');
 import errorCode from '../util/errorCode';
@@ -15,7 +16,7 @@ export default class Request {
     data: any,
     isGbk: boolean = false,
     method: string = 'post',
-  ): Promise<TencentAIReturn> {
+  ): Promise<TencentAIResult> {
     // let is_wx = false;
     //
     // if (typeof wx !== 'undefined') {

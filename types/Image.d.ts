@@ -1,4 +1,5 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
+import TencentAIResult from './TencentAIResult';
 export default class Image extends AbstractTencentAI {
     /**
      * 图片识别公共 API 服务类
@@ -49,7 +50,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    scener(image: string, format?: 1, topk?: 1 | 2 | 3 | 4 | 5): Promise<TencentAIReturn>;
+    scener(image: string, format?: 1, topk?: 1 | 2 | 3 | 4 | 5): Promise<TencentAIResult>;
     /**
      * 物体识别
      *
@@ -62,7 +63,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    objectr(image: string, format?: 1, topk?: 1 | 2 | 3 | 4 | 5): Promise<TencentAIReturn>;
+    objectr(image: string, format?: 1, topk?: 1 | 2 | 3 | 4 | 5): Promise<TencentAIResult>;
     /**
      * 图像标签识别
      *
@@ -73,7 +74,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagetag(image: string): Promise<TencentAIReturn>;
+    tag(image: string): Promise<TencentAIResult>;
     /**
      * 花草/车辆识别
      *
@@ -85,7 +86,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imgidentify(image: string, scene?: 1 | 2): Promise<TencentAIReturn>;
+    identify(image: string, scene?: 1 | 2): Promise<TencentAIResult>;
     /**
      * 看图说话
      *
@@ -97,7 +98,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imgtotext(image: any, session_id: any): Promise<TencentAIReturn>;
+    toText(image: any, session_id: any): Promise<TencentAIResult>;
     /**
      * 模糊图片检测
      *
@@ -108,7 +109,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagefuzzy(image: any): Promise<TencentAIReturn>;
+    fuzzy(image: any): Promise<TencentAIResult>;
     /**
      * 美食图片识别
      *
@@ -119,5 +120,5 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    imagefood(image: any): Promise<TencentAIReturn>;
+    food(image: any): Promise<TencentAIResult>;
 }

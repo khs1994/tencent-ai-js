@@ -19,7 +19,7 @@ describe('person', function() {
   // 个体创建
   it('newperson', () => {
     return person
-      .newperson(
+      .newPerson(
         fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
         '王小二',
         group_ids,
@@ -40,7 +40,7 @@ describe('person', function() {
   // 增加人脸
   it('addface', function() {
     return person
-      .addface(
+      .addFace(
         fsReadSync(`${__dirname}/resource/face/wxc2.jpg`),
         person_id,
         '备注信息',
@@ -57,7 +57,7 @@ describe('person', function() {
 
   // 获取组列表
   it('getgroupids', function() {
-    return person.getgroupids().then(
+    return person.getGroupIds().then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -69,7 +69,7 @@ describe('person', function() {
 
   // 获取个体列表
   it('getpersonids', () => {
-    return person.getpersonids(group_ids).then(
+    return person.getPersonIds(group_ids).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -81,7 +81,7 @@ describe('person', function() {
 
   // 获取人脸列表
   it('getfaceids', function() {
-    return person.getfaceids(person_id).then(
+    return person.getFaceIds(person_id).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -93,7 +93,7 @@ describe('person', function() {
 
   // 获取人脸信息
   it('getfaceinfo', function() {
-    return person.getfaceinfo(face_id).then(
+    return person.getFaceinfo(face_id).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -130,7 +130,7 @@ describe('person', function() {
   // 人脸识别
   it('faceidentify', () => {
     return person
-      .faceidentify(
+      .faceIdentify(
         fsReadSync(`${__dirname}/resource/face/wxc5.jpg`),
         'group1',
         9,
@@ -148,7 +148,7 @@ describe('person', function() {
   // 人脸验证
   it('faceverify', () => {
     return person
-      .faceverify(fsReadSync(`${__dirname}/resource/face/wxc3.jpg`), person_id)
+      .faceVerify(fsReadSync(`${__dirname}/resource/face/wxc3.jpg`), person_id)
       .then(
         res => {
           assert.strictEqual(res.ret, 0);
@@ -161,7 +161,7 @@ describe('person', function() {
 
   // 删除人脸
   it('delface', () => {
-    return person.delface(person_id, face_id).then(
+    return person.deleteFace(person_id, face_id).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },
@@ -173,7 +173,7 @@ describe('person', function() {
 
   // 删除个体
   it('deleteperson', () => {
-    return person.delperson(person_id).then(
+    return person.deletePerson(person_id).then(
       res => {
         assert.strictEqual(res.ret, 0);
       },

@@ -1,6 +1,7 @@
-import AbstractTencentAI, { TencentAIReturn } from './AbstractTencentAI';
+import AbstractTencentAI from './AbstractTencentAI';
 import Request from './client/Request';
 import { URIS, commonParams, error } from './util/util';
+import TencentAIResult from './TencentAIResult';
 
 export default class Translate extends AbstractTencentAI {
   /**
@@ -40,7 +41,7 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  texttrans(text: string, type: number = 0): Promise<TencentAIReturn> {
+  textByAILab(text: string, type: number = 0): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.texttrans,
@@ -80,11 +81,11 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  texttranslate(
+  text(
     text: string,
     source: string = 'auto',
     target: string = 'zh',
-  ): Promise<TencentAIReturn> {
+  ): Promise<TencentAIResult> {
     return Request.request(
       this.proxy,
       URIS.texttranslate,
@@ -112,7 +113,7 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  imagetranslate(
+  image(
     image: string,
     session_id: string,
     scene: string = 'word',
@@ -158,7 +159,7 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  speechtranslate(
+  speech(
     speech_chunk: string,
     session_id: string,
     format: number = 8,
@@ -166,7 +167,7 @@ export default class Translate extends AbstractTencentAI {
     end: number = 1,
     source: string = 'auto',
     target: string = 'auto',
-  ): Promise<TencentAIReturn> {
+  ): Promise<TencentAIResult> {
     speech_chunk = this.readFileSync(speech_chunk);
 
     return Request.request(
@@ -199,7 +200,7 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  textdetect(
+  textDetect(
     text: string,
     candidate_langs: string = 'zh|en|kr|jp',
     force: 0 | 1 = 0,
