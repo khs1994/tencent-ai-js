@@ -1,6 +1,6 @@
 {
   "name": "@khs1994/tencent-ai",
-  "version": "19.06.0-alpha0",
+  "version": "19.6.0-alpha.1",
   "description": "Tencent AI SDK",
   "main": "./lib/TencentAI.js",
   "types": "./types/TencentAI.d.ts",

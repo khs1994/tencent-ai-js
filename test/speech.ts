@@ -19,7 +19,7 @@ import * as assert from 'assert';
 describe('speech', function() {
   this.retries(4);
   // 音频鉴黄
-  it('evilaudio', async () => {
+  it.skip('evilaudio', async () => {
     let r = await speech.evilaudio(
       // randomstring.generate(10),
       'test',
