@@ -63,7 +63,7 @@ describe('face', function() {
   });
 
   // 跨年龄人脸识别
-  it('detectcrossageface', async function() {
+  it.skip('detectcrossageface', async function() {
     let r = await face.detectcrossage(
       fsReadSync(__dirname + '/resource/face/peterye1.jpg'),
       fsReadSync(__dirname + '/resource/face/peterye2.jpg'),
