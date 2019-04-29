@@ -32,7 +32,7 @@ pipeline:
     # environment:
     #   - CODECOV_TOKEN=XXX
     commands:
-      - npm run codecov
+      - npm run codecov -- --env=NODE_VERSION --build ${PCIT_BUILD_ID}
       - rm -rf src/client/data.txt
     when:
       status: success

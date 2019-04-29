@@ -8,6 +8,7 @@
   "unpkg": "dist/tencent-ai.min.js",
   "nyc": {
     "include": [
+      "src/*.ts",
       "src/**/*.ts"
     ],
     "exclude": [
@@ -23,9 +24,9 @@
   "scripts": {
     "cleanup": "npx rimraf lib libesm dist types",
     "eslint": "eslint ./src ./test",
-    "test": "nyc mocha -R spec -r ts-node/register --timeout 20000 test/**/*.ts",
+    "test": "nyc mocha -R spec -r ts-node/register --timeout 20000 test/*.ts test/**/*.ts",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
-    "codecov": "./node_modules/.bin/codecov",
+    "codecov": "npx codecov",
     "fmt": "npx prettier --write ./**/*.js ./**/*.ts ./*.md ./*.json",
     "prepublishOnly": "npm run cleanup && npm run dist:all && npm run build:all",
     "dev-miniprogram": "npx tsc --outDir ../../app/pcit/miniprogram/client/node_modules/@khs1994/tencent-ai/lib",
