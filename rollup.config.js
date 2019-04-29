@@ -25,7 +25,7 @@ function getConfig(target = 'min') {
     },
     cjs: {
       output: {
-        file: 'dist/tencent-ai.js',
+        file: 'dist/tencent-ai.common.js',
         name: 'TencentAI',
         format: 'cjs',
         exports: 'named',

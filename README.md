@@ -117,6 +117,7 @@ ai.nlp.textChat('hello', '1').then(res => {
 
 <script>
   // 由于跨域限制，请事先搭建好代理服务器，并在第三个参数传入代理服务器地址
+  let { TencentAI } = TencentAI;
   let ai = new TencentAI(app_key, app_id，proxy="https://domain.com/proxy_tencent_ai");
 
   // 浏览器端用法同上
