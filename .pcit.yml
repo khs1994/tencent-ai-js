@@ -20,6 +20,13 @@ pipeline:
       - export PATH=./node_modules/.bin:$PATH
       - npm test
 
+  build:
+    image: node:${NODE_VERSION}-alpine
+    commands:
+      - npm run prepublishOnly
+    when:
+      status: success
+
   after_success:
     image: khs1994/node:git
     # environment:

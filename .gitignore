@@ -5,9 +5,10 @@ node_modules
 package-lock.json
 
 .nyc_output
+coverage.lcov
+coverage
 
 src/client/data.txt
-coverage.lcov
 
 /lib
 /libesm

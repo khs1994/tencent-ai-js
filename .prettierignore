@@ -2,8 +2,9 @@
 node_modules/
 coverage/
 src/util/md5.ts
-lib
-libesm
+lib/
+libesm/
 dist/
 src/util/gbk.js/
-types
+types/
+package-lock.json

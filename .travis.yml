@@ -17,6 +17,7 @@ script:
 after_success:
 - npm run codecov
 - rm -rf src/client/data.txt
+- npm run prepublishOnly
 
 # https://docs.travis-ci.com/user/deployment/npm/
 deploy:

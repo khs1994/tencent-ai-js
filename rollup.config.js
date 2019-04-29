@@ -10,6 +10,7 @@ function getConfig(target = 'min') {
         file: 'dist/tencent-ai.min.js',
         name: 'TencentAI',
         format: 'iife',
+        exports: 'named',
       },
       plugins: [
         typescript(),
@@ -27,6 +28,7 @@ function getConfig(target = 'min') {
         file: 'dist/tencent-ai.js',
         name: 'TencentAI',
         format: 'cjs',
+        exports: 'named',
       },
       plugins: [
         typescript(),
