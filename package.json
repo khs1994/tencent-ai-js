@@ -17,7 +17,7 @@
     "build:all": "npx rimraf lib libesm && npm run build:esm && npm run build:cjs",
     "build:esm": "npx tsc --module es2015 --outDir libesm",
     "build:cjs": "npx tsc",
-    "dist:all" : "npx rimraf dist && npm run dist:iife && npm run dist:cjs && npm run dist:esm",
+    "dist:all": "npx rimraf dist && npm run dist:iife && npm run dist:cjs && npm run dist:esm",
     "dist:iife": "cross-env npx rollup -c rollup.config.js",
     "dist:cjs": "cross-env target=cjs npx rollup -c rollup.config.js",
     "dist:esm": "cross-env target=esm npx rollup -c rollup.config.js"
@@ -58,6 +58,8 @@
     "nyc": "^14.0.0",
     "prettier": "^1.17.0",
     "rollup": "^1.10.1",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-terser": "^4.0.4",
     "rollup-plugin-typescript": "^1.0.1",
     "ts-loader": "^5.4.4",

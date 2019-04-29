@@ -1,5 +1,7 @@
 import typescript from 'rollup-plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
+import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from 'rollup-plugin-node-resolve';
 
 function getConfig(target = 'min') {
   let config = {
@@ -9,7 +11,16 @@ function getConfig(target = 'min') {
         name: 'TencentAI',
         format: 'iife',
       },
-      plugins: [typescript(), terser()],
+      plugins: [
+        typescript(),
+        terser(),
+        nodeResolve({
+          mainFields: ['module', 'main'],
+        }),
+        commonjs({
+          include: 'node_modules/**',
+        }),
+      ],
     },
     cjs: {
       output: {
@@ -17,7 +28,15 @@ function getConfig(target = 'min') {
         name: 'TencentAI',
         format: 'cjs',
       },
-      plugins: [typescript()],
+      plugins: [
+        typescript(),
+        nodeResolve({
+          mainFields: ['module', 'main'],
+        }),
+        commonjs({
+          include: 'node_modules/**',
+        }),
+      ],
     },
     esm: {
       output: {
@@ -25,7 +44,15 @@ function getConfig(target = 'min') {
         name: 'TencentAI',
         format: 'esm',
       },
-      plugins: [typescript()],
+      plugins: [
+        typescript(),
+        nodeResolve({
+          mainFields: ['module', 'main'],
+        }),
+        commonjs({
+          include: 'node_modules/**',
+        }),
+      ],
     },
   };
 

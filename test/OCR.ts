@@ -110,7 +110,7 @@ describe('ocr', function() {
   });
 
   // 通用OCR识别
-  it('generalocr', function() {
+  it.skip('generalocr', function() {
     return ocr
       .general(fsReadSync(`${__dirname}/resource/ocr/general.jpg`))
       .then(

@@ -1,11 +1,10 @@
 import { error, urlencode } from '../util/util';
 // import node_md5 from '../util/node_md5';
-// import * as querystring from 'querystring';
 import hex_md5 from '../util/md5';
 import TencentAIResult from '../TencentAIResult';
 
 // @ts-ignore
-import querystring = require('qs');
+import * as querystring from 'qs';
 import errorCode from '../util/errorCode';
 import gbk from '../util/gbk.js/index';
 
