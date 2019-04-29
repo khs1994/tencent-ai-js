@@ -43,7 +43,7 @@ pipeline:
     settings:
       provider: npm
       email: khs1994@khs1994.com
-      api_key: $NPM_TOKEN
+      api_key: ${NPM_TOKEN}
       # tag: next
     when:
       event: tag
@@ -55,7 +55,7 @@ pipeline:
     settings:
       provider: npm
       email: khs1994@khs1994.com
-      api_key: $NPM_TOKEN
+      api_key: ${NPM_TOKEN}
       tag: next
     when:
       event: push
