@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-- "11"
+- "12"
 - "10"
 
 cache: npm
@@ -28,7 +28,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    node: '11'
+    node: '12'
     # condition: $MY_ENV = super_awesome
     # branch: release
     # repo: username/repo

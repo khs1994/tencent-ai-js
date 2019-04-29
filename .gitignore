@@ -10,6 +10,7 @@ src/client/data.txt
 coverage.lcov
 
 /lib
+/libesm
 /dist
 
 /test/output

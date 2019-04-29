@@ -10,7 +10,7 @@ import hex_md5 from './md5';
 // const randomString = require('randomstring');
 
 // const iconv = require('iconv-lite');
-import gbk = require('./gbk.js');
+import gbk from './gbk.js/index';
 import TencentAIResult from '../TencentAIResult';
 
 export const URIS = {
@@ -165,10 +165,12 @@ export const error = msg => {
 };
 
 export const gbkEncode = text => {
+  // @ts-ignore
   return gbk.URI.encodeURIComponent(text);
 };
 
 export const gbkDecode = text => {
+  // @ts-ignore
   return gbk.URI.decodeURIComponent(text);
 };
 

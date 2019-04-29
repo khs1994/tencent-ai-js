@@ -1,7 +1,7 @@
-export = function(GBK) {
+export default function(GBK:any) {
   var passChars = "!'()*-._~";
   var otherPassChars = '#$&+,/:;=?@';
-  function getModue(passChars) {
+  function getModue(passChars:any) {
     var passBits = passChars.split('').sort();
     var isPass = function(s) {
       return ~passChars.indexOf(s) || /[0-9a-zA-Z]/.test(s);

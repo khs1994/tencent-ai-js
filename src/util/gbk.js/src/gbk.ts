@@ -35,4 +35,4 @@ var GBK = function(gbk_us) {
   return gbk;
 };
 
-export = GBK;
+export default GBK;

@@ -7,7 +7,11 @@
     "declaration": true,
     "declarationDir": "./types",
     "newLine": "LF",
-    "locale": "zh-CN"
+    "locale": "zh-CN",
+    "lib": [
+      "esNext",
+      "dom"
+    ]
   },
   "include": [
     "src"

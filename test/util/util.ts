@@ -5,7 +5,7 @@ import * as querystring from 'querystring';
 import gbkEncodeByIconv from './gbkEncodeByIconv';
 
 const iconv = require('iconv-lite');
-import gbk = require('../../src/util/gbk.js');
+import gbk from '../../src/util/gbk.js';
 import * as querystringNode from 'querystring';
 
 describe('md5', () => {
@@ -19,13 +19,15 @@ describe('md5', () => {
 
   it('gbk', () => {
     console.log(iconv.encode('https://你好!@#$%^&*=+()_-. 1A', 'gbk'));
+    // @ts-ignore
     console.log(gbk.encode('https://你好!@#$%^&*=+()_-. 1A'));
 
     console.log(gbkEncodeByIconv('https://你好!@#$%^&*=+()_-. 1A'));
-
+    // @ts-ignore
     console.log(gbk.URI.encodeURI('https://你好!@#$%^&*=+()_-. 1A'));
+    // @ts-ignore
     console.log(gbk.URI.encodeURIComponent('https://你好!@#$%^&*=+()_-. 1A'));
-
+    // @ts-ignore
     console.log(gbk.encode('a', 'gbk'));
   });
 

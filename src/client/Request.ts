@@ -7,6 +7,7 @@ import TencentAIResult from '../TencentAIResult';
 // @ts-ignore
 import querystring = require('qs');
 import errorCode from '../util/errorCode';
+import gbk from '../util/gbk.js/index';
 
 export default class Request {
   static request(
@@ -23,11 +24,9 @@ export default class Request {
     //   is_wx = true;
     // }
 
-    let request;
+    let request: any;
 
-    // @ts-ignore
     if (typeof fetch === 'function') {
-      // @ts-ignore
       request = fetch;
     } else {
       try {
@@ -60,7 +59,7 @@ export default class Request {
       'Content-Type': 'application/x-www-form-urlencoded',
     };
 
-    let charset;
+    let charset: string;
     return request(url, {
       method,
       headers,
@@ -87,7 +86,6 @@ export default class Request {
         if (charset === 'gbk') {
           // 返回 buffer
           // const iconv = require('iconv-lite');
-          const gbk = require('./../util/gbk.js');
           // 返回 json
           // res = iconv.decode(res, charset);
           res = gbk.decode(new Uint8Array(res));

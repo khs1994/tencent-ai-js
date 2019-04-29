@@ -22,7 +22,6 @@ export default abstract class AbstractTencentAI {
     if (this.isWx) {
       return readFileSync(file);
     } else {
-      // @ts-ignore
       if (typeof window === 'undefined') {
         // node.js
 

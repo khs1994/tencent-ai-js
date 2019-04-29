@@ -3,6 +3,7 @@ docs
 node_modules/
 src/util/md5.ts
 lib
+libesm
 dist/
 src/util/gbk.js/
 types
