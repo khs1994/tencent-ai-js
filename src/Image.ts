@@ -217,7 +217,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  toText(image, session_id): Promise<TencentAIResult> {
+  toText(image: string, session_id: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -242,7 +242,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  fuzzy(image): Promise<TencentAIResult> {
+  fuzzy(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
     return Request.request(
@@ -266,7 +266,7 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  food(image): Promise<TencentAIResult> {
+  food(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
     return Request.request(

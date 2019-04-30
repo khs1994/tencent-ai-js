@@ -3,58 +3,41 @@ import { terser } from 'rollup-plugin-terser';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 
+let production = (process.env.target || 'min') === 'min';
+
 function getConfig(target = 'min') {
   let config = {
     min: {
       output: {
         file: 'dist/tencent-ai.min.js',
         name: 'TencentAI',
-        format: 'iife',
+        format: 'umd',
         exports: 'named',
       },
-      plugins: [
-        typescript(),
-        terser(),
-        nodeResolve({
-          mainFields: ['module', 'main'],
-        }),
-        commonjs({
-          include: 'node_modules/**',
-        }),
-      ],
+    },
+    umd: {
+      output: {
+        file: 'dist/tencent-ai.js',
+        name: 'TencentAI',
+        format: 'umd',
+        exports: 'named',
+        // sourcemap: 'inline',
+      },
     },
     cjs: {
       output: {
         file: 'dist/tencent-ai.common.js',
-        name: 'TencentAI',
         format: 'cjs',
         exports: 'named',
+        // sourcemap: 'inline',
       },
-      plugins: [
-        typescript(),
-        nodeResolve({
-          mainFields: ['module', 'main'],
-        }),
-        commonjs({
-          include: 'node_modules/**',
-        }),
-      ],
     },
     esm: {
       output: {
         file: 'dist/tencent-ai.esm.js',
-        name: 'TencentAI',
         format: 'esm',
+        // sourcemap: 'inline',
       },
-      plugins: [
-        typescript(),
-        nodeResolve({
-          mainFields: ['module', 'main'],
-        }),
-        commonjs({
-          include: 'node_modules/**',
-        }),
-      ],
     },
   };
 
@@ -66,14 +49,22 @@ let config = {
   output: {
     file: 'dist/tencent-ai.min.js',
     name: 'TencentAI',
-    format: 'iife', // cjs es
+    format: 'iife', // amd, cjs, esm, iife, umd
   },
-  plugins: [typescript(), terser()],
+  plugins: [
+    typescript(),
+    production && terser(),
+    nodeResolve({
+      mainFields: ['module', 'main'],
+    }),
+    commonjs({
+      include: 'node_modules/**',
+    }),
+  ],
 };
 
-let { output, plugins } = getConfig(process.env.target);
+let { output } = getConfig(process.env.target);
 
 config.output = output;
-config.plugins = plugins;
 
 export default config;

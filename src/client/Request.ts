@@ -7,6 +7,7 @@ import TencentAIResult from '../TencentAIResult';
 import * as querystring from 'qs';
 import errorCode from '../util/errorCode';
 import gbk from '../util/gbk.js/index';
+// import nodeFetch from 'node-fetch';
 
 export default class Request {
   static request(
@@ -26,11 +27,15 @@ export default class Request {
     let request: any;
 
     if (typeof fetch === 'function') {
+      // browser
       request = fetch;
     } else {
       try {
+        // node
         request = require('node-fetch');
+        // request = nodeFetch;
       } catch (e) {
+        // wx
         request = require('wx-fetch');
       }
     }
