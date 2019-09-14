@@ -98,7 +98,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    toText(image: any, session_id: any): Promise<TencentAIResult>;
+    toText(image: string, session_id: string): Promise<TencentAIResult>;
     /**
      * 模糊图片检测
      *
@@ -109,7 +109,7 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    fuzzy(image: any): Promise<TencentAIResult>;
+    fuzzy(image: string): Promise<TencentAIResult>;
     /**
      * 美食图片识别
      *
@@ -120,5 +120,5 @@ export default class Image extends AbstractTencentAI {
      *
      * @return {Promise} A Promise Object
      */
-    food(image: any): Promise<TencentAIResult>;
+    food(image: string): Promise<TencentAIResult>;
 }

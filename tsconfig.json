@@ -8,7 +8,7 @@
     "declarationDir": "./types",
     "newLine": "LF",
     "locale": "zh-CN",
-    "lib": ["esNext", "dom"]
+    "lib": ["esnext", "dom"]
   },
   "include": ["src"]
 }

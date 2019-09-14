@@ -8,6 +8,8 @@ import * as querystring from 'qs';
 import errorCode from '../util/errorCode';
 import gbk from '../util/gbk.js/index';
 // import nodeFetch from 'node-fetch';
+// @ts-ignore
+import wxFetch from 'wx-fetch';
 
 export default class Request {
   static request(
@@ -36,7 +38,7 @@ export default class Request {
         // request = nodeFetch;
       } catch (e) {
         // wx
-        request = require('wx-fetch');
+        typeof wx && (request = wxFetch);
       }
     }
 

@@ -1,10 +1,10 @@
 {
   "name": "@khs1994/tencent-ai",
-  "version": "19.6.0-alpha.1",
+  "version": "19.6.0-alpha.2",
   "description": "Tencent AI SDK",
-  "main": "./lib/TencentAI.js",
+  "main": "./dist/tencent-ai.common.js",
   "types": "./types/TencentAI.d.ts",
-  "module": "./libesm/TencentAI.js",
+  "module": "./dist/tencent-ai.esm.js",
   "unpkg": "dist/tencent-ai.min.js",
   "nyc": {
     "include": [
@@ -28,7 +28,7 @@
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
     "codecov": "npx codecov",
     "fmt": "npx prettier --write ./**/*.js ./**/*.ts ./*.md ./*.json",
-    "prepublishOnly": "npm run cleanup && npm run dist:all && npm run build:all",
+    "prepublishOnly": "npm run cleanup && npm run dist:all",
     "dev:miniprogram": "npx tsc --outDir ../../app/pcit/miniprogram/client/node_modules/@khs1994/tencent-ai/lib",
     "build:all": "npx rimraf lib libesm && npm run build:esm && npm run build:cjs",
     "build:esm": "npx tsc --module es2015 --outDir libesm",
@@ -46,7 +46,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/khs1994-php/tencent-ai-node.git"
+    "url": "https://github.com/khs1994/tencent-ai-js.git"
   },
   "license": "MIT",
   "keywords": [
@@ -55,38 +55,36 @@
     "sdk"
   ],
   "dependencies": {
-    "node-fetch": "^2.4.1",
-    "qs": "^6.7.0",
-    "wx-fetch": "github:khs1994/wx-fetch"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^11.0.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.0.0",
     "@types/wx": "github:khs1994/types-wx",
-    "babel-eslint": "^10.0.1",
-    "codecov": "^3.3.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
+    "babel-eslint": "^10.0.3",
+    "codecov": "^3.5.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-typescript": "^0.14.0",
-    "iconv-lite": "^0.4.19",
-    "mocha": "^6.0.0",
-    "nyc": "^14.0.0",
-    "prettier": "^1.17.0",
-    "rollup": "^1.10.1",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-terser": "^4.0.4",
+    "iconv-lite": "^0.5.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "qs": "^6.8.0",
+    "rollup": "^1.21.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript": "^1.0.1",
-    "ts-loader": "^5.4.4",
-    "ts-node": "^8.0.0",
-    "typescript": "^3.4.5",
-    "typescript-eslint-parser": "^22.0.0"
+    "ts-loader": "^6.1.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.3",
+    "typescript-eslint-parser": "^22.0.0",
+    "wx-fetch": "github:khs1994/wx-fetch"
   },
   "files": [
-    "lib",
-    "libesm",
     "dist",
     "types",
     ".pcit.yml"
@@ -95,20 +93,15 @@
     "node": ">=8.0"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "private": false,
-  "homepage": "https://github.com/khs1994-php/tencent-ai-node",
+  "homepage": "https://github.com/khs1994/tencent-ai-js",
   "bugs": {
-    "url": "https://github.com/khs1994-php/tencent-ai-node/issues"
+    "url": "https://github.com/khs1994/tencent-ai-js/issues"
   },
   "directories": {
     "doc": "./docs",
-    "lib": [
-      "./lib",
-      "./libesm"
-    ],
-    "src": "./src"
+    "lib": "./src"
   }
 }
