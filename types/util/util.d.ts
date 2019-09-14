@@ -65,7 +65,7 @@ export declare const commonParams: () => {
     nonce_str: string;
     time_stamp: number;
 };
-export declare const error: (msg: any) => Promise<{}>;
+export declare const error: (msg: any) => Promise<unknown>;
 export declare const gbkEncode: (text: any) => any;
 export declare const gbkDecode: (text: any) => any;
 export declare const textToGBK: (text: any) => string;

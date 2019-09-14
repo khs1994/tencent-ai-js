@@ -3,7 +3,7 @@ import { terser } from 'rollup-plugin-terser';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 
-let production = (process.env.target || 'min') === 'min';
+let production = (process.env.NODE_ENV || 'development') === 'production';
 
 function getConfig(target = 'min') {
   let config = {
@@ -26,7 +26,15 @@ function getConfig(target = 'min') {
     },
     cjs: {
       output: {
-        file: 'dist/tencent-ai.common.js',
+        file: 'dist/tencent-ai.common.dev.js',
+        format: 'cjs',
+        exports: 'named',
+        // sourcemap: 'inline',
+      },
+    },
+    cjs_min: {
+      output: {
+        file: 'dist/tencent-ai.common.prod.js',
         format: 'cjs',
         exports: 'named',
         // sourcemap: 'inline',

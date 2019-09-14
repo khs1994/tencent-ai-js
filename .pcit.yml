@@ -17,7 +17,6 @@ pipeline:
     #   - NODE_TENCENT_AI_APP_KEY=abc
     #   - NODE_TENCENT_AI_APP_ID=123
     commands:
-      - export PATH=./node_modules/.bin:$PATH
       - npm test
 
   build:

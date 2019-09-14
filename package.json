@@ -22,7 +22,7 @@
     ]
   },
   "scripts": {
-    "cleanup": "npx rimraf lib libesm dist types",
+    "cleanup": "npx rimraf lib libesm dist types && git checkout -- dist",
     "eslint": "eslint ./src ./test",
     "test": "nyc mocha -R spec -r ts-node/register --timeout 20000 test/*.ts test/**/*.ts",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
@@ -33,11 +33,12 @@
     "build:all": "npx rimraf lib libesm && npm run build:esm && npm run build:cjs",
     "build:esm": "npx tsc --module es2015 --outDir libesm",
     "build:cjs": "npx tsc",
-    "dist:all": "npx rimraf dist && npm run dist:umd && npm run dist:umd:min && npm run dist:cjs && npm run dist:esm",
-    "dist:umd": "npx rollup -c rollup.config.js --environment=target:umd",
-    "dist:umd:min": "npx rollup -c rollup.config.js",
-    "dist:cjs": "npx rollup -c rollup.config.js --environment=target:cjs",
-    "dist:esm": "npx rollup -c rollup.config.js --environment=target:esm"
+    "dist:all": "npx rimraf dist && git checkout -- dist && npm run dist:umd && npm run dist:umd:min && npm run dist:cjs && npm run dist:cjs:min && npm run dist:esm",
+    "dist:umd": "npx rollup -c rollup.config.js --environment=target:umd,NODE_ENV:development",
+    "dist:umd:min": "npx rollup -c rollup.config.js --environment=NODE_ENV:production",
+    "dist:cjs": "npx rollup -c rollup.config.js --environment=target:cjs,NODE_ENV:development",
+    "dist:cjs:min": "npx rollup -c rollup.config.js --environment=target:cjs_min,NODE_ENV:production",
+    "dist:esm": "npx rollup -c rollup.config.js --environment=target:esm,NODE_ENV:development"
   },
   "author": {
     "name": "khs1994",
