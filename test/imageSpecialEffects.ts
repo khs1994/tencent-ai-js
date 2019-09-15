@@ -111,7 +111,7 @@ describe('image', function() {
   });
 
   // 颜龄检测
-  it('faceage', function() {
+  it.skip('faceage', function() {
     return imgSpecialEffects
       .faceAge(fsReadSync(`${__dirname}/resource/face/wxc.jpg`))
       .then(

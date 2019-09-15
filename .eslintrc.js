@@ -11,7 +11,7 @@ module.exports = {
   // 为了让 eslint 支持 es7 或更高的语法
   // https://eslint.org/docs/user-guide/configuring#specifying-parser
   // parser: 'babel-eslint',
-  parser: 'typescript-eslint-parser',
+  "parser": "@typescript-eslint/parser",
   // https://eslint.org/docs/user-guide/configuring#extending-configuration-files
   extends: [
     'eslint:recommended',
@@ -66,5 +66,5 @@ module.exports = {
     'prettier/prettier': ['error', { trailingComma: 'all' }],
   },
   // https://eslint.org/docs/user-guide/configuring#configuring-plugins
-  plugins: ['typescript'],
+  plugins: ['@typescript-eslint'],
 };

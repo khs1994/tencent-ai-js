@@ -28,7 +28,7 @@ describe('ocr', function() {
   });
 
   // 身份证OCR识别 国徽面 反面
-  it.skip('idcard_f', function() {
+  it('idcard_f', function() {
     return ocr
       .idcard(fsReadSync(`${__dirname}/resource/ocr/idcardf.jpg`), 1)
       .then(
@@ -110,7 +110,7 @@ describe('ocr', function() {
   });
 
   // 通用OCR识别
-  it.skip('generalocr', function() {
+  it('generalocr', function() {
     return ocr
       .general(fsReadSync(`${__dirname}/resource/ocr/general.jpg`))
       .then(

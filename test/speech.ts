@@ -17,9 +17,9 @@ import * as assert from 'assert';
  * 语音识别-流式版（AI Lab）、语音识别-流式版(WeChat AI)、长语音识别
  */
 describe('speech', function() {
-  this.retries(4);
+  this.retries(5);
   // 音频鉴黄
-  it.skip('evilaudio', async () => {
+  it('evilaudio', async () => {
     let r = await speech.evilaudio(
       // randomstring.generate(10),
       'test',

@@ -1,6 +1,6 @@
 # TencentAI JavaScript SDK
 
-[![npm](https://img.shields.io/npm/v/@khs1994/tencent-ai.svg)](https://www.npmjs.com/package/@khs1994/tencent-ai) [![Build Status](https://travis-ci.com/khs1994/tencent-ai-js.svg?branch=master)](https://travis-ci.com/khs1994/tencent-ai-js) [![codecov](https://codecov.io/gh/khs1994/tencent-ai-js/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994/tencent-ai-js) [![install size](https://packagephobia.now.sh/badge?p=@khs1994/tencent-ai)](https://packagephobia.now.sh/result?p=@khs1994/tencent-ai) [![code style: prettier](https://badgen.now.sh/badge/code%20style/prettier/ff69b4)](https://github.com/prettier/prettier) [![Build Status](https://ci.khs1994.com/github/khs1994/tencent-ai-js/status?branch=master)](https://ci.khs1994.com/github/khs1994/tencent-ai-js)
+[![npm](https://img.shields.io/npm/v/@khs1994/tencent-ai.svg)](https://www.npmjs.com/package/@khs1994/tencent-ai) [![Build Status](https://travis-ci.com/khs1994/tencent-ai-js.svg?branch=master)](https://travis-ci.com/khs1994/tencent-ai-js) [![codecov](https://codecov.io/gh/khs1994/tencent-ai-js/branch/master/graph/badge.svg)](https://codecov.io/gh/khs1994/tencent-ai-js) [![install size](https://packagephobia.now.sh/badge?p=@khs1994/tencent-ai)](https://packagephobia.now.sh/result?p=@khs1994/tencent-ai) [![code style: prettier](https://badgen.now.sh/badge/code%20style/prettier/ff69b4)](https://github.com/prettier/prettier) [![Build Status](https://ci.khs1994.com/github/khs1994/tencent-ai-js/status?branch=master)](https://ci.khs1994.com/github/khs1994/tencent-ai-js) [![Build Status](https://drone.khs1994.com/api/badges/khs1994/tencent-ai-js/status.svg)](https://drone.khs1994.com/khs1994/tencent-ai-js)
 
 **This repo fork from https://github.com/w89612b/qqai-api-sdk**
 
@@ -22,9 +22,9 @@ $ npm i --save @khs1994/tencent-ai
 
 ## Usage
 
-- 可直接运行于 Node.js 浏览器 微信小程序端
+- 可直接运行于 `Node.js` `浏览器` `微信小程序`
 
-- 一切逻辑均在微信小程序客户端完成，无需第三方服务器，保证用户隐私。
+- 一切逻辑均在微信小程序客户端完成，无需第三方服务器，保证用户隐私
 
 - Node.js 端文件相关 API 可传入 base64 编码、本地文件路径、图片 url(TODO)
 
@@ -65,15 +65,20 @@ translate.text('你好').then(
 
 ### 微信小程序
 
+```bash
+$ npm i khs1994/wx-fetch --save
+$ npm i @khs1994/tencent-ai --save
+```
+
 - 使用 npm 安装，之后在菜单栏选择构建 npm
 
-- 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）。
+- 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）
 
 ```js
 // 解构赋值
 const { TencentAI } = require('@khs1994/tencent-ai');
 
-// 以下两项请到 ai.qq.com 控制台查看。
+// 以下两项请到 ai.qq.com 控制台查看
 const app_key = '';
 const app_id = '';
 
@@ -89,9 +94,9 @@ ai.nlp.textChat('hello', 'session_id').then(
 );
 ```
 
-- 在小程序端调用文件相关的 API 时(人脸识别、OCR、音频)，可以直接传入文件路径，无需转码。也可传入 base64 编码。
+- 在小程序端调用文件相关的 API 时(人脸识别、OCR、音频)，可以直接传入文件路径，无需转码。也可直接传入 base64 编码
 
-- 由于小程序限制，请避免传入 url。
+- 由于小程序限制，请不要传入 url（配置了请求域名除外）
 
 ### TypeScript
 
@@ -110,10 +115,10 @@ ai.nlp.textChat('hello', '1').then(res => {
 
 ### 浏览器使用
 
-> 如何安全的保存 **密钥（app_key）** 请自行实现。
+> 如何安全的保存 **密钥（app_key）** 请自行实现
 
 ```html
-<script src="https://unpkg.com/@khs1994/tencent-ai@19.06.0-alpha0/dist/tencent-ai.min.js"></script>
+<script src="https://unpkg.com/@khs1994/tencent-ai@19.6.0-alpha.1/dist/tencent-ai.min.js"></script>
 
 <script>
   // 由于跨域限制，请事先搭建好代理服务器，并在第三个参数传入代理服务器地址

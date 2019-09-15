@@ -7,9 +7,6 @@ import TencentAIResult from '../TencentAIResult';
 import * as querystring from 'qs';
 import errorCode from '../util/errorCode';
 import gbk from '../util/gbk.js/index';
-// import nodeFetch from 'node-fetch';
-// @ts-ignore
-import wxFetch from 'wx-fetch';
 
 export default class Request {
   static request(
@@ -26,20 +23,14 @@ export default class Request {
     //   is_wx = true;
     // }
 
-    let request: any;
-
     if (typeof fetch === 'function') {
       // browser
-      request = fetch;
-    } else {
-      try {
-        // node
-        request = require('node-fetch');
-        // request = nodeFetch;
-      } catch (e) {
-        // wx
-        typeof wx && (request = wxFetch);
-      }
+    }else if(typeof global === 'object'){
+      var fetch = require('node-fetch')
+    }else if(typeof wx === 'object'){
+      var fetch = require('wxFetch')
+    }else {
+      return Promise.reject('fetch not found');
     }
 
     url = proxy + url;
@@ -65,12 +56,13 @@ export default class Request {
       'Content-Type': 'application/x-www-form-urlencoded',
     };
 
-    let charset: string;
-    return request(url, {
+    let charset: string = isGbk ? 'gbk' : 'utf8';
+
+    return fetch(url, {
       method,
       headers,
       body,
-      charset: isGbk ? 'gbk' : 'utf8',
+      charset,
     })
       .then(res => {
         if (!res.ok) {
