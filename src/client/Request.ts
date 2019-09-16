@@ -6,6 +6,7 @@ import errorCode from '../util/errorCode';
 import gbk from '../util/gbk.js/index';
 import signHandler from '../util/sign';
 import { Response, RequestInit } from 'node-fetch';
+import fetchType from 'node-fetch';
 
 export default async function(
   proxy: string,
@@ -15,12 +16,17 @@ export default async function(
   isGbk: boolean = false,
   method: string = 'post',
 ): Promise<TencentAIResult> {
+  let fetchHandler: typeof fetchType;
+
   if (typeof fetch === 'function') {
     // browser
+    // deno
+    // @ts-ignore
+    fetchHandler = fetch;
   } else if (typeof Buffer === 'function') {
-    var fetch = require('node-fetch');
+    fetchHandler = require('node-fetch');
   } else if (typeof wx === 'object') {
-    var fetch = require('wx-fetch');
+    fetchHandler = require('wx-fetch');
   } else {
     return Promise.reject('fetch not found');
   }
@@ -38,7 +44,7 @@ export default async function(
 
   let charset: string = isGbk ? 'gbk' : 'utf8';
 
-  const fetchResult: Response = await fetch(url, <RequestInit>{
+  const fetchResult: Response = await fetchHandler(url, <RequestInit>{
     method,
     headers,
     body,
