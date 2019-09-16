@@ -37,8 +37,8 @@ export default class OCR extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        card_type: card_type,
+        image,
+        card_type,
       }),
     );
   }
@@ -66,7 +66,7 @@ export default class OCR extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }
@@ -91,8 +91,8 @@ export default class OCR extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        type: type,
+        image,
+        type,
       }),
     );
   }
@@ -116,7 +116,7 @@ export default class OCR extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }
@@ -140,7 +140,7 @@ export default class OCR extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }
@@ -164,7 +164,7 @@ export default class OCR extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }

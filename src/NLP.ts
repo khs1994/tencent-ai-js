@@ -125,7 +125,7 @@ export default class NLP extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        text: text,
+        text,
       }),
     );
   }
@@ -147,7 +147,7 @@ export default class NLP extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        text: text,
+        text,
       }),
     );
   }
@@ -170,8 +170,8 @@ export default class NLP extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        question: question,
-        session: session,
+        question,
+        session,
       }),
     );
   }

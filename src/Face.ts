@@ -34,8 +34,8 @@ export default class Face extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        mode: mode,
+        image,
+        mode,
       }),
     );
   }
@@ -65,7 +65,7 @@ export default class Face extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }
@@ -100,8 +100,8 @@ export default class Face extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image_a: image_a,
-        image_b: image_b,
+        image_a,
+        image_b,
       }),
     );
   }
@@ -142,8 +142,8 @@ export default class Face extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        source_image: source_image,
-        target_image: target_image,
+        source_image,
+        target_image,
       }),
     );
   }
@@ -177,8 +177,8 @@ export default class Face extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        mode: mode,
+        image,
+        mode,
       }),
     );
   }

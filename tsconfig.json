@@ -8,7 +8,9 @@
     "declarationDir": "./types",
     "newLine": "LF",
     "locale": "zh-CN",
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+    "incremental": true,
+    "tsBuildInfoFile": "./buildcache/front-end"
   },
   "include": ["src"]
 }

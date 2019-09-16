@@ -17,7 +17,7 @@
 ## Installation
 
 ```bash
-$ npm i --save @khs1994/tencent-ai
+$ npm i @khs1994/tencent-ai --save
 ```
 
 ## Usage

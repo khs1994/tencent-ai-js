@@ -48,8 +48,8 @@ export default class Translate extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        type: type,
-        text: text,
+        type,
+        text,
       }),
     );
   }
@@ -92,9 +92,9 @@ export default class Translate extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        text: text,
-        source: source,
-        target: target,
+        text,
+        source,
+        target,
       }),
     );
   }
@@ -134,11 +134,11 @@ export default class Translate extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        session_id: session_id,
-        scene: scene,
-        source: source,
-        target: target,
+        image,
+        session_id,
+        scene,
+        source,
+        target,
       }),
     );
   }
@@ -176,13 +176,13 @@ export default class Translate extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        format: format,
-        seq: seq,
-        end: end,
-        session_id: session_id,
-        speech_chunk: speech_chunk,
-        source: source,
-        target: target,
+        format,
+        seq,
+        end,
+        session_id,
+        speech_chunk,
+        source,
+        target,
       }),
     );
   }
@@ -217,9 +217,9 @@ export default class Translate extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        text: text,
-        candidate_langs: candidate_langs,
-        force: force,
+        text,
+        candidate_langs,
+        force,
       }),
     );
   }

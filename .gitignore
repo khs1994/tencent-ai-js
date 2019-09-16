@@ -12,5 +12,7 @@ src/client/data.txt
 
 /lib
 /libesm
+/types
+/buildcache
 
 /test/output

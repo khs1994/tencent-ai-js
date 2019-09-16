@@ -66,11 +66,11 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        person_name: person_name,
-        group_ids: group_ids,
-        person_id: person_id,
-        tag: tag,
+        image,
+        person_name,
+        group_ids,
+        person_id,
+        tag,
       }),
     );
   }
@@ -96,7 +96,7 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        person_id: person_id,
+        person_id,
       }),
     );
   }
@@ -126,9 +126,9 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        images: images,
-        person_id: person_id,
-        tag: tag,
+        images,
+        person_id,
+        tag,
       }),
     );
   }
@@ -158,8 +158,8 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        person_id: person_id,
-        face_ids: face_ids,
+        person_id,
+        face_ids,
       }),
     );
   }
@@ -189,9 +189,9 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        person_id: person_id,
-        person_name: person_name,
-        tag: tag,
+        person_id,
+        person_name,
+        tag,
       }),
     );
   }
@@ -216,7 +216,7 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        person_id: person_id,
+        person_id,
       }),
     );
   }
@@ -261,7 +261,7 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        group_id: group_id,
+        group_id,
       }),
     );
   }
@@ -286,7 +286,7 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        person_id: person_id,
+        person_id,
       }),
     );
   }
@@ -311,7 +311,7 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        face_id: face_id,
+        face_id,
       }),
     );
   }
@@ -344,9 +344,9 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        group_id: group_id,
-        topn: topn,
+        image,
+        group_id,
+        topn,
       }),
     );
   }
@@ -375,8 +375,8 @@ export default class Person extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        person_id: person_id,
+        image,
+        person_id,
       }),
     );
   }

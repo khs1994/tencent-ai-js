@@ -33,8 +33,8 @@ export default class Speech extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        speech_id: speech_id,
-        speech_url: speech_url,
+        speech_id,
+        speech_url,
       }),
     );
   }
@@ -70,13 +70,13 @@ export default class Speech extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        text: text,
-        speaker: speaker,
-        format: format,
-        volume: volume,
-        speed: speed,
-        aht: aht,
-        apc: apc,
+        text,
+        speaker,
+        format,
+        volume,
+        speed,
+        aht,
+        apc,
       }),
     );
   }
@@ -106,9 +106,9 @@ export default class Speech extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        text: text,
-        model_type: model_type,
-        speed: speed,
+        text,
+        model_type,
+        speed,
       }),
     );
   }
@@ -138,9 +138,9 @@ export default class Speech extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        speech: speech,
-        format: format,
-        rate: rate,
+        speech,
+        format,
+        rate,
       }),
     );
   }
@@ -183,13 +183,13 @@ export default class Speech extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        speech_chunk: speech_chunk,
-        speech_id: speech_id,
-        len: len,
-        seq: seq,
-        end: end,
-        format: format,
-        rate: rate,
+        speech_chunk,
+        speech_id,
+        len,
+        seq,
+        end,
+        format,
+        rate,
       }),
     );
   }
@@ -239,15 +239,15 @@ export default class Speech extends AbstractTencentAI {
         this.appKey,
         Object.assign({}, commonParams(), {
           app_id: this.appId,
-          speech_chunk: speech_chunk,
-          speech_id: speech_id,
-          len: len,
-          seq: seq,
-          end: end,
-          format: format,
-          rate: rate,
-          bits: bits,
-          cont_res: cont_res,
+          speech_chunk,
+          speech_id,
+          len,
+          seq,
+          end,
+          format,
+          rate,
+          bits,
+          cont_res,
         }),
       );
     } else {
@@ -282,10 +282,10 @@ export default class Speech extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        speech_url: speech_url,
-        speech: speech,
-        callback_url: callback_url,
-        format: format,
+        speech_url,
+        speech,
+        callback_url,
+        format,
       }),
     );
   }
@@ -328,11 +328,11 @@ export default class Speech extends AbstractTencentAI {
         commonParams(),
         {
           app_id: this.appId,
-          callback_url: callback_url,
-          key_words: key_words,
-          format: format,
+          callback_url,
+          key_words,
+          format,
         },
-        speech ? { speech: speech } : { speech_url: speech_url },
+        speech ? { speech } : { speech_url },
       ),
     );
   }

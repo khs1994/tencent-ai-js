@@ -44,8 +44,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        cosmetic: cosmetic,
+        image,
+        cosmetic,
       }),
     );
   }
@@ -79,8 +79,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        decoration: decoration,
+        image,
+        decoration,
       }),
     );
   }
@@ -114,8 +114,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        filter: filter,
+        image,
+        filter,
       }),
     );
   }
@@ -153,9 +153,9 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        filter: filter,
-        session_id: session_id,
+        image,
+        filter,
+        session_id,
       }),
     );
   }
@@ -190,8 +190,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        model: model,
+        image,
+        model,
       }),
     );
   }
@@ -225,8 +225,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        sticker: sticker,
+        image,
+        sticker,
       }),
     );
   }
@@ -256,7 +256,7 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }

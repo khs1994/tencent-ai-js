@@ -27,13 +27,14 @@ export default abstract class AbstractTencentAI {
 
         // 编码 直接返回
 
-        //TODO 网址
+        // TODO 网址
 
         // 本地文件 读取后返回
         const fs = require('fs');
 
         try {
           fs.accessSync(file);
+
           // 是文件，转码
           return fs.readFileSync(file, {
             encoding: 'base64',
@@ -42,7 +43,7 @@ export default abstract class AbstractTencentAI {
           // 不是文件，直接返回
           return file;
         }
-      }
+      } // end if
 
       return file;
     }

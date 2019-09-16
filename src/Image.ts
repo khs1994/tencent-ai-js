@@ -50,7 +50,7 @@ export default class Image extends AbstractTencentAI {
         {},
         commonParams(),
         { app_id: this.appId },
-        image ? { image: image } : { image_url: image_url },
+        image ? { image } : { image_url },
       ),
     );
   }
@@ -87,7 +87,7 @@ export default class Image extends AbstractTencentAI {
         {},
         commonParams(),
         { app_id: this.appId },
-        image_url ? { image_url: image_url } : { image: image },
+        image_url ? { image_url } : { image },
       ),
     );
   }
@@ -117,9 +117,9 @@ export default class Image extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        format: format,
-        topk: topk,
+        image,
+        format,
+        topk,
       }),
     );
   }
@@ -149,9 +149,9 @@ export default class Image extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        format: format,
-        topk: topk,
+        image,
+        format,
+        topk,
       }),
     );
   }
@@ -175,7 +175,7 @@ export default class Image extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }
@@ -200,8 +200,8 @@ export default class Image extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        scene: scene,
+        image,
+        scene,
       }),
     );
   }
@@ -226,8 +226,8 @@ export default class Image extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
-        session_id: session_id,
+        image,
+        session_id,
       }),
     );
   }
@@ -251,7 +251,7 @@ export default class Image extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }
@@ -275,7 +275,7 @@ export default class Image extends AbstractTencentAI {
       this.appKey,
       Object.assign({}, commonParams(), {
         app_id: this.appId,
-        image: image,
+        image,
       }),
     );
   }
