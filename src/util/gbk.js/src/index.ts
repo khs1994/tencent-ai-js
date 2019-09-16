@@ -1,6 +1,6 @@
 type gbkType = {
-  encode:(str:string)=>any,
-  decode:(arr:any)=>string,
+  encode:(str:string)=>number[],
+  decode:(arr:number[])=>string,
   URI: {
     encodeURI:(str:string)=>string,
     decodeURI:(str:string)=>string,

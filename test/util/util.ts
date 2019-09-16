@@ -20,10 +20,15 @@ describe('md5', () => {
   });
 
   it('gbk', () => {
-    console.log('iconv.encode ' + iconv.encode(testString, 'gbk'));
+    console.log(
+      'iconv.encode ' + iconv.encode(testString, 'gbk').toJSON().data,
+    );
     console.log('gbk.encode   ' + gbk.encode(testString));
 
-    // assert.strictEqual(iconv.encode(testString, 'gbk'), gbk.encode(testString));
+    assert.deepStrictEqual(
+      iconv.encode(testString, 'gbk').toJSON().data,
+      gbk.encode(testString),
+    );
 
     console.log('textToGBKByIconv           ' + textToGBKByIconv(testString));
     console.log('textToGBK                  ' + textToGBK(testString));

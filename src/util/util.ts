@@ -12,7 +12,10 @@ export { urlencode } from './urlencode';
 export { URIS } from './URIS';
 export { textToGBK } from './textToGBK';
 
-export const commonParams = () => {
+export const commonParams = (): {
+  nonce_str: string;
+  time_stamp: number;
+} => {
   return {
     // nonce_str: randomString.generate({
     //   length: 16,
@@ -24,7 +27,7 @@ export const commonParams = () => {
   };
 };
 
-export const error = msg => {
+export const error = (msg: string): Promise<any> => {
   return new Promise((resolve, reject) => {
     reject({
       ret: 4096,

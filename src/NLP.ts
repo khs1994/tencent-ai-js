@@ -27,7 +27,7 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   seg(text: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.wordseg,
       this.appKey,
@@ -50,7 +50,7 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   pos(text: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.wordpos,
       this.appKey,
@@ -73,7 +73,7 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise|error} A Promise Object
    */
   ner(text: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.wordner,
       this.appKey,
@@ -96,7 +96,7 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise|error} A Promise Object
    */
   syn(text: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.wordsyn,
       this.appKey,
@@ -119,7 +119,7 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   com(text: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.wordcom,
       this.appKey,
@@ -141,7 +141,7 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   textPolar(text: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.textpolar,
       this.appKey,
@@ -164,7 +164,7 @@ export default class NLP extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   textChat(question: string, session: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.textchat,
       this.appKey,

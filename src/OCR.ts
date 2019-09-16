@@ -31,7 +31,7 @@ export default class OCR extends AbstractTencentAI {
   idcard(image: string, card_type: 0 | 1 = 0): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.idcardocr,
       this.appKey,
@@ -60,7 +60,7 @@ export default class OCR extends AbstractTencentAI {
 
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.bcocr,
       this.appKey,
@@ -85,7 +85,7 @@ export default class OCR extends AbstractTencentAI {
   driverLicense(image: string, type: 0 | 1 = 1): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.driverlicenseocr,
       this.appKey,
@@ -110,7 +110,7 @@ export default class OCR extends AbstractTencentAI {
   general(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.generalocr,
       this.appKey,
@@ -134,7 +134,7 @@ export default class OCR extends AbstractTencentAI {
   bizlicense(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.bizlicenseocr,
       this.appKey,
@@ -158,7 +158,7 @@ export default class OCR extends AbstractTencentAI {
   creditcard(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.creditcardocr,
       this.appKey,
@@ -184,7 +184,7 @@ export default class OCR extends AbstractTencentAI {
       imageBase64String &&
       /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)
     ) {
-      return Request.request(
+      return Request(
         this.proxy,
         URIS.plateocr,
         this.appKey,
@@ -197,7 +197,7 @@ export default class OCR extends AbstractTencentAI {
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return Request.request(
+      return Request(
         this.proxy,
         URIS.plateocr,
         this.appKey,
@@ -226,7 +226,7 @@ export default class OCR extends AbstractTencentAI {
       imageBase64String &&
       /^http\S*[.jpg|.bmp|.png]$/g.test(imageBase64String)
     ) {
-      return Request.request(
+      return Request(
         this.proxy,
         URIS.handwritingocr,
         this.appKey,
@@ -239,7 +239,7 @@ export default class OCR extends AbstractTencentAI {
       imageBase64String &&
       Buffer.byteLength(imageBase64String, 'base64') < 1048576
     ) {
-      return Request.request(
+      return Request(
         this.proxy,
         URIS.handwritingocr,
         this.appKey,

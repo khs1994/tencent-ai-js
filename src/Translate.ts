@@ -42,7 +42,7 @@ export default class Translate extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   textByAILab(text: string, type: number = 0): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.texttrans,
       this.appKey,
@@ -86,7 +86,7 @@ export default class Translate extends AbstractTencentAI {
     source: string = 'auto',
     target: string = 'zh',
   ): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.texttranslate,
       this.appKey,
@@ -128,7 +128,7 @@ export default class Translate extends AbstractTencentAI {
 
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.imagetranslate,
       this.appKey,
@@ -170,7 +170,7 @@ export default class Translate extends AbstractTencentAI {
   ): Promise<TencentAIResult> {
     speech_chunk = this.readFileSync(speech_chunk);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.speechtranslate,
       this.appKey,
@@ -211,7 +211,7 @@ export default class Translate extends AbstractTencentAI {
       }
     }
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.textdetect,
       this.appKey,

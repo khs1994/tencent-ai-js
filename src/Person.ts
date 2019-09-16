@@ -60,7 +60,7 @@ export default class Person extends AbstractTencentAI {
 
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.newperson,
       this.appKey,
@@ -90,7 +90,7 @@ export default class Person extends AbstractTencentAI {
       return error('person_id 不能为空');
     }
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.delperson,
       this.appKey,
@@ -120,7 +120,7 @@ export default class Person extends AbstractTencentAI {
 
     images = this.readFileSync(images);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.addface,
       this.appKey,
@@ -152,7 +152,7 @@ export default class Person extends AbstractTencentAI {
       return error('face_ids 不能为空');
     }
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.delface,
       this.appKey,
@@ -183,7 +183,7 @@ export default class Person extends AbstractTencentAI {
     if (!person_name) {
       return error('person_name 不能为空');
     }
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.setinfo,
       this.appKey,
@@ -210,7 +210,7 @@ export default class Person extends AbstractTencentAI {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.getinfo,
       this.appKey,
@@ -231,7 +231,7 @@ export default class Person extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   getGroupIds(): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.getgroupids,
       this.appKey,
@@ -255,7 +255,7 @@ export default class Person extends AbstractTencentAI {
     if (!group_id) {
       return error('group_id 不能为空');
     }
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.getpersonids,
       this.appKey,
@@ -280,7 +280,7 @@ export default class Person extends AbstractTencentAI {
     if (!person_id) {
       return error('person_id 不能为空');
     }
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.getfaceids,
       this.appKey,
@@ -305,7 +305,7 @@ export default class Person extends AbstractTencentAI {
     if (!face_id) {
       return error('face_id 不能为空');
     }
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.getfaceinfo,
       this.appKey,
@@ -338,7 +338,7 @@ export default class Person extends AbstractTencentAI {
 
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.faceidentify,
       this.appKey,
@@ -369,7 +369,7 @@ export default class Person extends AbstractTencentAI {
 
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.faceverify,
       this.appKey,

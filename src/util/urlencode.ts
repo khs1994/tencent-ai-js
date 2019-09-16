@@ -1,5 +1,5 @@
 // 实现 PHP urlencode 方法
-export function urlencode(text: string) {
+export function urlencode(text: string): string {
   var output = '';
   var x = 0;
 
@@ -23,7 +23,7 @@ export function urlencode(text: string) {
     }
   }
 
-  function utf16to8(str: string) {
+  function utf16to8(str: string): string {
     var out, i, len, c;
 
     out = '';

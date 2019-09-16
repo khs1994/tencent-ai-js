@@ -27,7 +27,7 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise}
    */
   evilaudio(speech_id: string, speech_url: string): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.evilaudio,
       this.appKey,
@@ -64,7 +64,7 @@ export default class Speech extends AbstractTencentAI {
     aht: number = 0,
     apc: number = 58,
   ): Promise<TencentAIResult> {
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.tts,
       this.appKey,
@@ -100,7 +100,7 @@ export default class Speech extends AbstractTencentAI {
       }
     }
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.tta,
       this.appKey,
@@ -132,7 +132,7 @@ export default class Speech extends AbstractTencentAI {
   ): Promise<TencentAIResult> {
     speech = this.readFileSync(speech);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.asr,
       this.appKey,
@@ -177,7 +177,7 @@ export default class Speech extends AbstractTencentAI {
   ): Promise<TencentAIResult> {
     speech_chunk = this.readFileSync(speech_chunk);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.asrs,
       this.appKey,
@@ -233,7 +233,7 @@ export default class Speech extends AbstractTencentAI {
     speech_chunk = this.readFileSync(speech_chunk);
 
     if (speech_chunk && speech_id && len) {
-      return Request.request(
+      return Request(
         this.proxy,
         URIS.wxasrs,
         this.appKey,
@@ -276,7 +276,7 @@ export default class Speech extends AbstractTencentAI {
   ): Promise<TencentAIResult> {
     speech = this.readFileSync(speech);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.wxasrlong,
       this.appKey,
@@ -319,7 +319,7 @@ export default class Speech extends AbstractTencentAI {
 
     speech = this.readFileSync(speech);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.detectkeyword,
       this.appKey,

@@ -42,7 +42,7 @@ export default class Image extends AbstractTencentAI {
 
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.porn,
       this.appKey,
@@ -79,7 +79,7 @@ export default class Image extends AbstractTencentAI {
 
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.terrorism,
       this.appKey,
@@ -111,7 +111,7 @@ export default class Image extends AbstractTencentAI {
   ): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.scener,
       this.appKey,
@@ -143,7 +143,7 @@ export default class Image extends AbstractTencentAI {
   ): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.objectr,
       this.appKey,
@@ -169,7 +169,7 @@ export default class Image extends AbstractTencentAI {
   tag(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.imagetag,
       this.appKey,
@@ -194,7 +194,7 @@ export default class Image extends AbstractTencentAI {
   identify(image: string, scene: 1 | 2 = 1): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.imgidentify,
       this.appKey,
@@ -220,7 +220,7 @@ export default class Image extends AbstractTencentAI {
   toText(image: string, session_id: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.imgtotext,
       this.appKey,
@@ -245,7 +245,7 @@ export default class Image extends AbstractTencentAI {
   fuzzy(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.imagefuzzy,
       this.appKey,
@@ -269,7 +269,7 @@ export default class Image extends AbstractTencentAI {
   food(image: string): Promise<TencentAIResult> {
     image = this.readFileSync(image);
 
-    return Request.request(
+    return Request(
       this.proxy,
       URIS.imagefood,
       this.appKey,

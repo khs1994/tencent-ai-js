@@ -2,7 +2,7 @@ export default function(gbk_us: any[]){
   var arr_index = 0x8140; //33088;
 
 	let gbk = {
-		decode: function (arr):string {
+		decode: function (arr:number[]):string {
 			var str = "";
 			for (var n = 0, max = arr.length; n < max; n++) {
 				var code = arr[n] & 0xff;
@@ -17,7 +17,7 @@ export default function(gbk_us: any[]){
 			}
 			return str;
 		},
-		encode: function (str:string) {
+		encode: function (str:string):number[] {
 			str += '';
 		  let gbk = [];
 			var wh = '?'.charCodeAt(0); //gbk中没有的字符的替换符
