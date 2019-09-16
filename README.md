@@ -117,12 +117,15 @@ ai.nlp.textChat('hello', '1').then(res => {
 > 如何安全的保存 **密钥（app_key）** 请自行实现
 
 ```html
-<script src="https://unpkg.com/@khs1994/tencent-ai@19.6.0-alpha.1/dist/tencent-ai.min.js"></script>
+<script src="https://unpkg.com/@khs1994/tencent-ai@19.6.0-alpha.5/dist/tencent-ai.min.js"></script>
 
 <script>
   // 由于跨域限制，请事先搭建好代理服务器，并在第三个参数传入代理服务器地址
-  let { TencentAI } = TencentAI;
-  let ai = new TencentAI(app_key, app_id，proxy="https://domain.com/proxy_tencent_ai");
+  let ai = new TencentAI.TencentAI(
+    app_key,
+    app_id,
+    (proxy = 'https://domain.com/proxy_tencent_ai'),
+  );
 
   // 浏览器端用法同上
 </script>
