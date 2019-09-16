@@ -17,7 +17,7 @@ export default async function(
 ): Promise<TencentAIResult> {
   if (typeof fetch === 'function') {
     // browser
-  } else if (typeof global === 'object') {
+  } else if (typeof Buffer === 'function') {
     var fetch = require('node-fetch');
   } else if (typeof wx === 'object') {
     var fetch = require('wx-fetch');
@@ -62,7 +62,6 @@ export default async function(
     // const iconv = require('iconv-lite');
     // res = iconv.decode(res, charset);
     // @ts-ignore
-
     let string = gbk.decode(new Uint8Array(arrayBuffer));
 
     json = JSON.parse(string);

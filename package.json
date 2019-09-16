@@ -6,6 +6,7 @@
   "types": "./types/TencentAI.d.ts",
   "module": "./dist/tencent-ai.esm.js",
   "unpkg": "dist/tencent-ai.min.js",
+  "miniprogram": "miniprogram",
   "nyc": {
     "include": [
       "src/*.ts",
@@ -22,7 +23,7 @@
     ]
   },
   "scripts": {
-    "cleanup": "npx rimraf lib libesm dist types && git checkout -- dist",
+    "cleanup": "npx rimraf lib libesm dist types miniprogram && git checkout -- dist",
     "eslint": "eslint ./src ./test",
     "test": "nyc mocha -R spec -r ts-node/register --timeout 20000 test/*.ts test/**/*.ts",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
@@ -33,12 +34,13 @@
     "build:all": "npx rimraf lib libesm types && npm run build:esm && npm run build:cjs",
     "build:esm": "npx tsc --module es2015 --outDir libesm",
     "build:cjs": "npx tsc",
-    "dist:all": "npx rimraf dist && git checkout -- dist && npm run dist:umd && npm run dist:umd:min && npm run dist:cjs && npm run dist:cjs:min && npm run dist:esm",
+    "dist:all": "npx rimraf dist miniprogram && git checkout -- dist && npm run dist:umd && npm run dist:umd:min && npm run dist:cjs && npm run dist:cjs:min && npm run dist:esm && npm run dist:miniprogram",
     "dist:umd": "npx rollup -c rollup.config.js --environment=target:umd,NODE_ENV:development",
     "dist:umd:min": "npx rollup -c rollup.config.js --environment=NODE_ENV:production",
     "dist:cjs": "npx rollup -c rollup.config.js --environment=target:cjs,NODE_ENV:development",
     "dist:cjs:min": "npx rollup -c rollup.config.js --environment=target:cjs_min,NODE_ENV:production",
-    "dist:esm": "npx rollup -c rollup.config.js --environment=target:esm,NODE_ENV:development"
+    "dist:esm": "npx rollup -c rollup.config.js --environment=target:esm,NODE_ENV:development",
+    "dist:miniprogram": "npx rollup -c rollup.config.js --environment=target:miniprogram,NODE_ENV:production"
   },
   "author": {
     "name": "khs1994",
@@ -56,7 +58,8 @@
     "sdk"
   ],
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "wx-fetch": "github:khs1994/wx-fetch"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
@@ -85,11 +88,11 @@
     "rollup-plugin-typescript": "^1.0.1",
     "ts-loader": "^6.1.0",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.3",
-    "wx-fetch": "github:khs1994/wx-fetch"
+    "typescript": "^3.6.3"
   },
   "files": [
     "dist",
+    "miniprogram",
     "types",
     ".pcit.yml",
     ".drone.yml",

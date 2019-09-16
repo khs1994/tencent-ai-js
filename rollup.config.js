@@ -49,6 +49,13 @@ function getConfig(target = 'min') {
     },
   };
 
+  if (target === 'miniprogram') {
+    config = config['cjs_min'];
+    config.output.file = 'miniprogram/index.js';
+
+    return config;
+  }
+
   return config[target];
 }
 

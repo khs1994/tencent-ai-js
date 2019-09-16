@@ -164,9 +164,10 @@ export default class Face extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');
       }
-      if ((mode && mode < 0) || mode > 1) {
-        return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
-      }
+    }
+
+    if ((mode && mode < 0) || mode > 1) {
+      return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
     }
 
     image = this.readFileSync(image);

@@ -66,13 +66,12 @@ translate.text('你好').then(
 ### 微信小程序
 
 ```bash
-$ npm i khs1994/wx-fetch --save
 $ npm i @khs1994/tencent-ai --save
 ```
 
-- 使用 npm 安装，之后在菜单栏选择构建 npm
-
-- 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）
+- 1. 使用 npm 安装，之后在菜单栏选择构建 npm
+- 2. 必须勾选 [`增强编译`](https://developers.weixin.qq.com/miniprogram/dev/devtools/codecompile.html#%E5%A2%9E%E5%BC%BA%E7%BC%96%E8%AF%91)，设置方法：`详情`（IDE 右上角） -> `本地设置` -> `增强编译`
+- 3. 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）
 
 ```js
 // 解构赋值

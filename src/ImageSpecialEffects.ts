@@ -31,9 +31,10 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500KB');
       }
-      if (cosmetic && cosmetic < 1 && cosmetic > 22) {
-        return error('cosmetic 不能为空且取值区间为[1-23]');
-      }
+    }
+
+    if (cosmetic && cosmetic < 1 && cosmetic > 22) {
+      return error('cosmetic 不能为空且取值区间为[1-23]');
     }
 
     image = this.readFileSync(image);
@@ -66,9 +67,10 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500KB');
       }
-      if (decoration && decoration < 1 && decoration > 22) {
-        return error('decoration 不能为空且取值区间为[1-22]');
-      }
+    }
+
+    if (decoration && decoration < 1 && decoration > 22) {
+      return error('decoration 不能为空且取值区间为[1-22]');
     }
 
     image = this.readFileSync(image);
@@ -101,9 +103,10 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500KB');
       }
-      if (filter && filter < 1 && filter > 32) {
-        return error('filter 不能为空且取值区间为[1-32]');
-      }
+    }
+
+    if (filter && filter < 1 && filter > 32) {
+      return error('filter 不能为空且取值区间为[1-32]');
     }
 
     image = this.readFileSync(image);
@@ -137,12 +140,13 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
         return error('image 不能为空且大小小于1M');
       }
-      if (filter && filter < 1 && filter > 65) {
-        return error('filter 不能为空且取值区间为[1-65]');
-      }
       if (session_id && Buffer.byteLength(session_id, 'base64') > 64) {
         return error('session_id 不能为空且大小小于65b');
       }
+    }
+
+    if (filter && filter < 1 && filter > 65) {
+      return error('filter 不能为空且取值区间为[1-65]');
     }
 
     image = this.readFileSync(image);
@@ -177,9 +181,10 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空且大小小于500Kb');
       }
-      if (model && model < 1 && model > 50) {
-        return error('model 不能为空且取值区间为[1-50]');
-      }
+    }
+
+    if (model && model < 1 && model > 50) {
+      return error('model 不能为空且取值区间为[1-50]');
     }
 
     image = this.readFileSync(image);
@@ -212,9 +217,10 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') >= 500 * 1024) {
         return error('image 不能为空 且 大小小于500Kb');
       }
-      if (sticker && sticker < 1 && sticker > 32) {
-        return error('model 不能为空且取值区间为[1-31]');
-      }
+    }
+
+    if (sticker && sticker < 1 && sticker > 32) {
+      return error('model 不能为空且取值区间为[1-31]');
     }
 
     image = this.readFileSync(image);

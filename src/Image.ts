@@ -34,10 +34,10 @@ export default class Image extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') > 1048576) {
         return error('imageBase64String 不能为空 且 大小小于1M');
       }
+    }
 
-      if (!image && !image_url) {
-        return error('image and url all empty');
-      }
+    if (!image && !image_url) {
+      return error('image and url all empty');
     }
 
     image = this.readFileSync(image);
@@ -71,10 +71,10 @@ export default class Image extends AbstractTencentAI {
       if (image && Buffer.byteLength(image, 'base64') > 1048576) {
         return error('imageBase64String 不能为空 且 大小小于1M');
       }
+    }
 
-      if (!image && !image_url) {
-        return error('image and url all empty');
-      }
+    if (!image && !image_url) {
+      return error('image and url all empty');
     }
 
     image = this.readFileSync(image);
