@@ -1,10 +1,10 @@
 {
   "name": "@khs1994/tencent-ai",
-  "version": "19.6.0-alpha.2",
+  "version": "19.6.0-alpha.4",
   "description": "Tencent AI SDK",
   "main": "./dist/tencent-ai.common.js",
   "types": "./types/TencentAI.d.ts",
-  "module": "./dist/tencent-ai.esm.js",
+  "module": "./dist/tencent-ai.mjs",
   "unpkg": "dist/tencent-ai.min.js",
   "miniprogram": "miniprogram",
   "nyc": {
@@ -23,7 +23,7 @@
     ]
   },
   "scripts": {
-    "cleanup": "npx rimraf lib libesm dist types miniprogram && git checkout -- dist",
+    "cleanup": "npx rimraf lib libesm dist types miniprogram",
     "eslint": "eslint ./src ./test",
     "test": "nyc mocha -R spec -r ts-node/register --timeout 20000 test/*.ts test/**/*.ts",
     "precodecov": "nyc report --reporter=text-lcov > coverage.lcov",
@@ -34,7 +34,7 @@
     "build:all": "npx rimraf lib libesm types && npm run build:esm && npm run build:cjs",
     "build:esm": "npx tsc --module es2015 --outDir libesm",
     "build:cjs": "npx tsc",
-    "dist:all": "npx rimraf dist miniprogram && git checkout -- dist && npm run dist:umd && npm run dist:umd:min && npm run dist:cjs && npm run dist:cjs:min && npm run dist:esm && npm run dist:miniprogram",
+    "dist:all": "npx rimraf dist miniprogram && npm run dist:umd && npm run dist:umd:min && npm run dist:cjs && npm run dist:cjs:min && npm run dist:esm && npm run dist:miniprogram && node scripts/dist.js",
     "dist:umd": "npx rollup -c rollup.config.js --environment=target:umd,NODE_ENV:development",
     "dist:umd:min": "npx rollup -c rollup.config.js --environment=NODE_ENV:production",
     "dist:cjs": "npx rollup -c rollup.config.js --environment=target:cjs,NODE_ENV:development",

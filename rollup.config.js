@@ -42,7 +42,7 @@ function getConfig(target = 'min') {
     },
     esm: {
       output: {
-        file: 'dist/tencent-ai.esm.js',
+        file: 'dist/tencent-ai.mjs',
         format: 'esm',
         // sourcemap: 'inline',
       },
