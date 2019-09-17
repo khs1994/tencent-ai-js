@@ -105,7 +105,7 @@ export default class Translate extends AbstractTencentAI {
    * 识别图片中的文字，并进行翻译
    *
    * @see https://ai.qq.com/doc/imagetranslate.shtml
-   * @param {string} image  原始图片的base64编码数据（原图大小上限1MB）
+   * @param {string} image  本地图片路径 | 图片的 base64 编码数据 | 图片 url （大小上限1MB）
    * @param {string} session_id 一次请求ID（尽可能唯一，长度上限64字节）
    * @param {string} scene 默认 word word-单词识别，doc-文档识别
    * @param {string} source 默认 auto 中文  zh \ 英文  en \ 日文  jp \ 韩文  kr \ 自动识别（中英互译）  auto
@@ -120,12 +120,6 @@ export default class Translate extends AbstractTencentAI {
     source: string = 'auto',
     target: string = 'en',
   ): any {
-    if (!this.isWx) {
-      if (Buffer.byteLength(image, 'base64') > 1048576) {
-        return error('图片大小必须小于1M');
-      }
-    }
-
     image = this.readFileSync(image);
 
     return Request(
@@ -205,7 +199,7 @@ export default class Translate extends AbstractTencentAI {
     candidate_langs: string = 'zh|en|kr|jp',
     force: 0 | 1 = 0,
   ): any {
-    if (!this.isWx) {
+    if (typeof Buffer !== 'undefined') {
       if (!text || Buffer.byteLength(text, 'utf8') > 1024) {
         return error('text不能为空 或者应小于 1024B');
       }

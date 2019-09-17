@@ -27,7 +27,7 @@ export default class Person extends AbstractTencentAI {
    * 创建一个个体（Person），并将个体放置到指定的组（Group）当中。一个组（Group）里面的个体（Person）总数上限为20000个。如果ID指定的组不存在，则会新建组并创建个体。
    *
    * @see https://ai.qq.com/doc/newperson.shtml
-   * @param {String} image 个体图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
+   * @param {String} image 个体图片 本地图片路径 | 图片的 base64 编码数据 | 图片 url （大小上限1MB 支持JPG、PNG、BMP格式）
    * @param {String} person_id 指定的个体（Person）ID
    * @param {String} person_name 名字
    * @param {String} group_ids group
@@ -42,12 +42,6 @@ export default class Person extends AbstractTencentAI {
     person_id: string,
     tag: string,
   ): any {
-    if (!this.isWx) {
-      if (image && Buffer.byteLength(image, 'base64') >= 1048576) {
-        return error('image 不能为空且大小小于1M');
-      }
-    }
-
     if (!person_name) {
       return error('person_name 不能为空');
     }
@@ -107,7 +101,7 @@ export default class Person extends AbstractTencentAI {
    * 将一组人脸（Face）加入到一个个体（Person）中。注意，一个人脸只能被加入到一个个体中。 一个个体最多允许包含20个人脸；加入几乎相同的人脸会返回错误。
    *
    * @see https://ai.qq.com/doc/addface.shtml
-   * @param {String} images 多个人脸图片之间用“|”分隔 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
+   * @param {String} images 多个人脸图片之间用“|”分隔 本地图片路径 | 图片的 base64 编码数据 | 图片 url （大小上限1MB 支持JPG、PNG、BMP格式）
    * @param {String} person_id  指定的个体（Person）ID
    * @param {String} tag 备注信息
    *
@@ -322,7 +316,7 @@ export default class Person extends AbstractTencentAI {
    * 对于一个待识别的人脸图片，在一个组（Group）中识别出最相似的N个个体（Person）作为候选人返回，返回的N个个体（Person）按照相似度从大到小排列，N由参数topn指定。
    *
    * @see https://ai.qq.com/doc/faceidentify.shtml
-   * @param {String} image 待识别人脸图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
+   * @param {String} image 待识别人脸图片 本地图片路径 | 图片的 base64 编码数据 | 图片 url （大小上限1MB 支持JPG、PNG、BMP格式）
    * @param {String} group_id 候选人组ID（个体创建时设定）
    * @param {Number} topn 默认9个 返回的候选人个数可选值范围[1~10]
    *
@@ -357,7 +351,7 @@ export default class Person extends AbstractTencentAI {
    * 根据提供的图片和个体（Person）ID，返回图片和个体是否是同一个人的判断以及置信度。
    *
    * @see https://ai.qq.com/doc/faceverify.shtml
-   * @param {String} image 待验证人脸图片 原始图片的base64编码数据（原图大小上限1MB，支持JPG、PNG、BMP格式）
+   * @param {String} image 待验证人脸图片 本地图片路径 | 图片的 base64 编码数据 | 图片 url （大小上限1MB 支持JPG、PNG、BMP格式）
    * @param {String} person_id  待验证的个体（Person）ID
    *
    * @return {Promise} A Promise Object

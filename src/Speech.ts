@@ -94,7 +94,7 @@ export default class Speech extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    */
   tta(text: string, model_type: 0 | 1 | 2 | 6 = 0, speed: number = 0): any {
-    if (!this.isWx) {
+    if (typeof Buffer !== 'undefined') {
       if (text && Buffer.byteLength(text, 'utf8') > 300) {
         return error('text不能为空 或者应小于 300B');
       }
@@ -311,12 +311,6 @@ export default class Speech extends AbstractTencentAI {
     speech: string = '',
     speech_url: string = '',
   ): any {
-    if (!this.isWx) {
-      if (speech && Buffer.byteLength(speech, 'base64') > 1048576 * 5) {
-        return error('speech大小必须小于5M');
-      }
-    }
-
     speech = this.readFileSync(speech);
 
     return Request(
