@@ -22,7 +22,7 @@ $ npm i @khs1994/tencent-ai --save
 
 ## Usage
 
-- 可直接运行于 `Node.js` `浏览器` `微信小程序`
+- 可直接运行于 `Node.js` `浏览器` `微信小程序` `Deno`
 
 - 一切逻辑均在微信小程序客户端完成，无需第三方服务器，保证用户隐私
 
@@ -69,9 +69,9 @@ translate.text('你好').then(
 $ npm i @khs1994/tencent-ai --save
 ```
 
-- 1. 使用 npm 安装，之后在菜单栏选择构建 npm
-- 2. 必须勾选 [`增强编译`](https://developers.weixin.qq.com/miniprogram/dev/devtools/codecompile.html#%E5%A2%9E%E5%BC%BA%E7%BC%96%E8%AF%91)，设置方法：`详情`（IDE 右上角） -> `本地设置` -> `增强编译`
-- 3. 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）
+- 使用 npm 安装，之后在菜单栏选择构建 npm
+- 必须勾选 [`增强编译`](https://developers.weixin.qq.com/miniprogram/dev/devtools/codecompile.html#%E5%A2%9E%E5%BC%BA%E7%BC%96%E8%AF%91)，设置方法：`详情`（IDE 右上角） -> `本地设置` -> `增强编译`
+- 必须将 `https://api.ai.qq.com` 加入 request 合法域名（开发环境请忽略）
 
 ```js
 // 解构赋值
@@ -112,7 +112,7 @@ ai.nlp.textChat('hello', '1').then(res => {
 });
 ```
 
-### 浏览器使用
+### 浏览器
 
 > 如何安全的保存 **密钥（app_key）** 请自行实现
 
@@ -137,6 +137,27 @@ ai.nlp.textChat('hello', '1').then(res => {
 location /proxy_tencent_ai {
   proxy_pass https://api.ai.qq.com/;
 }
+```
+
+## Deno
+
+> 暂时只支持 `js`, `ts` 暂不支持。
+
+`ai.js`
+
+```js
+import TencentAI from 'https://unpkg.com/@khs1994/tencent-ai@19.6.0-alpha.5/dist/tencent-ai.mjs';
+
+const app_key = '';
+const app_id = '';
+
+const ai = new TencentAI(app_key, app_id);
+
+// Deno 端用法同上
+```
+
+```bash
+$ deno ai.js -A
 ```
 
 ## CI/CD
