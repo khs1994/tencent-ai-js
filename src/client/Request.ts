@@ -7,6 +7,8 @@ import gbk from '../util/gbk.js/index';
 import signHandler from '../util/sign';
 import { Response, RequestInit } from 'node-fetch';
 import fetchType from 'node-fetch';
+// @ts-ignore
+import wx_fetch from 'wx-fetch';
 
 export default async function(
   proxy: string,
@@ -24,9 +26,10 @@ export default async function(
     // @ts-ignore
     fetchHandler = fetch;
   } else if (typeof Buffer === 'function') {
-    fetchHandler = require('node-fetch');
+    fetchHandler = fetchType;
   } else if (typeof wx === 'object') {
-    fetchHandler = require('wx-fetch');
+    // @ts-ignore
+    fetchHandler = wx_fetch;
   } else {
     return Promise.reject('fetch not found');
   }

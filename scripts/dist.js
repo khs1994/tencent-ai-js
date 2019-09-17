@@ -5,3 +5,5 @@ fs.copyFileSync(
   'dist/tencent-ai.common.js',
   () => {},
 );
+
+fs.copyFileSync('scripts/dist.README.md', 'dist/README.md', () => {});

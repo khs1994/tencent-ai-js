@@ -8,7 +8,7 @@
 import hex_md5 from './md5';
 // import TencentAIResult from '../TencentAIResult';
 
-export { urlencode } from './urlencode';
+export { urlencode, urlencodeByTextEncoder } from './urlencode';
 export { URIS } from './URIS';
 export { textToGBK } from './textToGBK';
 

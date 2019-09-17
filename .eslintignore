@@ -2,9 +2,11 @@
 docs
 node_modules/
 src/util/md5.ts
+
 lib
 libesm
 dist/
 miniprogram/
+
 src/util/gbk.js/
 types

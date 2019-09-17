@@ -1,5 +1,5 @@
 import hex_md5 from './md5';
-import { urlencode } from './urlencode';
+import { urlencode, urlencodeByTextEncoder } from './urlencode';
 
 function ksort(data: any) {
   let arrayList: any[] = [];
@@ -32,7 +32,13 @@ function handle_gbk(sort_list: any, isGbk: boolean = false): string {
     sort_list.map(item => {
       if (item.value !== '') {
         // str += `${item.key}=${querystring.escape(item.value)}&`;
-        str += `${item.key}=${urlencode(item.value)}&`;
+
+        str += `${item.key}=${
+          typeof TextEncoder === 'undefined'
+            ? urlencode(item.value)
+            : urlencodeByTextEncoder(item.value)
+        }&`;
+
         // str += `${item.key}=${encodeURIComponent(item.value)}&`;
       }
     });

@@ -146,7 +146,7 @@ location /proxy_tencent_ai {
 `ai.js`
 
 ```js
-import TencentAI from 'https://unpkg.com/@khs1994/tencent-ai@19.6.0-alpha.5/dist/tencent-ai.mjs';
+import TencentAI from 'https://unpkg.com/@khs1994/tencent-ai@19.6.0-alpha.6/dist/mod.js';
 
 const app_key = '';
 const app_id = '';

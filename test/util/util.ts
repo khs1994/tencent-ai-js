@@ -1,7 +1,11 @@
 import md5 from '../../src/util/md5';
 import node_md5 from './node_md5';
 import * as assert from 'assert';
-import { urlencode, textToGBK } from '../../src/util/util';
+import {
+  urlencode,
+  urlencodeByTextEncoder,
+  textToGBK,
+} from '../../src/util/util';
 import * as querystring from 'querystring'; // node 内置
 import * as qs from 'qs';
 import textToGBKByIconv from './textToGBKByIconv';
@@ -17,6 +21,10 @@ describe('md5', () => {
 
   it('urlencode', () => {
     assert.strictEqual(urlencode('你好'), querystring.escape('你好'));
+    assert.strictEqual(
+      urlencode(testString),
+      urlencodeByTextEncoder(testString),
+    );
   });
 
   it('gbk', () => {

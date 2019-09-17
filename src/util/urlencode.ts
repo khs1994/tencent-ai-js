@@ -46,3 +46,48 @@ export function urlencode(text: string): string {
 
   return output;
 }
+
+// https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder
+export function urlencodeByTextEncoder(text: string): string {
+  if (typeof TextEncoder === 'undefined') {
+    throw new Error('not support TextEncoder');
+  }
+
+  const encoder = new TextEncoder();
+
+  return urlencodeReplace(encoder.encode(text.toString()));
+}
+
+export function urlencodeReplace(array: any): string {
+  let strList: string = '';
+
+  array.map((item): any => {
+    switch (true) {
+      // ascii 0
+      case item === 0:
+        strList += '%00';
+        break;
+      // 空格转为 + 号
+      case item === 32:
+        strList += '+';
+        break;
+      // 原样输出
+      case // item === 42 ||
+      item === 45 ||
+        item === 46 ||
+        item === 95 ||
+        (item >= 48 && item <= 57) ||
+        (item >= 65 && item <= 90) ||
+        (item >= 97 && item <= 122):
+        strList += String.fromCharCode(item);
+        break;
+      // 需要编码
+      default:
+        // 10 进制转 16 进制
+        strList += '%' + item.toString(16).toUpperCase();
+        break;
+    }
+  });
+
+  return strList;
+}

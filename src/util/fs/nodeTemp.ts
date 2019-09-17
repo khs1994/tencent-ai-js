@@ -1,6 +1,7 @@
+import * as os from 'os';
+import * as fs from 'fs';
+
 export default function(): string {
-  const os = require('os');
-  const fs = require('fs');
   let random: any = Date.now() * Math.round(Math.random() * 10);
 
   let dir: string = `/tmp/tencent_ai`;

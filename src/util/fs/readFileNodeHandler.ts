@@ -1,4 +1,6 @@
 import temp from './nodeTemp';
+import * as fs from 'fs';
+import fetch from 'node-fetch';
 
 export default async function readFileNodeHandler(
   item: string,
@@ -8,8 +10,6 @@ export default async function readFileNodeHandler(
   let isFile: boolean = false;
   let isUrl: boolean = false;
   let file: string;
-
-  const fs = require('fs');
 
   try {
     fs.accessSync(item);
@@ -48,9 +48,6 @@ export default async function readFileNodeHandler(
 }
 
 async function request(url: string) {
-  const fs = require('fs');
-  const fetch = require('node-fetch');
-
   const file: string = temp();
 
   fs.writeFileSync(

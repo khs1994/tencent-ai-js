@@ -2,7 +2,7 @@ import TencentAIError from './Error/TencentAIError';
 import readFileSync from './util/wxFs';
 // import { error } from './util/util';
 import readFileNodeHandler from './util/fs/readFileNodeHandler';
-import readFileDenoHandler from './util/fs/readFileNodeHandler';
+import readFileDenoHandler from './util/fs/readFileDenoHandler';
 import runtime from './util/runtime';
 
 export default abstract class AbstractTencentAI {
