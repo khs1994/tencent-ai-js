@@ -26,12 +26,12 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceCosmetic(image: string, cosmetic: number = 1): any {
+  async faceCosmetic(image: string, cosmetic: number = 1) {
     if (cosmetic && cosmetic < 1 && cosmetic > 22) {
       return error('cosmetic 不能为空且取值区间为[1-23]');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -56,12 +56,12 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceDecoration(image: string, decoration: number = 1): any {
+  async faceDecoration(image: string, decoration: number = 1) {
     if (decoration && decoration < 1 && decoration > 22) {
       return error('decoration 不能为空且取值区间为[1-22]');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -86,12 +86,12 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  ptuFilter(image: string, filter: number): any {
+  async ptuFilter(image: string, filter: number) {
     if (filter && filter < 1 && filter > 32) {
       return error('filter 不能为空且取值区间为[1-32]');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -117,12 +117,12 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  visionFilter(image: string, filter: number, session_id: string): any {
+  async visionFilter(image: string, filter: number, session_id: string) {
     if (filter && filter < 1 && filter > 65) {
       return error('filter 不能为空且取值区间为[1-65]');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -149,12 +149,12 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    * @return {Promise} A Promise Object
    * @deprecated Not Available on 2018-11-30
    */
-  faceMerge(image: string, model: number): any {
+  async faceMerge(image: string, model: number) {
     if (model && model < 1 && model > 50) {
       return error('model 不能为空且取值区间为[1-50]');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -179,12 +179,12 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceSticker(image: string, sticker: number): any {
+  async faceSticker(image: string, sticker: number) {
     if (sticker && sticker < 1 && sticker > 32) {
       return error('model 不能为空且取值区间为[1-31]');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -208,8 +208,8 @@ export default class ImageSpecialEffects extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceAge(image: string): any {
-    image = this.readFileSync(image);
+  async faceAge(image: string) {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,

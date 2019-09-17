@@ -113,14 +113,14 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  image(
+  async image(
     image: string,
     session_id: string,
     scene: string = 'word',
     source: string = 'auto',
     target: string = 'en',
-  ): any {
-    image = this.readFileSync(image);
+  ) {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -153,7 +153,7 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  speech(
+  async speech(
     speech_chunk: string,
     session_id: string,
     format: number = 8,
@@ -162,7 +162,7 @@ export default class Translate extends AbstractTencentAI {
     source: string = 'auto',
     target: string = 'auto',
   ): Promise<TencentAIResult> {
-    speech_chunk = this.readFileSync(speech_chunk);
+    speech_chunk = await this.readFileSync(speech_chunk);
 
     return Request(
       this.proxy,
@@ -194,11 +194,11 @@ export default class Translate extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  textDetect(
+  async textDetect(
     text: string,
     candidate_langs: string = 'zh|en|kr|jp',
     force: 0 | 1 = 0,
-  ): any {
+  ) {
     if (typeof Buffer !== 'undefined') {
       if (!text || Buffer.byteLength(text, 'utf8') > 1024) {
         return error('text不能为空 或者应小于 1024B');

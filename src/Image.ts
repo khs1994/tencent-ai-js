@@ -29,12 +29,12 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  porn(image: string = '', image_url: string = ''): any {
+  async porn(image: string = '', image_url: string = '') {
     if (!image && !image_url) {
       return error('image and url all empty');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -60,12 +60,12 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  terrorism(image: string = '', image_url: string = ''): any {
+  async terrorism(image: string = '', image_url: string = '') {
     if (!image && !image_url) {
       return error('image and url all empty');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -92,12 +92,12 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  scener(
+  async scener(
     image: string,
     format: 1 = 1,
     topk: 1 | 2 | 3 | 4 | 5 = 1,
   ): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -124,12 +124,12 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  objectr(
+  async objectr(
     image: string,
     format: 1 = 1,
     topk: 1 | 2 | 3 | 4 | 5 = 1,
   ): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -154,8 +154,8 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  tag(image: string): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async tag(image: string): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -179,8 +179,8 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  identify(image: string, scene: 1 | 2 = 1): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async identify(image: string, scene: 1 | 2 = 1): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -205,8 +205,8 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  toText(image: string, session_id: string): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async toText(image: string, session_id: string): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -230,8 +230,8 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  fuzzy(image: string): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async fuzzy(image: string): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -254,8 +254,8 @@ export default class Image extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  food(image: string): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async food(image: string): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,

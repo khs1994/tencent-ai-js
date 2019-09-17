@@ -10,11 +10,25 @@ const face = new Face(APP.appkey, APP.appid);
 describe('face', function() {
   this.retries(4);
   // 人脸分析
-  it('detectface', async () => {
+  it('detectface_base64', async () => {
     let r = await face.detect(
       fsReadSync(`${__dirname}/resource/face/wxc.jpg`),
       0,
     );
+
+    assert.strictEqual(r.ret, 0);
+  });
+
+  it('detectface_file://', async () => {
+    let r = await face.detect(`${__dirname}/resource/face/wxc.jpg`, 0);
+
+    assert.strictEqual(r.ret, 0);
+  });
+
+  it('detectface_http(s)://', async () => {
+    let url =
+      'https://yyb.gtimg.com/aiplat/static/ai-demo/large/faceage-demo.jpg';
+    let r = await face.detect(url, 0);
 
     assert.strictEqual(r.ret, 0);
   });

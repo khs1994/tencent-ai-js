@@ -35,24 +35,14 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  newPerson(
+  async newPerson(
     image: string,
     person_name: string,
     group_ids: string,
     person_id: string,
     tag: string,
-  ): any {
-    if (!person_name) {
-      return error('person_name 不能为空');
-    }
-    if (!group_ids) {
-      return error('group_ids 不能为空');
-    }
-    if (!person_id) {
-      return error('person_id 不能为空');
-    }
-
-    image = this.readFileSync(image);
+  ) {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -107,12 +97,12 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  addFace(images: string, person_id: string, tag: string): any {
+  async addFace(images: string, person_id: string, tag: string) {
     if (!person_id) {
       return error('person_id 不能为空');
     }
 
-    images = this.readFileSync(images);
+    images = await this.readFileSync(images);
 
     return Request(
       this.proxy,
@@ -322,7 +312,7 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceIdentify(image: string, group_id: string, topn = 9): any {
+  async faceIdentify(image: string, group_id: string, topn = 9) {
     if (!group_id) {
       return error('group_id 不能为空');
     }
@@ -330,7 +320,7 @@ export default class Person extends AbstractTencentAI {
       return error('topn 不能为空且取值范围为[1~10]');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -356,12 +346,12 @@ export default class Person extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  faceVerify(image: string, person_id: string): any {
+  async faceVerify(image: string, person_id: string) {
     if (!person_id) {
       return error('person_id 不能为空');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,

@@ -125,12 +125,12 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  asr(
+  async asr(
     speech: string,
     format: 1 | 2 | 3 | 4 = 2,
     rate: 8000 | 16000 = 8000,
   ): Promise<TencentAIResult> {
-    speech = this.readFileSync(speech);
+    speech = await this.readFileSync(speech);
 
     return Request(
       this.proxy,
@@ -166,7 +166,7 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  asrs(
+  async asrs(
     speech_chunk: string,
     speech_id: string,
     len: number = 0,
@@ -175,7 +175,7 @@ export default class Speech extends AbstractTencentAI {
     format: 1 | 2 | 3 | 4 = 2,
     rate: 8000 | 16000 = 8000,
   ): Promise<TencentAIResult> {
-    speech_chunk = this.readFileSync(speech_chunk);
+    speech_chunk = await this.readFileSync(speech_chunk);
 
     return Request(
       this.proxy,
@@ -219,7 +219,7 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wxasrs(
+  async wxasrs(
     speech_chunk: string,
     speech_id: string,
     len: number = 0,
@@ -229,8 +229,8 @@ export default class Speech extends AbstractTencentAI {
     rate: 8000 | 16000 = 16000,
     bits: number = 16,
     cont_res: 0 | 1 = 0,
-  ): any {
-    speech_chunk = this.readFileSync(speech_chunk);
+  ) {
+    speech_chunk = await this.readFileSync(speech_chunk);
 
     if (speech_chunk && speech_id && len) {
       return Request(
@@ -268,13 +268,13 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  wxasrlong(
+  async wxasrlong(
     format: 1 | 2 | 3 | 4 = 2,
     callback_url: string,
     speech: string = '',
     speech_url: string = '',
   ): Promise<TencentAIResult> {
-    speech = this.readFileSync(speech);
+    speech = await this.readFileSync(speech);
 
     return Request(
       this.proxy,
@@ -304,14 +304,14 @@ export default class Speech extends AbstractTencentAI {
    *
    * @return {Promise}
    */
-  detectkeyword(
+  async detectkeyword(
     callback_url: string,
     key_words: string,
     format: number = 2,
     speech: string = '',
     speech_url: string = '',
-  ): any {
-    speech = this.readFileSync(speech);
+  ) {
+    speech = await this.readFileSync(speech);
 
     return Request(
       this.proxy,

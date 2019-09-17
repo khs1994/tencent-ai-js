@@ -26,7 +26,7 @@ $ npm i @khs1994/tencent-ai --save
 
 - 一切逻辑均在微信小程序客户端完成，无需第三方服务器，保证用户隐私
 
-- Node.js 端文件相关 API 可传入 base64 编码、本地文件路径、图片 url(TODO)
+- Node.js 端文件相关 API 可传入 base64 编码、本地文件路径、图片 url
 
 ```js
 const { Translate, TencentAIError } = require('@khs1994/tencent-ai');

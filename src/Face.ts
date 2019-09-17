@@ -25,8 +25,8 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detect(image: string, mode: 0 | 1 = 1): Promise<Detect> {
-    image = this.readFileSync(image);
+  async detect(image: string, mode: 0 | 1 = 1): Promise<Detect> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -50,8 +50,8 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectmulti(image: string): any {
-    image = this.readFileSync(image);
+  async detectmulti(image: string) {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -75,9 +75,9 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  compare(image_a: string, image_b: string): any {
-    image_a = this.readFileSync(image_a);
-    image_b = this.readFileSync(image_b);
+  async compare(image_a: string, image_b: string) {
+    image_a = await this.readFileSync(image_a);
+    image_b = await this.readFileSync(image_b);
 
     return Request(
       this.proxy,
@@ -102,9 +102,9 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  detectcrossage(source_image: string, target_image: string): any {
-    source_image = this.readFileSync(source_image);
-    target_image = this.readFileSync(target_image);
+  async detectcrossage(source_image: string, target_image: string) {
+    source_image = await this.readFileSync(source_image);
+    target_image = await this.readFileSync(target_image);
 
     return Request(
       this.proxy,
@@ -129,12 +129,12 @@ export default class Face extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  shape(image: string, mode: 0 | 1 = 1): any {
+  async shape(image: string, mode: 0 | 1 = 1) {
     if ((mode && mode < 0) || mode > 1) {
       return error('mode 不能为空且检测模式，0-正常，1-大脸模式');
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,

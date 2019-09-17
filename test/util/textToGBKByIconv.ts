@@ -8,7 +8,6 @@ export default function(text: string): string {
   // let str = gbk.encode(text);
   let strList: string = '';
   str.map((item: number): any => {
-    console.log();
     switch (true) {
       // ascii 0
       case item === 0:

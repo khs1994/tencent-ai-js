@@ -28,8 +28,8 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  idcard(image: string, card_type: 0 | 1 = 0): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async idcard(image: string, card_type: 0 | 1 = 0): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -53,8 +53,8 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  bc(image: string): any {
-    image = this.readFileSync(image);
+  async bc(image: string) {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -78,8 +78,11 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  driverLicense(image: string, type: 0 | 1 = 1): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async driverLicense(
+    image: string,
+    type: 0 | 1 = 1,
+  ): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -103,8 +106,8 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  general(image: string): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async general(image: string): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -127,8 +130,8 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  bizlicense(image: string): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async bizlicense(image: string): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -151,8 +154,8 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  creditcard(image: string): Promise<TencentAIResult> {
-    image = this.readFileSync(image);
+  async creditcard(image: string): Promise<TencentAIResult> {
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -175,7 +178,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  plate(image: string): any {
+  async plate(image: string) {
     if (image && /^http\S*[.jpg|.bmp|.png]$/g.test(image)) {
       return Request(
         this.proxy,
@@ -188,7 +191,7 @@ export default class OCR extends AbstractTencentAI {
       );
     }
 
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
 
     return Request(
       this.proxy,
@@ -211,7 +214,7 @@ export default class OCR extends AbstractTencentAI {
    *
    * @return {Promise} A Promise Object
    */
-  handwriting(image: string): any {
+  async handwriting(image: string) {
     if (image && /^http\S*[.jpg|.bmp|.png]$/g.test(image)) {
       return Request(
         this.proxy,
@@ -223,7 +226,7 @@ export default class OCR extends AbstractTencentAI {
         }),
       );
     }
-    image = this.readFileSync(image);
+    image = await this.readFileSync(image);
     return Request(
       this.proxy,
       URIS.handwritingocr,
