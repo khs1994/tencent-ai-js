@@ -14,3 +14,9 @@ ai.translate.text('hello').then(
   },
   e => console.log(e),
 );
+
+ai.nlp.seg('你好').then((res)=>{
+  assert.strictEqual(res.ret,0);
+},(e)=>{
+  console.log(e);
+});

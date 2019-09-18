@@ -5,8 +5,7 @@ import TencentAIResult from '../TencentAIResult';
 import errorCode from '../util/errorCode';
 import gbk from '../util/gbk.js/index';
 import signHandler from '../util/sign';
-import { Response, RequestInit } from 'node-fetch';
-import fetchType from 'node-fetch';
+import node_fetch from 'node-fetch';
 // @ts-ignore
 import wx_fetch from 'wx-fetch';
 
@@ -18,7 +17,7 @@ export default async function(
   isGbk: boolean = false,
   method: string = 'post',
 ): Promise<TencentAIResult> {
-  let fetchHandler: typeof fetchType;
+  let fetchHandler: typeof fetch;
 
   if (typeof fetch === 'function') {
     // browser
@@ -26,7 +25,8 @@ export default async function(
     // @ts-ignore
     fetchHandler = fetch;
   } else if (typeof Buffer === 'function') {
-    fetchHandler = fetchType;
+    // @ts-ignore
+    fetchHandler = node_fetch;
   } else if (typeof wx === 'object') {
     // @ts-ignore
     fetchHandler = wx_fetch;
@@ -47,10 +47,11 @@ export default async function(
 
   let charset: string = isGbk ? 'gbk' : 'utf8';
 
-  const fetchResult: Response = await fetchHandler(url, <RequestInit>{
+  const fetchResult: Response = await fetchHandler(url, {
     method,
     headers,
     body,
+    // @ts-ignore
     charset,
   });
 

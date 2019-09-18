@@ -1,6 +1,6 @@
 import temp from './nodeTemp';
 import * as fs from 'fs';
-import fetch from 'node-fetch';
+import node_fetch from 'node-fetch';
 
 export default async function readFileNodeHandler(
   item: string,
@@ -52,7 +52,7 @@ async function request(url: string) {
 
   fs.writeFileSync(
     file,
-    await fetch(url).then(res => {
+    await node_fetch(url).then(res => {
       return res.buffer();
     }),
   );

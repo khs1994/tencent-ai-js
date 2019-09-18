@@ -18,11 +18,13 @@
 
 * `tencent-ai.mjs`
 
-## browser
+## Browser UMD
 
 * `tencent-ai.js`
 * `tencent-ai.min.js`
 
-## webpack
+## Webpack ESModule
+
+供打包工具使用。
 
 * `tencent-ai.browser.js`

@@ -4,6 +4,8 @@ import readFileSync from './util/wxFs';
 import readFileNodeHandler from './util/fs/readFileNodeHandler';
 import readFileDenoHandler from './util/fs/readFileDenoHandler';
 import runtime from './util/runtime';
+// @ts-ignore
+import { version } from '../package.json';
 
 export default abstract class AbstractTencentAI {
   public isWx: boolean = false;
@@ -12,6 +14,7 @@ export default abstract class AbstractTencentAI {
   public isNode: boolean = false;
   public runtime: string = 'unknown';
   public supportFetch: boolean = false;
+  public version: string = `v${version.trim('v')}`;
 
   public constructor(
     readonly appKey: string,
